@@ -1,16 +1,14 @@
-FROM node:20-slim
+FROM node:18-slim
 
-# Install LibreOffice Writer (headless) and fonts for clean PDF rendering
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends libreoffice-writer fonts-dejavu && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+# Install LibreOffice (for Word-to-PDF) and Ghostscript (for true vector PDF compression)
+RUN apt-get update && apt-get install -y \
+    libreoffice \
+    ghostscript \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
-
 COPY package*.json ./
-RUN npm install --omit=dev
-
+RUN npm install
 COPY . .
 
 EXPOSE 3000
