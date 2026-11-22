@@ -1,4 +1,3 @@
-
 const express = require("express");
 const multer = require("multer");
 const fs = require("fs");
@@ -8,11 +7,13 @@ const { execFile } = require("child_process");
 const { pathToFileURL } = require("url");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const ROOT_DIR = __dirname;
 const TEMP_DIR = path.join(os.tmpdir(), "allinone-uploads");
 
 const LIBREOFFICE_PATHS = [
+    "/usr/bin/libreoffice",
+    "/usr/bin/soffice",
     "C:\\Program Files\\LibreOffice\\program\\soffice.exe",
     "C:\\Program Files (x86)\\LibreOffice\\program\\soffice.exe"
 ];
@@ -148,12 +149,10 @@ app.use((error, req, res, next) => {
 });
 
 // Start server
-const server = app.listen(PORT, "127.0.0.1", () => {
+const server = app.listen(PORT, "0.0.0.0", () => {
     console.log("------------------------------------");
     console.log("AllInOne backend is running!");
-    console.log(`Website: http://localhost:${PORT}`);
-    console.log(`Health:  http://localhost:${PORT}/health`);
-    console.log("Server should remain running. Press Ctrl+C to stop.");
+    console.log(`Server listening on port ${PORT}`);
     console.log("------------------------------------");
 });
 
