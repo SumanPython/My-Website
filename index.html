@@ -8,13 +8,11 @@
 :root {
     --bg-primary: #060a14;
     --bg-card: rgba(15, 24, 44, 0.72);
-    --bg-card-hover: rgba(22, 35, 62, 0.9);
     --border-subtle: rgba(148, 163, 184, 0.14);
     --border-glow: rgba(96, 165, 250, 0.55);
     --text-main: #f1f5f9;
     --text-muted: #94a3b8;
     --accent-blue: #60a5fa;
-    --accent-indigo: #818cf8;
     --green-bg: rgba(16, 185, 129, 0.12);
     --green-text: #34d399;
     --green-border: rgba(52, 211, 153, 0.3);
@@ -117,6 +115,84 @@ body {
 }
 .nav a:hover { color: var(--accent-blue); }
 
+/* Interactive Scrolling Announcement Ticker */
+.announcement-bar {
+    background: rgba(15, 26, 48, 0.88);
+    border-bottom: 1px solid rgba(96, 165, 250, 0.22);
+    color: #bfdbfe;
+    font-size: 13.5px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+}
+
+.ticker-viewport {
+    flex: 1;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 9px 16px;
+    cursor: grab;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.ticker-viewport::-webkit-scrollbar {
+    display: none;
+}
+.ticker-viewport:active {
+    cursor: grabbing;
+}
+
+.ticker-track {
+    display: inline-flex;
+    align-items: center;
+    gap: 48px;
+    padding-left: 100%;
+    animation: ticker-scroll 26s linear infinite;
+}
+
+.announcement-bar:hover .ticker-track,
+.ticker-viewport:active .ticker-track {
+    animation-play-state: paused;
+}
+
+@keyframes ticker-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+.ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+.ticker-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #60a5fa;
+    box-shadow: 0 0 6px #60a5fa;
+    flex-shrink: 0;
+}
+
+.ticker-close {
+    background: rgba(15, 26, 48, 0.95);
+    border: none;
+    border-left: 1px solid rgba(148, 163, 184, 0.14);
+    color: #94a3b8;
+    padding: 9px 14px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: color 0.2s;
+    z-index: 2;
+}
+.ticker-close:hover {
+    color: #fff;
+}
+
 .container {
     max-width: 1160px;
     margin: 50px auto 70px;
@@ -211,7 +287,7 @@ body {
     color: #64748b;
 }
 
-/* Categories Grid */
+/* Categories Grid with Liquid Water Fill Effect */
 .categories-section { margin-bottom: 64px; }
 .categories-grid {
     display: grid;
@@ -226,17 +302,40 @@ body {
     padding: 22px;
     text-decoration: none;
     color: inherit;
-    transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.25s ease, box-shadow 0.25s ease;
     display: flex;
     align-items: flex-start;
     gap: 16px;
 }
-.category-card:hover {
-    border-color: var(--border-glow);
-    transform: translateY(-3px);
-    background: var(--bg-card-hover);
-    box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+.category-card::before {
+    content: "";
+    position: absolute;
+    bottom: -140%;
+    left: -50%;
+    width: 200%;
+    height: 175%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.28) 0%, rgba(37, 99, 235, 0.18) 50%, rgba(14, 165, 233, 0.08) 100%);
+    border-radius: 40%;
+    transition: bottom 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    z-index: -1;
+    pointer-events: none;
 }
+
+.category-card:hover::before {
+    bottom: -55%;
+    animation: wave-spin 6s linear infinite;
+}
+
+.category-card:hover {
+    border-color: rgba(96, 165, 250, 0.7);
+    transform: translateY(-4px);
+    box-shadow: 0 14px 32px -10px rgba(14, 165, 233, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
 .cat-icon {
     font-size: 24px;
     width: 46px;
@@ -248,11 +347,14 @@ body {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    position: relative;
+    z-index: 2;
 }
+.cat-content { position: relative; z-index: 2; }
 .cat-title { font-size: 17px; font-weight: 700; margin-bottom: 5px; color: #fff; }
 .cat-desc { color: var(--text-muted); font-size: 13.5px; line-height: 1.45; margin: 0; }
 
-/* Tool Cards */
+/* Tool Cards with Balanced Liquid Water Fill Effect */
 .tool-category-block { margin-bottom: 56px; scroll-margin-top: 96px; }
 .tools-grid {
     display: grid;
@@ -267,34 +369,65 @@ body {
     padding: 24px;
     text-decoration: none;
     color: inherit;
-    transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.25s ease, box-shadow 0.25s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-.tool-card:hover {
-    border-color: var(--border-glow);
-    transform: translateY(-4px);
-    background: var(--bg-card-hover);
-    box-shadow: 0 14px 30px -10px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+.tool-card::before {
+    content: "";
+    position: absolute;
+    bottom: -120%;
+    left: -50%;
+    width: 200%;
+    height: 160%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.28) 0%, rgba(37, 99, 235, 0.18) 50%, rgba(14, 165, 233, 0.08) 100%);
+    border-radius: 40%;
+    transition: bottom 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    z-index: -1;
+    pointer-events: none;
 }
+
+.tool-card:hover::before {
+    bottom: -45%;
+    animation: wave-spin 6s linear infinite;
+}
+
+@keyframes wave-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.tool-card:hover {
+    border-color: rgba(96, 165, 250, 0.7);
+    transform: translateY(-5px);
+    box-shadow: 0 16px 36px -10px rgba(14, 165, 233, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
 .tool-card.placeholder {
     border-style: dashed;
     border-color: rgba(148, 163, 184, 0.18);
     background: rgba(11, 18, 34, 0.45);
     cursor: default;
 }
+.tool-card.placeholder::before { display: none; }
 .tool-card.placeholder:hover {
     transform: none;
     border-color: rgba(148, 163, 184, 0.18);
-    background: rgba(11, 18, 34, 0.45);
     box-shadow: none;
 }
+
 .tool-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 16px;
+    position: relative;
+    z-index: 2;
 }
 .tool-icon {
     font-size: 24px;
@@ -314,10 +447,10 @@ body {
 }
 .tool-card:hover .tool-arrow {
     color: var(--accent-blue);
-    transform: translateX(3px);
+    transform: translateX(4px);
 }
-.tool-name { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: #fff; }
-.tool-desc { color: var(--text-muted); font-size: 14px; line-height: 1.55; margin-bottom: 20px; }
+.tool-name { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: #fff; position: relative; z-index: 2; }
+.tool-desc { color: var(--text-muted); font-size: 14px; line-height: 1.55; margin-bottom: 20px; position: relative; z-index: 2; }
 
 .tool-badge {
     align-self: flex-start;
@@ -328,6 +461,8 @@ body {
     padding: 5px 11px;
     border-radius: 999px;
     font-weight: 600;
+    position: relative;
+    z-index: 2;
 }
 .badge-dot {
     width: 6px;
@@ -385,6 +520,17 @@ body {
     </div>
 </header>
 
+<!-- Scrolling Interactive Notice Bar -->
+<div class="announcement-bar" id="announcementBar">
+    <div class="ticker-viewport" id="tickerViewport" title="Hover to pause or drag to scroll">
+        <div class="ticker-track">
+            <span class="ticker-item"><span class="ticker-dot"></span>Welcome! We are new — any comments or recommendations are welcome!</span>
+            <span class="ticker-item"><span class="ticker-dot"></span>More tools and features are being added regularly. Let us know what you'd love to see next!</span>
+        </div>
+    </div>
+    <button class="ticker-close" id="closeTicker" aria-label="Close notice">✕</button>
+</div>
+
 <div class="container">
     <div class="hero">
         <div class="hero-pill">✦ Clean, Fast & Browser-Friendly</div>
@@ -405,7 +551,7 @@ body {
         <div class="categories-grid">
             <a href="#audio-converter" class="category-card">
                 <div class="cat-icon">🎵</div>
-                <div>
+                <div class="cat-content">
                     <div class="cat-title">Audio Converter</div>
                     <p class="cat-desc">Extract audio tracks and convert between MP3, WAV, M4A, OGG, and FLAC.</p>
                 </div>
@@ -413,7 +559,7 @@ body {
 
             <a href="#image-tools" class="category-card">
                 <div class="cat-icon">🖼️</div>
-                <div>
+                <div class="cat-content">
                     <div class="cat-title">Image Tools</div>
                     <p class="cat-desc">Resize, compress, crop, and convert images effortlessly.</p>
                 </div>
@@ -421,7 +567,7 @@ body {
 
             <a href="#pdf-tools" class="category-card">
                 <div class="cat-icon">📄</div>
-                <div>
+                <div class="cat-content">
                     <div class="cat-title">PDF Tools</div>
                     <p class="cat-desc">Compress, convert, merge, split, sign, and extract text.</p>
                 </div>
@@ -429,7 +575,7 @@ body {
 
             <a href="#video-converter" class="category-card">
                 <div class="cat-icon">🎬</div>
-                <div>
+                <div class="cat-content">
                     <div class="cat-title">Video Converter</div>
                     <p class="cat-desc">Convert video formats cleanly without quality headaches.</p>
                 </div>
@@ -437,7 +583,7 @@ body {
 
             <a href="#more-tools" class="category-card">
                 <div class="cat-icon">🧰</div>
-                <div>
+                <div class="cat-content">
                     <div class="cat-title">More Tools</div>
                     <p class="cat-desc">Developer config converters, formatters, and handy utilities.</p>
                 </div>
@@ -626,6 +772,7 @@ body {
             <span>Developer utilities, config converters, and everyday tools</span>
         </div>
         <div class="tools-grid">
+            <!-- 1. HEIC to JPG Converter -->
             <a href="Tools/more-tools/heic-to-jpg.html" class="tool-card" data-name="heic to jpg converter iphone photo">
                 <div>
                     <div class="tool-top">
@@ -638,24 +785,50 @@ body {
                 <span class="tool-badge badge-available"><span class="badge-dot"></span>Available Now</span>
             </a>
 
-            <div class="tool-card placeholder" data-name="json yaml converter docker kubernetes">
+            <!-- 2. JSON Formatter -->
+            <div class="tool-card placeholder" data-name="json formatter beautify minify pretty print">
                 <div>
                     <div class="tool-top">
-                        <div class="tool-icon">⚙️</div>
+                        <div class="tool-icon">✨</div>
                     </div>
-                    <div class="tool-name">JSON & YAML Converter</div>
-                    <div class="tool-desc">Convert between JSON and YAML formats in both directions for Docker, Kubernetes, and CI/CD configs.</div>
+                    <div class="tool-name">JSON Formatter</div>
+                    <div class="tool-desc">Beautify, minify, and clean up messy JSON payloads for readability.</div>
                 </div>
                 <span class="tool-badge badge-soon"><span class="badge-dot"></span>Planned</span>
             </div>
 
-            <div class="tool-card placeholder" data-name="json formatter validator beautify minify">
+            <!-- 3. JSON Validator -->
+            <div class="tool-card placeholder" data-name="json validator syntax check error parser">
                 <div>
                     <div class="tool-top">
-                        <div class="tool-icon">🧩</div>
+                        <div class="tool-icon">🔍</div>
                     </div>
-                    <div class="tool-name">JSON Formatter & Validator</div>
-                    <div class="tool-desc">Beautify, minify, and validate JSON payloads and API responses.</div>
+                    <div class="tool-name">JSON Validator</div>
+                    <div class="tool-desc">Check your JSON syntax, spot structural errors, and debug API payloads instantly.</div>
+                </div>
+                <span class="tool-badge badge-soon"><span class="badge-dot"></span>Planned</span>
+            </div>
+
+            <!-- 4. JSON to YAML Converter -->
+            <div class="tool-card placeholder" data-name="json to yaml converter docker kubernetes">
+                <div>
+                    <div class="tool-top">
+                        <div class="tool-icon">📄</div>
+                    </div>
+                    <div class="tool-name">JSON to YAML Converter</div>
+                    <div class="tool-desc">Convert JSON objects and API responses into clean YAML configuration structures.</div>
+                </div>
+                <span class="tool-badge badge-soon"><span class="badge-dot"></span>Planned</span>
+            </div>
+
+            <!-- 5. YAML to JSON Converter -->
+            <div class="tool-card placeholder" data-name="yaml to json converter docker kubernetes">
+                <div>
+                    <div class="tool-top">
+                        <div class="tool-icon">⚙️</div>
+                    </div>
+                    <div class="tool-name">YAML to JSON Converter</div>
+                    <div class="tool-desc">Convert Docker Compose and Kubernetes YAML configuration files to JSON.</div>
                 </div>
                 <span class="tool-badge badge-soon"><span class="badge-dot"></span>Planned</span>
             </div>
@@ -678,6 +851,34 @@ body {
         star.style.animationDelay = (Math.random() * 4.5) + "s";
         background.appendChild(star);
     }
+
+    // Dismiss & Drag-to-Scroll for Announcement Ticker
+    const announcementBar = document.getElementById("announcementBar");
+    const tickerViewport = document.getElementById("tickerViewport");
+    const closeTicker = document.getElementById("closeTicker");
+
+    closeTicker.addEventListener("click", () => {
+        announcementBar.style.display = "none";
+    });
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    tickerViewport.addEventListener("mousedown", (e) => {
+        isDown = true;
+        startX = e.pageX - tickerViewport.offsetLeft;
+        scrollLeft = tickerViewport.scrollLeft;
+    });
+    tickerViewport.addEventListener("mouseleave", () => { isDown = false; });
+    tickerViewport.addEventListener("mouseup", () => { isDown = false; });
+    tickerViewport.addEventListener("mousemove", (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - tickerViewport.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        tickerViewport.scrollLeft = scrollLeft - walk;
+    });
 
     // Live Instant Search Filter
     const searchInput = document.getElementById("toolSearch");
