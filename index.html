@@ -3,37 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AllInOne - Multi-Tool Platform</title>
+<title>AllInOne — Fast, Private Multi-Tool Platform</title>
 <style>
-* { box-sizing: border-box; scroll-behavior: smooth; }
-body {
-    margin: 0;
-    background-color: #080d1b;
-    color: #e6edf7;
-    font-family: Arial, Helvetica, sans-serif;
-    position: relative;
-    overflow-x: hidden;
+:root {
+    --bg-primary: #060a14;
+    --bg-card: rgba(15, 24, 44, 0.72);
+    --bg-card-hover: rgba(22, 35, 62, 0.9);
+    --border-subtle: rgba(148, 163, 184, 0.14);
+    --border-glow: rgba(96, 165, 250, 0.55);
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --accent-blue: #60a5fa;
+    --accent-indigo: #818cf8;
+    --green-bg: rgba(16, 185, 129, 0.12);
+    --green-text: #34d399;
+    --green-border: rgba(52, 211, 153, 0.3);
+    --amber-bg: rgba(245, 158, 11, 0.1);
+    --amber-text: #fbbf24;
+    --amber-border: rgba(251, 191, 36, 0.28);
 }
 
-/* Moving & Twinkling Background Stars */
+* { box-sizing: border-box; scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif;
+    position: relative;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Ambient Background Glow + Moving & Twinkling Stars */
 .background {
     position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: -1;
     overflow: hidden;
+    background:
+        radial-gradient(circle at 50% -10%, rgba(59, 130, 246, 0.18), transparent 55%),
+        radial-gradient(circle at 85% 35%, rgba(99, 102, 241, 0.08), transparent 45%),
+        radial-gradient(circle at 15% 75%, rgba(14, 165, 233, 0.08), transparent 45%);
 }
 
 @keyframes twinkle {
-    0% { opacity: 0.2; transform: translateY(0px); }
-    50% { opacity: 0.8; transform: translateY(-5px); }
-    100% { opacity: 0.2; transform: translateY(0px); }
+    0%, 100% { opacity: 0.25; transform: scale(0.95); }
+    50% { opacity: 0.9; transform: scale(1.15); }
 }
 
 @keyframes drift {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0px); }
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-16px); }
 }
 
 .star {
@@ -41,135 +63,311 @@ body {
     width: 3px;
     height: 3px;
     background: #ffffff;
-    box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 8px rgba(191, 219, 254, 0.85);
     border-radius: 50%;
-    animation: twinkle 4s ease-in-out infinite, drift 10s ease-in-out infinite;
+    animation: twinkle 4.5s ease-in-out infinite, drift 11s ease-in-out infinite;
 }
 
+/* Sticky Glass Header */
 .site-header {
-    border-bottom: 1px solid #1d2940;
-    background: rgba(8, 13, 27, 0.9);
-    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border-subtle);
+    background: rgba(6, 10, 20, 0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     position: sticky;
     top: 0;
     z-index: 100;
 }
+
 .header-inner {
-    max-width: 1150px;
+    max-width: 1160px;
     margin: auto;
-    padding: 24px 30px;
+    padding: 20px 28px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.brand { font-size: 28px; font-weight: bold; color: #fff; text-decoration: none; letter-spacing: -0.5px; }
-.brand span { color: #66a2ff; }
 
-nav {
+.brand {
+    font-size: 28px;
+    font-weight: 800;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: -0.6px;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+.brand span {
+    background: linear-gradient(135deg, #60a5fa, #a5b4fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav {
     display: flex;
     gap: 32px;
 }
-.nav a { color: #cbd5e1; text-decoration: none; font-size: 16px; font-weight: 500; transition: 0.2s; }
-.nav a:hover { color: #60a5fa; }
+.nav a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+.nav a:hover { color: var(--accent-blue); }
 
-.container { max-width: 1150px; margin: 45px auto; padding: 0 25px; }
+.container {
+    max-width: 1160px;
+    margin: 50px auto 70px;
+    padding: 0 28px;
+}
 
-.hero { text-align: center; margin-bottom: 55px; }
-.hero h1 { font-size: 42px; margin-bottom: 12px; color: #fff; }
-.hero p { color: #9aabc4; font-size: 18px; max-width: 650px; margin: auto; line-height: 1.6; }
+/* Hero Section */
+.hero {
+    text-align: center;
+    margin-bottom: 56px;
+}
+.hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(59, 130, 246, 0.12);
+    border: 1px solid rgba(96, 165, 250, 0.28);
+    color: #93c5fd;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+.hero h1 {
+    font-size: 46px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin: 0 0 14px;
+    background: linear-gradient(180deg, #ffffff 30%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.hero p {
+    color: var(--text-muted);
+    font-size: 18px;
+    max-width: 620px;
+    margin: 0 auto 28px;
+    line-height: 1.6;
+}
+
+/* Quick Search Bar */
+.search-wrap {
+    max-width: 480px;
+    margin: 0 auto;
+    position: relative;
+}
+.search-input {
+    width: 100%;
+    padding: 14px 18px 14px 44px;
+    border-radius: 12px;
+    border: 1px solid var(--border-subtle);
+    background: rgba(15, 24, 44, 0.85);
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.search-input::placeholder { color: #64748b; }
+.search-input:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.15);
+}
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #64748b;
+    font-size: 16px;
+    pointer-events: none;
+}
 
 /* Section Headers */
 .section-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
     margin-bottom: 22px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #1d2940;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-subtle);
 }
-.section-header h2 { font-size: 26px; margin: 0; color: #fff; }
-.section-header span { font-size: 14px; color: #8295b3; }
+.section-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    color: #fff;
+    letter-spacing: -0.3px;
+}
+.section-header span {
+    font-size: 14px;
+    color: #64748b;
+}
 
 /* Categories Grid */
-.categories-section { margin-bottom: 65px; }
+.categories-section { margin-bottom: 64px; }
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 18px;
 }
 .category-card {
-    background: rgba(16, 27, 48, 0.85);
-    border: 1px solid #263a5c;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
     border-radius: 16px;
-    padding: 24px;
+    padding: 22px;
     text-decoration: none;
     color: inherit;
-    transition: 0.2s;
+    transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
 }
 .category-card:hover {
-    border-color: #5489ff;
+    border-color: var(--border-glow);
     transform: translateY(-3px);
-    background: rgba(22, 36, 64, 0.95);
+    background: var(--bg-card-hover);
+    box-shadow: 0 12px 28px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
-.cat-icon { font-size: 28px; margin-bottom: 14px; }
-.cat-title { font-size: 19px; font-weight: bold; margin-bottom: 8px; color: #fff; }
-.cat-desc { color: #94a6bf; font-size: 14px; line-height: 1.5; margin: 0; }
+.cat-icon {
+    font-size: 24px;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: rgba(59, 130, 246, 0.12);
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.cat-title { font-size: 17px; font-weight: 700; margin-bottom: 5px; color: #fff; }
+.cat-desc { color: var(--text-muted); font-size: 13.5px; line-height: 1.45; margin: 0; }
 
-/* Individual Category Tool Sections */
-.tool-category-block { margin-bottom: 55px; scroll-margin-top: 100px; }
+/* Tool Cards */
+.tool-category-block { margin-bottom: 56px; scroll-margin-top: 96px; }
 .tools-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 18px;
 }
 .tool-card {
-    background: rgba(16, 27, 48, 0.85);
-    border: 1px solid #263a5c;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
     border-radius: 16px;
     padding: 24px;
     text-decoration: none;
     color: inherit;
-    transition: 0.2s;
+    transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 .tool-card:hover {
-    border-color: #5489ff;
-    transform: translateY(-3px);
-    background: rgba(22, 36, 64, 0.95);
+    border-color: var(--border-glow);
+    transform: translateY(-4px);
+    background: var(--bg-card-hover);
+    box-shadow: 0 14px 30px -10px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 .tool-card.placeholder {
     border-style: dashed;
-    border-color: #2b3f63;
-    background: rgba(12, 20, 38, 0.5);
+    border-color: rgba(148, 163, 184, 0.18);
+    background: rgba(11, 18, 34, 0.45);
     cursor: default;
 }
 .tool-card.placeholder:hover {
     transform: none;
-    border-color: #2b3f63;
-    background: rgba(12, 20, 38, 0.5);
+    border-color: rgba(148, 163, 184, 0.18);
+    background: rgba(11, 18, 34, 0.45);
+    box-shadow: none;
 }
-.tool-icon { font-size: 30px; margin-bottom: 14px; }
-.tool-name { font-size: 19px; font-weight: bold; margin-bottom: 8px; color: #fff; }
-.tool-desc { color: #94a6bf; font-size: 14px; line-height: 1.5; margin-bottom: 18px; }
+.tool-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+.tool-icon {
+    font-size: 24px;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tool-arrow {
+    color: #64748b;
+    font-size: 18px;
+    transition: transform 0.2s, color 0.2s;
+}
+.tool-card:hover .tool-arrow {
+    color: var(--accent-blue);
+    transform: translateX(3px);
+}
+.tool-name { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: #fff; }
+.tool-desc { color: var(--text-muted); font-size: 14px; line-height: 1.55; margin-bottom: 20px; }
+
 .tool-badge {
     align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     font-size: 12px;
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-weight: bold;
+    padding: 5px 11px;
+    border-radius: 999px;
+    font-weight: 600;
 }
-.badge-available { background: #0f2d25; color: #56d9a9; border: 1px solid #14534b; }
-.badge-soon { background: #262118; color: #ffbd69; border: 1px solid #634b26; }
+.badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+.badge-available {
+    background: var(--green-bg);
+    color: var(--green-text);
+    border: 1px solid var(--green-border);
+}
+.badge-available .badge-dot { background: #34d399; box-shadow: 0 0 6px #34d399; }
 
-@media(max-width: 900px) {
+.badge-soon {
+    background: var(--amber-bg);
+    color: var(--amber-text);
+    border: 1px solid var(--amber-border);
+}
+.badge-soon .badge-dot { background: #fbbf24; }
+
+/* Minimal Footer */
+.site-footer {
+    border-top: 1px solid var(--border-subtle);
+    text-align: center;
+    padding: 28px 20px;
+    color: #64748b;
+    font-size: 14px;
+}
+
+@media(max-width: 920px) {
     .categories-grid, .tools-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero h1 { font-size: 38px; }
 }
 @media(max-width: 600px) {
     .categories-grid, .tools-grid { grid-template-columns: 1fr; }
-    .header-inner { padding: 18px 20px; }
-    .nav a { margin-left: 16px; font-size: 14px; }
+    .header-inner { padding: 16px 20px; }
+    .nav { gap: 18px; }
+    .nav a { font-size: 15px; }
+    .hero h1 { font-size: 32px; }
+    .section-header { flex-direction: column; gap: 4px; }
 }
 </style>
 </head>
@@ -182,85 +380,98 @@ nav {
         <a class="brand" href="index.html">AllIn<span>One</span></a>
         <nav class="nav">
             <a href="#categories">Categories</a>
-            <a href="#audio-tools">Tools</a>
+            <a href="#audio-converter">Tools</a>
         </nav>
     </div>
 </header>
 
 <div class="container">
     <div class="hero">
+        <div class="hero-pill">✦ Clean, Fast & Browser-Friendly</div>
         <h1>AllInOne Utilities</h1>
-        <p>Fast, clean, and reliable tools organized alphabetically for everyday productivity.</p>
+        <p>Everyday document, media, and developer converters organized alphabetically—no clutter, no distractions.</p>
+        <div class="search-wrap">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="toolSearch" class="search-input" placeholder="Search tools (e.g., Compress, Merge, YAML, HEIC)..." autocomplete="off">
+        </div>
     </div>
 
     <!-- Categories Overview (Alphabetical) -->
     <div class="categories-section" id="categories">
         <div class="section-header">
             <h2>Categories</h2>
-            <span>Explore our collection</span>
+            <span>5 organized collections</span>
         </div>
         <div class="categories-grid">
-            <a href="#audio-tools" class="category-card">
+            <a href="#audio-converter" class="category-card">
                 <div class="cat-icon">🎵</div>
-                <div class="cat-title">Audio Tools</div>
-                <p class="cat-desc">Extract audio tracks and convert between MP3, WAV, M4A, OGG, and FLAC.</p>
+                <div>
+                    <div class="cat-title">Audio Converter</div>
+                    <p class="cat-desc">Extract audio tracks and convert between MP3, WAV, M4A, OGG, and FLAC.</p>
+                </div>
             </a>
 
             <a href="#image-tools" class="category-card">
                 <div class="cat-icon">🖼️</div>
-                <div class="cat-title">Image Tools</div>
-                <p class="cat-desc">Resize, compress, crop and convert images.</p>
+                <div>
+                    <div class="cat-title">Image Tools</div>
+                    <p class="cat-desc">Resize, compress, crop, and convert images effortlessly.</p>
+                </div>
             </a>
 
             <a href="#pdf-tools" class="category-card">
                 <div class="cat-icon">📄</div>
-                <div class="cat-title">PDF Tools</div>
-                <p class="cat-desc">Compress, convert, merge, split, sign and extract text.</p>
-            </a>
-
-            <a href="#text-tools" class="category-card">
-                <div class="cat-icon">✍️</div>
-                <div class="cat-title">Text Tools</div>
-                <p class="cat-desc">Make text editing and formatting easier.</p>
+                <div>
+                    <div class="cat-title">PDF Tools</div>
+                    <p class="cat-desc">Compress, convert, merge, split, sign, and extract text.</p>
+                </div>
             </a>
 
             <a href="#video-converter" class="category-card">
                 <div class="cat-icon">🎬</div>
-                <div class="cat-title">Video Converter</div>
-                <p class="cat-desc">Convert video formats easily.</p>
+                <div>
+                    <div class="cat-title">Video Converter</div>
+                    <p class="cat-desc">Convert video formats cleanly without quality headaches.</p>
+                </div>
             </a>
 
             <a href="#more-tools" class="category-card">
                 <div class="cat-icon">🧰</div>
-                <div class="cat-title">More Tools</div>
-                <p class="cat-desc">More useful utilities and converters added over time.</p>
+                <div>
+                    <div class="cat-title">More Tools</div>
+                    <p class="cat-desc">Developer config converters, formatters, and handy utilities.</p>
+                </div>
             </a>
         </div>
     </div>
 
-    <!-- 1. Audio Tools -->
-    <div class="tool-category-block" id="audio-tools">
+    <!-- 1. Audio Converter -->
+    <div class="tool-category-block" id="audio-converter">
         <div class="section-header">
-            <h2>Audio Tools</h2>
+            <h2>Audio Converter</h2>
             <span>Extract audio tracks and convert audio formats</span>
         </div>
         <div class="tools-grid">
-            <div class="tool-card placeholder">
+            <div class="tool-card placeholder" data-name="audio format converter mp3 wav m4a ogg flac">
                 <div>
-                    <div class="tool-icon">🎧</div>
+                    <div class="tool-top">
+                        <div class="tool-icon">🎧</div>
+                    </div>
                     <div class="tool-name">Audio Format Converter</div>
                     <div class="tool-desc">Convert audio files between MP3, WAV, M4A, OGG, and FLAC formats.</div>
                 </div>
-                <span class="tool-badge badge-soon">Planned</span>
+                <span class="tool-badge badge-soon"><span class="badge-dot"></span>Planned</span>
             </div>
 
-            <div class="tool-card placeholder">
+            <div class="tool-card placeholder" data-name="mp4 to mp3 converter extract audio">
                 <div>
-                    <div class="tool-icon">🎵</div>
+                    <div class="tool-top">
+                        <div class="tool-icon">🎵</div>
+                    </div>
                     <div class="tool-name">MP4 to MP3 Converter</div>
                     <div class="tool-desc">Extract crisp audio tracks from MP4 video files effortlessly.</div>
                 </div>
-                <span class="tool-badge badge-soon">Planned</span>
+                <span class="tool-badge badge-soon"><span class="badge-dot"></span>Planned</span>
             </div>
         </div>
     </div>
@@ -269,16 +480,18 @@ nav {
     <div class="tool-category-block" id="image-tools">
         <div class="section-header">
             <h2>Image Tools</h2>
-            <span>Resize, compress, crop and convert images</span>
+            <span>Resize, compress, crop, and convert images</span>
         </div>
         <div class="tools-grid">
-            <div class="tool-card placeholder">
+            <div class="tool-card placeholder" data-name="resize compress image optimize photo">
                 <div>
-                    <div class="tool-icon">📐</div>
+                    <div class="tool-top">
+                        <div class="tool-icon">📐</div>
+                    </div>
                     <div class="tool-name">Resize & Compress Image</div>
                     <div class="tool-desc">Optimize image dimensions and file size for web or sharing.</div>
                 </div>
-                <span class="tool-badge badge-soon">Coming Soon</span>
+                <span class="tool-badge badge-soon"><span class="badge-dot"></span>Planned</span>
             </div>
         </div>
     </div>
@@ -287,156 +500,211 @@ nav {
     <div class="tool-category-block" id="pdf-tools">
         <div class="section-header">
             <h2>PDF Tools</h2>
-            <span>Compress, convert, merge and manage PDF files</span>
+            <span>Compress, convert, merge, and manage PDF files</span>
         </div>
         <div class="tools-grid">
-            <!-- 1. Compress PDF -->
-            <a href="Tools/pdf-tools/compress.html" class="tool-card">
+            <a href="Tools/pdf-tools/compress.html" class="tool-card" data-name="compress pdf reduce size">
                 <div>
-                    <div class="tool-icon">📦</div>
+                    <div class="tool-top">
+                        <div class="tool-icon">📦</div>
+                        <span class="tool-arrow">→</span>
+                    </div>
                     <div class="tool-name">Compress PDF</div>
                     <div class="tool-desc">Reduce the size of your PDF files without unnecessary complexity.</div>
                 </div>
-                <span class="tool-badge badge-available">✓ Available Now</span>
+                <span class="tool-badge badge-available"><span class="badge-dot"></span>Available Now</span>
             </a>
 
-            <!-- 2. JPG to PDF -->
-            <a href="Tools/pdf-tools/jpg-to-pdf.html" class="tool-card">
+            <a href="Tools/pdf-tools/jpg-to-pdf.html" class="tool-card" data-name="jpg to pdf image convert">
                 <div>
-                    <div class="tool-icon">📷</div>
+                    <div class="tool-top">
+                        <div class="tool-icon">📷</div>
+                        <span class="tool-arrow">→</span>
+                    </div>
                     <div class="tool-name">JPG to PDF</div>
                     <div class="tool-desc">Convert images into individual PDF files packaged in a ZIP archive.</div>
                 </div>
-                <span class="tool-badge badge-available">✓ Available Now</span>
+                <span class="tool-badge badge-available"><span class="badge-dot"></span>Available Now</span>
             </a>
 
-            <!-- 3. Merge PDF -->
-            <a href="Tools/pdf-tools/merge.html" class="tool-card">
+            <a href="Tools/pdf-tools/merge.html" class="tool-card" data-name="merge pdf combine join">
                 <div>
-                    <div class="tool-icon">🔀</div>
+                    <div class="tool-top">
+                        <div class="tool-icon">🔀</div>
+                        <span class="tool-arrow">→</span>
+                    </div>
                     <div class="tool-name">Merge PDF</div>
                     <div class="tool-desc">Combine multiple PDF files into a single document with custom ordering.</div>
                 </div>
-                <span class="tool-badge badge-available">✓ Available Now</span>
+                <span class="tool-badge badge-available"><span class="badge-dot"></span>Available Now</span>
             </a>
 
-            <!-- 4. OCR Text Extraction -->
-            <div class="tool-card placeholder">
+            <div class="tool-card placeholder" data-name="ocr text extraction scan pdf">
                 <div>
-                    <div class="tool-icon">🔍</div>
+                    <div class="tool-top">
+                        <div class="tool-icon">🔍</div>
+                    </div>
                     <div class="tool-name">OCR Text Extraction</div>
                     <div class="tool-desc">Convert scanned paper documents or images into searchable digital text.</div>
                 </div>
-                <span class="tool-badge badge-soon">Planned</span>
+                <span class="tool-badge badge-soon"><span class="badge-dot"></span>Planned</span>
             </div>
 
-            <!-- 5. PDF to JPG -->
-            <a href="Tools/pdf-tools/pdf-to-jpg.html" class="tool-card">
+            <a href="Tools/pdf-tools/pdf-to-jpg.html" class="tool-card" data-name="pdf to jpg extract images">
                 <div>
-                    <div class="tool-icon">🖼️</div>
+                    <div class="tool-top">
+                        <div class="tool-icon">🖼️</div>
+                        <span class="tool-arrow">→</span>
+                    </div>
                     <div class="tool-name">PDF to JPG</div>
                     <div class="tool-desc">Convert PDF pages into downloadable JPG images.</div>
                 </div>
-                <span class="tool-badge badge-available">✓ Available Now</span>
+                <span class="tool-badge badge-available"><span class="badge-dot"></span>Available Now</span>
             </a>
 
-            <!-- 6. Sign & Fill PDF -->
-            <div class="tool-card placeholder">
+            <div class="tool-card placeholder" data-name="sign fill pdf signature annotate">
                 <div>
-                    <div class="tool-icon">✍️</div>
+                    <div class="tool-top">
+                        <div class="tool-icon">✍️</div>
+                    </div>
                     <div class="tool-name">Sign & Fill PDF</div>
                     <div class="tool-desc">Add signatures, text, and annotations directly to your PDF documents.</div>
                 </div>
-                <span class="tool-badge badge-soon">Planned</span>
+                <span class="tool-badge badge-soon"><span class="badge-dot"></span>Planned</span>
             </div>
 
-            <!-- 7. Split PDF -->
-            <a href="Tools/pdf-tools/split.html" class="tool-card">
+            <a href="Tools/pdf-tools/split.html" class="tool-card" data-name="split pdf separate pages">
                 <div>
-                    <div class="tool-icon">✂️</div>
+                    <div class="tool-top">
+                        <div class="tool-icon">✂️</div>
+                        <span class="tool-arrow">→</span>
+                    </div>
                     <div class="tool-name">Split PDF</div>
                     <div class="tool-desc">Separate pages from your PDF document into individual files bundled in a ZIP.</div>
                 </div>
-                <span class="tool-badge badge-available">✓ Available Now</span>
+                <span class="tool-badge badge-available"><span class="badge-dot"></span>Available Now</span>
             </a>
 
-            <!-- 8. Word to PDF -->
-            <a href="Tools/pdf-tools/word-to-pdf.html" class="tool-card">
+            <a href="Tools/pdf-tools/word-to-pdf.html" class="tool-card" data-name="word to pdf docx convert">
                 <div>
-                    <div class="tool-icon">📝</div>
+                    <div class="tool-top">
+                        <div class="tool-icon">📝</div>
+                        <span class="tool-arrow">→</span>
+                    </div>
                     <div class="tool-name">Word to PDF</div>
                     <div class="tool-desc">Convert Word documents into PDF files quickly and easily.</div>
                 </div>
-                <span class="tool-badge badge-available">✓ Available Now</span>
+                <span class="tool-badge badge-available"><span class="badge-dot"></span>Available Now</span>
             </a>
         </div>
     </div>
 
-    <!-- 4. Text Tools -->
-    <div class="tool-category-block" id="text-tools">
-        <div class="section-header">
-            <h2>Text Tools</h2>
-            <span>Make text editing and formatting easier</span>
-        </div>
-        <div class="tools-grid">
-            <div class="tool-card placeholder">
-                <div>
-                    <div class="tool-icon">🔤</div>
-                    <div class="tool-name">Word & Character Counter</div>
-                    <div class="tool-desc">Count words, characters, sentences, and reading time instantly.</div>
-                </div>
-                <span class="tool-badge badge-soon">Coming Soon</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- 5. Video Converter -->
+    <!-- 4. Video Converter -->
     <div class="tool-category-block" id="video-converter">
         <div class="section-header">
             <h2>Video Converter</h2>
             <span>Convert video formats easily</span>
         </div>
         <div class="tools-grid">
-            <div class="tool-card placeholder">
+            <div class="tool-card placeholder" data-name="mp4 to mov converter video">
                 <div>
-                    <div class="tool-icon">🎞️</div>
+                    <div class="tool-top">
+                        <div class="tool-icon">🎞️</div>
+                    </div>
                     <div class="tool-name">MP4 to MOV Converter</div>
                     <div class="tool-desc">Convert standard MP4 videos into Apple QuickTime MOV format.</div>
                 </div>
-                <span class="tool-badge badge-soon">Planned</span>
+                <span class="tool-badge badge-soon"><span class="badge-dot"></span>Planned</span>
             </div>
         </div>
     </div>
 
-    <!-- 6. More Tools -->
+    <!-- 5. More Tools (Strictly Alphabetical) -->
     <div class="tool-category-block" id="more-tools">
         <div class="section-header">
             <h2>More Tools</h2>
-            <span>More useful utilities and converters</span>
+            <span>Developer utilities, config converters, and everyday tools</span>
         </div>
         <div class="tools-grid">
-            <a href="Tools/more-tools/heic-to-jpg.html" class="tool-card">
+            <a href="Tools/more-tools/heic-to-jpg.html" class="tool-card" data-name="heic to jpg converter iphone photo">
                 <div>
-                    <div class="tool-icon">📸</div>
+                    <div class="tool-top">
+                        <div class="tool-icon">📸</div>
+                        <span class="tool-arrow">→</span>
+                    </div>
                     <div class="tool-name">HEIC to JPG Converter</div>
                     <div class="tool-desc">Convert iPhone HEIC photos into widely supported JPG format instantly.</div>
                 </div>
-                <span class="tool-badge badge-available">✓ Available Now</span>
+                <span class="tool-badge badge-available"><span class="badge-dot"></span>Available Now</span>
             </a>
+
+            <div class="tool-card placeholder" data-name="json yaml converter docker kubernetes">
+                <div>
+                    <div class="tool-top">
+                        <div class="tool-icon">⚙️</div>
+                    </div>
+                    <div class="tool-name">JSON & YAML Converter</div>
+                    <div class="tool-desc">Convert between JSON and YAML formats in both directions for Docker, Kubernetes, and CI/CD configs.</div>
+                </div>
+                <span class="tool-badge badge-soon"><span class="badge-dot"></span>Planned</span>
+            </div>
+
+            <div class="tool-card placeholder" data-name="json formatter validator beautify minify">
+                <div>
+                    <div class="tool-top">
+                        <div class="tool-icon">🧩</div>
+                    </div>
+                    <div class="tool-name">JSON Formatter & Validator</div>
+                    <div class="tool-desc">Beautify, minify, and validate JSON payloads and API responses.</div>
+                </div>
+                <span class="tool-badge badge-soon"><span class="badge-dot"></span>Planned</span>
+            </div>
         </div>
     </div>
 </div>
 
+<footer class="site-footer">
+    AllInOne Utilities — Built for speed, simplicity, and everyday productivity.
+</footer>
+
 <script>
+    // Twinkling & Drifting Stars
     const background = document.getElementById("background");
-    for (let i = 0; i < 90; i++) {
+    for (let i = 0; i < 95; i++) {
         const star = document.createElement("div");
         star.className = "star";
         star.style.left = Math.random() * 100 + "%";
         star.style.top = Math.random() * 100 + "%";
-        star.style.animationDelay = (Math.random() * 4) + "s";
+        star.style.animationDelay = (Math.random() * 4.5) + "s";
         background.appendChild(star);
     }
+
+    // Live Instant Search Filter
+    const searchInput = document.getElementById("toolSearch");
+    const categoryBlocks = document.querySelectorAll(".tool-category-block");
+    const categoriesSection = document.getElementById("categories");
+
+    searchInput.addEventListener("input", (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        categoriesSection.style.display = query ? "none" : "block";
+
+        categoryBlocks.forEach(block => {
+            const cards = block.querySelectorAll(".tool-card");
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const text = (card.innerText + " " + (card.dataset.name || "")).toLowerCase();
+                if (text.includes(query)) {
+                    card.style.display = "flex";
+                    visibleCount++;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            block.style.display = visibleCount > 0 ? "block" : "none";
+        });
+    });
 </script>
 
 </body>
