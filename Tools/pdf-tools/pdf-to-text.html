@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PDF to Text Converter Online — Free &amp; Private | AllInOne</title>
+  <meta name="description" content="Extract raw text from PDF documents instantly in your browser. Copy text to clipboard or download as a .txt file. 100% client-side—your files never leave your device." />
+  <link rel="canonical" href="https://yourdomain.com/Tools/pdf-tools/pdf-to-text.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="PDF to Text Converter Online — Free & Private | AllInOne" />
+  <meta property="og:description" content="Extract text from any PDF locally in your browser without uploading files to a server." />
+  <meta property="og:type" content="website" />
+
+  <!-- FAQ Rich Snippet Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is it safe to extract text from confidential PDFs here?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. AllInOne processes PDFs 100% client-side inside your web browser. Your files are never uploaded to any external server."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if my PDF is a scanned image and returns no text?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Standard PDF to Text extraction reads embedded text layers. If your PDF is a scanned document or photo, use our OCR Text Extraction tool instead."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0b1120;
+      --card: rgba(17, 25, 40, 0.78);
+      --border: rgba(56, 189, 248, 0.25);
+      --accent: #38bdf8;
+      --accent-hover: #0284c7;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --success: #10b981;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+    body { background: radial-gradient(circle at top, #13223f 0%, var(--bg) 65%); color: var(--text); min-height: 100vh; padding: 1.5rem; line-height: 1.6; }
+    .container { max-width: 900px; margin: 0 auto; }
+    header { text-align: center; margin-bottom: 2rem; }
+    .badge { display: inline-block; background: rgba(16, 185, 129, 0.15); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.35); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.75rem; }
+    h1 { font-size: clamp(1.75rem, 4vw, 2.4rem); margin-bottom: 0.5rem; }
+    .subtitle { color: var(--muted); max-width: 620px; margin: 0 auto; }
+
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem; backdrop-filter: blur(12px); margin-bottom: 1.5rem; }
+    .dropzone { border: 2px dashed rgba(56, 189, 248, 0.45); border-radius: 12px; padding: 2.5rem 1rem; text-align: center; cursor: pointer; transition: 0.2s; }
+    .dropzone:hover, .dropzone.dragover { background: rgba(56, 189, 248, 0.08); border-color: var(--accent); }
+    .dropzone p { color: var(--muted); margin-top: 0.5rem; font-size: 0.9rem; }
+    input[type="file"] { display: none; }
+
+    .controls { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: space-between; align-items: center; margin: 1.25rem 0; }
+    .options { display: flex; gap: 1rem; align-items: center; font-size: 0.9rem; color: var(--muted); }
+    .btn-group { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    button { background: var(--accent); color: #0b1120; border: none; padding: 0.6rem 1.1rem; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.2s; font-size: 0.9rem; }
+    button:hover:not(:disabled) { background: var(--accent-hover); color: #fff; }
+    button.secondary { background: rgba(148, 163, 184, 0.15); color: var(--text); border: 1px solid rgba(148, 163, 184, 0.3); }
+    button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    textarea { width: 100%; min-height: 280px; background: rgba(9, 13, 24, 0.85); color: var(--text); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9rem; resize: vertical; }
+    .status { font-size: 0.85rem; color: var(--accent); margin-bottom: 0.75rem; min-height: 1.2em; }
+
+    .related-tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .related-link { display: block; padding: 1rem; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border); border-radius: 10px; color: var(--text); text-decoration: none; transition: 0.2s; }
+    .related-link:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .related-link span { display: block; font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+
+    .faq-item { margin-bottom: 1rem; }
+    .faq-item h3 { font-size: 1.05rem; margin-bottom: 0.25rem; color: #e2e8f0; }
+    .faq-item p { font-size: 0.92rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="badge">100% Private &bull; Runs Locally in Your Browser</span>
+      <h1>PDF to Text Converter</h1>
+      <p class="subtitle">Extract clean, selectable text from any PDF document in seconds. Copy directly to your clipboard or save as a plain <code>.txt</code> file.</p>
+    </header>
+
+    <main class="card">
+      <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Upload PDF file">
+        <strong>Click to choose a PDF</strong> or drag &amp; drop it here
+        <p>No file size upload limits &bull; Zero server processing</p>
+        <input type="file" id="fileInput" accept="application/pdf" />
+      </div>
+
+      <div class="controls">
+        <div class="options">
+          <label><input type="checkbox" id="pageHeaders" checked /> Include page separators</label>
+          <span id="wordCount">0 words &bull; 0 chars</span>
+        </div>
+        <div class="btn-group">
+          <button id="copyBtn" class="secondary" disabled>Copy Text</button>
+          <button id="downloadBtn" disabled>Download .TXT</button>
+        </div>
+      </div>
+
+      <div id="status" class="status"></div>
+      <textarea id="output" placeholder="Extracted text will appear here..." readonly></textarea>
+    </main>
+
+    <!-- Internal Cross-Linking for SEO -->
+    <section class="card">
+      <h2>Related PDF Utilities</h2>
+      <div class="related-tools">
+        <a href="ocr-pdf.html" class="related-link">
+          <strong>OCR Text Extraction &rarr;</strong>
+          <span>Extract text from scanned PDFs and images.</span>
+        </a>
+        <a href="extract-images.html" class="related-link">
+          <strong>Extract Images from PDF &rarr;</strong>
+          <span>Pull embedded photos and graphics as a ZIP.</span>
+        </a>
+        <a href="split-by-bookmarks.html" class="related-link">
+          <strong>Split PDF by Bookmarks &rarr;</strong>
+          <span>Divide chapters into separate PDF files.</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- SEO & FAQ Content -->
+    <section class="card">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>Is it safe to extract text from confidential PDFs here?</h3>
+        <p>Yes. All processing happens locally inside your device's browser memory using Mozilla's PDF.js engine. Your documents are never transmitted over the internet.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Why did my PDF return blank text?</h3>
+        <p>If a PDF was created by scanning physical paper or saving screenshots, it contains flat images rather than selectable text. Use our <a href="ocr-pdf.html" style="color: var(--accent);">OCR Text Extraction</a> tool for scanned files.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- Load pdfjs-dist as ES Module -->
+  <script type="module">
+    import * as pdfjsLib from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@6.5.438/build/pdf.min.mjs';
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@6.5.438/build/pdf.worker.min.mjs';
+
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('fileInput');
+    const output = document.getElementById('output');
+    const statusEl = document.getElementById('status');
+    const copyBtn = document.getElementById('copyBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const pageHeadersCheckbox = document.getElementById('pageHeaders');
+    const wordCountEl = document.getElementById('wordCount');
+
+    let currentFileName = 'extracted-text.txt';
+    let extractedPages = [];
+
+    dropzone.addEventListener('click', () => fileInput.click());
+    dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('dragover'); });
+    dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+    dropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropzone.classList.remove('dragover');
+      if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+    });
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files[0]) handleFile(e.target.files[0]);
+    });
+
+    pageHeadersCheckbox.addEventListener('change', renderOutput);
+
+    async function handleFile(file) {
+      if (file.type !== 'application/pdf') {
+        statusEl.textContent = 'Please select a valid PDF file.';
+        return;
+      }
+
+      currentFileName = file.name.replace(/\.pdf$/i, '') + '.txt';
+      extractedPages = [];
+      output.value = '';
+      copyBtn.disabled = true;
+      downloadBtn.disabled = true;
+      statusEl.textContent = 'Loading PDF...';
+
+      try {
+        const arrayBuffer = await file.arrayBuffer();
+        const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+        const totalPages = pdf.numPages;
+
+        for (let i = 1; i <= totalPages; i++) {
+          statusEl.textContent = `Extracting page ${i} of ${totalPages}...`;
+          const page = await pdf.getPage(i);
+          const textContent = await page.getTextContent();
+
+          // Reconstruct lines using Y-coordinate differences
+          let lastY = null;
+          let pageText = '';
+          for (const item of textContent.items) {
+            if (lastY !== null && Math.abs(item.transform[5] - lastY) > 5) {
+              pageText += '\n';
+            } else if (pageText.length > 0 && !pageText.endsWith(' ') && !pageText.endsWith('\n')) {
+              pageText += ' ';
+            }
+            pageText += item.str;
+            lastY = item.transform[5];
+          }
+          extractedPages.push({ pageNum: i, text: pageText.trim() });
+        }
+
+        renderOutput();
+        statusEl.textContent = `Done! Extracted text from ${totalPages} page${totalPages > 1 ? 's' : ''}.`;
+      } catch (err) {
+        console.error(err);
+        statusEl.textContent = 'Error reading PDF. The file may be encrypted or corrupted.';
+      }
+    }
+
+    function renderOutput() {
+      if (!extractedPages.length) return;
+      const includeHeaders = pageHeadersCheckbox.checked;
+      const fullText = extractedPages
+        .map(p => includeHeaders ? `--- Page ${p.pageNum} ---\n${p.text}` : p.text)
+        .join('\n\n');
+
+      output.value = fullText;
+      const words = fullText.trim() ? fullText.trim().split(/\s+/).length : 0;
+      wordCountEl.textContent = `${words.toLocaleString()} words • ${fullText.length.toLocaleString()} chars`;
+      copyBtn.disabled = false;
+      downloadBtn.disabled = false;
+    }
+
+    copyBtn.addEventListener('click', async () => {
+      await navigator.clipboard.writeText(output.value);
+      const orig = copyBtn.textContent;
+      copyBtn.textContent = 'Copied!';
+      setTimeout(() => (copyBtn.textContent = orig), 1500);
+    });
+
+    downloadBtn.addEventListener('click', () => {
+      const blob = new Blob([output.value], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = currentFileName;
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>

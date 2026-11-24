@@ -23,6 +23,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // ==========================================
+// Local FFmpeg WebAssembly Static Routes
+// ==========================================
+app.use('/ffmpeg', express.static(path.join(__dirname, 'node_modules/@ffmpeg/ffmpeg/dist/umd')));
+app.use('/ffmpeg-util', express.static(path.join(__dirname, 'node_modules/@ffmpeg/util/dist/umd')));
+app.use('/ffmpeg-core', express.static(path.join(__dirname, 'node_modules/@ffmpeg/core/dist/umd')));
+
+// ==========================================
 // 1. Merge PDF Route
 // ==========================================
 app.post('/merge', upload.array('pdfFiles'), async (req, res) => {

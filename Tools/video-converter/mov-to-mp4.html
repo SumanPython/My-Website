@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#060a14">
+
+    <!-- Primary SEO -->
+    <title>MOV to MP4 Converter — Free, Private Browser Video Converter | AllInOne</title>
+    <meta name="description" content="Convert iPhone and QuickTime MOV videos to universal MP4 format directly in your browser. 100% free, fast, and private—zero server uploads.">
+    <link rel="canonical" href="https://allinone-utilities.com/Tools/video-converter/mov-to-mp4.html">
+
+    <!-- Load FFmpeg UMD Build (Removed problematic @ffmpeg/util) -->
+    <script src="/ffmpeg/ffmpeg.js"></script>
+
+    <style>
+        :root {
+            --bg-primary: #060a14;
+            --bg-card: rgba(15, 24, 44, 0.78);
+            --border-subtle: rgba(148, 163, 184, 0.18);
+            --border-glow: rgba(96, 165, 250, 0.55);
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --accent-blue: #60a5fa;
+            --green-text: #34d399;
+            --green-bg: rgba(16, 185, 129, 0.12);
+            --green-border: rgba(52, 211, 153, 0.3);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image:
+                radial-gradient(circle at 50% -10%, rgba(59, 130, 246, 0.18), transparent 55%),
+                radial-gradient(circle at 85% 35%, rgba(99, 102, 241, 0.08), transparent 45%);
+        }
+
+        /* Header */
+        .site-header {
+            border-bottom: 1px solid var(--border-subtle);
+            background: rgba(6, 10, 20, 0.88);
+            backdrop-filter: blur(14px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            max-width: 1160px;
+            margin: auto;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .brand {
+            font-size: 22px;
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        .brand span {
+            background: linear-gradient(135deg, #60a5fa, #a5b4fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .back-link {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-subtle);
+            transition: all 0.2s;
+        }
+        .back-link:hover {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 780px;
+            width: 100%;
+            margin: 32px auto 60px;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        .tool-header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+        .privacy-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 999px;
+            background: var(--green-bg);
+            color: var(--green-text);
+            border: 1px solid var(--green-border);
+            margin-bottom: 10px;
+        }
+        .tool-header h1 {
+            font-size: 30px;
+            font-weight: 800;
+            margin: 0 0 8px;
+            letter-spacing: -0.6px;
+        }
+        .tool-header p {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Converter Card */
+        .converter-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+        }
+
+        /* Drop Zone */
+        .drop-zone {
+            border: 2px dashed rgba(96, 165, 250, 0.4);
+            border-radius: 16px;
+            padding: 44px 24px;
+            text-align: center;
+            cursor: pointer;
+            background: rgba(15, 23, 42, 0.5);
+            display: block;
+            transition: all 0.25s ease;
+        }
+        .drop-zone:hover {
+            border-color: var(--accent-blue);
+            background: rgba(30, 58, 138, 0.22);
+        }
+        .drop-icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+        .drop-title {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .drop-sub {
+            font-size: 13.5px;
+            color: var(--text-muted);
+        }
+
+        /* File Info & Controls */
+        .file-panel {
+            display: none;
+            margin-top: 20px;
+        }
+        .file-info-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid var(--border-subtle);
+            padding: 14px 16px;
+            border-radius: 12px;
+            margin-bottom: 18px;
+        }
+        .file-meta {
+            overflow: hidden;
+        }
+        .file-name {
+            font-weight: 600;
+            font-size: 14.5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .file-size {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .btn-reset {
+            background: transparent;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            flex-shrink: 0;
+        }
+        .btn-reset:hover {
+            color: #fff;
+            border-color: #94a3b8;
+        }
+
+        /* Quality / Mode Selector */
+        .settings-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .setting-box label {
+            display: block;
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+        .setting-box select {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border-subtle);
+            background: rgba(15, 23, 42, 0.9);
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+        }
+        .setting-box select:focus {
+            border-color: var(--accent-blue);
+        }
+
+        /* Primary Action Button */
+        .btn-primary {
+            width: 100%;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: #fff;
+            font-size: 15.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.2s, opacity 0.2s;
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+        }
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-1px);
+            box-shadow: 0 12px 28px rgba(37, 99, 235, 0.5);
+        }
+        .btn-primary:disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+        }
+
+        /* Progress Section */
+        .progress-wrap {
+            display: none;
+            margin-top: 20px;
+        }
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #cbd5e1;
+            margin-bottom: 8px;
+        }
+        .progress-track {
+            width: 100%;
+            height: 10px;
+            background: rgba(30, 41, 59, 0.9);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #38bdf8, #3b82f6);
+            border-radius: 999px;
+            transition: width 0.25s ease;
+        }
+        .log-box {
+            margin-top: 10px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            font-size: 11.5px;
+            color: var(--text-muted);
+            background: rgba(6, 10, 20, 0.7);
+            padding: 8px 12px;
+            border-radius: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Result & Preview Section */
+        .result-box {
+            display: none;
+            margin-top: 22px;
+            padding-top: 22px;
+            border-top: 1px solid var(--border-subtle);
+            text-align: center;
+        }
+        .result-box video {
+            width: 100%;
+            max-height: 360px;
+            border-radius: 12px;
+            background: #000;
+            margin-bottom: 16px;
+            border: 1px solid var(--border-subtle);
+        }
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #fff;
+            font-weight: 700;
+            font-size: 15.5px;
+            text-decoration: none;
+            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+            transition: transform 0.15s;
+        }
+        .btn-download:hover {
+            transform: translateY(-1px);
+        }
+
+        .error-banner {
+            display: none;
+            margin-top: 16px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            background: rgba(239, 68, 68, 0.14);
+            border: 1px solid rgba(239, 68, 68, 0.35);
+            color: #fca5a5;
+            font-size: 13.5px;
+        }
+
+        /* SEO Info Section */
+        .seo-content {
+            margin-top: 36px;
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.65;
+        }
+        .seo-content h2 {
+            color: #fff;
+            font-size: 18px;
+            margin: 0 0 8px;
+        }
+
+        .site-footer {
+            border-top: 1px solid var(--border-subtle);
+            text-align: center;
+            padding: 24px 20px;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            .settings-row { grid-template-columns: 1fr; }
+            .converter-card { padding: 20px 16px; }
+            .tool-header h1 { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a class="brand" href="../../index.html">AllIn<span>One</span></a>
+        <a class="back-link" href="../../index.html#video-converter">← All Tools</a>
+    </div>
+</header>
+
+<main class="container">
+    <div class="tool-header">
+        <div class="privacy-badge">🔒 100% Browser-Based • Zero Server Uploads</div>
+        <h1>MOV to MP4 Converter</h1>
+        <p>Convert iPhone, iPad, and QuickTime <strong>.MOV</strong> videos into universal <strong>.MP4</strong> format directly inside your browser.</p>
+    </div>
+
+    <div class="converter-card">
+        <!-- Upload Drop Zone -->
+        <label for="fileInput" class="drop-zone" id="dropZone">
+            <div class="drop-icon">🎬</div>
+            <div class="drop-title">Drop your MOV video here or click to browse</div>
+            <div class="drop-sub">Supports iPhone MOV, QuickTime screen recordings &amp; ProRes clips</div>
+            <input type="file" id="fileInput" accept=".mov,video/quicktime,video/*" hidden>
+        </label>
+
+        <!-- Selected File & Conversion Options -->
+        <div class="file-panel" id="filePanel">
+            <div class="file-info-bar">
+                <div class="file-meta">
+                    <div class="file-name" id="fileName">video.mov</div>
+                    <div class="file-size" id="fileSize">0 MB</div>
+                </div>
+                <button type="button" class="btn-reset" id="resetBtn">Change File</button>
+            </div>
+
+            <div class="settings-row">
+                <div class="setting-box">
+                    <label for="conversionMode">Conversion Mode</label>
+                    <select id="conversionMode">
+                        <option value="compatible" selected>Universal H.264 + AAC (Best Compatibility)</option>
+                        <option value="fast">Fast Remux (Instant Stream Copy, No Re-encode)</option>
+                    </select>
+                </div>
+                <div class="setting-box">
+                    <label for="qualityPreset">Video Quality (CRF)</label>
+                    <select id="qualityPreset">
+                        <option value="20">High Quality (Larger File)</option>
+                        <option value="23" selected>Balanced Quality (Recommended)</option>
+                        <option value="28">Compact Size (Faster &amp; Smaller)</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="button" class="btn-primary" id="convertBtn">Convert MOV to MP4</button>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div class="progress-wrap" id="progressWrap">
+            <div class="progress-header">
+                <span id="statusText">Loading FFmpeg engine (~31 MB first time)...</span>
+                <span id="percentText">0%</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="log-box" id="logBox">Initializing WebAssembly worker...</div>
+        </div>
+
+        <!-- Error Message -->
+        <div class="error-banner" id="errorBanner"></div>
+
+        <!-- Built-in Instant Video Player & Download -->
+        <div class="result-box" id="resultBox">
+            <video id="previewPlayer" controls playsinline></video>
+            <a id="downloadLink" class="btn-download" download="converted.mp4">⬇ Download MP4 Video</a>
+        </div>
+    </div>
+
+    <section class="seo-content">
+        <h2>Why Convert MOV to MP4?</h2>
+        <p>Apple devices (iPhone, iPad, Mac QuickTime) save recordings in the <code>.mov</code> container format. While ideal for Apple devices, MOV files often fail to play on Windows PCs, Android smartphones, or web upload forms. This tool converts your video into standard <strong>H.264 MP4</strong> directly in your browser's memory—meaning your private videos never leave your device.</p>
+    </section>
+</main>
+
+<footer class="site-footer">
+    AllInOne Utilities — 100% Client-Side Processing. Your files never leave your browser.
+</footer>
+
+<script>
+    const { FFmpeg } = FFmpegWASM;
+
+    // Native fetchFile helper replacement for @ffmpeg/util
+    async function fetchFile(file) {
+        return new Uint8Array(await file.arrayBuffer());
+    }
+
+    let ffmpeg = null;
+    let selectedFile = null;
+    let currentOutputUrl = null;
+
+    const dropZone = document.getElementById("dropZone");
+    const fileInput = document.getElementById("fileInput");
+    const filePanel = document.getElementById("filePanel");
+    const fileNameEl = document.getElementById("fileName");
+    const fileSizeEl = document.getElementById("fileSize");
+    const resetBtn = document.getElementById("resetBtn");
+    const conversionMode = document.getElementById("conversionMode");
+    const qualityPreset = document.getElementById("qualityPreset");
+    const convertBtn = document.getElementById("convertBtn");
+    const progressWrap = document.getElementById("progressWrap");
+    const statusText = document.getElementById("statusText");
+    const percentText = document.getElementById("percentText");
+    const progressFill = document.getElementById("progressFill");
+    const logBox = document.getElementById("logBox");
+    const errorBanner = document.getElementById("errorBanner");
+    const resultBox = document.getElementById("resultBox");
+    const previewPlayer = document.getElementById("previewPlayer");
+    const downloadLink = document.getElementById("downloadLink");
+
+    conversionMode.addEventListener("change", () => {
+        qualityPreset.disabled = conversionMode.value === "fast";
+    });
+
+    dropZone.addEventListener("dragover", (e) => e.preventDefault());
+    dropZone.addEventListener("drop", (e) => {
+        e.preventDefault();
+        if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+    });
+    fileInput.addEventListener("change", (e) => {
+        if (e.target.files.length) handleFile(e.target.files[0]);
+    });
+
+    function formatBytes(bytes) {
+        if (bytes === 0) return "0 B";
+        const k = 1024;
+        const sizes = ["B", "KB", "MB", "GB"];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
+    }
+
+    function handleFile(file) {
+        selectedFile = file;
+        fileNameEl.textContent = file.name;
+        fileSizeEl.textContent = formatBytes(file.size);
+
+        dropZone.style.display = "none";
+        filePanel.style.display = "block";
+        resultBox.style.display = "none";
+        progressWrap.style.display = "none";
+        errorBanner.style.display = "none";
+
+        if (currentOutputUrl) {
+            URL.revokeObjectURL(currentOutputUrl);
+            currentOutputUrl = null;
+        }
+    }
+
+    resetBtn.addEventListener("click", () => {
+        selectedFile = null;
+        fileInput.value = "";
+        dropZone.style.display = "block";
+        filePanel.style.display = "none";
+        resultBox.style.display = "none";
+        progressWrap.style.display = "none";
+        errorBanner.style.display = "none";
+    });
+
+    async function loadFFmpeg() {
+        if (ffmpeg) return;
+        const instance = new FFmpeg();
+
+        instance.on("log", ({ message }) => {
+            logBox.textContent = message;
+        });
+
+        instance.on("progress", ({ progress }) => {
+            const pct = Math.min(100, Math.max(0, Math.round(progress * 100)));
+            percentText.textContent = pct + "%";
+            progressFill.style.width = pct + "%";
+        });
+
+        const origin = window.location.origin;
+        await instance.load({
+            coreURL: `${origin}/ffmpeg-core/ffmpeg-core.js`,
+            wasmURL: `${origin}/ffmpeg-core/ffmpeg-core.wasm`,
+        });
+
+        ffmpeg = instance;
+    }
+
+    convertBtn.addEventListener("click", async () => {
+        if (!selectedFile) return;
+
+        convertBtn.disabled = true;
+        resetBtn.disabled = true;
+        errorBanner.style.display = "none";
+        resultBox.style.display = "none";
+        progressWrap.style.display = "block";
+        progressFill.style.width = "0%";
+        percentText.textContent = "0%";
+        statusText.textContent = "Loading FFmpeg engine (~31 MB first time)...";
+
+        try {
+            await loadFFmpeg();
+
+            statusText.textContent = "Converting MOV to MP4...";
+            const inputName = "input.mov";
+            const outputName = "output.mp4";
+
+            await ffmpeg.writeFile(inputName, await fetchFile(selectedFile));
+
+            let args;
+            if (conversionMode.value === "fast") {
+                args = ["-i", inputName, "-c", "copy", "-movflags", "+faststart", outputName];
+            } else {
+                const crf = qualityPreset.value;
+                args = [
+                    "-i", inputName,
+                    "-c:v", "libx264",
+                    "-preset", "ultrafast",
+                    "-crf", crf,
+                    "-pix_fmt", "yuv420p",
+                    "-c:a", "aac",
+                    "-b:a", "128k",
+                    "-movflags", "+faststart",
+                    outputName
+                ];
+            }
+
+            await ffmpeg.exec(args);
+
+            const data = await ffmpeg.readFile(outputName);
+            const mp4Blob = new Blob([data.buffer], { type: "video/mp4" });
+            currentOutputUrl = URL.createObjectURL(mp4Blob);
+
+            const cleanBaseName = selectedFile.name.replace(/\.[^/.]+$/, "");
+            downloadLink.href = currentOutputUrl;
+            downloadLink.download = `${cleanBaseName}.mp4`;
+            previewPlayer.src = currentOutputUrl;
+
+            statusText.textContent = "Conversion Complete!";
+            percentText.textContent = "100%";
+            progressFill.style.width = "100%";
+            resultBox.style.display = "block";
+
+            await ffmpeg.deleteFile(inputName);
+            await ffmpeg.deleteFile(outputName);
+
+        } catch (err) {
+            console.error(err);
+            errorBanner.textContent = "Conversion failed: " + (err.message || "Unknown error occurred.");
+            errorBanner.style.display = "block";
+            progressWrap.style.display = "none";
+        } finally {
+            convertBtn.disabled = false;
+            resetBtn.disabled = false;
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#060a14">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Primary Core SEO -->
+    <title>PDF to Word Converter — Preserve Layout, Tables &amp; Images | AllInOne</title>
+    <meta name="description" content="Convert PDF files into Microsoft Word (.docx) documents in your browser while preserving exact visual layouts, tables, and embedded screenshots, or extract editable text. 100% private client-side processing.">
+    <meta name="keywords" content="pdf to word converter, convert pdf to docx online, preserve pdf layout in word, pdf with images to word, client-side pdf converter, allinone utilities">
+    <meta name="author" content="AllInOne Utilities">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://allinone-utilities.com/Tools/pdf-tools/pdf-word.html">
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="AllInOne Utilities">
+    <meta property="og:title" content="PDF to Word Converter — Preserve Layout, Tables &amp; Images | AllInOne">
+    <meta property="og:description" content="Convert PDF files into Word (.docx) documents locally in your browser—preserving screenshots, tables, and formatting.">
+    <meta property="og:url" content="https://allinone-utilities.com/Tools/pdf-tools/pdf-word.html">
+    <meta property="og:image" content="https://allinone-utilities.com/assets/og-cover.png">
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PDF to Word Converter — Preserve Layout, Tables &amp; Images | AllInOne">
+    <meta name="twitter:description" content="Convert PDF files into Microsoft Word (.docx) files locally in your browser.">
+    <meta name="twitter:image" content="https://allinone-utilities.com/assets/og-cover.png">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "PDF to Word Converter — AllInOne Utilities",
+      "url": "https://allinone-utilities.com/Tools/pdf-tools/pdf-word.html",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Free client-side browser tool to convert PDF documents into Microsoft Word (.docx) files preserving visual layout, images, and tables."
+    }
+    </script>
+
+    <!-- Client-Side Libraries: PDF.js & docx -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://unpkg.com/docx@8.5.0/build/index.umd.js"></script>
+
+<style>
+:root {
+    --bg-primary: #060a14;
+    --bg-card: rgba(15, 24, 44, 0.78);
+    --border-subtle: rgba(148, 163, 184, 0.14);
+    --border-glow: rgba(96, 165, 250, 0.55);
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --accent-blue: #60a5fa;
+    --green-bg: rgba(16, 185, 129, 0.12);
+    --green-text: #34d399;
+    --green-border: rgba(52, 211, 153, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbar with Edge Gap */
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(6, 10, 20, 0.9);
+    border-left: 4px solid transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.3);
+    border-radius: 6px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(148, 163, 184, 0.5);
+    background-clip: padding-box;
+    border: 2px solid transparent;
+}
+
+.ambient-glow {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+        radial-gradient(circle at 50% -10%, rgba(59, 130, 246, 0.18), transparent 55%),
+        radial-gradient(circle at 85% 35%, rgba(99, 102, 241, 0.08), transparent 45%);
+}
+
+.site-header {
+    border-bottom: 1px solid var(--border-subtle);
+    background: rgba(6, 10, 20, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding-top: env(safe-area-inset-top);
+}
+
+.header-inner {
+    max-width: 1040px;
+    margin: auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: -0.6px;
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+}
+.brand span {
+    background: linear-gradient(135deg, #60a5fa, #a5b4fc);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.back-link {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    min-height: 40px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border-subtle);
+    background: rgba(15, 24, 44, 0.6);
+    display: inline-flex;
+    align-items: center;
+    transition: border-color 0.2s, color 0.2s;
+}
+.back-link:hover {
+    border-color: var(--accent-blue);
+    color: #fff;
+}
+
+.container {
+    max-width: 820px;
+    margin: 32px auto 64px;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
+}
+
+.tool-hero {
+    text-align: center;
+    margin-bottom: 28px;
+}
+.privacy-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: var(--green-bg);
+    border: 1px solid var(--green-border);
+    color: var(--green-text);
+    font-size: 12.5px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+.tool-hero h1 {
+    font-size: 34px;
+    font-weight: 800;
+    margin: 0 0 10px;
+    letter-spacing: -0.7px;
+    color: #fff;
+}
+.tool-hero p {
+    color: var(--text-muted);
+    font-size: 15.5px;
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.55;
+}
+
+/* Dropzone Card */
+.converter-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: 0 18px 40px -15px rgba(0, 0, 0, 0.5);
+}
+
+.dropzone {
+    border: 2px dashed rgba(96, 165, 250, 0.35);
+    border-radius: 14px;
+    padding: 44px 20px;
+    text-align: center;
+    background: rgba(11, 18, 34, 0.5);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+}
+.dropzone:hover, .dropzone.dragover {
+    border-color: var(--accent-blue);
+    background: rgba(30, 58, 138, 0.16);
+}
+.dropzone-icon {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+.dropzone-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+}
+.dropzone-sub {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+}
+.btn-select {
+    background: rgba(59, 130, 246, 0.16);
+    border: 1px solid rgba(96, 165, 250, 0.4);
+    color: #93c5fd;
+    min-height: 44px;
+    padding: 10px 22px;
+    border-radius: 10px;
+    font-size: 14.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.btn-select:hover {
+    background: rgba(59, 130, 246, 0.28);
+    color: #fff;
+}
+
+/* Selected File State */
+.file-status {
+    display: none;
+    padding: 16px 20px;
+    border-radius: 12px;
+    background: rgba(30, 41, 59, 0.55);
+    border: 1px solid var(--border-subtle);
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+.file-details {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    overflow: hidden;
+}
+.file-name {
+    font-weight: 600;
+    font-size: 14.5px;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.file-size {
+    font-size: 12.5px;
+    color: var(--text-muted);
+}
+.btn-clear {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 14px;
+    min-height: 40px;
+    cursor: pointer;
+    padding: 6px 10px;
+    flex-shrink: 0;
+}
+.btn-clear:hover { color: #f87171; }
+
+/* Conversion Mode Selector */
+.mode-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 16px;
+}
+.mode-option {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border-subtle);
+    background: rgba(11, 18, 34, 0.65);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+}
+.mode-option:hover {
+    border-color: rgba(96, 165, 250, 0.45);
+}
+.mode-option.active {
+    border-color: var(--accent-blue);
+    background: rgba(30, 58, 138, 0.24);
+}
+.mode-option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+.mode-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.mode-tag {
+    font-size: 11px;
+    padding: 2px 7px;
+    border-radius: 999px;
+    background: rgba(59, 130, 246, 0.2);
+    color: #93c5fd;
+    font-weight: 600;
+}
+.mode-desc {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* Action & Progress */
+.action-area {
+    margin-top: 18px;
+    display: none;
+    flex-direction: column;
+    gap: 14px;
+}
+.btn-convert {
+    width: 100%;
+    min-height: 48px;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 24px;
+    font-size: 15.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s;
+}
+.btn-convert:hover { opacity: 0.92; }
+.btn-convert:active { transform: scale(0.99); }
+.btn-convert:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.status-message {
+    text-align: center;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    min-height: 20px;
+}
+.status-message.success { color: var(--green-text); font-weight: 600; }
+.status-message.error { color: #f87171; }
+
+/* Info Note */
+.tool-note {
+    margin-top: 24px;
+    padding: 18px 20px;
+    border-radius: 12px;
+    background: rgba(15, 24, 44, 0.55);
+    border: 1px solid var(--border-subtle);
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+.tool-note h2 {
+    font-size: 16px;
+    color: #fff;
+    margin: 0 0 8px;
+}
+.tool-note p {
+    margin: 0;
+}
+
+.site-footer {
+    border-top: 1px solid var(--border-subtle);
+    text-align: center;
+    padding: 28px 20px calc(28px + env(safe-area-inset-bottom));
+    color: #64748b;
+    font-size: 13.5px;
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 600px) {
+    .header-inner { padding: 12px 16px; }
+    .container { margin: 24px auto 48px; padding: 0 16px; }
+    .tool-hero h1 { font-size: 26px; }
+    .converter-card { padding: 18px 16px; }
+    .dropzone { padding: 32px 14px; }
+    .mode-selector { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="ambient-glow" aria-hidden="true"></div>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a class="brand" href="../../index.html">AllIn<span>One</span></a>
+        <a class="back-link" href="../../index.html#pdf-tools">← PDF Tools</a>
+    </div>
+</header>
+
+<main class="container">
+    <section class="tool-hero">
+        <div class="privacy-pill">🔒 100% Client-Side · Zero Server Uploads</div>
+        <h1>PDF to Word Converter</h1>
+        <p>Convert PDF documents into Microsoft Word (<code>.docx</code>) files directly in your browser—preserving exact layouts, embedded screenshots, and tables.</p>
+    </section>
+
+    <div class="converter-card">
+        <div class="dropzone" id="dropzone">
+            <div class="dropzone-icon" aria-hidden="true">📄</div>
+            <div class="dropzone-title">Drop your PDF file here</div>
+            <div class="dropzone-sub">or tap below to choose a file from your device</div>
+            <button type="button" class="btn-select" id="selectBtn">Choose PDF File</button>
+            <input type="file" id="fileInput" accept="application/pdf" hidden>
+        </div>
+
+        <div class="file-status" id="fileStatus">
+            <div class="file-details">
+                <span style="font-size: 22px;">📑</span>
+                <div style="overflow: hidden;">
+                    <div class="file-name" id="fileName">document.pdf</div>
+                    <div class="file-size" id="fileSize">0 KB</div>
+                </div>
+            </div>
+            <button type="button" class="btn-clear" id="btnClear">✕ Remove</button>
+        </div>
+
+        <div class="action-area" id="actionArea">
+            <div class="mode-selector" role="radiogroup" aria-label="Conversion Mode">
+                <label class="mode-option active" id="modeVisualLabel">
+                    <input type="radio" name="convMode" value="visual" checked>
+                    <div class="mode-title">
+                        <span>Exact Layout + Images</span>
+                        <span class="mode-tag">Recommended</span>
+                    </div>
+                    <div class="mode-desc">Preserves 100% of screenshots, tables, fonts, and page styling as crisp high-res pages in Word.</div>
+                </label>
+
+                <label class="mode-option" id="modeTextLabel">
+                    <input type="radio" name="convMode" value="text">
+                    <div class="mode-title">
+                        <span>Editable Text Only</span>
+                    </div>
+                    <div class="mode-desc">Extracts selectable text into editable Word paragraphs (strips embedded images and tables).</div>
+                </label>
+            </div>
+
+            <button type="button" class="btn-convert" id="convertBtn">Convert to Word (.docx)</button>
+            <div class="status-message" id="statusMsg"></div>
+        </div>
+    </div>
+
+    <section class="tool-note">
+        <h2>Which Conversion Mode Should I Use?</h2>
+        <p>Use <strong>Exact Layout + Images</strong> for formal records, email archives, receipts, or PDFs containing screenshots and tables so nothing gets lost or distorted. Use <strong>Editable Text Only</strong> when you want to freely rewrite plain text paragraphs inside Microsoft Word.</p>
+    </section>
+</main>
+
+<footer class="site-footer">
+    AllInOne Utilities — Built for speed, privacy, and mobile-first productivity.
+</footer>
+
+<script>
+(function() {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('fileInput');
+    const selectBtn = document.getElementById('selectBtn');
+    const fileStatus = document.getElementById('fileStatus');
+    const fileNameEl = document.getElementById('fileName');
+    const fileSizeEl = document.getElementById('fileSize');
+    const btnClear = document.getElementById('btnClear');
+    const actionArea = document.getElementById('actionArea');
+    const convertBtn = document.getElementById('convertBtn');
+    const statusMsg = document.getElementById('statusMsg');
+    const modeVisualLabel = document.getElementById('modeVisualLabel');
+    const modeTextLabel = document.getElementById('modeTextLabel');
+
+    let selectedFile = null;
+
+    document.querySelectorAll('input[name="convMode"]').forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            if (e.target.value === 'visual') {
+                modeVisualLabel.classList.add('active');
+                modeTextLabel.classList.remove('active');
+            } else {
+                modeTextLabel.classList.add('active');
+                modeVisualLabel.classList.remove('active');
+            }
+        });
+    });
+
+    function formatBytes(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    function handleFile(file) {
+        if (!file || file.type !== 'application/pdf') {
+            statusMsg.textContent = 'Please select a valid PDF file.';
+            statusMsg.className = 'status-message error';
+            actionArea.style.display = 'flex';
+            return;
+        }
+        selectedFile = file;
+        fileNameEl.textContent = file.name;
+        fileSizeEl.textContent = formatBytes(file.size);
+        dropzone.style.display = 'none';
+        fileStatus.style.display = 'flex';
+        actionArea.style.display = 'flex';
+        statusMsg.textContent = '';
+        statusMsg.className = 'status-message';
+    }
+
+    selectBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        fileInput.click();
+    });
+
+    dropzone.addEventListener('click', () => fileInput.click());
+
+    fileInput.addEventListener('change', (e) => {
+        if (e.target.files.length > 0) handleFile(e.target.files[0]);
+    });
+
+    dropzone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropzone.classList.add('dragover');
+    });
+
+    dropzone.addEventListener('dragleave', () => {
+        dropzone.classList.remove('dragover');
+    });
+
+    dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropzone.classList.remove('dragover');
+        if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
+    });
+
+    btnClear.addEventListener('click', () => {
+        selectedFile = null;
+        fileInput.value = '';
+        fileStatus.style.display = 'none';
+        actionArea.style.display = 'none';
+        dropzone.style.display = 'block';
+        statusMsg.textContent = '';
+    });
+
+    function dataURLToUint8Array(dataURL) {
+        const base64 = dataURL.split(',')[1];
+        const binary = atob(base64);
+        const len = binary.length;
+        const bytes = new Uint8Array(len);
+        for (let i = 0; i < len; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        return bytes;
+    }
+
+    convertBtn.addEventListener('click', async () => {
+        if (!selectedFile) return;
+
+        const mode = document.querySelector('input[name="convMode"]:checked').value;
+        convertBtn.disabled = true;
+        convertBtn.textContent = 'Converting to Word...';
+        statusMsg.className = 'status-message';
+        statusMsg.textContent = 'Loading PDF document...';
+
+        try {
+            const arrayBuffer = await selectedFile.arrayBuffer();
+            const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+            const totalPages = pdf.numPages;
+
+            const { Document, Packer, Paragraph, TextRun, ImageRun, HeadingLevel, PageBreak } = window.docx;
+            const docSections = [];
+
+            if (mode === 'visual') {
+                // High-Resolution Visual Fidelity Mode: renders each PDF page cleanly at 2x scale
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+
+                for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
+                    statusMsg.textContent = `Rendering page ${pageNum} of ${totalPages} at high resolution...`;
+                    const page = await pdf.getPage(pageNum);
+                    
+                    // Get base 1x viewport to calculate exact Word page size in twips (1 pt = 20 twips)
+                    const baseViewport = page.getViewport({ scale: 1.0 });
+                    const renderScale = 2.0;
+                    const viewport = page.getViewport({ scale: renderScale });
+
+                    canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                    await page.render({ canvasContext: ctx, viewport: viewport }).promise;
+
+                    const imgDataUrl = canvas.toDataURL('image/jpeg', 0.92);
+                    const imgBytes = dataURLToUint8Array(imgDataUrl);
+
+                    // Convert PDF points (72 DPI) to pixels at 96 DPI for docx ImageRun transformation
+                    const docWidthPx = Math.round(baseViewport.width * (96 / 72));
+                    const docHeightPx = Math.round(baseViewport.height * (96 / 72));
+
+                    // Convert PDF points to twips (1 pt = 20 twips) for full-bleed zero-margin page
+                    const pageWidthTwips = Math.round(baseViewport.width * 20);
+                    const pageHeightTwips = Math.round(baseViewport.height * 20);
+
+                    docSections.push({
+                        properties: {
+                            page: {
+                                size: {
+                                    width: pageWidthTwips,
+                                    height: pageHeightTwips
+                                },
+                                margin: {
+                                    top: 0,
+                                    right: 0,
+                                    bottom: 0,
+                                    left: 0
+                                }
+                            }
+                        },
+                        children: [
+                            new Paragraph({
+                                spacing: { before: 0, after: 0, line: 240 },
+                                children: [
+                                    new ImageRun({
+                                        data: imgBytes,
+                                        transformation: {
+                                            width: docWidthPx,
+                                            height: docHeightPx
+                                        },
+                                        type: 'jpg'
+                                    })
+                                ]
+                            })
+                        ]
+                    });
+                }
+            } else {
+                // Editable Text Mode: reconstructs lines and detects headings
+                const docChildren = [];
+
+                for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
+                    statusMsg.textContent = `Extracting text from page ${pageNum} of ${totalPages}...`;
+                    const page = await pdf.getPage(pageNum);
+                    const textContent = await page.getTextContent();
+
+                    const linesMap = new Map();
+                    for (const item of textContent.items) {
+                        if (!item.str || item.str.trim() === '') continue;
+                        const y = Math.round(item.transform[5] / 4) * 4;
+                        const fontSize = Math.round(Math.abs(item.transform[0]));
+
+                        if (!linesMap.has(y)) linesMap.set(y, { items: [], maxFontSize: fontSize });
+                        linesMap.get(y).items.push({ x: item.transform[4], text: item.str });
+                        if (fontSize > linesMap.get(y).maxFontSize) {
+                            linesMap.get(y).maxFontSize = fontSize;
+                        }
+                    }
+
+                    const sortedY = Array.from(linesMap.keys()).sort((a, b) => b - a);
+
+                    for (const y of sortedY) {
+                        const lineData = linesMap.get(y);
+                        const lineItems = lineData.items.sort((a, b) => a.x - b.x);
+                        const lineText = lineItems.map(i => i.text).join(' ').replace(/\s+/g, ' ').trim();
+                        if (!lineText) continue;
+
+                        if (lineData.maxFontSize >= 16) {
+                            docChildren.push(
+                                new Paragraph({
+                                    text: lineText,
+                                    heading: HeadingLevel.HEADING_1,
+                                    spacing: { before: 200, after: 100 }
+                                })
+                            );
+                        } else {
+                            docChildren.push(
+                                new Paragraph({
+                                    children: [
+                                        new TextRun({
+                                            text: lineText,
+                                            size: 22,
+                                            font: 'Calibri'
+                                        })
+                                    ],
+                                    spacing: { after: 80 }
+                                })
+                            );
+                        }
+                    }
+
+                    if (pageNum < totalPages) {
+                        docChildren.push(new Paragraph({ children: [new PageBreak()] }));
+                    }
+                }
+
+                if (docChildren.length === 0) {
+                    docChildren.push(
+                        new Paragraph({
+                            children: [new TextRun({ text: '[No selectable text found. Try Exact Layout + Images mode instead.]', italics: true })]
+                        })
+                    );
+                }
+
+                docSections.push({
+                    properties: {},
+                    children: docChildren
+                });
+            }
+
+            statusMsg.textContent = 'Packaging Word (.docx) file...';
+            const doc = new Document({ sections: docSections });
+            const blob = await Packer.toBlob(doc);
+            const outputName = selectedFile.name.replace(/\.pdf$/i, '') + '.docx';
+
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = outputName;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            statusMsg.textContent = `✓ Converted ${totalPages} page(s) to ${outputName}!`;
+            statusMsg.className = 'status-message success';
+        } catch (err) {
+            console.error(err);
+            statusMsg.textContent = 'Error converting PDF. Ensure the file is not password-protected or corrupted.';
+            statusMsg.className = 'status-message error';
+        } finally {
+            convertBtn.disabled = false;
+            convertBtn.textContent = 'Convert to Word (.docx)';
+        }
+    });
+})();
+</script>
+
+</body>
+</html>
