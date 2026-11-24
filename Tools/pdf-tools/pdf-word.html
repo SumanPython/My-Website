@@ -9,9 +9,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <!-- Primary Core SEO -->
-    <title>PDF to Word Converter — Preserve Layout, Tables &amp; Images | AllInOne</title>
-    <meta name="description" content="Convert PDF files into Microsoft Word (.docx) documents in your browser while preserving exact visual layouts, tables, and embedded screenshots, or extract editable text. 100% private client-side processing.">
-    <meta name="keywords" content="pdf to word converter, convert pdf to docx online, preserve pdf layout in word, pdf with images to word, client-side pdf converter, allinone utilities">
+    <title>PDF to Word Converter Online Free — Preserve Layout &amp; Images | AllInOne</title>
+    <meta name="description" content="Convert PDF files into Microsoft Word (.docx) documents online for free. Preserve exact visual layouts, tables, and embedded screenshots, or extract editable text. 100% private client-side processing.">
+    <meta name="keywords" content="pdf to word converter online, convert pdf to docx free, preserve pdf layout in word, pdf with images to word, client-side pdf converter, allinone utilities">
     <meta name="author" content="AllInOne Utilities">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://allinone-utilities.com/Tools/pdf-tools/pdf-word.html">
@@ -19,15 +19,15 @@
     <!-- Open Graph / Social Sharing -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="AllInOne Utilities">
-    <meta property="og:title" content="PDF to Word Converter — Preserve Layout, Tables &amp; Images | AllInOne">
-    <meta property="og:description" content="Convert PDF files into Word (.docx) documents locally in your browser—preserving screenshots, tables, and formatting.">
+    <meta property="og:title" content="PDF to Word Converter Online Free — Preserve Layout &amp; Images | AllInOne">
+    <meta property="og:description" content="Convert PDF files into Word (.docx) documents locally in your browser—preserving screenshots, tables, and formatting for free.">
     <meta property="og:url" content="https://allinone-utilities.com/Tools/pdf-tools/pdf-word.html">
     <meta property="og:image" content="https://allinone-utilities.com/assets/og-cover.png">
 
     <!-- Twitter / X Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="PDF to Word Converter — Preserve Layout, Tables &amp; Images | AllInOne">
-    <meta name="twitter:description" content="Convert PDF files into Microsoft Word (.docx) files locally in your browser.">
+    <meta name="twitter:title" content="PDF to Word Converter Online Free — Preserve Layout &amp; Images | AllInOne">
+    <meta name="twitter:description" content="Convert PDF files into Microsoft Word (.docx) files locally in your browser for free.">
     <meta name="twitter:image" content="https://allinone-utilities.com/assets/og-cover.png">
 
     <!-- Structured Data (JSON-LD) -->
@@ -74,9 +74,9 @@
 html, body {
     margin: 0;
     padding: 0;
-    background-color: var(--bg-primary);
-    color: var(--text-main);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif;
+    background-color: #080d1b;
+    color: #e6edf7;
+    font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
 }
@@ -112,65 +112,59 @@ html, body {
 }
 
 .site-header {
-    border-bottom: 1px solid var(--border-subtle);
-    background: rgba(6, 10, 20, 0.88);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid #1d2940;
+    background: #080d1b;
     position: sticky;
     top: 0;
     z-index: 100;
-    padding-top: env(safe-area-inset-top);
 }
 
 .header-inner {
-    max-width: 1040px;
+    max-width: 1150px;
     margin: auto;
-    padding: 14px 24px;
+    padding: 24px 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
 .brand {
-    font-size: 24px;
-    font-weight: 800;
+    font-size: 28px;
+    font-weight: bold;
     color: #fff;
     text-decoration: none;
-    letter-spacing: -0.6px;
+    letter-spacing: -0.5px;
     display: inline-flex;
     align-items: center;
-    min-height: 40px;
 }
 .brand span {
-    background: linear-gradient(135deg, #60a5fa, #a5b4fc);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #66a2ff;
 }
 
-.back-link {
+nav {
+    display: flex;
+    gap: 32px;
+}
+
+nav a {
     color: #cbd5e1;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
-    min-height: 40px;
-    padding: 8px 14px;
-    border-radius: 10px;
-    border: 1px solid var(--border-subtle);
-    background: rgba(15, 24, 44, 0.6);
-    display: inline-flex;
-    align-items: center;
-    transition: border-color 0.2s, color 0.2s;
+    transition: 0.2s;
 }
-.back-link:hover {
-    border-color: var(--accent-blue);
-    color: #fff;
+
+nav a:hover {
+    color: #60a5fa;
 }
 
 .container {
-    max-width: 820px;
-    margin: 32px auto 64px;
-    padding: 0 24px;
+    max-width: 1150px;
+    margin: 45px auto;
+    padding: 35px;
+    background: #101b30;
+    border: 1px solid #263a5c;
+    border-radius: 24px;
     position: relative;
     z-index: 2;
 }
@@ -193,140 +187,135 @@ html, body {
     margin-bottom: 12px;
 }
 .tool-hero h1 {
-    font-size: 34px;
-    font-weight: 800;
-    margin: 0 0 10px;
-    letter-spacing: -0.7px;
+    font-size: 38px;
+    font-weight: bold;
+    margin: 15px 0 10px;
     color: #fff;
 }
 .tool-hero p {
-    color: var(--text-muted);
-    font-size: 15.5px;
-    max-width: 580px;
+    color: #9aabc4;
+    font-size: 18px;
+    max-width: 620px;
     margin: 0 auto;
-    line-height: 1.55;
+    line-height: 1.7;
 }
 
 /* Dropzone Card */
 .converter-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 18px;
-    padding: 28px;
-    box-shadow: 0 18px 40px -15px rgba(0, 0, 0, 0.5);
+    background: transparent;
 }
 
 .dropzone {
-    border: 2px dashed rgba(96, 165, 250, 0.35);
-    border-radius: 14px;
-    padding: 44px 20px;
+    border: 2px dashed #3978c9;
+    border-radius: 20px;
+    padding: 55px 20px;
     text-align: center;
-    background: rgba(11, 18, 34, 0.5);
+    background: #0c162b;
     cursor: pointer;
     transition: border-color 0.2s, background 0.2s;
 }
 .dropzone:hover, .dropzone.dragover {
-    border-color: var(--accent-blue);
-    background: rgba(30, 58, 138, 0.16);
+    border-color: #66a2ff;
+    background: #142342;
 }
 .dropzone-icon {
-    font-size: 38px;
-    margin-bottom: 12px;
+    font-size: 54px;
+    margin-bottom: 15px;
 }
 .dropzone-title {
-    font-size: 17px;
-    font-weight: 700;
+    font-size: 24px;
+    font-weight: bold;
     color: #fff;
-    margin-bottom: 6px;
+    margin: 10px 0;
 }
 .dropzone-sub {
-    font-size: 13.5px;
-    color: var(--text-muted);
-    margin-bottom: 18px;
+    font-size: 16px;
+    color: #98a9c1;
+    margin: 10px 0;
 }
 .btn-select {
-    background: rgba(59, 130, 246, 0.16);
-    border: 1px solid rgba(96, 165, 250, 0.4);
-    color: #93c5fd;
-    min-height: 44px;
-    padding: 10px 22px;
+    background: #2864eb;
+    color: white;
+    border: none;
+    padding: 15px 32px;
     border-radius: 10px;
-    font-size: 14.5px;
-    font-weight: 600;
+    font-size: 17px;
+    font-weight: bold;
     cursor: pointer;
-    transition: background 0.2s, color 0.2s;
+    margin-top: 15px;
+    transition: background 0.2s;
 }
 .btn-select:hover {
-    background: rgba(59, 130, 246, 0.28);
-    color: #fff;
+    background: #3977ff;
 }
 
 /* Selected File State */
 .file-status {
     display: none;
-    padding: 16px 20px;
-    border-radius: 12px;
-    background: rgba(30, 41, 59, 0.55);
-    border: 1px solid var(--border-subtle);
+    padding: 20px;
+    border-radius: 15px;
+    background: #18253c;
+    border: 1px solid #304968;
     align-items: center;
     justify-content: space-between;
     gap: 16px;
+    margin-top: 25px;
 }
 .file-details {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 15px;
     overflow: hidden;
 }
 .file-name {
-    font-weight: 600;
-    font-size: 14.5px;
+    font-weight: bold;
+    font-size: 17px;
     color: #fff;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 .file-size {
-    font-size: 12.5px;
-    color: var(--text-muted);
+    font-size: 14px;
+    color: #94a6bf;
+    margin-top: 6px;
 }
 .btn-clear {
-    background: transparent;
+    background: none;
     border: none;
-    color: #94a3b8;
-    font-size: 14px;
-    min-height: 40px;
+    color: #ff6868;
+    font-size: 15px;
     cursor: pointer;
     padding: 6px 10px;
     flex-shrink: 0;
 }
-.btn-clear:hover { color: #f87171; }
+.btn-clear:hover { color: #ff9b9b; }
 
 /* Conversion Mode Selector */
 .mode-selector {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-top: 16px;
+    gap: 18px;
+    margin-top: 25px;
 }
 .mode-option {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    padding: 14px 16px;
-    border-radius: 12px;
-    border: 1px solid var(--border-subtle);
-    background: rgba(11, 18, 34, 0.65);
+    gap: 8px;
+    padding: 22px;
+    border-radius: 15px;
+    border: 1px solid #304968;
+    background: #18253c;
     cursor: pointer;
     transition: border-color 0.2s, background 0.2s;
 }
 .mode-option:hover {
-    border-color: rgba(96, 165, 250, 0.45);
+    border-color: #5489ff;
 }
 .mode-option.active {
-    border-color: var(--accent-blue);
-    background: rgba(30, 58, 138, 0.24);
+    border: 2px solid #635bff;
+    background: #172749;
 }
 .mode-option input {
     position: absolute;
@@ -334,44 +323,43 @@ html, body {
     pointer-events: none;
 }
 .mode-title {
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 19px;
+    font-weight: bold;
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 .mode-tag {
-    font-size: 11px;
-    padding: 2px 7px;
+    font-size: 12px;
+    padding: 3px 9px;
     border-radius: 999px;
-    background: rgba(59, 130, 246, 0.2);
-    color: #93c5fd;
+    background: rgba(40, 100, 235, 0.25);
+    color: #75aaff;
     font-weight: 600;
 }
 .mode-desc {
-    font-size: 12.5px;
-    color: var(--text-muted);
-    line-height: 1.4;
+    font-size: 15px;
+    color: #99a9c2;
+    line-height: 1.5;
 }
 
 /* Action & Progress */
 .action-area {
-    margin-top: 18px;
+    margin-top: 25px;
     display: none;
     flex-direction: column;
-    gap: 14px;
+    gap: 18px;
 }
 .btn-convert {
     width: 100%;
-    min-height: 48px;
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    background: linear-gradient(100deg, #2864eb, #673de9);
     color: #fff;
     border: none;
-    border-radius: 12px;
-    padding: 14px 24px;
-    font-size: 15.5px;
-    font-weight: 700;
+    border-radius: 15px;
+    padding: 22px;
+    font-size: 22px;
+    font-weight: bold;
     cursor: pointer;
     transition: opacity 0.2s, transform 0.15s;
 }
@@ -384,49 +372,48 @@ html, body {
 
 .status-message {
     text-align: center;
-    font-size: 13.5px;
-    color: var(--text-muted);
-    min-height: 20px;
+    font-size: 15px;
+    color: #9aabc4;
+    min-height: 24px;
 }
-.status-message.success { color: var(--green-text); font-weight: 600; }
-.status-message.error { color: #f87171; }
+.status-message.success { color: #56d9a9; font-weight: bold; }
+.status-message.error { color: #ff9b9b; }
 
 /* Info Note */
 .tool-note {
-    margin-top: 24px;
-    padding: 18px 20px;
-    border-radius: 12px;
-    background: rgba(15, 24, 44, 0.55);
-    border: 1px solid var(--border-subtle);
-    font-size: 13.5px;
-    color: var(--text-muted);
-    line-height: 1.6;
+    margin-top: 35px;
+    padding: 25px;
+    border-radius: 20px;
+    background: #111e33;
+    border: 1px solid #263a5c;
+    font-size: 15px;
+    color: #9aabc4;
+    line-height: 1.7;
 }
 .tool-note h2 {
-    font-size: 16px;
+    font-size: 19px;
     color: #fff;
-    margin: 0 0 8px;
+    margin: 0 0 10px;
 }
 .tool-note p {
     margin: 0;
 }
 
 .site-footer {
-    border-top: 1px solid var(--border-subtle);
+    border-top: 1px solid #1d2940;
     text-align: center;
-    padding: 28px 20px calc(28px + env(safe-area-inset-bottom));
-    color: #64748b;
-    font-size: 13.5px;
+    padding: 28px 20px;
+    color: #94a3b8;
+    font-size: 13px;
+    background: #080d1b;
     position: relative;
     z-index: 2;
 }
 
-@media (max-width: 600px) {
-    .header-inner { padding: 12px 16px; }
-    .container { margin: 24px auto 48px; padding: 0 16px; }
-    .tool-hero h1 { font-size: 26px; }
-    .converter-card { padding: 18px 16px; }
-    .dropzone { padding: 32px 14px; }
+@media (max-width: 750px) {
+    .header-inner { padding: 20px; }
+    .container { margin: 15px; padding: 20px; }
+    .tool-hero h1 { font-size: 30px; }
     .mode-selector { grid-template-columns: 1fr; }
 }
 </style>
@@ -438,29 +425,31 @@ html, body {
 <header class="site-header">
     <div class="header-inner">
         <a class="brand" href="../../index.html">AllIn<span>One</span></a>
-        <a class="back-link" href="../../index.html#pdf-tools">← PDF Tools</a>
+        <nav class="nav">
+            <a href="../../index.html#category-boxes-section">Categories</a>
+        </nav>
     </div>
 </header>
 
 <main class="container">
     <section class="tool-hero">
         <div class="privacy-pill">🔒 100% Client-Side · Zero Server Uploads</div>
-        <h1>PDF to Word Converter</h1>
-        <p>Convert PDF documents into Microsoft Word (<code>.docx</code>) files directly in your browser—preserving exact layouts, embedded screenshots, and tables.</p>
+        <h1>PDF to Word Converter Online</h1>
+        <p>Convert PDF documents into Microsoft Word (<code>.docx</code>) files directly in your browser for free—preserving exact layouts, embedded screenshots, and tables.</p>
     </section>
 
     <div class="converter-card">
         <div class="dropzone" id="dropzone">
             <div class="dropzone-icon" aria-hidden="true">📄</div>
             <div class="dropzone-title">Drop your PDF file here</div>
-            <div class="dropzone-sub">or tap below to choose a file from your device</div>
+            <div class="dropzone-sub">or click below to choose a file from your device</div>
             <button type="button" class="btn-select" id="selectBtn">Choose PDF File</button>
             <input type="file" id="fileInput" accept="application/pdf" hidden>
         </div>
 
         <div class="file-status" id="fileStatus">
             <div class="file-details">
-                <span style="font-size: 22px;">📑</span>
+                <span style="font-size: 28px;">📑</span>
                 <div style="overflow: hidden;">
                     <div class="file-name" id="fileName">document.pdf</div>
                     <div class="file-size" id="fileSize">0 KB</div>
@@ -501,7 +490,7 @@ html, body {
 </main>
 
 <footer class="site-footer">
-    AllInOne Utilities — Built for speed, privacy, and mobile-first productivity.
+    AllInOne Utilities — Fast, secure document tools.
 </footer>
 
 <script>
@@ -624,7 +613,6 @@ html, body {
             const docSections = [];
 
             if (mode === 'visual') {
-                // High-Resolution Visual Fidelity Mode: renders each PDF page cleanly at 2x scale
                 const canvas = document.createElement('canvas');
                 const ctx = canvas.getContext('2d');
 
@@ -632,7 +620,6 @@ html, body {
                     statusMsg.textContent = `Rendering page ${pageNum} of ${totalPages} at high resolution...`;
                     const page = await pdf.getPage(pageNum);
                     
-                    // Get base 1x viewport to calculate exact Word page size in twips (1 pt = 20 twips)
                     const baseViewport = page.getViewport({ scale: 1.0 });
                     const renderScale = 2.0;
                     const viewport = page.getViewport({ scale: renderScale });
@@ -647,11 +634,9 @@ html, body {
                     const imgDataUrl = canvas.toDataURL('image/jpeg', 0.92);
                     const imgBytes = dataURLToUint8Array(imgDataUrl);
 
-                    // Convert PDF points (72 DPI) to pixels at 96 DPI for docx ImageRun transformation
                     const docWidthPx = Math.round(baseViewport.width * (96 / 72));
                     const docHeightPx = Math.round(baseViewport.height * (96 / 72));
 
-                    // Convert PDF points to twips (1 pt = 20 twips) for full-bleed zero-margin page
                     const pageWidthTwips = Math.round(baseViewport.width * 20);
                     const pageHeightTwips = Math.round(baseViewport.height * 20);
 
@@ -688,7 +673,6 @@ html, body {
                     });
                 }
             } else {
-                // Editable Text Mode: reconstructs lines and detects headings
                 const docChildren = [];
 
                 for (let pageNum = 1; pageNum <= totalPages; pageNum++) {

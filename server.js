@@ -2,13 +2,14 @@ const express = require('express');
 const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
+const { execFile } = require('child_process');
 const { PDFDocument } = require('pdf-lib');
 const JSZip = require('jszip');
+const pdfParse = require('pdf-parse');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Setup output and uploads directories if they don't exist
 const uploadDir = path.join(__dirname, 'uploads');
 const outputDir = path.join(__dirname, 'outputs');
 
@@ -17,21 +18,14 @@ if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
 
 const upload = multer({ dest: uploadDir });
 
-// Serve static files from the root directory
 app.use(express.static(path.join(__dirname)));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// ==========================================
-// Local FFmpeg WebAssembly Static Routes
-// ==========================================
 app.use('/ffmpeg', express.static(path.join(__dirname, 'node_modules/@ffmpeg/ffmpeg/dist/umd')));
 app.use('/ffmpeg-util', express.static(path.join(__dirname, 'node_modules/@ffmpeg/util/dist/umd')));
 app.use('/ffmpeg-core', express.static(path.join(__dirname, 'node_modules/@ffmpeg/core/dist/umd')));
 
-// ==========================================
-// 1. Merge PDF Route
-// ==========================================
 app.post('/merge', upload.array('pdfFiles'), async (req, res) => {
     if (!req.files || req.files.length < 2) {
         if (req.files) {
@@ -42,9 +36,26 @@ app.post('/merge', upload.array('pdfFiles'), async (req, res) => {
 
     try {
         const mergedPdf = await PDFDocument.create();
+        const firstWords = [];
 
         for (const file of req.files) {
             const fileBytes = fs.readFileSync(file.path);
+            
+            // Extract the first word from the PDF text content
+            try {
+                const pdfData = await pdfParse(fileBytes);
+                if (pdfData && pdfData.text) {
+                    const cleanedText = pdfData.text.trim().replace(/[\r\n]+/g, ' ');
+                    const firstWord = cleanedText.split(/\s+/)[0];
+                    if (firstWord) {
+                        const sanitizedWord = firstWord.replace(/[^a-zA-Z0-9-_]/g, '');
+                        if (sanitizedWord) firstWords.push(sanitizedWord);
+                    }
+                }
+            } catch (parseErr) {
+                console.warn('Could not parse text for filename, skipping word:', parseErr);
+            }
+
             const pdfDoc = await PDFDocument.load(fileBytes);
             const copiedPages = await mergedPdf.copyPages(pdfDoc, pdfDoc.getPageIndices());
             copiedPages.forEach((page) => mergedPdf.addPage(page));
@@ -56,7 +67,16 @@ app.post('/merge', upload.array('pdfFiles'), async (req, res) => {
 
         fs.writeFileSync(outputPath, mergedPdfBytes);
 
-        res.download(outputPath, 'merged-document.pdf', () => {
+        // --- CONCATENATE FIRST WORDS FOR FILENAME ---
+        let downloadName = firstWords.length > 0 
+            ? `${firstWords.join('-and-')}-merged.pdf` 
+            : `merged-document.pdf`;
+        // ---------------------------------------------
+
+        // Expose Content-Disposition header so browser fetch can read it
+        res.setHeader('Access-Control-Expose-Headers', 'Content-Disposition');
+
+        res.download(outputPath, downloadName, () => {
             req.files.forEach(file => fs.unlink(file.path, () => {}));
             fs.unlink(outputPath, () => {});
         });
@@ -68,9 +88,6 @@ app.post('/merge', upload.array('pdfFiles'), async (req, res) => {
     }
 });
 
-// ==========================================
-// 2. JPG to PDF Route (Individual PDFs in a ZIP)
-// ==========================================
 app.post('/jpg-to-pdf', upload.array('imageFiles'), async (req, res) => {
     if (!req.files || req.files.length === 0) {
         return res.status(400).json({ error: 'Please upload at least one image file.' });
@@ -130,9 +147,6 @@ app.post('/jpg-to-pdf', upload.array('imageFiles'), async (req, res) => {
     }
 });
 
-// ==========================================
-// 3. Split PDF Route
-// ==========================================
 app.post('/split', upload.single('pdfFile'), async (req, res) => {
     if (!req.file) {
         return res.status(400).json({ error: 'Please upload a PDF file to split.' });
@@ -182,7 +196,81 @@ app.post('/split', upload.single('pdfFile'), async (req, res) => {
     }
 });
 
-// Start Server
+app.post('/compress', upload.single('pdfFile'), async (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ error: 'Please upload a PDF file to compress.' });
+    }
+
+    const compressionLevel = (req.body.level || 'recommended').toLowerCase();
+    const inputPath = req.file.path;
+    const outputFileName = `compressed-${Date.now()}.pdf`;
+    const outputPath = path.join(outputDir, outputFileName);
+
+    const levelSettings = {
+        low: { preset: '/printer', dpi: 150, jpegQ: 80 },
+        recommended: { preset: '/ebook', dpi: 96, jpegQ: 50 },
+        high: { preset: '/screen', dpi: 72, jpegQ: 35 }
+    };
+
+    const config = levelSettings[compressionLevel] || levelSettings.recommended;
+    const gsCommand = process.platform === 'win32' ? 'gswin64c' : 'gs';
+
+    const gsArgs = [
+        '-sDEVICE=pdfwrite',
+        '-dCompatibilityLevel=1.4',
+        `-dPDFSETTINGS=${config.preset}`,
+        '-dNOPAUSE',
+        '-dQUIET',
+        '-dBATCH',
+        '-dDownsampleColorImages=true',
+        '-dDownsampleGrayImages=true',
+        '-dDownsampleMonoImages=true',
+        '-dColorImageDownsampleThreshold=1.0',
+        '-dGrayImageDownsampleThreshold=1.0',
+        '-dMonoImageDownsampleThreshold=1.0',
+        '-dColorImageDownsampleType=/Bicubic',
+        '-dGrayImageDownsampleType=/Bicubic',
+        '-dMonoImageDownsampleType=/Subsample',
+        `-dColorImageResolution=${config.dpi}`,
+        `-dGrayImageResolution=${config.dpi}`,
+        `-dMonoImageResolution=${config.dpi}`,
+        '-dAutoFilterColorImages=false',
+        '-dAutoFilterGrayImages=false',
+        '-dColorImageFilter=/DCTEncode',
+        '-dGrayImageFilter=/DCTEncode',
+        `-dJPEGQ=${config.jpegQ}`,
+        '-dCompressFonts=true',
+        '-dSubsetFonts=true',
+        '-dDetectDuplicateImages=true',
+        `-sOutputFile=${outputPath}`,
+        inputPath
+    ];
+
+    execFile(gsCommand, gsArgs, (error) => {
+        if (error) {
+            console.error('Ghostscript compression error:', error);
+            if (fs.existsSync(inputPath)) fs.unlink(inputPath, () => {});
+            if (fs.existsSync(outputPath)) fs.unlink(outputPath, () => {});
+            return res.status(500).json({ error: 'Unable to compress PDF. It may be encrypted or corrupted.' });
+        }
+
+        if (!fs.existsSync(outputPath) || fs.statSync(outputPath).size === 0) {
+            if (fs.existsSync(inputPath)) fs.unlink(inputPath, () => {});
+            return res.status(500).json({ error: 'Compression failed to generate output file.' });
+        }
+
+        const originalSize = fs.statSync(inputPath).size;
+        const compressedSize = fs.statSync(outputPath).size;
+
+        const finalPath = compressedSize < originalSize ? outputPath : inputPath;
+
+        res.download(finalPath, 'compressed-document.pdf', () => {
+            if (fs.existsSync(inputPath)) fs.unlink(inputPath, () => {});
+            if (fs.existsSync(outputPath)) fs.unlink(outputPath, () => {});
+        });
+    });
+});
+
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log('Server is running on http://localhost:' + PORT);
 });
