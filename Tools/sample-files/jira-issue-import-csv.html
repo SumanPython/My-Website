@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#080d1b">
+<title>Jira Bulk Issue Import CSV — Free &amp; Secure | AllInOne</title>
+<meta name="description" content="Generate and download valid Jira issue import CSV datasets featuring unique summaries, standard issue types, priorities, and descriptions. 100% free and secure browser-based tool.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://allinone-utilities.com/Tools/sample-files/jira-issue-import-csv.html">
+
+<!-- Open Graph SEO Meta Tags -->
+<meta property="og:title" content="Jira Bulk Issue Import CSV — Free &amp; Secure | AllInOne">
+<meta property="og:description" content="Generate and download valid Jira issue import datasets instantly in your browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://allinone-utilities.com/Tools/sample-files/jira-issue-import-csv.html">
+
+<!-- FAQ Rich Snippet Schema for Google SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are these CSV files compatible with Jira Cloud and Jira Data Center Bulk Importer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! The generated CSV files contain standard Jira External System Import fields: Summary, Issue Type, Priority, and Description, avoiding unparented sub-tasks or unmapped components."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to install any software to generate these datasets?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No installation required. All file generation runs 100% client-side inside your web browser."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+body {
+    background-color: #080d1b;
+    background-image:
+        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 4px),
+        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 3px),
+        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 4px);
+    background-size: 550px 550px, 350px 350px, 250px 250px;
+    background-position: 0 0, 40px 60px, 130px 270px;
+    color: #e6edf7;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* Header matching exact layout */
+.site-header { 
+    border-bottom: 1px solid #1d2940; 
+    background: #080d1b; 
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.header-inner { 
+    max-width: 1150px; 
+    margin: auto; 
+    padding: 20px 24px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+}
+.brand { 
+    font-size: 26px; 
+    font-weight: bold; 
+    color: #fff; 
+    text-decoration: none; 
+    letter-spacing: -0.5px;
+}
+.brand span { color: #66a2ff; }
+
+nav {
+    display: flex;
+    gap: 24px;
+}
+.nav a { 
+    color: #cbd5e1; 
+    text-decoration: none; 
+    font-size: 15px; 
+    font-weight: 500;
+    transition: 0.2s; 
+}
+.nav a:hover { color: #60a5fa; }
+
+/* Main Container */
+.container { 
+    max-width: 1150px; 
+    width: 100%; 
+    margin: 24px auto; 
+    padding: 24px; 
+    background: #101b30; 
+    border: 1px solid #263a5c; 
+    border-radius: 20px; 
+}
+.privacy-badge {
+    display: flex;
+    width: fit-content;
+    margin: 0 auto 16px auto;
+    align-items: center;
+    gap: 6px;
+    background: rgba(52, 211, 153, 0.12);
+    color: #34d399;
+    border: 1px solid rgba(52, 211, 153, 0.3);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Tool Header */
+.tool-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+.tool-header h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+    margin: 10px 0;
+}
+.tool-header p {
+    color: #9aabc4;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Drop Area */
+.drop-area { 
+    position: relative;
+    border: 2px dashed #3978c9; 
+    border-radius: 16px; 
+    padding: 40px 16px; 
+    text-align: center; 
+    background: #0c162b; 
+    transition: 0.2s; 
+}
+.file-icon { font-size: 48px; margin-bottom: 12px; }
+.drop-area h2 { font-size: 22px; margin: 8px 0; color: #fff; }
+.drop-area p { color: #98a9c1; font-size: 15px; margin: 8px 0; }
+
+/* Config & Preview Panel */
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+.option-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 8px;
+}
+.option-group select {
+    width: 100%;
+    padding: 12px 16px;
+    background: #18253c;
+    border: 1px solid #304968;
+    border-radius: 10px;
+    color: #e2e8f0;
+    font-size: 14.5px;
+    outline: none;
+    cursor: pointer;
+}
+.option-group select:focus {
+    border-color: #66a2ff;
+}
+
+/* Preview Box */
+.preview-box {
+    background: #080d1b;
+    border: 1px solid #263a5c;
+    border-radius: 12px;
+    padding: 16px;
+    font-family: monospace;
+    font-size: 13px;
+    color: #94a6bf;
+    overflow-x: auto;
+    white-space: pre;
+    max-height: 200px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Uniform Standardized Button Style */
+.choose-btn { 
+    background: linear-gradient(100deg, #2864eb, #673de9);
+    color: white; 
+    border: none; 
+    padding: 18px; 
+    border-radius: 14px; 
+    font-size: 18px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    margin-top: 12px; 
+    transition: 0.2s; 
+    width: 100%;
+    min-height: 52px;
+}
+.choose-btn:hover { opacity: 0.92; }
+
+.message { display: none; padding: 16px; border-radius: 12px; margin-top: 20px; font-size: 14.5px; line-height: 1.6; }
+.message.success { color: #56d9a9; background: #0e222e; border: 1px solid #14534b; }
+
+/* Informational SEO Section & Card Sections */
+.card-section, .info-section {
+    max-width: 1150px;
+    width: 100%;
+    margin: 24px auto;
+    padding: 24px;
+    background: #101b30;
+    border: 1px solid #263a5c;
+    border-radius: 20px;
+}
+.card-section h2, .info-section h2 { font-size: 22px; color: #fff; margin-bottom: 14px; }
+.info-section h3 { font-size: 17px; color: #fff; margin-top: 20px; margin-bottom: 8px; }
+.info-section p { color: #9aabc4; font-size: 14.5px; line-height: 1.65; margin-bottom: 12px; }
+.info-section ul { color: #9aabc4; font-size: 14.5px; line-height: 1.65; padding-left: 18px; margin-bottom: 12px; }
+.info-section li { margin-bottom: 6px; }
+
+.related-tools {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 16px;
+}
+.related-link {
+    display: block;
+    padding: 18px;
+    background: #0c162b;
+    border: 1px solid #263a5c;
+    border-radius: 12px;
+    color: #e6edf7;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.related-link:hover { border-color: #60a5fa; transform: translateY(-2px); }
+.related-link strong { font-size: 16px; color: #fff; }
+.related-link span { display: block; font-size: 13.5px; color: #9aabc4; margin-top: 4px; }
+
+.faq-item { margin-bottom: 16px; }
+.faq-item:last-child { margin-bottom: 0; }
+.faq-item h3 { font-size: 17px; margin-bottom: 6px; color: #ffffff; }
+.faq-item p { font-size: 14.5px; color: #9aabc4; line-height: 1.6; }
+
+/* Footer */
+footer {
+    border-top: 1px solid #1d2940;
+    text-align: center;
+    padding: 24px 16px;
+    color: #94a3b8;
+    font-size: 13px;
+    background: #080d1b;
+    margin-top: auto;
+}
+footer a { color: #94a3b8; text-decoration: none; margin: 0 10px; }
+footer a:hover { color: #60a5fa; }
+
+@media(min-width: 640px) {
+    .header-inner { padding: 20px 24px; }
+    .container, .card-section, .info-section { margin: 35px auto; padding: 32px; }
+    .brand { font-size: 26px; }
+    .tool-header h1 { font-size: 36px; }
+    .options-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .choose-btn { font-size: 20px; padding: 20px; }
+    .related-tools { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a class="brand" href="../../index.html">AllIn<span>One</span></a>
+        <nav class="nav">
+            <a href="../../index.html#category-boxes-section">Categories</a>
+        </nav>
+    </div>
+</header>
+
+<main style="max-width: 1150px; width: 100%; margin: 24px auto; padding: 0 24px;">
+    <div class="container" style="margin: 0 auto; width: 100%;">
+        <div class="privacy-badge">🔒 100% Browser-Based &bull; Instant Download</div>
+        
+        <div class="tool-header">
+            <h1>Jira Bulk Issue Import CSV</h1>
+            <p>Valid Summary, Issue Type, Priority, and Description CSV datasets for PMs and QA testers.</p>
+        </div>
+
+        <div class="drop-area">
+            <div class="file-icon">📋</div>
+            <h2>Configure Jira Issue CSV Dataset</h2>
+            <p>Select dataset size and priority profile below, then preview or download instantly</p>
+
+            <div style="max-width: 650px; margin: 25px auto 0 auto; text-align: left;">
+                <div class="options-grid">
+                    <div class="option-group">
+                        <label for="datasetSize">Dataset Size</label>
+                        <select id="datasetSize">
+                            <option value="10">10 Issues (Quick Test)</option>
+                            <option value="25" selected>25 Issues (Standard)</option>
+                            <option value="50">50 Issues (Large Sprint)</option>
+                            <option value="100">100 Issues (Backlog Stress Test)</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label for="priorityProfile">Priority Distribution</label>
+                        <select id="priorityProfile">
+                            <option value="Mixed">Mixed (Standard Agile)</option>
+                            <option value="High">High / Critical Focus</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label style="display: block; font-size: 14px; font-weight: bold; color: #fff; margin-bottom: 8px;">CSV Data Preview</label>
+                <div class="preview-box" id="csvPreview">Loading preview...</div>
+
+                <button class="choose-btn" id="downloadBtn" type="button">⬇️ Download Jira Issue CSV</button>
+            </div>
+        </div>
+
+        <div class="message success" id="successMessage">Jira Issue CSV dataset successfully generated and downloaded!</div>
+    </div>
+</main>
+
+<!-- Informational SEO Section (350+ words) -->
+<section class="info-section">
+    <h2>Why Use a Jira Bulk Issue Import CSV Generator?</h2>
+    <p>
+        Migrating projects, setting up new Scrum teams, or testing automated CI/CD integrations often requires populating Jira software instances with realistic backlog items. Creating dozens or hundreds of test tickets manually through the user interface is tedious and time-consuming. Utilizing a standardized CSV template specifically formatted for Jira’s External System Import tool allows project managers, product owners, and QA engineers to seed sprints, epics, and bug backlogs in seconds.
+    </p>
+    <p>
+        Our free online Jira Bulk Issue Import CSV generator creates clean, fully compliant comma-separated datasets tailored for Jira Cloud and Jira Data Center instances. Each generated record includes professional agile task descriptions, standard issue types (such as Bug, Task, Story, and Epic), and properly formatted priority levels. Best of all, because dataset generation executes <strong>100% client-side</strong> in your browser, your proprietary project nomenclature and backlog criteria never leave your device.
+    </p>
+
+    <h3>Key Benefits of Our Jira CSV Generator</h3>
+    <ul>
+        <li><strong>Jira-Ready Field Mapping:</strong> Automatically structures data around core external import headers: Summary, Issue Type, Priority, and Description.</li>
+        <li><strong>Configurable Dataset Sizes:</strong> Generate anywhere from 10 quick test items up to 100 backlog tickets for comprehensive performance and search stress testing.</li>
+        <li><strong>Customizable Priority Profiles:</strong> Tailor ticket urgency distribution between standard mixed agile workflows and high/critical focus distributions.</li>
+        <li><strong>Instant Client-Side Downloads:</strong> Instantaneous file compilation directly in your browser with zero server latency or waiting queues.</li>
+    </ul>
+
+    <h3>How to Import Generated CSV Files Into Jira</h3>
+    <p>
+        <strong>1. Configure &amp; Download:</strong> Select your desired dataset size and priority distribution above, then click the download button to save your <code>.csv</code> file.<br>
+        <strong>2. Open Jira Importer:</strong> Navigate to your Jira project settings or system administration menu and select <strong>External System Import &gt; CSV</strong>.<br>
+        <strong>3. Upload &amp; Map Fields:</strong> Upload your downloaded CSV file, map your project key, and verify field mappings for Summary, Issue Type, Priority, and Description to complete your bulk import.
+    </p>
+</section>
+
+<!-- Internal Cross-Linking for SEO -->
+<section class="card-section">
+  <h2>Related Sample Test Files</h2>
+  <div class="related-tools">
+    <a href="salesforce-lead-csv.html" class="related-link">
+      <strong>Salesforce Lead CSV &rarr;</strong>
+      <span>Valid CRM lead and contact sample datasets.</span>
+    </a>
+    <a href="servicenow-incident-csv.html" class="related-link">
+      <strong>ServiceNow Incident CSV &rarr;</strong>
+      <span>ITSM incident table mock records.</span>
+    </a>
+    <a href="sample-json.html" class="related-link">
+      <strong>Sample JSON Payloads &rarr;</strong>
+      <span>Structured mock JSON data files.</span>
+    </a>
+  </div>
+</section>
+
+<!-- SEO & FAQ Content -->
+<section class="card-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <h3>Are these CSV files compatible with Jira Cloud and Jira Data Center Bulk Importer?</h3>
+    <p>Yes! The generated CSV files contain standard Jira External System Import fields: Summary, Issue Type, Priority, and Description.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Do I need to install any software to generate these datasets?</h3>
+    <p>No installation required. All file generation runs 100% client-side inside your web browser.</p>
+  </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 AllInOne Utilities — Fast, secure document tools.</p>
+    <p style="margin-top:10px;">
+        <a href="../../index.html">Home</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+    </p>
+</footer>
+
+<script>
+const datasetSizeSelect = document.getElementById("datasetSize");
+const priorityProfileSelect = document.getElementById("priorityProfile");
+const csvPreview = document.getElementById("csvPreview");
+const downloadBtn = document.getElementById("downloadBtn");
+const successMessage = document.getElementById("successMessage");
+
+const issueTypes = ["Bug", "Task", "Story", "Epic", "Improvement"];
+const prioritiesMixed = ["Highest", "High", "Medium", "Low", "Lowest"];
+const prioritiesHigh = ["Highest", "Highest", "High", "High", "Medium"];
+
+const taskTemplates = [
+    { action: "Implement OAuth2 authentication flow for SSO login", module: "Authentication", desc: "Configure secure token exchange, state validation, and session callback endpoints for enterprise identity providers." },
+    { action: "Resolve memory leak in backend WebSocket connection handler", module: "Realtime Gateway", desc: "Inspect event listener cleanup routines, ping/pong heartbeats, and unmounted connection pool references." },
+    { action: "Update user profile settings UI to match Figma design specs", module: "User Settings", desc: "Refactor avatar upload dropzone component, form validation states, and typography scale across responsive breakpoints." },
+    { action: "Optimize PostgreSQL database index for faster search queries", module: "Database Core", desc: "Analyze slow query execution plans and add composite B-tree index on frequently filtered tenant columns." },
+    { action: "Write automated integration tests for payment gateway webhook", module: "Billing API", desc: "Mock stripe signature verification headers and verify order fulfillment status transitions on charge.succeeded events." },
+    { action: "Fix modal dialog closing bug on mobile Safari touch events", module: "Design System", desc: "Prevent background body scrolling propagation and handle touchstart listener cleanup during transition animations." },
+    { action: "Refactor legacy service layer into modular Spring Boot beans", module: "Backend Architecture", desc: "Extract business logic from monolithic controllers into dedicated service classes with constructor-based dependency injection." },
+    { action: "Add rate limiting middleware to prevent API brute-force attacks", module: "Security Core", desc: "Implement sliding window counter cache in Redis for sensitive authentication and password reset routes." },
+    { action: "Upgrade React dependency tree to latest stable release", module: "Frontend Core", desc: "Resolve peer dependency conflicts in package.json and audit deprecated lifecycle hooks across shared UI packages." },
+    { action: "Configure AWS S3 bucket CORS policy for avatar image uploads", module: "Cloud Storage", desc: "Allow authorized cross-origin PUT requests from staging and production domains with strict content-type headers." },
+    { action: "Resolve pagination offset bug on large transaction reports", module: "Reporting Engine", desc: "Fix SQL LIMIT/OFFSET calculation error when navigating past page 10 on filtered date ranges." },
+    { action: "Implement dark mode color variables in global CSS stylesheet", module: "UI Theme", desc: "Define semantic CSS custom properties for background, border, and text contrast adhering to WCAG AAA standards." },
+    { action: "Add error boundary component to prevent full-app crashes", module: "Frontend Resilience", desc: "Catch unhandled component rendering exceptions in widget trees and display graceful fallback UI with retry action." },
+    { action: "Optimize Docker multi-stage build image size for CI/CD pipeline", module: "DevOps Pipeline", desc: "Exclude unnecessary build dependencies, cache npm module layers, and use Alpine base image for production runner." },
+    { action: "Verify JWT token expiration handling in API interceptor", module: "Authentication", desc: "Implement automatic refresh token rotation queue on 401 unauthorized responses without dropping active form state." },
+    { action: "Add multi-language localization dictionary for Spanish and Japanese", module: "Internationalization", desc: "Extract hardcoded UI strings into translation resource bundles and format date/currency fields by locale." },
+    { action: "Implement audit logging interceptor for sensitive data modifications", module: "Compliance & Security", desc: "Capture user ID, timestamp, IP address, and payload diff for all administrative record updates." },
+    { action: "Resolve CSS flexbox wrapping overflow on small tablet viewports", module: "Responsive Layout", desc: "Adjust min-width constraints and gap properties on dashboard summary cards to prevent horizontal scrolling." },
+    { action: "Add bulk export button for customer transaction history CSV", module: "Data Export", desc: "Stream large dataset generation asynchronously in background worker thread to prevent HTTP gateway timeouts." },
+    { action: "Fix intermittent timeout during bulk email notification dispatch", module: "Notification Service", desc: "Implement exponential backoff retry logic and connection pooling for SMTP mail server relay." },
+    { action: "Update password complexity validation rules in registration form", module: "User Management", desc: "Require minimum 12 characters including uppercase, numbers, and special symbols with real-time strength meter." },
+    { action: "Resolve session timeout redirect loop on expired auth cookies", module: "Session Manager", desc: "Clear stale local storage tokens and redirect cleanly to login screen with return URL parameter." },
+    { action: "Implement drag-and-drop file reordering in document manager", module: "File Management", desc: "Integrate HTML5 drag events and update sort index persistence via REST API batch endpoint." },
+    { action: "Add automated health check endpoint for Kubernetes liveness probe", module: "Infrastructure", desc: "Monitor database connectivity and Redis cache responsiveness returning standard JSON status codes." },
+    { action: "Fix tooltip positioning offset bug near right viewport edge", module: "UI Components", desc: "Calculate bounding client rect dynamically and flip tooltip alignment when space is restricted." }
+];
+
+function generateCSVData() {
+    const count = parseInt(datasetSizeSelect.value, 10);
+    const profile = priorityProfileSelect.value;
+    
+    let csv = "Summary,Issue Type,Priority,Description\n";
+    
+    for (let i = 1; i <= count; i++) {
+        const template = taskTemplates[(i - 1) % taskTemplates.length];
+        const summary = template.action;
+        const issueType = issueTypes[(i - 1) % issueTypes.length];
+        
+        let priority;
+        if (profile === "High") {
+            priority = prioritiesHigh[(i - 1) % prioritiesHigh.length];
+        } else {
+            priority = prioritiesMixed[(i - 1) % prioritiesMixed.length];
+        }
+        
+        const description = `${template.desc} Module: ${template.module}.`;
+        
+        csv += `"${summary}","${issueType}","${priority}","${description}"\n`;
+    }
+    
+    return csv;
+}
+
+function updatePreview() {
+    const csv = generateCSVData();
+    const lines = csv.split("\n");
+    const previewLines = lines.slice(0, 6).join("\n") + (lines.length > 6 ? "\n... (truncated for preview)" : "");
+    csvPreview.textContent = previewLines;
+}
+
+datasetSizeSelect.addEventListener("change", updatePreview);
+priorityProfileSelect.addEventListener("change", updatePreview);
+
+downloadBtn.addEventListener("click", () => {
+    const csvContent = generateCSVData();
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `jira-issues-${datasetSizeSelect.value}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    
+    successMessage.style.display = "block";
+    setTimeout(() => { successMessage.style.display = "none"; }, 4000);
+});
+
+// Initialize preview immediately
+updatePreview();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#080d1b">
+
+<title>Sample MOV Videos — Download Test Videos | AllInOne Utilities</title>
+<meta name="description" content="Download free MOV sample videos in small and HD sizes for video player testing, video converters, upload validation, and QA testing. 100% free and secure browser-based tool.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://allinone-utilities.com/Tools/sample-files/sample-mov.html">
+
+<!-- Open Graph SEO Meta Tags -->
+<meta property="og:title" content="Sample MOV Videos — Download Test Videos | AllInOne Utilities">
+<meta property="og:description" content="Download free QuickTime MOV test videos instantly in your browser for video player testing, converters, and QA validation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://allinone-utilities.com/Tools/sample-files/sample-mov.html">
+
+<!-- FAQ Rich Snippet Schema for Google SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are these MOV sample videos hosted securely?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! All sample MOV videos are provided via secure external CDNs for immediate preview and testing without uploading anything from your device."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What resolutions and formats are available for download?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can download Small (640x360), Medium (480x270), and HD (1280x720) QuickTime MOV test videos encoded with H.264 and AAC."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+body {
+    background-color: #080d1b;
+    background-image:
+        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 4px),
+        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 3px),
+        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 4px);
+    background-size: 550px 550px, 350px 350px, 250px 250px;
+    background-position: 0 0, 40px 60px, 130px 270px;
+    color: #e6edf7;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* Header */
+.site-header { 
+    border-bottom: 1px solid #1d2940; 
+    background: #080d1b; 
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.header-inner { 
+    max-width: 1150px; 
+    margin: auto; 
+    padding: 20px 24px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+}
+.brand { 
+    font-size: 26px; 
+    font-weight: bold; 
+    color: #fff; 
+    text-decoration: none; 
+    letter-spacing: -0.5px;
+}
+.brand span { color: #66a2ff; }
+
+nav {
+    display: flex;
+    gap: 24px;
+}
+nav a { 
+    color: #cbd5e1; 
+    text-decoration: none; 
+    font-size: 15px; 
+    font-weight: 500;
+    transition: 0.2s; 
+}
+nav a:hover { color: #60a5fa; }
+
+/* Main Container */
+.container { 
+    max-width: 1150px; 
+    width: 100%; 
+    margin: 24px auto; 
+    padding: 24px; 
+    background: #101b30; 
+    border: 1px solid #263a5c; 
+    border-radius: 20px; 
+}
+.privacy-badge {
+    display: flex;
+    width: fit-content;
+    margin: 0 auto 16px auto;
+    align-items: center;
+    gap: 6px;
+    background: rgba(52, 211, 153, 0.12);
+    color: #34d399;
+    border: 1px solid rgba(52, 211, 153, 0.3);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Tool Header */
+.tool-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+.tool-header h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+    margin: 10px 0;
+}
+.tool-header p {
+    color: #9aabc4;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    color: #9aabc4;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+.breadcrumb a {
+    color: #9aabc4;
+    text-decoration: none;
+    transition: color 0.15s;
+}
+.breadcrumb a:hover {
+    color: #66a2ff;
+}
+
+/* Sample Grid */
+.samples-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+/* Sample Card */
+.sample-card {
+    background: #0c162b;
+    border: 1px solid #263a5c;
+    border-radius: 16px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s, border-color 0.2s;
+}
+.sample-card:hover {
+    border-color: #3978c9;
+    transform: translateY(-2px);
+}
+
+/* Video Preview */
+.sample-video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    background: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    object-fit: contain;
+    display: block;
+}
+
+.sample-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+
+.sample-meta {
+    font-size: 14px;
+    color: #9aabc4;
+    margin-bottom: 16px;
+    line-height: 1.6;
+}
+
+.size-small { color: #38bdf8; font-weight: 600; }
+.size-medium { color: #818cf8; font-weight: 600; }
+.size-large { color: #34d399; font-weight: 600; }
+
+/* Download Button */
+.download-btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    background: #2864eb;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, transform 0.15s;
+}
+.download-btn:hover {
+    background: #3977ff;
+}
+.download-btn:active {
+    transform: scale(0.98);
+}
+
+/* Card Sections for SEO and FAQs */
+.card-section, .info-section {
+    max-width: 1150px;
+    width: 100%;
+    margin: 24px auto;
+    padding: 24px;
+    background: #101b30;
+    border: 1px solid #263a5c;
+    border-radius: 20px;
+}
+.card-section h2, .info-section h2 { font-size: 22px; color: #fff; margin-bottom: 14px; }
+.info-section h3 { font-size: 17px; color: #fff; margin-top: 20px; margin-bottom: 8px; }
+.info-section p { color: #9aabc4; font-size: 14.5px; line-height: 1.65; margin-bottom: 12px; }
+.info-section ul { color: #9aabc4; font-size: 14.5px; line-height: 1.65; padding-left: 18px; margin-bottom: 12px; }
+.info-section li { margin-bottom: 6px; }
+
+.related-tools {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 16px;
+}
+.related-link {
+    display: block;
+    padding: 18px;
+    background: #0c162b;
+    border: 1px solid #263a5c;
+    border-radius: 12px;
+    color: #e6edf7;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.related-link:hover { border-color: #60a5fa; transform: translateY(-2px); }
+.related-link strong { font-size: 16px; color: #fff; }
+.related-link span { display: block; font-size: 13.5px; color: #9aabc4; margin-top: 4px; }
+
+.faq-item { margin-bottom: 16px; }
+.faq-item:last-child { margin-bottom: 0; }
+.faq-item h3 { font-size: 17px; margin-bottom: 6px; color: #ffffff; }
+.faq-item p { font-size: 14.5px; color: #9aabc4; line-height: 1.6; }
+
+/* Footer */
+footer {
+    border-top: 1px solid #1d2940;
+    text-align: center;
+    padding: 24px 16px;
+    color: #94a3b8;
+    font-size: 13px;
+    background: #080d1b;
+    margin-top: auto;
+}
+footer a { color: #94a3b8; text-decoration: none; margin: 0 10px; }
+footer a:hover { color: #60a5fa; }
+
+@media(min-width: 640px) {
+    .header-inner { padding: 20px 24px; }
+    .container, .card-section, .info-section { margin: 35px auto; padding: 32px; }
+    .brand { font-size: 26px; }
+    .tool-header h1 { font-size: 36px; }
+    .samples-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .sample-card { padding: 22px; }
+    .related-tools { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a class="brand" href="../../index.html">AllIn<span>One</span></a>
+        <nav class="nav">
+            <a href="../../index.html#category-boxes-section">Categories</a>
+        </nav>
+    </div>
+</header>
+
+<main style="max-width: 1150px; width: 100%; margin: 24px auto; padding: 0 24px;">
+    <div class="container" style="margin: 0 auto; width: 100%;">
+        
+        <div class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span>/</span>
+            <a href="../../index.html#sample-files">Sample Files</a>
+            <span>/</span>
+            <span>Sample MOV Videos</span>
+        </div>
+
+        <div class="privacy-badge">🔒 100% Browser-Based &bull; Secure CDN Delivery</div>
+        
+        <div class="tool-header">
+            <h1>Sample MOV Videos</h1>
+            <p>Download free QuickTime MOV test videos for video player testing, video converters, upload validation, QA testing, and media experiments.</p>
+        </div>
+
+        <div class="samples-grid">
+            <!-- Small MOV -->
+            <div class="sample-card">
+                <div>
+                    <video
+                        class="sample-video"
+                        controls
+                        preload="metadata"
+                        playsinline
+                    >
+                        <source
+                            src="https://databrighten.com/files/samples/mov/sample-10s-640x360.mov"
+                            type="video/quicktime"
+                        >
+                        Your browser does not support video playback.
+                    </video>
+
+                    <div class="sample-title">Small Test MOV</div>
+                    <div class="sample-meta">
+                        Resolution: 640 &times; 360 px<br>
+                        Duration: 10 seconds<br>
+                        Format: QuickTime MOV (H.264)<br>
+                        <span class="size-small">Approx. Size: 554 KB</span>
+                    </div>
+                </div>
+
+                <a
+                    class="download-btn"
+                    href="https://databrighten.com/files/samples/mov/sample-10s-640x360.mov"
+                    download="sample-10s-640x360.mov"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    &#11015; Download Small MOV
+                </a>
+            </div>
+
+            <!-- Medium MOV -->
+            <div class="sample-card">
+                <div>
+                    <video
+                        class="sample-video"
+                        controls
+                        preload="metadata"
+                        playsinline
+                    >
+                        <source
+                            src="https://pnb-freetoolsforweb.s3.us-east-2.amazonaws.com/samples/videos/mov/sample-video-480x270-1mb.mov"
+                            type="video/quicktime"
+                        >
+                        Your browser does not support video playback.
+                    </video>
+
+                    <div class="sample-title">Medium Test MOV</div>
+                    <div class="sample-meta">
+                        Resolution: 480 &times; 270 px<br>
+                        Duration: 10 seconds<br>
+                        Format: QuickTime MOV (H.264)<br>
+                        <span class="size-medium">Approx. Size: 957 KB</span>
+                    </div>
+                </div>
+
+                <a
+                    class="download-btn"
+                    href="https://pnb-freetoolsforweb.s3.us-east-2.amazonaws.com/samples/videos/mov/sample-video-480x270-1mb.mov"
+                    download="sample-video-480x270-1mb.mov"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    &#11015; Download Medium MOV
+                </a>
+            </div>
+
+            <!-- HD MOV -->
+            <div class="sample-card">
+                <div>
+                    <video
+                        class="sample-video"
+                        controls
+                        preload="metadata"
+                        playsinline
+                    >
+                        <source
+                            src="https://pnb-freetoolsforweb.s3.us-east-2.amazonaws.com/samples/videos/mov/sample-video-1280x720-2mb.mov"
+                            type="video/quicktime"
+                        >
+                        Your browser does not support video playback.
+                    </video>
+
+                    <div class="sample-title">HD Test MOV</div>
+                    <div class="sample-meta">
+                        Resolution: 1280 &times; 720 px (HD)<br>
+                        Duration: 10 seconds<br>
+                        Format: QuickTime MOV (H.264)<br>
+                        <span class="size-large">Approx. Size: 1.9 MB</span>
+                    </div>
+                </div>
+
+                <a
+                    class="download-btn"
+                    href="https://pnb-freetoolsforweb.s3.us-east-2.amazonaws.com/samples/videos/mov/sample-video-1280x720-2mb.mov"
+                    download="sample-video-1280x720-2mb.mov"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    &#11015; Download HD MOV
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Informational SEO Section (350+ words) -->
+<section class="info-section">
+    <h2>Why Use Sample MOV Video Files for Software Development and Testing?</h2>
+    <p>
+        QuickTime MOV is a popular professional multimedia container format developed by Apple, widely utilized in digital video editing software, macOS workflows, and web applications supporting high-compatibility video codecs like H.264 and AAC. Whether you are building video playback components, testing video format converters, verifying file upload dropzones, or validating media streaming pipelines, having immediate access to clean, lightweight, and predictable test video clips is essential.
+    </p>
+    <p>
+        Searching across external media sites for short, correctly encoded MOV files can be time-consuming and frustrating. Our free sample MOV repository provides developers, QA testers, and video engineers with instant access to properly formatted test videos spanning multiple standard resolution tiers (Small 360p, Medium 270p, and HD 720p). Best of all, because all video assets are hosted on secure, high-speed CDNs and support direct browser playback, your testing operations remain seamless with zero device overhead.
+    </p>
+
+    <h3>Key Benefits of Our Sample MOV Video Test Files</h3>
+    <ul>
+        <li><strong>Standardized Multimedia Encoding:</strong> Each test video is encoded using widely supported H.264 video and AAC audio codecs within a QuickTime MOV container structure.</li>
+        <li><strong>Flexible Resolution Tiers:</strong> Evaluate responsive video players, scaling behavior, and transcoding routines using Small (640&times;360), Medium (480&times;270), and HD (1280&times;720) dimensions.</li>
+        <li><strong>Optimized File Sizes:</strong> Keep automated test suites and network experiments lightweight with file sizes ranging from ~554 KB up to ~1.9 MB for rapid transfer.</li>
+        <li><strong>Secure CDN Delivery:</strong> Reliable, high-speed external content delivery ensuring instantaneous playback previews and direct file downloads.</li>
+    </ul>
+
+    <h3>How to Use These Sample MOV Videos in Your Workflow</h3>
+    <p>
+        <strong>1. Choose Your Resolution:</strong> Select the small 360p clip, medium 270p file, or high-definition 720p video card based on your testing requirements.<br>
+        <strong>2. Preview Instantly:</strong> Play back the video clip directly in your browser using the embedded HTML5 video controls.<br>
+        <strong>3. Download &amp; Test:</strong> Click the download button to save the <code>.mov</code> file locally for testing video upload forms, transcoding servers, or custom media players.
+    </p>
+</section>
+
+<!-- Internal Cross-Linking for SEO -->
+<section class="card-section">
+  <h2>Related Sample Files &amp; Tools</h2>
+  <div class="related-tools">
+    <a href="sample-mp4.html" class="related-link">
+      <strong>Sample MP4 Videos &rarr;</strong>
+      <span>Download standard MP4 test clips.</span>
+    </a>
+    <a href="sample-webm.html" class="related-link">
+      <strong>Sample WebM Videos &rarr;</strong>
+      <span>Download open WebM test videos.</span>
+    </a>
+    <a href="sample-jpg.html" class="related-link">
+      <strong>Sample JPG Images &rarr;</strong>
+      <span>Download test JPEG photos.</span>
+    </a>
+  </div>
+</section>
+
+<!-- SEO & FAQ Content -->
+<section class="card-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <h3>Are these MOV sample videos hosted securely?</h3>
+    <p>Yes! All sample MOV videos are provided via secure external CDNs for immediate preview and testing without uploading anything from your device.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What resolutions and formats are available for download?</h3>
+    <p>You can download Small (640x360), Medium (480x270), and HD (1280x720) QuickTime MOV test videos encoded with H.264 and AAC.</p>
+  </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 AllInOne Utilities — Fast, secure document tools.</p>
+    <p style="margin-top:10px;">
+        <a href="../../index.html">Home</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+    </p>
+</footer>
+
+</body>
+</html>

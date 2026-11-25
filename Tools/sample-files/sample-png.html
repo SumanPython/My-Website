@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#080d1b">
+
+<title>Sample PNG Images — Download Test Photos | AllInOne</title>
+<meta name="description" content="Download free sample PNG images in small, Full HD, and 4K resolutions. Use PNG test images for image converters, compressors, uploads, and development testing. 100% free and secure browser-based tool.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://allinone-utilities.com/Tools/sample-files/sample-png.html">
+
+<!-- Open Graph SEO Meta Tags -->
+<meta property="og:title" content="Sample PNG Images — Download Test Photos | AllInOne">
+<meta property="og:description" content="Download free PNG test images in multiple resolutions instantly in your browser for testing and development.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://allinone-utilities.com/Tools/sample-files/sample-png.html">
+
+<!-- FAQ Rich Snippet Schema for Google SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are these test PNG images generated locally?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! All sample PNG images are rendered client-side using browser canvas elements and downloaded directly without any server uploads."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What resolutions are available for download?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can download Small (640x480), Medium Full HD (1920x1080), and 4K UHD (3840x2160) test image resolutions in PNG format."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+body {
+    background-color: #080d1b;
+    background-image:
+        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 4px),
+        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 3px),
+        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 4px);
+    background-size: 550px 550px, 350px 350px, 250px 250px;
+    background-position: 0 0, 40px 60px, 130px 270px;
+    color: #e6edf7;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* Header matching exact layout */
+.site-header { 
+    border-bottom: 1px solid #1d2940; 
+    background: #080d1b; 
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.header-inner { 
+    max-width: 1150px; 
+    margin: auto; 
+    padding: 20px 24px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+}
+.brand { 
+    font-size: 26px; 
+    font-weight: bold; 
+    color: #fff; 
+    text-decoration: none; 
+    letter-spacing: -0.5px;
+}
+.brand span { color: #66a2ff; }
+
+nav {
+    display: flex;
+    gap: 24px;
+}
+nav a { 
+    color: #cbd5e1; 
+    text-decoration: none; 
+    font-size: 15px; 
+    font-weight: 500;
+    transition: 0.2s; 
+}
+nav a:hover { color: #60a5fa; }
+
+/* Main Container */
+.container { 
+    max-width: 1150px; 
+    width: 100%; 
+    margin: 24px auto; 
+    padding: 24px; 
+    background: #101b30; 
+    border: 1px solid #263a5c; 
+    border-radius: 20px; 
+}
+.privacy-badge {
+    display: flex;
+    width: fit-content;
+    margin: 0 auto 16px auto;
+    align-items: center;
+    gap: 6px;
+    background: rgba(52, 211, 153, 0.12);
+    color: #34d399;
+    border: 1px solid rgba(52, 211, 153, 0.3);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Tool Header */
+.tool-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+.tool-header h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+    margin: 10px 0;
+}
+.tool-header p {
+    color: #9aabc4;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    color: #9aabc4;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+.breadcrumb a {
+    color: #9aabc4;
+    text-decoration: none;
+    transition: color 0.15s;
+}
+.breadcrumb a:hover {
+    color: #66a2ff;
+}
+
+/* Sample Grid */
+.samples-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+/* Sample Card */
+.sample-card {
+    background: #0c162b;
+    border: 1px solid #263a5c;
+    border-radius: 16px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s, border-color 0.2s;
+}
+.sample-card:hover {
+    border-color: #3978c9;
+    transform: translateY(-2px);
+}
+
+/* Image Preview */
+.sample-preview {
+    display: block;
+    width: 100%;
+    height: 160px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 14px;
+    background: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sample-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+
+.sample-meta {
+    font-size: 14px;
+    color: #9aabc4;
+    margin-bottom: 16px;
+    line-height: 1.6;
+}
+
+/* Download Button */
+.download-btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    background: #2864eb;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, transform 0.15s;
+}
+.download-btn:hover {
+    background: #3977ff;
+}
+.download-btn:active {
+    transform: scale(0.98);
+}
+
+/* Card Sections for SEO and FAQs */
+.card-section, .info-section {
+    max-width: 1150px;
+    width: 100%;
+    margin: 24px auto;
+    padding: 24px;
+    background: #101b30;
+    border: 1px solid #263a5c;
+    border-radius: 20px;
+}
+.card-section h2, .info-section h2 { font-size: 22px; color: #fff; margin-bottom: 14px; }
+.info-section h3 { font-size: 17px; color: #fff; margin-top: 20px; margin-bottom: 8px; }
+.info-section p { color: #9aabc4; font-size: 14.5px; line-height: 1.65; margin-bottom: 12px; }
+.info-section ul { color: #9aabc4; font-size: 14.5px; line-height: 1.65; padding-left: 18px; margin-bottom: 12px; }
+.info-section li { margin-bottom: 6px; }
+
+.related-tools {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 16px;
+}
+.related-link {
+    display: block;
+    padding: 18px;
+    background: #0c162b;
+    border: 1px solid #263a5c;
+    border-radius: 12px;
+    color: #e6edf7;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.related-link:hover { border-color: #60a5fa; transform: translateY(-2px); }
+.related-link strong { font-size: 16px; color: #fff; }
+.related-link span { display: block; font-size: 13.5px; color: #9aabc4; margin-top: 4px; }
+
+.faq-item { margin-bottom: 16px; }
+.faq-item:last-child { margin-bottom: 0; }
+.faq-item h3 { font-size: 17px; margin-bottom: 6px; color: #ffffff; }
+.faq-item p { font-size: 14.5px; color: #9aabc4; line-height: 1.6; }
+
+/* Footer */
+footer {
+    border-top: 1px solid #1d2940;
+    text-align: center;
+    padding: 24px 16px;
+    color: #94a3b8;
+    font-size: 13px;
+    background: #080d1b;
+    margin-top: auto;
+}
+footer a { color: #94a3b8; text-decoration: none; margin: 0 10px; }
+footer a:hover { color: #60a5fa; }
+
+@media(min-width: 640px) {
+    .header-inner { padding: 20px 24px; }
+    .container, .card-section, .info-section { margin: 35px auto; padding: 32px; }
+    .brand { font-size: 26px; }
+    .tool-header h1 { font-size: 36px; }
+    .samples-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .sample-card { padding: 22px; }
+    .related-tools { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a class="brand" href="../../index.html">AllIn<span>One</span></a>
+        <nav class="nav">
+            <a href="../../index.html#category-boxes-section">Categories</a>
+        </nav>
+    </div>
+</header>
+
+<main style="max-width: 1150px; width: 100%; margin: 24px auto; padding: 0 24px;">
+    <div class="container" style="margin: 0 auto; width: 100%;">
+        
+        <div class="breadcrumb">
+            <a href="../../index.html">Home</a>
+            <span>/</span>
+            <a href="../../index.html#sample-files">Sample Files</a>
+            <span>/</span>
+            <span>Sample PNG Images</span>
+        </div>
+
+        <div class="privacy-badge">🔒 100% Browser-Based &bull; Zero Server Uploads</div>
+        
+        <div class="tool-header">
+            <h1>Sample PNG Images</h1>
+            <p>Download free PNG test images in multiple resolutions for testing image converters, upload forms, compressors, responsive layouts, and development projects.</p>
+        </div>
+
+        <div class="samples-grid">
+            <!-- SMALL PNG -->
+            <div class="sample-card">
+                <div>
+                    <canvas id="previewSmall" class="sample-preview" width="300" height="200"></canvas>
+                    <div class="sample-title">Small Test PNG</div>
+                    <div class="sample-meta">
+                        Resolution: 640 &times; 480 px<br>
+                        Format: image/png<br>
+                        <span style="color:#38bdf8; font-weight:600;">Approx. Size: ~40 KB</span>
+                    </div>
+                </div>
+                <button type="button" class="download-btn" onclick="downloadPng('small')">&#11015; Download Small PNG</button>
+            </div>
+
+            <!-- MEDIUM PNG -->
+            <div class="sample-card">
+                <div>
+                    <canvas id="previewMed" class="sample-preview" width="300" height="200"></canvas>
+                    <div class="sample-title">Medium Test PNG</div>
+                    <div class="sample-meta">
+                        Resolution: 1920 &times; 1080 px (FHD)<br>
+                        Format: image/png<br>
+                        <span style="color:#818cf8; font-weight:600;">Approx. Size: ~250 KB</span>
+                    </div>
+                </div>
+                <button type="button" class="download-btn" onclick="downloadPng('medium')">&#11015; Download Medium PNG</button>
+            </div>
+
+            <!-- 4K PNG -->
+            <div class="sample-card">
+                <div>
+                    <canvas id="preview4k" class="sample-preview" width="300" height="200"></canvas>
+                    <div class="sample-title">4K UHD Test PNG</div>
+                    <div class="sample-meta">
+                        Resolution: 3840 &times; 2160 px (4K)<br>
+                        Format: image/png<br>
+                        <span style="color:#34d399; font-weight:600;">Approx. Size: ~800 KB</span>
+                    </div>
+                </div>
+                <button type="button" class="download-btn" onclick="downloadPng('4k')">&#11015; Download 4K PNG</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Informational SEO Section (350+ words) -->
+<section class="info-section">
+    <h2>Why Use Sample PNG Images for Software Development and Testing?</h2>
+    <p>
+        Portable Network Graphics (PNG) files are a foundational raster graphics format across web design and software engineering, prized for supporting lossless data compression and crisp pixel definition. Whether you are building file upload components, testing image format converters, validating compression pipelines, or designing responsive web application layouts, having reliable and predictable test images is indispensable.
+    </p>
+    <p>
+        Searching across public repositories or stock photo sites for clean sample graphics in specific dimensions can be cumbersome. Our free sample PNG repository gives developers, QA testers, and UI designers instant access to properly structured test graphics across multiple resolution tiers (Small VGA, Full HD, and 4K Ultra HD). Best of all, because all sample graphics are rendered dynamically right inside your browser memory using HTML5 canvas technology, your testing operations remain entirely private with zero server uploads.
+    </p>
+
+    <h3>Key Benefits of Our Sample PNG Test Files</h3>
+    <ul>
+        <li><strong>Lossless Compression Quality:</strong> Every downloaded file is structured as a pristine PNG graphic, making them ideal for testing image optimization, scaling artifacts, and pixel-level conversion tools.</li>
+        <li><strong>Multi-Resolution Standards:</strong> Evaluate responsive layouts, image loading behavior, and compression routines using Small (640&times;480), Full HD (1920&times;1080), and Ultra HD 4K (3840&times;2160) dimensions.</li>
+        <li><strong>Optimized File Sizes:</strong> Keep automated test suites fast and lightweight with file sizes ranging from ~40 KB up to ~800 KB for minimal network overhead.</li>
+        <li><strong>100% Client-Side Rendering:</strong> Instant graphic generation directly within your browser environment with zero external server dependencies or waiting queues.</li>
+    </ul>
+
+    <h3>How to Use These Sample PNG Files in Your Testing Workflow</h3>
+    <p>
+        <strong>1. Choose Your Resolution:</strong> Select the small VGA thumbnail, Full HD medium photo, or high-resolution 4K test card depending on your testing requirements.<br>
+        <strong>2. Download Instantly:</strong> Click the download button to save the sample <code>.png</code> file directly to your local computer or mobile device.<br>
+        <strong>3. Test &amp; Debug:</strong> Drag your downloaded sample into your web application upload dropzone, image conversion utility, or automated test suite.
+    </p>
+</section>
+
+<!-- Internal Cross-Linking for SEO -->
+<section class="card-section">
+  <h2>Related Sample Files &amp; Tools</h2>
+  <div class="related-tools">
+    <a href="sample-jpg.html" class="related-link">
+      <strong>Sample JPG Images &rarr;</strong>
+      <span>Download test JPEG photos.</span>
+    </a>
+    <a href="sample-heic.html" class="related-link">
+      <strong>Sample HEIC Images &rarr;</strong>
+      <span>Download iPhone HEIC test photos.</span>
+    </a>
+    <a href="../pdf-tools/compress.html" class="related-link">
+      <strong>Compress PDF &rarr;</strong>
+      <span>Reduce file size securely.</span>
+    </a>
+  </div>
+</section>
+
+<!-- SEO & FAQ Content -->
+<section class="card-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <h3>Are these test PNG images generated locally?</h3>
+    <p>Yes! All sample PNG images are rendered client-side using browser canvas elements and downloaded directly without any server uploads.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What resolutions are available for download?</h3>
+    <p>You can download Small (640x480), Medium Full HD (1920x1080), and 4K UHD (3840x2160) test image resolutions in PNG format.</p>
+  </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 AllInOne Utilities &mdash; Fast, secure document tools.</p>
+    <p style="margin-top:10px;">
+        <a href="../../index.html">Home</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+    </p>
+</footer>
+
+<script>
+function drawThumbnail(canvasId, width, height, label, colorStops) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    const grad = ctx.createLinearGradient(0, 0, width, height);
+    grad.addColorStop(0, colorStops[0]);
+    grad.addColorStop(0.5, colorStops[1]);
+    grad.addColorStop(1, colorStops[2]);
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, width, height);
+
+    ctx.strokeStyle = "rgba(255,255,255,0.15)";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(0, height / 2);
+    ctx.lineTo(width, height / 2);
+    ctx.moveTo(width / 2, 0);
+    ctx.lineTo(width / 2, height);
+    ctx.stroke();
+
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "bold 20px sans-serif";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.shadowColor = "rgba(0,0,0,0.6)";
+    ctx.shadowBlur = 8;
+    ctx.fillText(label, width / 2, height / 2);
+    ctx.shadowBlur = 0;
+}
+
+function initThumbnails() {
+    drawThumbnail("previewSmall", 300, 200, "640 x 480 PNG", ["#0ea5e9", "#2563eb", "#1e1b4b"]);
+    drawThumbnail("previewMed", 300, 200, "1920 x 1080 FHD", ["#6366f1", "#8b5cf6", "#311042"]);
+    drawThumbnail("preview4k", 300, 200, "3840 x 2160 4K", ["#10b981", "#059669", "#064e3b"]);
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initThumbnails);
+} else {
+    initThumbnails();
+}
+
+function downloadPng(type) {
+    let w = 640;
+    let h = 480;
+    let name = "sample-640x480.png";
+    let colors = ["#0ea5e9", "#2563eb", "#1e1b4b"];
+
+    if (type === "medium") {
+        w = 1920;
+        h = 1080;
+        name = "sample-1920x1080.png";
+        colors = ["#6366f1", "#8b5cf6", "#311042"];
+    } else if (type === "4k") {
+        w = 3840;
+        h = 2160;
+        name = "sample-3840x2160-4k.png";
+        colors = ["#10b981", "#059669", "#064e3b"];
+    }
+
+    const tempCanvas = document.createElement("canvas");
+    tempCanvas.width = w;
+    tempCanvas.height = h;
+    const ctx = tempCanvas.getContext("2d");
+
+    const grad = ctx.createLinearGradient(0, 0, w, h);
+    grad.addColorStop(0, colors[0]);
+    grad.addColorStop(0.5, colors[1]);
+    grad.addColorStop(1, colors[2]);
+
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, w, h);
+
+    ctx.fillStyle = "#ffffff";
+    ctx.font = `bold ${Math.max(26, w / 22)}px sans-serif`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(`AllInOne Utilities Test Image (${w}x${h})`, w / 2, h / 2);
+
+    const dataUrl = tempCanvas.toDataURL("image/png");
+    const link = document.createElement("a");
+    link.href = dataUrl;
+    link.download = name;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+</script>
+
+</body>
+</html>

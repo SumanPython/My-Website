@@ -1,0 +1,1518 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#080d1b">
+
+    <title>Sample NDJSON & JSONL Files — Free Test Data | AllInOne</title>
+
+    <meta name="description" content="Download free sample NDJSON and JSONL files for API testing, data pipelines, log processing, streaming applications, AI workflows, and software development. Generate up to 5,000 records instantly.">
+
+    <meta name="keywords" content="sample NDJSON files, NDJSON download, JSONL sample files, JSON lines download, test data generator, API testing data, streaming JSON, sample data files">
+
+    <link rel="canonical" href="https://allinone-utilities.com/Tools/sample-files/sample-ndjson.html">
+
+    <meta property="og:title" content="Sample NDJSON / JSONL Files | AllInOne">
+    <meta property="og:description" content="Download free NDJSON and JSONL test datasets for API testing, data pipelines, streaming applications, and development.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://allinone-utilities.com/Tools/sample-files/sample-ndjson.html">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Sample NDJSON / JSONL Files | AllInOne">
+    <meta name="twitter:description" content="Free downloadable NDJSON and JSONL test data for developers.">
+
+    <!-- WebPage SEO Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Sample NDJSON / JSONL Files",
+        "url": "https://allinone-utilities.com/Tools/sample-files/sample-ndjson.html",
+        "description": "Download free sample NDJSON and JSONL datasets for API testing, data pipelines, streaming data, log processing and software development.",
+        "publisher": {
+            "@type": "Organization",
+            "name": "AllInOne Utilities",
+            "url": "https://allinone-utilities.com/"
+        }
+    }
+    </script>
+
+    <!-- FAQ SEO Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is an NDJSON file?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "NDJSON stands for Newline Delimited JSON. Each line contains a separate valid JSON object, making it useful for streaming, processing, and large datasets."
+                }
+            },
+            {
+                "@type": "Question",
+                name": "Is NDJSON the same as JSONL?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "NDJSON and JSONL generally refer to the same format. Both store individual JSON records on separate lines without wrapping the records inside a JSON array."
+                }
+            },
+            {
+                "@type": "Question",
+                name": "Are these NDJSON files free to download?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. All sample NDJSON and JSONL datasets are free to generate and download for testing and development."
+                }
+            },
+            {
+                "@type": "Question",
+                name": "Are NDJSON files generated in my browser?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. The sample data is generated locally using JavaScript in your browser. No files or personal data are uploaded to a server."
+                }
+            },
+            {
+                "@type": "Question",
+                name": "How many records can I download?",
+                acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You can generate sample datasets containing 100, 250, 500, 1,000, or 5,000 JSON records."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg-primary: #080d1b;
+            --bg-container: #101b30;
+            --bg-card: #0c162b;
+            --border: #263a5c;
+            --border-hover: #3978c9;
+            --text-main: #e6edf7;
+            --text-muted: #9aabc4;
+            --accent: #818cf8;
+            --accent-bg: rgba(129, 140, 248, 0.12);
+            --accent-border: rgba(129, 140, 248, 0.58);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+
+            background-image:
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 4px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 3px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 4px);
+
+            background-size:
+                550px 550px,
+                350px 350px,
+                250px 250px;
+
+            background-position:
+                0 0,
+                40px 60px,
+                130px 270px;
+
+            color: var(--text-main);
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Background */
+
+        .background {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #ffffff;
+            border-radius: 50%;
+            opacity: 0.45;
+            box-shadow: 0 0 5px rgba(255,255,255,0.6);
+            animation: twinkle 3s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Header - matches Sample HEIC */
+
+        .site-header {
+            border-bottom: 1px solid #1d2940;
+            background: #080d1b;
+            position: relative;
+            z-index: 100;
+        }
+
+        .header-inner {
+            max-width: 1300px;
+            width: 100%;
+            margin: auto;
+            padding: 24px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            white-space: nowrap;
+        }
+
+        .brand span {
+            color: #66a2ff;
+        }
+
+        .nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav a:hover {
+            color: #60a5fa;
+        }
+
+        /* Main Layout */
+
+        main {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 1300px;
+            margin: 38px auto;
+            padding: 0 35px;
+            flex: 1;
+        }
+
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 35px;
+            background: #101b30;
+            border: 1px solid #263a5c;
+            border-radius: 24px;
+        }
+
+        /* Breadcrumb */
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13.5px;
+            color: #9aabc4;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .breadcrumb a {
+            color: #9aabc4;
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+
+        .breadcrumb a:hover {
+            color: #66a2ff;
+        }
+
+        /* Page Heading */
+
+        .privacy-badge {
+            display: flex;
+            width: fit-content;
+            margin: 0 auto 20px;
+            align-items: center;
+            gap: 6px;
+            background: rgba(52, 211, 153, 0.12);
+            color: #34d399;
+            border: 1px solid rgba(52, 211, 153, 0.3);
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .tool-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .tool-header h1 {
+            font-size: clamp(28px, 4vw, 38px);
+            font-weight: bold;
+            color: #ffffff;
+            margin: 15px 0;
+            line-height: 1.25;
+        }
+
+        .tool-header p {
+            color: #9aabc4;
+            font-size: 18px;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Dataset Grid */
+
+        .samples-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .sample-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-width: 0;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .sample-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-3px);
+        }
+
+        .sample-card-content {
+            flex: 1;
+        }
+
+        .sample-icon {
+            width: 58px;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0b1529;
+            border: 1px solid rgba(129, 140, 248, 0.25);
+            border-radius: 15px;
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+
+        .sample-title {
+            font-size: 19px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .sample-description {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 14px;
+        }
+
+        .sample-meta {
+            font-size: 14px;
+            color: #9aabc4;
+            margin-bottom: 20px;
+            line-height: 1.65;
+        }
+
+        /* Download Button */
+
+        .download-btn {
+            width: 100%;
+            padding: 13px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            background: #1c2348;
+            color: #818cf8;
+            border: 1px solid #555fb1;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: background 0.15s, transform 0.15s;
+        }
+
+        .download-btn:hover {
+            background: #818cf8;
+            color: #080d1b;
+        }
+
+        .download-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Preview Section */
+
+        .preview-section {
+            background: #0c162b;
+            border: 1px solid #263a5c;
+            border-radius: 18px;
+            padding: 24px;
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 21px;
+            font-weight: 700;
+            margin: 0 0 12px;
+            color: #ffffff;
+        }
+
+        .section-description {
+            color: #9aabc4;
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0 0 18px;
+        }
+
+        .preview-controls {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .preview-controls select {
+            flex: 1;
+            min-width: 220px;
+            padding: 12px 14px;
+            border-radius: 11px;
+            border: 1px solid #334967;
+            background: #19273e;
+            color: #e2e8f0;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .preview-controls button {
+            padding: 12px 18px;
+            border-radius: 11px;
+            border: 1px solid var(--accent-border);
+            background: var(--accent-bg);
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .preview-controls button:hover {
+            background: var(--accent);
+            color: #060a14;
+        }
+
+        .preview-box {
+            width: 100%;
+            min-height: 250px;
+            max-height: 420px;
+            overflow: auto;
+            border: 1px solid #24344e;
+            border-radius: 12px;
+            background: #080d1b;
+            padding: 16px;
+        }
+
+        .preview-box pre {
+            margin: 0;
+            color: #a5b4fc;
+            font-family: Consolas, Monaco, "Courier New", monospace;
+            font-size: 13px;
+            line-height: 1.65;
+            white-space: pre;
+        }
+
+        .preview-note {
+            color: #94a3b8;
+            font-size: 12px;
+            margin-top: 12px;
+        }
+
+        /* Information Sections */
+
+        .info-section {
+            background: #0c162b;
+            border: 1px solid #263a5c;
+            border-radius: 18px;
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        .info-section h2 {
+            color: #f1f5f9;
+            font-size: 24px;
+            margin: 0 0 18px;
+        }
+
+        .info-section h3 {
+            color: #e2e8f0;
+            font-size: 17px;
+            margin: 24px 0 10px;
+        }
+
+        .info-section p,
+        .info-section li {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .info-section ul {
+            padding-left: 22px;
+        }
+
+        .info-section code {
+            color: #a5b4fc;
+            background: rgba(129, 140, 248, 0.1);
+            border: 1px solid rgba(129, 140, 248, 0.15);
+            border-radius: 5px;
+            padding: 2px 6px;
+        }
+
+        .code-example {
+            overflow-x: auto;
+            background: #080d1b;
+            border: 1px solid #24344e;
+            border-radius: 12px;
+            padding: 16px;
+            margin: 15px 0;
+        }
+
+        .code-example pre {
+            margin: 0;
+            color: #a5b4fc;
+            font-family: Consolas, Monaco, "Courier New", monospace;
+            font-size: 13px;
+            line-height: 1.7;
+            white-space: pre;
+        }
+
+        /* Related Tools */
+
+        .related-tools {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .related-link {
+            display: block;
+            padding: 20px;
+            background: #101b30;
+            border: 1px solid #263a5c;
+            border-radius: 14px;
+            color: #e6edf7;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .related-link:hover {
+            border-color: #60a5fa;
+            transform: translateY(-2px);
+        }
+
+        .related-link strong {
+            font-size: 17px;
+            color: #ffffff;
+        }
+
+        .related-link span {
+            display: block;
+            font-size: 14px;
+            color: #9aabc4;
+            margin-top: 6px;
+        }
+
+        /* FAQ */
+
+        .faq-item {
+            margin-bottom: 20px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #263a5c;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .faq-item h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .faq-item p {
+            font-size: 15px;
+            color: #9aabc4;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+
+        footer {
+            border-top: 1px solid #1d2940;
+            text-align: center;
+            padding: 28px 20px;
+            color: #94a3b8;
+            font-size: 13px;
+            background: #080d1b;
+            margin-top: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        footer a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            color: #60a5fa;
+        }
+
+        /* Tablet */
+
+        @media (max-width: 900px) {
+            .samples-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            main {
+                margin: 25px auto;
+            }
+        }
+
+        /* Mobile */
+
+        @media (max-width: 600px) {
+            .header-inner {
+                padding: 18px 20px;
+            }
+
+            .brand {
+                font-size: 28px;
+            }
+
+            .nav {
+                gap: 12px;
+            }
+
+            .nav a {
+                font-size: 14px;
+            }
+
+            main {
+                margin: 18px auto;
+                padding: 0 14px;
+            }
+
+            .container {
+                padding: 20px;
+                border-radius: 18px;
+            }
+
+            .breadcrumb {
+                font-size: 12px;
+                gap: 6px;
+                margin-bottom: 20px;
+            }
+
+            .tool-header h1 {
+                font-size: 28px;
+            }
+
+            .tool-header p {
+                font-size: 16px;
+            }
+
+            .privacy-badge {
+                font-size: 12px;
+                padding: 6px 11px;
+            }
+
+            .samples-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .sample-card {
+                padding: 20px;
+            }
+
+            .preview-section,
+            .info-section {
+                padding: 20px;
+            }
+
+            .preview-controls {
+                flex-direction: column;
+            }
+
+            .preview-controls select,
+            .preview-controls button {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .preview-box {
+                min-height: 200px;
+                padding: 12px;
+            }
+
+            .preview-box pre,
+            .code-example pre {
+                font-size: 12px;
+            }
+
+            footer {
+                padding: 24px 14px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .header-inner {
+                padding: 16px 14px;
+            }
+
+            .brand {
+                font-size: 25px;
+            }
+
+            .nav a {
+                font-size: 13px;
+            }
+
+            .container {
+                padding: 16px;
+            }
+
+            .tool-header h1 {
+                font-size: 25px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="background" id="background"></div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+
+            <a class="brand" href="../../index.html">
+                AllIn<span>One</span>
+            </a>
+
+            <nav class="nav">
+                <a href="../../index.html#category-boxes-section">Categories</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+        <div class="container">
+
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../../index.html">Home</a>
+                <span>/</span>
+                <a href="../../index.html#sample-files">Sample Files</a>
+                <span>/</span>
+                <span aria-current="page">Sample NDJSON / JSONL Files</span>
+            </nav>
+
+            <!-- Privacy Badge -->
+            <div class="privacy-badge">
+                🔒 100% Browser-Based • Zero Server Uploads
+            </div>
+
+            <!-- Heading -->
+            <section class="tool-header">
+
+                <h1>Sample NDJSON / JSONL Files</h1>
+
+                <p>
+                    Download free newline-delimited JSON (NDJSON / JSONL)
+                    sample datasets for API testing, data pipelines,
+                    log processing, streaming applications, AI/ML workflows,
+                    and software development. Generate sample files instantly
+                    without uploading anything.
+                </p>
+
+            </section>
+
+            <!-- Dataset Download Cards -->
+            <section aria-label="Download NDJSON sample datasets">
+
+                <div class="samples-grid">
+
+                    <!-- 100 Records -->
+                    <article class="sample-card">
+                        <div class="sample-card-content">
+
+                            <div class="sample-icon">📄</div>
+
+                            <h2 class="sample-title">Small NDJSON Dataset</h2>
+
+                            <p class="sample-description">
+                                A lightweight JSON Lines dataset for quick
+                                testing, development, debugging, and
+                                basic parser validation.
+                            </p>
+
+                            <div class="sample-meta">
+                                100 Records • Lightweight
+                            </div>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="download-btn"
+                            onclick="downloadDataset(100)">
+                            ⬇ Download 100 Records
+                        </button>
+                    </article>
+
+                    <!-- 250 Records -->
+                    <article class="sample-card">
+                        <div class="sample-card-content">
+
+                            <div class="sample-icon">📋</div>
+
+                            <h2 class="sample-title">Medium NDJSON Dataset</h2>
+
+                            <p class="sample-description">
+                                More records for API integration,
+                                data ingestion, application testing,
+                                and development workflows.
+                            </p>
+
+                            <div class="sample-meta">
+                                250 Records • Standard
+                            </div>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="download-btn"
+                            onclick="downloadDataset(250)">
+                            ⬇ Download 250 Records
+                        </button>
+                    </article>
+
+                    <!-- 500 Records -->
+                    <article class="sample-card">
+                        <div class="sample-card-content">
+
+                            <div class="sample-icon">📊</div>
+
+                            <h2 class="sample-title">Large NDJSON Dataset</h2>
+
+                            <p class="sample-description">
+                                A larger dataset for testing data
+                                processing, JSON parsing, and
+                                streaming operations.
+                            </p>
+
+                            <div class="sample-meta">
+                                500 Records • Extended Testing
+                            </div>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="download-btn"
+                            onclick="downloadDataset(500)">
+                            ⬇ Download 500 Records
+                        </button>
+                    </article>
+
+                    <!-- 1000 Records -->
+                    <article class="sample-card">
+                        <div class="sample-card-content">
+
+                            <div class="sample-icon">🗂️</div>
+
+                            <h2 class="sample-title">1,000 Record Dataset</h2>
+
+                            <p class="sample-description">
+                                Useful for bulk import testing,
+                                data pipeline validation,
+                                and intermediate workloads.
+                            </p>
+
+                            <div class="sample-meta">
+                                1,000 Records • Bulk Data
+                            </div>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="download-btn"
+                            onclick="downloadDataset(1000)">
+                            ⬇ Download 1,000 Records
+                        </button>
+                    </article>
+
+                    <!-- 5000 Records -->
+                    <article class="sample-card">
+                        <div class="sample-card-content">
+
+                            <div class="sample-icon">🚀</div>
+
+                            <h2 class="sample-title">5,000 Record Dataset</h2>
+
+                            <p class="sample-description">
+                                A high-volume sample dataset for
+                                performance testing, batch processing,
+                                and larger data ingestion experiments.
+                            </p>
+
+                            <div class="sample-meta">
+                                5,000 Records • Performance Testing
+                            </div>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="download-btn"
+                            onclick="downloadDataset(5000)">
+                            ⬇ Download 5,000 Records
+                        </button>
+                    </article>
+
+                </div>
+
+            </section>
+
+            <!-- Preview Section -->
+            <section class="preview-section">
+
+                <h2 class="section-title">NDJSON Data Preview</h2>
+
+                <p class="section-description">
+                    Select the dataset size to preview the generated
+                    JSON Lines records. You can copy the complete
+                    dataset or download it as an NDJSON file.
+                </p>
+
+                <div class="preview-controls">
+
+                    <select
+                        id="previewSize"
+                        aria-label="Select dataset size"
+                        onchange="updatePreview()">
+
+                        <option value="100">100 Records</option>
+                        <option value="250">250 Records</option>
+                        <option value="500">500 Records</option>
+                        <option value="1000">1,000 Records</option>
+                        <option value="5000">5,000 Records</option>
+
+                    </select>
+
+                    <button
+                        type="button"
+                        onclick="copyPreviewDataset()">
+                        📋 Copy Full Dataset
+                    </button>
+
+                    <button
+                        type="button"
+                        onclick="downloadPreviewDataset()">
+                        ⬇ Download Preview Dataset
+                    </button>
+
+                </div>
+
+                <div class="preview-box">
+                    <pre id="previewOutput"></pre>
+                </div>
+
+                <p class="preview-note">
+                    Preview displays the first 6 records. Downloading or copying
+                    provides the complete selected dataset.
+                </p>
+
+            </section>
+
+            <!-- NDJSON Explanation -->
+            <section class="info-section">
+
+                <h2>What Is NDJSON?</h2>
+
+                <p>
+                    NDJSON stands for <strong>Newline Delimited JSON</strong>.
+                    It is a text-based format where each line contains
+                    one complete JSON object. Unlike traditional JSON,
+                    NDJSON does not require the records to be wrapped
+                    inside an array.
+                </p>
+
+                <p>
+                    NDJSON is also commonly associated with the
+                    <strong>JSONL</strong> file extension. Both formats
+                    are frequently used for logs, streaming data,
+                    API responses, data engineering, machine learning
+                    datasets, and batch processing workflows.
+                </p>
+
+                <h3>Example of NDJSON Format</h3>
+
+                <div class="code-example">
+                    <pre>{"id":1,"name":"Alex Johnson","email":"alex@example.com","department":"Engineering","active":true}
+{"id":2,"name":"Sarah Miller","email":"sarah@example.com","department":"Marketing","active":true}
+{"id":3,"name":"David Wilson","email":"david@example.com","department":"Finance","active":false}
+{"id":4,"name":"Emma Davis","email":"emma@example.com","department":"Support","active":true}
+{"id":5,"name":"Michael Brown","email":"michael@example.com","department":"Engineering","active":true}</pre>
+                </div>
+
+                <p>
+                    Each line is a separate JSON record. Applications
+                    can process records one at a time without loading
+                    the entire dataset into memory.
+                </p>
+
+                <h3>NDJSON vs Traditional JSON</h3>
+
+                <div class="code-example">
+                    <pre>Traditional JSON:
+
+[
+  {"id":1,"name":"Alex"},
+  {"id":2,"name":"Sarah"},
+  {"id":3,"name":"David"}
+]
+
+
+NDJSON / JSONL:
+
+{"id":1,"name":"Alex"}
+{"id":2,"name":"Sarah"}
+{"id":3,"name":"David"}</pre>
+                </div>
+
+            </section>
+
+            <!-- How to Open -->
+            <section class="info-section">
+
+                <h2>How to Open NDJSON Files</h2>
+
+                <p>
+                    NDJSON files are plain-text files. You don't need
+                    special software just to view their contents.
+                </p>
+
+                <h3>Open with Visual Studio Code</h3>
+
+                <ul>
+                    <li>Download any NDJSON sample file.</li>
+                    <li>Open Visual Studio Code.</li>
+                    <li>Choose File → Open File.</li>
+                    <li>Select your downloaded <code>.ndjson</code> file.</li>
+                    <li>Each JSON record will appear on a separate line.</li>
+                </ul>
+
+                <h3>Open with Notepad or Notepad++</h3>
+
+                <p>
+                    Right-click the downloaded file, select Open With,
+                    and choose Notepad or Notepad++. The records will
+                    appear as plain text, with each JSON object
+                    on its own line.
+                </p>
+
+                <h3>Read NDJSON with Python</h3>
+
+                <div class="code-example">
+                    <pre>import json
+
+with open("sample.ndjson", "r", encoding="utf-8") as file:
+    for line in file:
+        record = json.loads(line)
+        print(record)</pre>
+                </div>
+
+                <h3>Read NDJSON with Node.js</h3>
+
+                <div class="code-example">
+                    <pre>const fs = require("fs");
+
+const lines = fs.readFileSync("sample.ndjson", "utf8")
+    .split(/\r?\n/)
+    .filter(Boolean);
+
+for (const line of lines) {
+    const record = JSON.parse(line);
+    console.log(record);
+}</pre>
+                </div>
+
+                <h3>Can I Open NDJSON in Excel?</h3>
+
+                <p>
+                    Excel does not automatically interpret an NDJSON file
+                    as a standard JSON array. You can import it using
+                    Power Query or convert the records into CSV format
+                    for spreadsheet use.
+                </p>
+
+                <h3>Can I Open NDJSON in a Browser?</h3>
+
+                <p>
+                    Most browsers can display an NDJSON file as plain text.
+                    They generally won't automatically render the records
+                    into a structured JSON viewer. A JSON viewer or
+                    developer tool can make the contents easier to read.
+                </p>
+
+            </section>
+
+            <!-- Use Cases -->
+            <section class="info-section">
+
+                <h2>Common Uses of NDJSON Sample Files</h2>
+
+                <ul>
+                    <li>API request and response testing</li>
+                    <li>JSON Lines parser validation</li>
+                    <li>Data engineering and ETL pipelines</li>
+                    <li>Streaming and event-processing systems</li>
+                    <li>Log processing and analytics</li>
+                    <li>Bulk data import and export testing</li>
+                    <li>AI and machine learning dataset preparation</li>
+                    <li>Database ingestion and migration tests</li>
+                    <li>Performance and load testing with mock data</li>
+                    <li>Application development and debugging</li>
+                </ul>
+
+            </section>
+
+            <!-- Related Sample Files -->
+            <section class="info-section">
+
+                <h2>Related Sample Files &amp; Tools</h2>
+
+                <div class="related-tools">
+
+                    <a href="sample-json.html" class="related-link">
+                        <strong>Sample JSON Files →</strong>
+                        <span>Download structured JSON test data.</span>
+                    </a>
+
+                    <a href="sample-csv.html" class="related-link">
+                        <strong>Sample CSV Files →</strong>
+                        <span>Download CSV datasets for spreadsheet and data testing.</span>
+                    </a>
+
+                    <a href="sample-xml.html" class="related-link">
+                        <strong>Sample XML Files →</strong>
+                        <span>Download XML files for testing and development.</span>
+                    </a>
+
+                    <a href="sample-txt.html" class="related-link">
+                        <strong>Sample Text Files →</strong>
+                        <span>Download plain-text test files.</span>
+                    </a>
+
+                </div>
+
+            </section>
+
+            <!-- FAQ -->
+            <section class="info-section">
+
+                <h2>Frequently Asked Questions</h2>
+
+                <div class="faq-item">
+                    <h3>What does NDJSON stand for?</h3>
+                    <p>
+                        NDJSON stands for Newline Delimited JSON.
+                        Each line contains an independent JSON record.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Is NDJSON the same as JSONL?</h3>
+                    <p>
+                        NDJSON and JSONL are commonly used for the same
+                        newline-delimited JSON format. Both store
+                        individual JSON records on separate lines.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Are these NDJSON sample files free?</h3>
+                    <p>
+                        Yes. All sample NDJSON and JSONL files are
+                        free to generate and download for testing,
+                        development, and educational purposes.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Are the files generated in my browser?</h3>
+                    <p>
+                        Yes. Sample datasets are generated locally
+                        using JavaScript. Nothing is uploaded to
+                        our server during generation or download.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How many records can I generate?</h3>
+                    <p>
+                        You can choose 100, 250, 500, 1,000,
+                        or 5,000 records.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>What can I use NDJSON files for?</h3>
+                    <p>
+                        They are useful for testing APIs, streaming
+                        applications, log processors, data pipelines,
+                        database imports, and JSON parsing systems.
+                    </p>
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+
+        <p>© 2026 AllInOne Utilities — Fast, secure, browser-based tools.</p>
+
+        <p style="margin-top: 10px;">
+            <a href="../../index.html">Home</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms</a>
+        </p>
+
+    </footer>
+
+    <script>
+
+        /* Background Stars */
+
+        function createStars() {
+            const background = document.getElementById("background");
+
+            if (!background) return;
+
+            const starCount = 35;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement("div");
+
+                star.className = "star";
+
+                star.style.left = Math.random() * 100 + "%";
+                star.style.top = Math.random() * 100 + "%";
+                star.style.animationDelay = Math.random() * 3 + "s";
+
+                background.appendChild(star);
+            }
+        }
+
+        /* Dataset Data */
+
+        const firstNames = [
+            "Alex", "Sarah", "David", "Emma", "Michael",
+            "Sophia", "Daniel", "Olivia", "James", "Emily",
+            "William", "Ava", "Benjamin", "Isabella", "Lucas",
+            "Mia", "Henry", "Charlotte", "Alexander", "Amelia",
+            "Ethan", "Grace", "Noah", "Chloe", "Logan",
+            "Lily", "Mason", "Ella", "Jacob", "Aria",
+            "Leo", "Zoe", "Ryan", "Nora", "Jack",
+            "Hannah", "Owen", "Layla", "Samuel", "Victoria"
+        ];
+
+        const lastNames = [
+            "Johnson", "Miller", "Wilson", "Davis", "Brown",
+            "Taylor", "Anderson", "Thomas", "Jackson", "White",
+            "Harris", "Martin", "Thompson", "Garcia", "Martinez",
+            "Robinson", "Clark", "Lewis", "Walker", "Hall",
+            "Young", "Allen", "King", "Wright", "Scott",
+            "Green", "Adams", "Baker", "Nelson", "Carter"
+        ];
+
+        const departments = [
+            "Engineering", "Marketing", "Finance", "Support",
+            "Sales", "Operations", "Human Resources", "Research",
+            "Product", "IT"
+        ];
+
+        const cities = [
+            "Hyderabad", "Mumbai", "Bengaluru", "Chennai",
+            "Delhi", "Pune", "Kolkata", "Jaipur",
+            "Ahmedabad", "Kochi"
+        ];
+
+        const statuses = [
+            "active", "active", "active", "inactive", "pending"
+        ];
+
+        /* Generate a deterministic mock record */
+
+        function generateRecord(index) {
+
+            const first = firstNames[index % firstNames.length];
+
+            const last = lastNames[(index * 3) % lastNames.length];
+
+            const department = departments[index % departments.length];
+
+            const city = cities[(index * 2) % cities.length];
+
+            return {
+                id: index + 1,
+
+                firstName: first,
+
+                lastName: last,
+
+                email: `${first.toLowerCase()}.${last.toLowerCase()}${index + 1}@example.com`,
+
+                department: department,
+
+                city: city,
+
+                status: statuses[index % statuses.length],
+
+                age: 22 + (index % 35),
+
+                score: 50 + ((index * 7) % 51),
+
+                active: index % 5 !== 3,
+
+                createdAt: new Date(Date.UTC(
+                    2025,
+                    index % 12,
+                    (index % 28) + 1,
+                    10,
+                    30
+                )).toISOString()
+            };
+        }
+
+        /* Generate NDJSON */
+
+        function generateNDJSON(count) {
+
+            const records = [];
+
+            for (let i = 0; i < count; i++) {
+                records.push(JSON.stringify(generateRecord(i)));
+            }
+
+            return records.join("\n") + "\n";
+        }
+
+        /* Download Dataset */
+
+        function downloadDataset(count) {
+
+            const content = generateNDJSON(count);
+
+            const blob = new Blob([content], {
+                type: "application/x-ndjson;charset=utf-8"
+            });
+
+            const url = URL.createObjectURL(blob);
+
+            const link = document.createElement("a");
+
+            link.href = url;
+            link.download = `sample-${count}-records.ndjson`;
+
+            document.body.appendChild(link);
+
+            link.click();
+
+            link.remove();
+
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+        }
+
+        /* Download Selected Preview Dataset */
+
+        function downloadPreviewDataset() {
+
+            const count = Number(
+                document.getElementById("previewSize").value
+            );
+
+            downloadDataset(count);
+        }
+
+        /* Update Preview */
+
+        function updatePreview() {
+
+            const count = Number(
+                document.getElementById("previewSize").value
+            );
+
+            const content = generateNDJSON(count);
+
+            const lines = content.trim().split("\n");
+
+            const previewLines = lines.slice(0, 6);
+
+            if (count > 6) {
+                previewLines.push(
+                    `... (${count - 6} more records)`
+                );
+            }
+
+            document.getElementById("previewOutput").textContent =
+                previewLines.join("\n");
+        }
+
+        /* Copy Complete Dataset */
+
+        async function copyPreviewDataset() {
+
+            const count = Number(
+                document.getElementById("previewSize").value
+            );
+
+            const content = generateNDJSON(count);
+
+            const button = document.querySelector(
+                ".preview-controls button"
+            );
+
+            const originalText = button.textContent;
+
+            try {
+
+                await navigator.clipboard.writeText(content);
+
+                button.textContent = "✅ Full Dataset Copied!";
+
+                setTimeout(() => {
+                    button.textContent = originalText;
+                }, 1800);
+
+            } catch (error) {
+
+                const textarea = document.createElement("textarea");
+
+                textarea.value = content;
+                textarea.style.position = "fixed";
+                textarea.style.opacity = "0";
+
+                document.body.appendChild(textarea);
+
+                textarea.select();
+
+                try {
+
+                    document.execCommand("copy");
+
+                    button.textContent = "✅ Full Dataset Copied!";
+
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                    }, 1800);
+
+                } catch (copyError) {
+
+                    alert(
+                        "Copy failed. Please download the file instead."
+                    );
+
+                }
+
+                textarea.remove();
+            }
+        }
+
+        /* Initialize Page */
+
+        function initializePage() {
+            createStars();
+            updatePreview();
+        }
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", initializePage);
+        } else {
+            initializePage();
+        }
+
+    </script>
+
+</body>
+</html>

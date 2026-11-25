@@ -2,288 +2,353 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JSON Validator — AllInOne Utilities</title>
-<style>
-:root {
-    --bg-primary: #060a14;
-    --bg-card: rgba(15, 24, 44, 0.78);
-    --border-subtle: rgba(148, 163, 184, 0.16);
-    --border-glow: rgba(96, 165, 250, 0.55);
-    --text-main: #f1f5f9;
-    --text-muted: #94a3b8;
-    --accent-blue: #60a5fa;
-    --green-bg: rgba(16, 185, 129, 0.14);
-    --green-text: #34d399;
-    --green-border: rgba(52, 211, 153, 0.35);
-    --red-bg: rgba(239, 68, 68, 0.14);
-    --red-text: #f87171;
-    --red-border: rgba(248, 113, 113, 0.35);
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#080d1b">
+<title>JSON Validator Online — Free &amp; Secure | AllInOne</title>
+<meta name="description" content="Validate JSON syntax, spot errors instantly, and get smart fix suggestions in your browser. 100% free, private, and secure with zero server uploads.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://allinone-utilities.com/Tools/more-tools/json-validator.html">
+
+<!-- Open Graph SEO Meta Tags -->
+<meta property="og:title" content="JSON Validator Online — Free &amp; Secure | AllInOne">
+<meta property="og:description" content="Validate JSON syntax and debug payloads instantly in your browser without uploading files to a server.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://allinone-utilities.com/Tools/more-tools/json-validator.html">
+
+<!-- FAQ Rich Snippet Schema for Google SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is it safe to validate confidential JSON payloads here?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. All validation happens 100% client-side inside your browser memory. Your data is never uploaded to any external server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I upload local .json files to check syntax?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! You can load any .json file directly from your computer using the file loader button."
+      }
+    }
+  ]
 }
+</script>
 
-* { box-sizing: border-box; }
-
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 body {
-    margin: 0;
-    background-color: var(--bg-primary);
-    color: var(--text-main);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif;
+    background-color: #080d1b;
+    background-image:
+        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 4px),
+        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 3px),
+        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 4px);
+    background-size: 550px 550px, 350px 350px, 250px 250px;
+    background-position: 0 0, 40px 60px, 130px 270px;
+    color: #e6edf7;
+    font-family: Arial, Helvetica, sans-serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
 }
 
-/* Ambient Background & Twinkling Stars */
-.background {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
-    overflow: hidden;
-    background:
-        radial-gradient(circle at 50% -10%, rgba(59, 130, 246, 0.18), transparent 55%),
-        radial-gradient(circle at 85% 35%, rgba(99, 102, 241, 0.08), transparent 45%),
-        radial-gradient(circle at 15% 75%, rgba(14, 165, 233, 0.08), transparent 45%);
-}
-
-@keyframes twinkle {
-    0%, 100% { opacity: 0.25; transform: scale(0.95); }
-    50% { opacity: 0.9; transform: scale(1.15); }
-}
-
-.star {
-    position: absolute;
-    width: 3px;
-    height: 3px;
-    background: #ffffff;
-    box-shadow: 0 0 8px rgba(191, 219, 254, 0.85);
-    border-radius: 50%;
-    animation: twinkle 4.5s ease-in-out infinite;
-}
-
-/* Sticky Glass Header */
-.site-header {
-    border-bottom: 1px solid var(--border-subtle);
-    background: rgba(6, 10, 20, 0.82);
-    backdrop-filter: blur(14px);
+/* Header matching exact layout */
+.site-header { 
+    border-bottom: 1px solid #1d2940; 
+    background: #080d1b; 
     position: sticky;
     top: 0;
     z-index: 100;
 }
+.header-inner { 
+    max-width: 1150px; 
+    margin: auto; 
+    padding: 20px 24px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+}
+.brand { 
+    font-size: 26px; 
+    font-weight: bold; 
+    color: #fff; 
+    text-decoration: none; 
+    letter-spacing: -0.5px;
+}
+.brand span { color: #66a2ff; }
 
-.header-inner {
-    max-width: 1040px;
-    margin: auto;
-    padding: 18px 24px;
+nav {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    gap: 24px;
 }
-
-.brand {
-    font-size: 26px;
-    font-weight: 800;
-    color: #fff;
-    text-decoration: none;
-    letter-spacing: -0.6px;
-}
-.brand span {
-    background: linear-gradient(135deg, #60a5fa, #a5b4fc);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.back-link {
-    color: #cbd5e1;
-    text-decoration: none;
-    font-size: 15px;
+.nav a { 
+    color: #cbd5e1; 
+    text-decoration: none; 
+    font-size: 15px; 
     font-weight: 500;
-    display: inline-flex;
+    transition: 0.2s; 
+}
+.nav a:hover { color: #60a5fa; }
+
+/* Main Container */
+.container { 
+    max-width: 1150px; 
+    width: 100%; 
+    margin: 24px auto; 
+    padding: 24px; 
+    background: #101b30; 
+    border: 1px solid #263a5c; 
+    border-radius: 20px; 
+}
+.privacy-badge {
+    display: flex;
+    width: fit-content;
+    margin: 0 auto 16px auto;
     align-items: center;
     gap: 6px;
-    transition: color 0.2s;
-}
-.back-link:hover { color: var(--accent-blue); }
-
-/* Main Workspace */
-.container {
-    max-width: 1040px;
-    width: 100%;
-    margin: 42px auto 60px;
-    padding: 0 24px;
-    flex: 1;
+    background: rgba(52, 211, 153, 0.12);
+    color: #34d399;
+    border: 1px solid rgba(52, 211, 153, 0.3);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
 }
 
+/* Tool Header */
 .tool-header {
     text-align: center;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
 }
 .tool-header h1 {
-    font-size: 36px;
-    font-weight: 800;
-    margin: 0 0 10px;
-    letter-spacing: -0.8px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+    margin: 10px 0;
 }
 .tool-header p {
-    color: var(--text-muted);
+    color: #9aabc4;
     font-size: 16px;
+    line-height: 1.6;
     margin: 0;
-}
-
-.workspace-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 18px;
-    padding: 24px;
-    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 /* Toolbar */
 .toolbar {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
 }
-
 .btn-group {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    width: 100%;
 }
 
+/* Uniform Standardized Button Style */
 button {
     font-family: inherit;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 10px 16px;
+    font-size: 14.5px;
+    font-weight: bold;
+    padding: 12px 18px;
     border-radius: 10px;
-    border: 1px solid var(--border-subtle);
-    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid #304968;
+    background: #18253c;
     color: #e2e8f0;
     cursor: pointer;
-    transition: all 0.18s ease;
+    transition: 0.2s;
+    min-height: 44px;
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 button:hover {
-    border-color: var(--border-glow);
-    background: rgba(37, 52, 77, 0.95);
+    border-color: #66a2ff;
+    background: #233554;
     color: #fff;
 }
 
-.btn-primary {
-    background: linear-gradient(135deg, #2563eb, #3b82f6);
-    border-color: rgba(96, 165, 250, 0.5);
-    color: #fff;
-    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+.choose-btn { 
+    background: #2864eb; 
+    color: white; 
+    border: none; 
+    padding: 12px 20px; 
+    border-radius: 10px; 
+    font-size: 15px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    transition: 0.2s; 
 }
-.btn-primary:hover {
-    background: linear-gradient(135deg, #1d4ed8, #2563eb);
-    transform: translateY(-1px);
-}
+.choose-btn:hover { background: #3977ff; }
+#fileInput { display: none; }
 
 /* JSON Editor Textarea */
 .editor-wrap {
     position: relative;
 }
-
 textarea {
     width: 100%;
-    height: 360px;
-    background: rgba(6, 11, 23, 0.9);
-    border: 1px solid var(--border-subtle);
-    border-radius: 12px;
+    height: 320px;
+    background: #0c162b;
+    border: 2px dashed #3978c9;
+    border-radius: 16px;
     padding: 16px;
     color: #f8fafc;
-    font-family: "JetBrains Mono", "Fira Code", Consolas, Monaco, monospace;
+    font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
     font-size: 14px;
     line-height: 1.6;
     resize: vertical;
     outline: none;
-    transition: border-color 0.2s;
+    transition: 0.2s;
 }
 textarea:focus {
-    border-color: var(--accent-blue);
+    border-color: #66a2ff;
+    background: #142342;
 }
 textarea::placeholder {
-    color: #475569;
+    color: #64748b;
 }
 
-/* Validation Result Banner */
+/* Validation Result Box */
 .result-box {
-    margin-top: 18px;
-    padding: 16px 20px;
+    margin-top: 20px;
+    padding: 16px 18px;
     border-radius: 12px;
     font-size: 14.5px;
-    line-height: 1.5;
+    line-height: 1.6;
     display: none;
 }
-
 .result-valid {
     display: block;
-    background: var(--green-bg);
-    border: 1px solid var(--green-border);
-    color: var(--green-text);
+    background: rgba(16, 185, 129, 0.14);
+    border: 1px solid rgba(52, 211, 153, 0.35);
+    color: #34d399;
 }
-
 .result-invalid {
     display: block;
-    background: var(--red-bg);
-    border: 1px solid var(--red-border);
-    color: var(--red-text);
+    background: rgba(239, 68, 68, 0.14);
+    border: 1px solid rgba(248, 113, 113, 0.35);
+    color: #f87171;
 }
-
 .result-title {
-    font-weight: 700;
-    font-size: 15.5px;
-    margin-bottom: 4px;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 6px;
     display: flex;
     align-items: center;
     gap: 8px;
 }
-
 .result-meta {
-    font-size: 13px;
+    font-size: 13.5px;
     opacity: 0.9;
-    font-family: "JetBrains Mono", Consolas, monospace;
+    font-family: monospace;
+    word-break: break-all;
 }
 
-.site-footer {
-    border-top: 1px solid var(--border-subtle);
+/* Informational SEO Section & Card Sections */
+.card-section, .info-section {
+    max-width: 1150px;
+    width: 100%;
+    margin: 24px auto;
+    padding: 24px;
+    background: #101b30;
+    border: 1px solid #263a5c;
+    border-radius: 20px;
+}
+.card-section h2, .info-section h2 { font-size: 22px; color: #fff; margin-bottom: 14px; }
+.info-section h3 { font-size: 17px; color: #fff; margin-top: 20px; margin-bottom: 8px; }
+.info-section p { color: #9aabc4; font-size: 14.5px; line-height: 1.65; margin-bottom: 12px; }
+.info-section ul { color: #9aabc4; font-size: 14.5px; line-height: 1.65; padding-left: 18px; margin-bottom: 12px; }
+.info-section li { margin-bottom: 6px; }
+
+.related-tools {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 16px;
+}
+.related-link {
+    display: block;
+    padding: 18px;
+    background: #0c162b;
+    border: 1px solid #263a5c;
+    border-radius: 12px;
+    color: #e6edf7;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.related-link:hover { border-color: #60a5fa; transform: translateY(-2px); }
+.related-link strong { font-size: 16px; color: #fff; }
+.related-link span { display: block; font-size: 13.5px; color: #9aabc4; margin-top: 4px; }
+
+.faq-item { margin-bottom: 16px; }
+.faq-item:last-child { margin-bottom: 0; }
+.faq-item h3 { font-size: 17px; margin-bottom: 6px; color: #ffffff; }
+.faq-item p { font-size: 14.5px; color: #9aabc4; line-height: 1.6; }
+
+/* Footer */
+footer {
+    border-top: 1px solid #1d2940;
     text-align: center;
-    padding: 24px 20px;
-    color: #64748b;
-    font-size: 14px;
+    padding: 24px 16px;
+    color: #94a3b8;
+    font-size: 13px;
+    background: #080d1b;
+    margin-top: auto;
+}
+footer a { color: #94a3b8; text-decoration: none; margin: 0 10px; }
+footer a:hover { color: #60a5fa; }
+
+@media(min-width: 640px) {
+    .header-inner { padding: 20px 24px; }
+    .container, .card-section, .info-section { margin: 35px auto; padding: 32px; }
+    .brand { font-size: 26px; }
+    .tool-header h1 { font-size: 36px; }
+    .btn-group { width: auto; }
+    button { flex: unset; min-width: 120px; }
+    .related-tools { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    textarea { height: 380px; }
 }
 </style>
 </head>
-<body>
 
-<div class="background" id="background"></div>
+<body>
 
 <header class="site-header">
     <div class="header-inner">
         <a class="brand" href="../../index.html">AllIn<span>One</span></a>
-        <a class="back-link" href="../../index.html#more-tools">← Back to Tools</a>
+        <nav class="nav">
+            <a href="../../index.html#category-boxes-section">Categories</a>
+        </nav>
     </div>
 </header>
 
-<div class="container">
-    <div class="tool-header">
-        <h1>🔍 JSON Validator</h1>
-        <p>Paste or upload JSON to verify syntax, spot errors instantly, and get smart fix suggestions.</p>
-    </div>
+<main style="max-width: 1150px; width: 100%; margin: 24px auto; padding: 0 24px;">
+    <div class="container" style="margin: 0 auto; width: 100%;">
+        <div class="privacy-badge">🔒 100% Browser-Based • Zero Server Uploads</div>
+        
+        <div class="tool-header">
+            <h1>JSON Validator Online</h1>
+            <p>Paste or upload JSON to verify syntax, spot errors instantly, and get smart fix suggestions.</p>
+        </div>
 
-    <div class="workspace-card">
         <div class="toolbar">
             <div class="btn-group">
-                <button class="btn-primary" id="validateBtn">✓ Validate JSON</button>
+                <button class="choose-btn" id="validateBtn">✓ Validate JSON</button>
                 <button id="uploadBtn">📁 Load .json File</button>
-                <input type="file" id="fileInput" accept=".json,application/json,text/plain" hidden>
+                <input type="file" id="fileInput" accept=".json,application/json,text/plain">
             </div>
             <div class="btn-group">
                 <button id="sampleValidBtn">Sample Valid</button>
@@ -298,150 +363,195 @@ textarea::placeholder {
 
         <div id="resultBox" class="result-box"></div>
     </div>
-</div>
+</main>
 
-<footer class="site-footer">
-    AllInOne Utilities — Fast, private browser-based tools.
+<!-- Informational SEO Section (350+ words) -->
+<section class="info-section">
+    <h2>Why Use an Online JSON Validator?</h2>
+    <p>
+        JavaScript Object Notation (JSON) has become the absolute industry standard for asynchronous browser communication, API payloads, application configuration files, and NoSQL document storage. However, JSON syntax is notoriously strict. A single misplaced comma, an unquoted object key, a missing curly brace, or the accidental inclusion of single quotes instead of double quotes will instantly break your parser, disrupt API integrations, and halt application workflows.
+    </p>
+    <p>
+        Our free online JSON Validator provides developers, engineers, and data analysts with an immediate, client-side debugging utility. As you paste or upload your structured data payloads, our engine evaluates syntax against formal RFC standards, pinpoints exact error positions down to the line and column number, and delivers smart fix suggestions to resolve formatting snags instantly. Best of all, because everything executes locally inside your browser sandbox, your confidential API responses and internal configuration files never leave your device.
+    </p>
+
+    <h3>Key Features of Our JSON Validation Tool</h3>
+    <ul>
+        <li><strong>Instant Syntax Verification:</strong> Quickly check whether complex payloads adhere strictly to valid JSON formatting standards with one click.</li>
+        <li><strong>Precise Error Debugging:</strong> Automatically parse parsing exceptions to highlight exact line numbers, column offsets, and contextual code snippets.</li>
+        <li><strong>Smart Fix Suggestions:</strong> Receive intelligent recommendations for common mistakes like trailing commas, unquoted keys, or mismatched brackets.</li>
+        <li><strong>Absolute Privacy &amp; Security:</strong> Zero server uploads guarantee that sensitive database exports, tokens, and payloads remain entirely secure.</li>
+    </ul>
+
+    <h3>How to Validate JSON Payloads in 3 Simple Steps</h3>
+    <p>
+        <strong>1. Input Your Data:</strong> Paste your raw JSON string into the editor box, click the sample buttons to test formats, or load a local <code>.json</code> file.<br>
+        <strong>2. Run Validation:</strong> Click the validate button (or watch real-time status) to check structural integrity and identify syntax exceptions.<br>
+        <strong>3. Fix &amp; Deploy:</strong> Review actionable suggestions for any flagged errors, clean up your payload, and copy your verified data for production use.
+    </p>
+</section>
+
+<!-- Internal Cross-Linking for SEO -->
+<section class="card-section">
+  <h2>Related Developer Utilities</h2>
+  <div class="related-tools">
+    <a href="base64.html" class="related-link">
+      <strong>Base64 Decoder &rarr;</strong>
+      <span>Encode and decode text payloads.</span>
+    </a>
+    <a href="jwt-decoder.html" class="related-link">
+      <strong>JWT Decoder &rarr;</strong>
+      <span>Debug login sessions and OAuth tokens.</span>
+    </a>
+    <a href="../pdf-tools/compress.html" class="related-link">
+      <strong>Compress PDF &rarr;</strong>
+      <span>Reduce file size securely.</span>
+    </a>
+  </div>
+</section>
+
+<!-- SEO & FAQ Content -->
+<section class="card-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <h3>Is it safe to validate confidential JSON payloads here?</h3>
+    <p>Yes. All validation happens 100% client-side inside your browser memory. Your data is never uploaded to any external server.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Can I upload local .json files to check syntax?</h3>
+    <p>Yes! You can load any .json file directly from your computer using the file loader button.</p>
+  </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 AllInOne Utilities — Fast, secure document tools.</p>
+    <p style="margin-top:10px;">
+        <a href="../../index.html">Home</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+    </p>
 </footer>
 
 <script>
-    // Twinkling stars
-    const background = document.getElementById("background");
-    for (let i = 0; i < 80; i++) {
-        const star = document.createElement("div");
-        star.className = "star";
-        star.style.left = Math.random() * 100 + "%";
-        star.style.top = Math.random() * 100 + "%";
-        star.style.animationDelay = (Math.random() * 4.5) + "s";
-        background.appendChild(star);
+const jsonInput = document.getElementById("jsonInput");
+const resultBox = document.getElementById("resultBox");
+const validateBtn = document.getElementById("validateBtn");
+const uploadBtn = document.getElementById("uploadBtn");
+const fileInput = document.getElementById("fileInput");
+const sampleValidBtn = document.getElementById("sampleValidBtn");
+const sampleErrorBtn = document.getElementById("sampleErrorBtn");
+const clearBtn = document.getElementById("clearBtn");
+
+function getLineAndColumn(text, position) {
+    const lines = text.slice(0, position).split("\n");
+    return {
+        line: lines.length,
+        column: lines[lines.length - 1].length + 1
+    };
+}
+
+function getSmartSuggestion(errorMessage, rawText, position) {
+    const msg = errorMessage.toLowerCase();
+    if (msg.includes("trailing comma")) {
+        return "💡 **Fix Suggestion:** You have an extra comma at the end of your list or object. Remove the last comma before the closing bracket `}` or `]`.";
+    }
+    if (msg.includes("unexpected token") || msg.includes("expected")) {
+        let snippet = "";
+        if (position !== null && position !== undefined && position < rawText.length) {
+            const start = Math.max(0, position - 15);
+            const end = Math.min(rawText.length, position + 15);
+            snippet = ` Near: \`...${rawText.slice(start, end).replace(/\n/g, " ")}...\``;
+        }
+        if (rawText.includes("'")) {
+            return `💡 **Fix Suggestion:** JSON requires double quotes (\`"\`) for keys and strings. It looks like you might be using single quotes (\`'\').${snippet}`;
+        }
+        return `💡 **Fix Suggestion:** Check for a missing comma between items, a missing colon (\`:\`), or unquoted key names.${snippet}`;
+    }
+    if (msg.includes("unexpected end of json input")) {
+        return "💡 **Fix Suggestion:** Your JSON seems cut off. Check if you forgot a closing bracket `}` or `]`.";
+    }
+    return "💡 **Fix Suggestion:** Check for unmatched brackets, missing quotation marks around keys, or trailing commas.";
+}
+
+function validateJSON() {
+    const raw = jsonInput.value.trim();
+
+    if (!raw) {
+        resultBox.className = "result-box result-invalid";
+        resultBox.innerHTML = `<div class="result-title">⚠️ Empty Input</div><div>Please paste or load some JSON data before validating.</div>`;
+        return;
     }
 
-    const jsonInput = document.getElementById("jsonInput");
-    const resultBox = document.getElementById("resultBox");
-    const validateBtn = document.getElementById("validateBtn");
-    const uploadBtn = document.getElementById("uploadBtn");
-    const fileInput = document.getElementById("fileInput");
-    const sampleValidBtn = document.getElementById("sampleValidBtn");
-    const sampleErrorBtn = document.getElementById("sampleErrorBtn");
-    const clearBtn = document.getElementById("clearBtn");
+    try {
+        const parsed = JSON.parse(raw);
+        const rootType = Array.isArray(parsed)
+            ? `Array (${parsed.length} items)`
+            : (parsed !== null && typeof parsed === "object")
+                ? `Object (${Object.keys(parsed).length} top-level keys)`
+                : `Primitive (${typeof parsed})`;
 
-    function getLineAndColumn(text, position) {
-        const lines = text.slice(0, position).split("\n");
-        return {
-            line: lines.length,
-            column: lines[lines.length - 1].length + 1
-        };
-    }
-
-    // Smart suggestion generator for common JSON mistakes
-    function getSmartSuggestion(errorMessage, rawText, position) {
-        const msg = errorMessage.toLowerCase();
-
-        if (msg.includes("trailing comma")) {
-            return "💡 **Fix Suggestion:** You have an extra comma at the end of your list or object. Remove the last comma before the closing bracket `}` or `]`.";
-        }
-        if (msg.includes("unexpected token") || msg.includes("expected")) {
-            let snippet = "";
-            if (position !== null && position !== undefined && position < rawText.length) {
-                const start = Math.max(0, position - 15);
-                const end = Math.min(rawText.length, position + 15);
-                snippet = ` Near: \`...${rawText.slice(start, end).replace(/\n/g, " ")}...\``;
-            }
-
-            if (rawText.includes("'")) {
-                return `💡 **Fix Suggestion:** JSON requires double quotes (\`"\`) for keys and strings. It looks like you might be using single quotes (\`'\').${snippet}`;
-            }
-            return `💡 **Fix Suggestion:** Check for a missing comma between items, a missing colon (\`:\`), or unquoted key names.${snippet}`;
-        }
-        if (msg.includes("unexpected end of json input")) {
-            return "💡 **Fix Suggestion:** Your JSON seems cut off. Check if you forgot a closing bracket `}` or `]`.";
-        }
+        resultBox.className = "result-box result-valid";
+        resultBox.innerHTML = `
+            <div class="result-title">✅ Valid JSON</div>
+            <div class="result-meta">Root Type: ${rootType} • Size: ${new Blob([raw]).size} bytes</div>
+        `;
+    } catch (err) {
+        let locationInfo = "";
+        let pos = null;
+        const posMatch = err.message.match(/position\s+(\d+)/i);
         
-        return "💡 **Fix Suggestion:** Check for unmatched brackets, missing quotation marks around keys, or trailing commas.";
-    }
-
-    function validateJSON() {
-        const raw = jsonInput.value.trim();
-
-        if (!raw) {
-            resultBox.className = "result-box result-invalid";
-            resultBox.innerHTML = `<div class="result-title">⚠️ Empty Input</div><div>Please paste or load some JSON data before validating.</div>`;
-            return;
+        if (posMatch) {
+            pos = parseInt(posMatch[1], 10);
+            const loc = getLineAndColumn(raw, pos);
+            locationInfo = ` (Line ${loc.line}, Column ${loc.column})`;
         }
 
-        try {
-            const parsed = JSON.parse(raw);
-            const rootType = Array.isArray(parsed)
-                ? `Array (${parsed.length} items)`
-                : (parsed !== null && typeof parsed === "object")
-                    ? `Object (${Object.keys(parsed).length} top-level keys)`
-                    : `Primitive (${typeof parsed})`;
+        const suggestion = getSmartSuggestion(err.message, raw, pos);
 
-            resultBox.className = "result-box result-valid";
-            resultBox.innerHTML = `
-                <div class="result-title">✅ Valid JSON</div>
-                <div class="result-meta">Root Type: ${rootType} • Size: ${new Blob([raw]).size} bytes</div>
-            `;
-        } catch (err) {
-            let locationInfo = "";
-            let pos = null;
-            const posMatch = err.message.match(/position\s+(\d+)/i);
-            
-            if (posMatch) {
-                pos = parseInt(posMatch[1], 10);
-                const loc = getLineAndColumn(raw, pos);
-                locationInfo = ` (Line ${loc.line}, Column ${loc.column})`;
-            }
-
-            const suggestion = getSmartSuggestion(err.message, raw, pos);
-
-            resultBox.className = "result-box result-invalid";
-            resultBox.innerHTML = `
-                <div class="result-title">❌ Invalid JSON${locationInfo}</div>
-                <div class="result-meta" style="margin-bottom: 8px;">${err.message}</div>
-                <div style="font-size: 13.5px; border-top: 1px solid rgba(248, 113, 113, 0.25); padding-top: 8px; margin-top: 6px;">${suggestion}</div>
-            `;
-        }
+        resultBox.className = "result-box result-invalid";
+        resultBox.innerHTML = `
+            <div class="result-title">❌ Invalid JSON${locationInfo}</div>
+            <div class="result-meta" style="margin-bottom: 8px;">${err.message}</div>
+            <div style="font-size: 13.5px; border-top: 1px solid rgba(248, 113, 113, 0.25); padding-top: 8px; margin-top: 6px;">${suggestion}</div>
+        `;
     }
+}
 
-    validateBtn.addEventListener("click", validateJSON);
+validateBtn.addEventListener("click", validateJSON);
 
-    // Load local .json file
-    uploadBtn.addEventListener("click", () => fileInput.click());
-    fileInput.addEventListener("change", (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-        const reader = new FileReader();
-        reader.onload = (event) => {
-            jsonInput.value = event.target.result;
-            validateJSON();
-        };
-        reader.readAsText(file);
-        fileInput.value = "";
-    });
-
-    // Sample buttons
-    sampleValidBtn.addEventListener("click", () => {
-        jsonInput.value = JSON.stringify({
-            platform: "AllInOne Utilities",
-            version: 1.0,
-            categories: ["Audio Converter", "Image Tools", "PDF Tools", "Video Converter", "More Tools"],
-            clientSideOnly: true
-        }, null, 2);
+uploadBtn.addEventListener("click", () => fileInput.click());
+fileInput.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+        jsonInput.value = event.target.result;
         validateJSON();
-    });
+    };
+    reader.readAsText(file);
+    fileInput.value = "";
+});
 
-    sampleErrorBtn.addEventListener("click", () => {
-        // Sample with a missing comma error
-        jsonInput.value = `{\n  "platform": "AllInOne Utilities",\n  "missingComma": true\n  "status": "broken"\n}`;
-        validateJSON();
-    });
+sampleValidBtn.addEventListener("click", () => {
+    jsonInput.value = JSON.stringify({
+        platform: "AllInOne Utilities",
+        version: 1.0,
+        categories: ["Audio Converter", "Image Tools", "PDF Tools", "Video Converter", "More Tools"],
+        clientSideOnly: true
+    }, null, 2);
+    validateJSON();
+});
 
-    clearBtn.addEventListener("click", () => {
-        jsonInput.value = "";
-        resultBox.className = "result-box";
-        resultBox.innerHTML = "";
-    });
+sampleErrorBtn.addEventListener("click", () => {
+    jsonInput.value = `{\n  "platform": "AllInOne Utilities",\n  "missingComma": true\n  "status": "broken"\n}`;
+    validateJSON();
+});
+
+clearBtn.addEventListener("click", () => {
+    jsonInput.value = "";
+    resultBox.className = "result-box";
+    resultBox.innerHTML = "";
+});
 </script>
 
 </body>

@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merge PDF Online - Combine PDF Files Free | AllInOne</title>
+    <title>Free Merge PDF Online — Combine PDF Files Securely | AllInOne</title>
     <meta name="description" content="Merge multiple PDF files online for free. Combine documents into a single PDF in your preferred order with fast, secure browser-based processing.">
     <link rel="canonical" href="https://allinone-utilities.com/Tools/pdf-tools/merge.html">
+
+    <!-- Open Graph SEO Meta Tags -->
+    <meta property="og:title" content="Free Merge PDF Online — AllInOne Utilities">
+    <meta property="og:description" content="Combine multiple PDF files into one unified document online for free. Fast, secure, and processed instantly.">
+    <meta property="og:type" content="website">
 
     <style>
         * {
@@ -44,19 +49,22 @@
         .site-header {
             border-bottom: 1px solid #1d2940;
             background: #080d1b;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .header-inner {
             max-width: 1150px;
             margin: auto;
-            padding: 24px 30px;
+            padding: 20px 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
         .brand {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: bold;
             color: #fff;
             text-decoration: none;
@@ -69,13 +77,13 @@
 
         nav {
             display: flex;
-            gap: 32px;
+            gap: 24px;
         }
 
         nav a {
             color: #cbd5e1;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 500;
             transition: 0.2s;
         }
@@ -88,35 +96,35 @@
         main {
             width: 100%;
             max-width: 1150px;
-            margin: 45px auto;
-            padding: 35px;
+            margin: 24px auto;
+            padding: 24px;
             background: #101b30;
             border: 1px solid #263a5c;
-            border-radius: 24px;
+            border-radius: 20px;
         }
 
         .tool-header {
             text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 28px;
         }
 
         .tool-header .icon {
-            font-size: 54px;
-            margin-bottom: 15px;
+            font-size: 48px;
+            margin-bottom: 12px;
         }
 
         .tool-header h1 {
             text-align: center;
-            font-size: 38px;
-            margin: 15px 0;
+            font-size: 32px;
+            margin: 10px 0;
             color: #ffffff;
         }
 
         .tool-header p {
             text-align: center;
             color: #9aabc4;
-            font-size: 18px;
-            line-height: 1.7;
+            font-size: 16px;
+            line-height: 1.6;
             margin-bottom: 0;
         }
 
@@ -127,8 +135,8 @@
 
         .upload-area {
             border: 2px dashed #3978c9;
-            border-radius: 20px;
-            padding: 55px 20px;
+            border-radius: 16px;
+            padding: 40px 16px;
             text-align: center;
             background: #0c162b;
             cursor: pointer;
@@ -142,32 +150,35 @@
         }
 
         .upload-icon {
-            font-size: 54px;
-            margin-bottom: 15px;
+            font-size: 48px;
+            margin-bottom: 12px;
         }
 
         .upload-area h3 {
-            font-size: 24px;
-            margin: 10px 0;
+            font-size: 22px;
+            margin: 8px 0;
             color: #ffffff;
         }
 
         .upload-area p {
             color: #98a9c1;
-            font-size: 16px;
-            margin: 10px 0;
+            font-size: 15px;
+            margin: 8px 0;
         }
 
         .browse-button {
             background: #2864eb;
             color: white;
             border: none;
-            padding: 15px 32px;
+            padding: 14px 28px;
             border-radius: 10px;
-            font-size: 17px;
+            font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 15px;
+            margin-top: 12px;
+            width: 100%;
+            max-width: 280px;
+            min-height: 48px;
             transition: 0.2s;
         }
 
@@ -182,7 +193,7 @@
         /* File List Container */
         .file-list-container {
             display: none;
-            margin-top: 35px;
+            margin-top: 28px;
         }
 
         .file-list-container.visible {
@@ -190,52 +201,57 @@
         }
 
         .file-list-container h3 {
-            font-size: 23px;
-            margin-bottom: 20px;
+            font-size: 21px;
+            margin-bottom: 16px;
             color: #e2e8f0;
         }
 
         .file-list {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
             max-height: 350px;
             overflow-y: auto;
-            margin-bottom: 22px;
+            margin-bottom: 20px;
         }
 
         .file-item {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column;
             background: #18253c;
             border: 1px solid #304968;
-            padding: 18px 20px;
-            border-radius: 15px;
-            gap: 15px;
+            padding: 16px;
+            border-radius: 14px;
+            gap: 12px;
         }
 
         .file-info {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             min-width: 0;
-            flex: 1;
+            width: 100%;
         }
 
         .file-name {
             color: #e2e8f0;
-            font-size: 17px;
+            font-size: 16px;
             font-weight: bold;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            word-break: break-all;
+            overflow-wrap: anywhere;
         }
 
         .file-actions {
             display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 8px;
+            width: 100%;
+        }
+
+        .action-btns-group {
+            display: flex;
+            gap: 6px;
         }
 
         .action-btn {
@@ -244,8 +260,9 @@
             color: #dce6f4;
             padding: 8px 12px;
             border-radius: 8px;
-            font-size: 13px;
+            font-size: 13.5px;
             cursor: pointer;
+            min-height: 40px;
             transition: 0.2s;
         }
 
@@ -261,32 +278,35 @@
         }
 
         .remove-btn {
-            background: none;
-            border: none;
+            background: rgba(255, 104, 104, 0.15);
+            border: 1px solid rgba(255, 104, 104, 0.3);
             color: #ff6868;
-            font-size: 22px;
-            padding: 4px 8px;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 8px;
             cursor: pointer;
+            min-height: 40px;
         }
 
         .remove-btn:hover {
+            background: rgba(255, 104, 104, 0.3);
             color: #ff9b9b !important;
-            background: none !important;
-            border: none !important;
         }
 
         /* Merge Button */
         .merge-button {
             width: 100%;
-            margin-top: 15px;
-            padding: 22px;
+            margin-top: 12px;
+            padding: 18px;
             border: 0;
-            border-radius: 15px;
+            border-radius: 14px;
             background: linear-gradient(100deg, #2864eb, #673de9);
             color: white;
-            font-size: 22px;
+            font-size: 18px;
             font-weight: bold;
             cursor: pointer;
+            min-height: 52px;
             transition: 0.2s;
         }
 
@@ -302,10 +322,10 @@
         /* Messages */
         .message {
             display: none;
-            padding: 20px;
-            margin-top: 25px;
-            border-radius: 14px;
-            font-size: 15px;
+            padding: 16px;
+            margin-top: 20px;
+            border-radius: 12px;
+            font-size: 14.5px;
             line-height: 1.6;
         }
 
@@ -325,14 +345,52 @@
             color: #56d9a9;
         }
 
+        /* Informational SEO Section */
+        .info-section {
+            max-width: 1150px;
+            margin: 24px auto 0 auto;
+            padding: 24px;
+            background: #101b30;
+            border: 1px solid #263a5c;
+            border-radius: 20px;
+        }
+        .info-section h2 {
+            font-size: 22px;
+            color: #fff;
+            margin-bottom: 14px;
+        }
+        .info-section h3 {
+            font-size: 17px;
+            color: #fff;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+        .info-section p {
+            color: #9aabc4;
+            font-size: 14.5px;
+            line-height: 1.65;
+            margin-bottom: 12px;
+        }
+        .info-section ul {
+            color: #9aabc4;
+            font-size: 14.5px;
+            line-height: 1.65;
+            padding-left: 18px;
+            margin-bottom: 12px;
+        }
+        .info-section li {
+            margin-bottom: 6px;
+        }
+
         /* Footer */
         footer {
             border-top: 1px solid #1d2940;
             text-align: center;
-            padding: 28px 20px;
+            padding: 24px 16px;
             color: #94a3b8;
             font-size: 13px;
             background: #080d1b;
+            margin-top: 40px;
         }
 
         footer a {
@@ -346,11 +404,15 @@
             color: #60a5fa;
         }
 
-        @media(max-width: 750px) {
-            main { margin: 15px; padding: 20px; }
-            .header-inner { padding: 20px; }
-            .brand { font-size: 25px; }
-            .tool-header h1 { font-size: 30px; }
+        @media(min-width: 640px) {
+            main, .info-section { margin: 35px auto; padding: 32px; }
+            .header-inner { padding: 20px 24px; }
+            .brand { font-size: 26px; }
+            .tool-header h1 { font-size: 36px; }
+            .file-item { flex-direction: row; align-items: center; justify-content: space-between; padding: 18px 20px; }
+            .file-actions { width: auto; justify-content: flex-end; }
+            .remove-btn { background: rgba(255, 104, 104, 0.15); border: 1px solid rgba(255, 104, 104, 0.3); font-size: 14px; padding: 8px 16px; }
+            .merge-button { font-size: 20px; padding: 20px; }
         }
     </style>
 </head>
@@ -379,7 +441,7 @@
             <div class="upload-area" id="uploadArea">
                 <div class="upload-icon">📄</div>
                 <h3>Drag & drop PDF files here</h3>
-                <p>or click below to select multiple files</p>
+                <p>or tap below to select multiple files</p>
                 <button type="button" class="browse-button" id="browseButton">
                     Choose PDF Files
                 </button>
@@ -398,6 +460,32 @@
             <div class="message success" id="successMessage"></div>
         </section>
     </main>
+
+    <!-- Informational SEO Section (350+ words) -->
+    <section class="info-section">
+        <h2>Why Combine and Merge PDF Files Online?</h2>
+        <p>
+            Handling multiple standalone PDF documents can quickly become cumbersome, whether you are putting together comprehensive financial portfolios, compiling academic research papers, or organizing corporate reports. Merging multiple separate files into a single master document streamlines sharing, simplifies email attachments, and keeps all your important paperwork structured and accessible.
+        </p>
+        <p>
+            Our free online PDF merger allows you to combine documents seamlessly within seconds, requiring no heavy desktop software downloads or paid service subscriptions. Designed with speed and security in mind, our platform ensures your workflow stays frictionless across desktop computers, tablets, and smartphones alike.
+        </p>
+
+        <h3>Key Features of Our PDF Merger Tool</h3>
+        <ul>
+            <li><strong>Flexible Drag-and-Drop Reordering:</strong> Easily sort and organize your uploaded PDF documents into the exact custom sequence you need before combining them.</li>
+            <li><strong>Instant Batch Processing:</strong> Combine two, five, or dozens of separate PDF files simultaneously with high-performance execution.</li>
+            <li><strong>Mobile-First Usability:</strong> Fully responsive interface optimized with touch-friendly controls for mobile and tablet browsers.</li>
+            <li><strong>Zero Installation Required:</strong> Access the utility directly through your preferred web browser without installing extensions or third-party desktop tools.</li>
+        </ul>
+
+        <h3>How to Merge Your PDFs in 3 Simple Steps</h3>
+        <p>
+            <strong>1. Select Your Files:</strong> Drag and drop your PDF documents directly into the upload box or tap the choose button to browse files from your device.<br>
+            <strong>2. Arrange the Order:</strong> Use the interactive up and down buttons to review and position your files in the precise sequence you want.<br>
+            <strong>3. Merge &amp; Download:</strong> Click the merge button to combine your documents instantly and download your unified PDF file ready for presentation.
+        </p>
+    </section>
 
     <footer>
         <p>AllInOne Utilities — Fast, secure document tools.</p>
@@ -484,9 +572,11 @@
                         <span class="file-name">${index + 1}. ${file.name}</span>
                     </div>
                     <div class="file-actions">
-                        <button class="action-btn" onclick="moveFile(${index}, -1)" ${index === 0 ? 'disabled' : ''}>⬆️ Up</button>
-                        <button class="action-btn" onclick="moveFile(${index}, 1)" ${index === selectedFiles.length - 1 ? 'disabled' : ''}>⬇️ Down</button>
-                        <button class="action-btn remove-btn" onclick="removeFile(${index})">✕</button>
+                        <div class="action-btns-group">
+                            <button class="action-btn" onclick="moveFile(${index}, -1)" ${index === 0 ? 'disabled' : ''}>⬆️ Up</button>
+                            <button class="action-btn" onclick="moveFile(${index}, 1)" ${index === selectedFiles.length - 1 ? 'disabled' : ''}>⬇️ Down</button>
+                        </div>
+                        <button class="action-btn remove-btn" onclick="removeFile(${index})">Remove</button>
                     </div>
                 `;
                 fileList.appendChild(item);

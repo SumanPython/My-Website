@@ -3,13 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>ServiceNow Incident CSV Generator — Free & Private | AllInOne</title>
+<meta name="theme-color" content="#080d1b">
+
+<title>ServiceNow Incident CSV Generator — Free &amp; Private | AllInOne</title>
 <meta name="description" content="Generate and download standard out-of-the-box (OOTB) ServiceNow incident table CSV data complete with sys_id, states, priorities, and assignment groups. 100% private browser processing.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://allinone-utilities.com/Tools/sample-files/sample-servicenow-incidents.html">
+
+<!-- Open Graph SEO Meta Tags -->
+<meta property="og:title" content="ServiceNow Incident CSV Generator — Free &amp; Private | AllInOne">
+<meta property="og:description" content="Generate and download standard out-of-the-box ServiceNow incident table CSV data instantly in your browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://allinone-utilities.com/Tools/sample-files/sample-servicenow-incidents.html">
+
+<!-- FAQ Rich Snippet Schema for Google SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are these ServiceNow incident CSV records generated locally?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! All sample ServiceNow incident datasets and CSV files are generated 100% client-side inside your browser memory with zero server uploads."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What fields are included in the generated ServiceNow CSV data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The CSV output includes standard OOTB incident table fields such as sys_id, number, short_description, state, priority, assignment_group, and sys_created_on."
+      }
+    }
+  ]
+}
+</script>
 
 <style>
-* { box-sizing: border-box; }
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 body {
-    margin: 0;
     background-color: #080d1b;
     background-image:
         radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 4px),
@@ -22,7 +57,10 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 }
+
+/* Header */
 .site-header { 
     border-bottom: 1px solid #1d2940; 
     background: rgba(8, 13, 27, 0.9); 
@@ -34,7 +72,7 @@ body {
 .header-inner { 
     max-width: 1150px; 
     margin: auto; 
-    padding: 20px 30px; 
+    padding: 20px 24px; 
     display: flex; 
     align-items: center; 
     justify-content: space-between; 
@@ -50,7 +88,7 @@ body {
 
 nav {
     display: flex;
-    gap: 28px;
+    gap: 24px;
 }
 nav a { 
     color: #cbd5e1; 
@@ -61,30 +99,80 @@ nav a {
 }
 nav a:hover { color: #60a5fa; }
 
+/* Main Container */
 .container { 
-    max-width: 1000px; 
+    max-width: 1150px; 
     width: 100%; 
-    margin: 45px auto; 
-    padding: 35px; 
+    margin: 24px auto; 
+    padding: 24px; 
     background: rgba(16, 27, 48, 0.85); 
     border: 1px solid #263a5c; 
-    border-radius: 24px; 
+    border-radius: 20px; 
     backdrop-filter: blur(10px); 
-    flex: 1; 
 }
-h1 { text-align: center; font-size: 34px; margin: 10px 0 15px; color: #fff; }
-.subtitle { text-align: center; color: #9aabc4; font-size: 16px; line-height: 1.7; margin-bottom: 30px; }
 
+/* Breadcrumb */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    color: #9aabc4;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+.breadcrumb a {
+    color: #9aabc4;
+    text-decoration: none;
+    transition: color 0.15s;
+}
+.breadcrumb a:hover {
+    color: #66a2ff;
+}
+
+.privacy-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(16, 185, 129, 0.12);
+    color: #34d399;
+    border: 1px solid rgba(52, 211, 153, 0.3);
+    margin-bottom: 16px;
+}
+
+/* Tool Header */
+.tool-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+.tool-header h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+    margin: 10px 0;
+}
+.tool-header p {
+    color: #9aabc4;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Controls Card */
 .controls-card {
     background: rgba(12, 22, 43, 0.8);
     border: 1px solid #263a5c;
     border-radius: 16px;
-    padding: 25px;
+    padding: 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+    grid-template-columns: 1fr;
+    gap: 16px;
     align-items: flex-end;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
 }
 
 .control-group {
@@ -118,20 +206,24 @@ h1 { text-align: center; font-size: 34px; margin: 10px 0 15px; color: #fff; }
     background: linear-gradient(100deg, #2864eb, #673de9);
     color: white;
     border: none;
-    padding: 13px 24px;
+    padding: 14px 20px;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
     cursor: pointer;
     transition: 0.2s;
     box-shadow: 0 4px 16px rgba(40, 100, 235, 0.3);
-    height: 47px;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 .action-btn:hover { transform: translateY(-1px); opacity: 0.92; }
 
 .preview-section {
     display: none;
-    margin-top: 30px;
+    margin-top: 24px;
 }
 
 .table-container {
@@ -140,7 +232,7 @@ h1 { text-align: center; font-size: 34px; margin: 10px 0 15px; color: #fff; }
     border: 1px solid #263a5c;
     border-radius: 14px;
     background: #0c162b;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 table {
@@ -177,23 +269,68 @@ td { color: #cbd5e1; }
 .badge-p3 { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
 .badge-p4 { background: rgba(107, 114, 128, 0.2); color: #9ca3af; border: 1px solid rgba(107, 114, 128, 0.3); }
 
-.privacy-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 4px 12px;
-    border-radius: 999px;
-    background: rgba(16, 185, 129, 0.12);
-    color: #34d399;
-    border: 1px solid rgba(52, 211, 153, 0.3);
-    margin-bottom: 15px;
+/* Informational SEO Section & Card Sections */
+.card-section, .info-section {
+    max-width: 1150px;
+    width: 100%;
+    margin: 24px auto;
+    padding: 24px;
+    background: rgba(16, 27, 48, 0.85);
+    border: 1px solid #263a5c;
+    border-radius: 20px;
 }
+.card-section h2, .info-section h2 { font-size: 22px; color: #fff; margin-bottom: 14px; }
+.info-section h3 { font-size: 17px; color: #fff; margin-top: 20px; margin-bottom: 8px; }
+.info-section p { color: #9aabc4; font-size: 14.5px; line-height: 1.65; margin-bottom: 12px; }
+.info-section ul { color: #9aabc4; font-size: 14.5px; line-height: 1.65; padding-left: 18px; margin-bottom: 12px; }
+.info-section li { margin-bottom: 6px; }
 
-@media (max-width: 768px) {
-    .container { margin: 15px; padding: 20px; }
-    .controls-card { grid-template-columns: 1fr; }
+.related-tools {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 16px;
+}
+.related-link {
+    display: block;
+    padding: 18px;
+    background: #0c162b;
+    border: 1px solid #263a5c;
+    border-radius: 12px;
+    color: #e6edf7;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.related-link:hover { border-color: #60a5fa; transform: translateY(-2px); }
+.related-link strong { font-size: 16px; color: #fff; }
+.related-link span { display: block; font-size: 13.5px; color: #9aabc4; margin-top: 4px; }
+
+.faq-item { margin-bottom: 16px; }
+.faq-item:last-child { margin-bottom: 0; }
+.faq-item h3 { font-size: 17px; margin-bottom: 6px; color: #ffffff; }
+.faq-item p { font-size: 14.5px; color: #9aabc4; line-height: 1.6; }
+
+/* Footer */
+footer {
+    border-top: 1px solid #1d2940;
+    text-align: center;
+    padding: 24px 16px;
+    color: #94a3b8;
+    font-size: 13px;
+    background: rgba(8, 13, 27, 0.9);
+    margin-top: auto;
+}
+footer a { color: #94a3b8; text-decoration: none; margin: 0 10px; }
+footer a:hover { color: #60a5fa; }
+
+@media(min-width: 640px) {
+    .header-inner { padding: 20px 24px; }
+    .container, .card-section, .info-section { margin: 35px auto; padding: 32px; }
+    .brand { font-size: 26px; }
+    .tool-header h1 { font-size: 36px; }
+    .controls-card { grid-template-columns: 1fr 1fr auto; gap: 20px; padding: 25px; }
+    .action-btn { width: auto; padding: 13px 28px; }
+    .related-tools { grid-template-columns: repeat(3, 1fr); gap: 18px; }
 }
 </style>
 </head>
@@ -209,60 +346,131 @@ td { color: #cbd5e1; }
     </div>
 </header>
 
-<div class="container" style="text-align: center;">
-    <div class="privacy-badge">🔒 100% Browser-Based • Zero Server Uploads</div>
-    <h1>ServiceNow Incident CSV Generator</h1>
-    <div class="subtitle">Generate and download standard out-of-the-box (OOTB) ServiceNow incident table CSV data (<code>incident</code>) complete with <code>sys_id</code>, states, priorities, and assignment groups.</div>
-
-    <div class="controls-card" style="text-align: left;">
-        <div class="control-group">
-            <label for="recordCount">Number of Records</label>
-            <select id="recordCount">
-                <option value="10">10 Incidents</option>
-                <option value="50" selected>50 Incidents</option>
-                <option value="100">100 Incidents</option>
-                <option value="500">500 Incidents</option>
-            </select>
+<main style="max-width: 1150px; width: 100%; margin: 24px auto; padding: 0 24px;">
+    <div class="container" style="text-align: center;">
+        <div class="privacy-badge">🔒 100% Browser-Based &bull; Zero Server Uploads</div>
+        <div class="tool-header">
+            <h1>ServiceNow Incident CSV Generator</h1>
+            <p>Generate and download standard out-of-the-box (OOTB) ServiceNow incident table CSV data (<code>incident</code>) complete with <code>sys_id</code>, states, priorities, and assignment groups.</p>
         </div>
 
-        <div class="control-group">
-            <label for="priorityFilter">Priority Filter</label>
-            <select id="priorityFilter">
-                <option value="all">All Priorities</option>
-                <option value="1">P1 - Critical</option>
-                <option value="2">P2 - High</option>
-                <option value="3">P3 - Moderate</option>
-                <option value="4">P4 - Low</option>
-            </select>
+        <div class="controls-card" style="text-align: left;">
+            <div class="control-group">
+                <label for="recordCount">Number of Records</label>
+                <select id="recordCount">
+                    <option value="10">10 Incidents</option>
+                    <option value="50" selected>50 Incidents</option>
+                    <option value="100">100 Incidents</option>
+                    <option value="500">500 Incidents</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="priorityFilter">Priority Filter</label>
+                <select id="priorityFilter">
+                    <option value="all">All Priorities</option>
+                    <option value="1">P1 - Critical</option>
+                    <option value="2">P2 - High</option>
+                    <option value="3">P3 - Moderate</option>
+                    <option value="4">P4 - Low</option>
+                </select>
+            </div>
+
+            <button class="action-btn" id="generateBtn" type="button">Generate Data</button>
         </div>
 
-        <button class="action-btn" id="generateBtn" type="button">Generate Data</button>
+        <div class="preview-section" id="previewSection" style="text-align: left;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+                <h3 id="previewTitle" style="margin: 0; color: #fff; font-size: 18px;">Data Preview</h3>
+                <button class="action-btn" id="downloadBtn" style="height: auto; padding: 10px 20px; font-size: 14px;" type="button">&#11015; Download Full CSV</button>
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>sys_id</th>
+                            <th>number</th>
+                            <th>short_description</th>
+                            <th>state</th>
+                            <th>priority</th>
+                            <th>assignment_group</th>
+                            <th>sys_created_on</th>
+                        </tr>
+                    </thead>
+                    <tbody id="previewBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
+</main>
 
-    <div class="preview-section" id="previewSection" style="text-align: left;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
-            <h3 id="previewTitle" style="margin: 0; color: #fff; font-size: 18px;">Data Preview</h3>
-            <button class="action-btn" id="downloadBtn" style="height: auto; padding: 10px 20px; font-size: 14px;" type="button">📥 Download Full CSV</button>
-        </div>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>sys_id</th>
-                        <th>number</th>
-                        <th>short_description</th>
-                        <th>state</th>
-                        <th>priority</th>
-                        <th>assignment_group</th>
-                        <th>sys_created_on</th>
-                    </tr>
-                </thead>
-                <tbody id="previewBody">
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
+<!-- Informational SEO Section (350+ words) -->
+<section class="info-section">
+    <h2>Why Use ServiceNow Incident CSV Generators for Testing and Development?</h2>
+    <p>
+        In enterprise IT Service Management (ITSM) ecosystems, ServiceNow serves as the central hub for tracking, triaging, and resolving critical operational outages. Whether you are developing custom ATF (Automated Test Framework) scripts, configuring inbound REST integrations, building reporting dashboards, or testing data imports and transforms, having realistic out-of-the-box (OOTB) incident table data is essential.
+    </p>
+    <p>
+        Exporting live production records can introduce severe data privacy risks and compliance bottlenecks. Our free online ServiceNow Incident CSV Generator enables administrators, developers, and QA engineers to instantly produce structurally accurate mock datasets mirroring real enterprise IT environments. Best of all, because all data generation occurs dynamically right inside your browser memory, your operations remain completely secure with zero server uploads.
+    </p>
+
+    <h3>Key Benefits of Our ServiceNow Test Data Generator</h3>
+    <ul>
+        <li><strong>Standardized OOTB Schema:</strong> Every generated record includes authentic field attributes such as 32-character hexadecimal <code>sys_id</code> strings, sequential incident numbers (e.g., INC0010001), short descriptions, numeric state codes, priority levels, assignment groups, and timestamps.</li>
+        <li><strong>Configurable Volume &amp; Filtering:</strong> Quickly scale your testing datasets from 10 records for rapid unit tests up to 500 records for bulk import benchmarking, or isolate specific priorities (P1 Critical through P4 Low).</li>
+        <li><strong>Excel &amp; ServiceNow Compatibility:</strong> Downloaded CSV files use proper comma-delimited formatting and text wrapping, ensuring seamless import into ServiceNow update sets, data loaders, or Excel analysis tools.</li>
+        <li><strong>100% Client-Side Generation:</strong> Instantaneous data compilation directly within your browser environment with zero server latency or waiting queues.</li>
+    </ul>
+
+    <h3>How to Use These ServiceNow CSV Datasets in Your Workflow</h3>
+    <p>
+        <strong>1. Select Record Count &amp; Priority:</strong> Choose how many mock incidents you need and optionally filter by specific priority levels.<br>
+        <strong>2. Inspect the Live Preview:</strong> Review the generated table data directly in your browser before committing to download.<br>
+        <strong>3. Download &amp; Import:</strong> Click the download button to save the <code>.csv</code> file for use in your ServiceNow instance data loaders or testing pipelines.
+    </p>
+</section>
+
+<!-- Internal Cross-Linking for SEO -->
+<section class="card-section">
+  <h2>Related Sample Files &amp; Tools</h2>
+  <div class="related-tools">
+    <a href="sample-json.html" class="related-link">
+      <strong>Sample JSON Payloads &rarr;</strong>
+      <span>Structured mock JSON data files.</span>
+    </a>
+    <a href="sample-csv.html" class="related-link">
+      <strong>Sample CSV Files &rarr;</strong>
+      <span>Download structured tabular test data.</span>
+    </a>
+    <a href="sample-yml.html" class="related-link">
+      <strong>Sample YAML Files &rarr;</strong>
+      <span>Configuration and pipeline test files.</span>
+    </a>
+  </div>
+</section>
+
+<!-- SEO & FAQ Content -->
+<section class="card-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <h3>Are these ServiceNow incident CSV records generated locally?</h3>
+    <p>Yes! All sample ServiceNow incident datasets and CSV files are generated 100% client-side inside your browser memory with zero server uploads.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What fields are included in the generated ServiceNow CSV data?</h3>
+    <p>The CSV output includes standard OOTB incident table fields such as sys_id, number, short_description, state, priority, assignment_group, and sys_created_on.</p>
+  </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 AllInOne Utilities — Fast, secure document tools.</p>
+    <p style="margin-top:10px;">
+        <a href="../../index.html">Home</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+    </p>
+</footer>
 
 <script>
 const sampleDescriptions = [

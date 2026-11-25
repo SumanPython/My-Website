@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#060a14">
+
+<title>Sample YAML Files — Download Test Data | AllInOne Utilities</title>
+<meta name="description" content="Download free sample YAML files in small, medium, and large sizes. Use YAML test data for CI/CD pipelines, Kubernetes manifests, configuration testing, and QA validation. 100% free and secure browser-based tool.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://allinone-utilities.com/Tools/sample-files/sample-yml.html">
+
+<!-- Open Graph SEO Meta Tags -->
+<meta property="og:title" content="Sample YAML Files — Download Test Data | AllInOne">
+<meta property="og:description" content="Download free YAML sample data instantly in your browser for configuration testing, pipelines, and QA validation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://allinone-utilities.com/Tools/sample-files/sample-yml.html">
+
+<!-- FAQ Rich Snippet Schema for Google SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are these YAML sample payloads generated locally?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! All sample YAML test files are generated 100% client-side inside your browser memory with zero server uploads."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What dataset sizes are available for testing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can download Small (5 records), Medium (25 records), and Large (100 records) YAML test datasets for configuration and pipeline experiments."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+:root {
+    --bg-primary: #060a14;
+    --bg-card: rgba(15, 24, 44, 0.8);
+    --border-subtle: rgba(148, 163, 184, 0.2);
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+
+    --cat-accent: #818cf8;
+    --cat-border: rgba(129, 140, 248, 0.58);
+    --cat-glow: rgba(99, 102, 241, 0.25);
+    --cat-bg-tint: rgba(99, 102, 241, 0.16);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+body {
+    background-color: var(--bg-primary);
+    background-image:
+        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 4px),
+        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 3px),
+        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 4px);
+    background-size: 550px 550px, 350px 350px, 250px 250px;
+    background-position: 0 0, 40px 60px, 130px 270px;
+    color: var(--text-main);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* Header */
+.site-header { 
+    border-bottom: 1px solid var(--border-subtle); 
+    background: rgba(6, 10, 20, 0.9);
+    backdrop-filter: blur(14px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.header-inner { 
+    max-width: 1150px; 
+    margin: auto; 
+    padding: 20px 24px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+}
+.brand { 
+    font-size: 26px; 
+    font-weight: 800; 
+    color: #fff; 
+    text-decoration: none; 
+    letter-spacing: -0.5px;
+}
+.brand span { 
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.categories-btn {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+}
+.categories-btn:hover {
+    color: var(--text-main);
+}
+
+/* Main Container */
+.container { 
+    max-width: 1150px; 
+    width: 100%; 
+    margin: 24px auto; 
+    padding: 0 24px; 
+    flex: 1; 
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+.breadcrumb a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+}
+.breadcrumb a:hover {
+    color: var(--cat-accent);
+}
+
+/* Tool Header */
+.tool-header {
+    background: var(--bg-card);
+    border: 1px solid var(--cat-border);
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 12px 32px var(--cat-glow);
+    text-align: center;
+}
+.privacy-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border: 1px solid rgba(129, 140, 248, 0.4);
+    border-radius: 50px;
+    background: rgba(129, 140, 248, 0.1);
+    color: #818cf8;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+.tool-header h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+    margin: 0 0 8px 0;
+}
+.tool-header p {
+    color: var(--text-muted);
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Sample Grid */
+.samples-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+/* Sample Card */
+.sample-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s, border-color 0.2s;
+}
+.sample-card:hover {
+    border-color: var(--cat-border);
+    transform: translateY(-2px);
+}
+
+/* YAML Preview Box */
+.preview-box {
+    background: #0b1325;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 14px;
+    height: 130px;
+    overflow: auto;
+}
+.preview-box pre {
+    color: #93c5fd;
+    font-size: 11.5px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-family: Consolas, Monaco, monospace;
+    margin: 0;
+}
+
+.sample-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+
+.sample-description {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+}
+
+.sample-meta {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    line-height: 1.7;
+}
+
+.size-small { color: #38bdf8; font-weight: 600; }
+.size-medium { color: #818cf8; font-weight: 600; }
+.size-large { color: #34d399; font-weight: 600; }
+
+/* Download Button */
+.download-btn {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    background: var(--cat-bg-tint);
+    color: var(--cat-accent);
+    border: 1px solid var(--cat-border);
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    min-height: 48px;
+    transition: background 0.15s, color 0.15s, transform 0.15s;
+}
+.download-btn:hover {
+    background: var(--cat-accent);
+    color: #060a14;
+    transform: translateY(-1px);
+}
+
+/* Card Sections for SEO and FAQs */
+.card-section, .info-section {
+    max-width: 1150px;
+    width: 100%;
+    margin: 24px auto;
+    padding: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    color: var(--text-muted);
+    font-size: 14.5px;
+    line-height: 1.65;
+}
+.card-section h2, .info-section h2 { font-size: 22px; color: #fff; margin-bottom: 14px; }
+.info-section h3 { font-size: 17px; color: #fff; margin-top: 20px; margin-bottom: 8px; }
+.info-section p { color: var(--text-muted); font-size: 14.5px; line-height: 1.65; margin-bottom: 12px; }
+.info-section ul { color: var(--text-muted); font-size: 14.5px; line-height: 1.65; padding-left: 18px; margin-bottom: 12px; }
+.info-section li { margin-bottom: 6px; }
+
+.related-tools {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 16px;
+}
+.related-link {
+    display: block;
+    padding: 18px;
+    background: rgba(11, 19, 37, 0.8);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    color: var(--text-main);
+    text-decoration: none;
+    transition: 0.2s;
+}
+.related-link:hover { border-color: var(--cat-border); transform: translateY(-2px); }
+.related-link strong { font-size: 16px; color: #fff; }
+.related-link span { display: block; font-size: 13.5px; color: var(--text-muted); margin-top: 4px; }
+
+.faq-item { margin-bottom: 16px; }
+.faq-item:last-child { margin-bottom: 0; }
+.faq-item h3 { font-size: 17px; margin-bottom: 6px; color: #ffffff; }
+.faq-item p { font-size: 14.5px; color: var(--text-muted); line-height: 1.6; }
+
+/* Footer */
+footer {
+    border-top: 1px solid var(--border-subtle);
+    text-align: center;
+    padding: 24px 16px;
+    color: var(--text-muted);
+    font-size: 13px;
+    background: rgba(6, 10, 20, 0.9);
+    margin-top: auto;
+}
+footer a { color: var(--text-muted); text-decoration: none; margin: 0 10px; }
+footer a:hover { color: var(--cat-accent); }
+
+@media(min-width: 640px) {
+    .header-inner { padding: 20px 24px; }
+    .container, .card-section, .info-section { margin: 35px auto; padding: 32px; }
+    .brand { font-size: 26px; }
+    .tool-header h1 { font-size: 36px; }
+    .samples-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .sample-card { padding: 22px; }
+    .related-tools { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a class="brand" href="../../index.html">AllIn<span>One</span></a>
+        <nav class="nav">
+            <a href="../../index.html#category-boxes-section" class="categories-btn">Categories</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    
+    <div class="breadcrumb">
+        <a href="../../index.html">Home</a>
+        <span>/</span>
+        <a href="../../index.html#sample-files">Sample Files</a>
+        <span>/</span>
+        <span>Sample YAML Files</span>
+    </div>
+
+    <div class="tool-header">
+        <div class="privacy-badge">🔒 100% Browser-Based &bull; Zero Server Uploads</div>
+        <h1>Sample YAML Files</h1>
+        <p>Download free sample YAML configuration files in small, medium, and large sizes. Use YAML test data for CI/CD pipelines, Kubernetes manifests, configuration files, and QA testing.</p>
+    </div>
+
+    <div class="samples-grid">
+        <!-- Small YAML -->
+        <div class="sample-card">
+            <div>
+                <div class="sample-title">Small Test YAML</div>
+                <div class="sample-description">
+                    Lightweight YAML sample configuration for quick testing, basic syntax validation, and simple CI/CD pipelines.
+                </div>
+                <div class="preview-box">
+                    <pre id="smallPreview"></pre>
+                </div>
+                <div class="sample-meta">
+                    Dataset: 5 records<br>
+                    Format: YAML<br>
+                    <span class="size-small" id="smallSize">Approx. Size: Calculating...</span>
+                </div>
+            </div>
+            <button type="button" class="download-btn" onclick="downloadYAML('small')">&#11015; Download Small YAML</button>
+        </div>
+
+        <!-- Medium YAML -->
+        <div class="sample-card">
+            <div>
+                <div class="sample-title">Medium Test YAML</div>
+                <div class="sample-description">
+                    Medium-sized YAML configuration dataset for Kubernetes manifests, application properties, and deployment testing.
+                </div>
+                <div class="preview-box">
+                    <pre id="mediumPreview"></pre>
+                </div>
+                <div class="sample-meta">
+                    Dataset: 25 records<br>
+                    Format: YAML<br>
+                    <span class="size-medium" id="mediumSize">Approx. Size: Calculating...</span>
+                </div>
+            </div>
+            <button type="button" class="download-btn" onclick="downloadYAML('medium')">&#11015; Download Medium YAML</button>
+        </div>
+
+        <!-- Large YAML -->
+        <div class="sample-card">
+            <div>
+                <div class="sample-title">Large Test YAML</div>
+                <div class="sample-description">
+                    Larger YAML dataset for bulk configuration parsing, cluster performance testing, and infrastructure automation.
+                </div>
+                <div class="preview-box">
+                    <pre id="largePreview"></pre>
+                </div>
+                <div class="sample-meta">
+                    Dataset: 100 records<br>
+                    Format: YAML<br>
+                    <span class="size-large" id="largeSize">Approx. Size: Calculating...</span>
+                </div>
+            </div>
+            <button type="button" class="download-btn" onclick="downloadYAML('large')">&#11015; Download Large YAML</button>
+        </div>
+    </div>
+</main>
+
+<!-- Informational SEO Section (350+ words) -->
+<section class="info-section">
+    <h2>Why Use Sample YAML Files for Software Development and Testing?</h2>
+    <p>
+        YAML (YAML Ain't Markup Language) is a human-readable data serialization standard widely utilized across modern software architecture, including CI/CD pipelines, Kubernetes cluster manifests, Docker Compose configurations, and microservice property files. Whether you are building infrastructure automation scripts, validating YAML parsers, or setting up test environments, having clean and predictable configuration files is vital.
+    </p>
+    <p>
+        Drafting complex YAML structures manually can be tedious and prone to indentation or syntax errors. Our free sample YAML repository provides developers, DevOps engineers, and QA testers with instant access to properly formatted test files across multiple volume tiers. Best of all, because all data structures are generated dynamically right inside your browser memory, your testing workflows operate with absolute privacy and zero external server dependencies.
+    </p>
+
+    <h3>Key Benefits of Our Sample YAML Test Datasets</h3>
+    <ul>
+        <li><strong>Standardized Schema Design:</strong> Each YAML payload features structured configuration keys, metadata blocks, and realistic entity records including IDs, names, corporate emails, roles, and status flags.</li>
+        <li><strong>Flexible Volume Tiers:</strong> Choose between Small (5 records for rapid unit tests), Medium (25 records for integration checking), and Large (100 records for bulk parsing and performance benchmarking).</li>
+        <li><strong>Guaranteed Syntax Compliance:</strong> Every downloaded file adheres strictly to standard YAML indentation and syntax conventions, ensuring seamless compatibility with parsers and linters.</li>
+        <li><strong>100% Client-Side Generation:</strong> Instant file compilation directly in your browser with zero server latency or waiting queues.</li>
+    </ul>
+
+    <h3>How to Use These Sample YAML Files in Your Workflow</h3>
+    <p>
+        <strong>1. Select Your Dataset Size:</strong> Evaluate whether your testing scenario requires a lightweight 5-record sample or a comprehensive 100-record batch.<br>
+        <strong>2. Inspect the Live Preview:</strong> Review the structure and formatting directly within the card preview boxes before downloading.<br>
+        <strong>3. Download &amp; Integrate:</strong> Click the download button to save the <code>.yml</code> file locally for use in your deployment pipelines, configuration parsers, or testing suites.
+    </p>
+</section>
+
+<!-- Internal Cross-Linking for SEO -->
+<section class="card-section">
+  <h2>Related Sample Files &amp; Tools</h2>
+  <div class="related-tools">
+    <a href="sample-json.html" class="related-link">
+      <strong>Sample JSON Files &rarr;</strong>
+      <span>Download structured JSON test data.</span>
+    </a>
+    <a href="sample-txt.html" class="related-link">
+      <strong>Sample Text Files &rarr;</strong>
+      <span>Download plain text sample documents.</span>
+    </a>
+    <a href="../more-tools/formatters.html" class="related-link">
+      <strong>YAML Formatter &amp; Validator &rarr;</strong>
+      <span>Beautify and validate your YAML files.</span>
+    </a>
+  </div>
+</section>
+
+<!-- SEO & FAQ Content -->
+<section class="card-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <h3>Are these YAML sample configuration files generated locally?</h3>
+    <p>Yes! All sample YAML test files are generated 100% client-side inside your browser memory with zero server uploads.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What dataset sizes are available for testing?</h3>
+    <p>You can download Small (5 records), Medium (25 records), and Large (100 records) YAML test datasets for CI/CD and configuration experiments.</p>
+  </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 AllInOne Utilities — Fast, secure document tools.</p>
+    <p style="margin-top:8px;">
+        <a href="../../index.html">Home</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+    </p>
+</footer>
+
+<script>
+"use strict";
+
+const baseRecords = [
+    { id: 1, name: "Alex Johnson", email: "alex.johnson@example.com", role: "Developer", department: "Engineering", active: true, age: 28 },
+    { id: 2, name: "Sarah Williams", email: "sarah.williams@example.com", role: "Designer", department: "Product", active: true, age: 32 },
+    { id: 3, name: "Michael Brown", email: "michael.brown@example.com", role: "Tester", department: "Quality Assurance", active: false, age: 25 },
+    { id: 4, name: "Emily Davis", email: "emily.davis@example.com", role: "Manager", department: "Operations", active: true, age: 35 },
+    { id: 5, name: "David Wilson", email: "david.wilson@example.com", role: "Analyst", department: "Data", active: true, age: 30 },
+    { id: 6, name: "Jessica Miller", email: "jessica.miller@example.com", role: "Developer", department: "Engineering", active: true, age: 27 },
+    { id: 7, name: "Daniel Taylor", email: "daniel.taylor@example.com", role: "Support", department: "Customer Support", active: false, age: 29 },
+    { id: 8, name: "Olivia Martinez", email: "olivia.martinez@example.com", role: "Designer", department: "Product", active: true, age: 26 },
+    { id: 9, name: "James Anderson", email: "james.anderson@example.com", role: "Developer", department: "Engineering", active: true, age: 31 },
+    { id: 10, name: "Sophia Garcia", email: "sophia.garcia@example.com", role: "Analyst", department: "Finance", active: false, age: 33 }
+];
+
+const firstNames = ["Emma", "Noah", "Liam", "Ava", "Mason", "Isabella", "Lucas", "Mia", "Ethan", "Charlotte", "Amelia", "Oliver", "Sophia", "Benjamin", "Elijah", "Harper", "Henry", "Evelyn", "James", "Grace"];
+const lastNames = ["Smith", "Johnson", "Brown", "Taylor", "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin", "Thompson", "Garcia", "Moore", "Clark", "Lewis", "Walker", "Hall", "Young", "King", "Wright"];
+const roles = ["Developer", "Designer", "Tester", "Analyst", "Manager", "Support", "Administrator"];
+const departments = ["Engineering", "Product", "Quality Assurance", "Operations", "Data", "Finance", "Customer Support", "Marketing"];
+
+function generateRecords(totalRecords) {
+    const records = [];
+    for (let i = 0; i < totalRecords; i++) {
+        if (i < baseRecords.length) {
+            records.push(baseRecords[i]);
+            continue;
+        }
+        const firstName = firstNames[i % firstNames.length];
+        const lastName = lastNames[(i * 3) % lastNames.length];
+        records.push({
+            id: i + 1,
+            name: firstName + " " + lastName,
+            email: firstName.toLowerCase() + "." + lastName.toLowerCase() + (i + 1) + "@example.com",
+            role: roles[i % roles.length],
+            department: departments[i % departments.length],
+            active: i % 4 !== 0,
+            age: 22 + (i % 25)
+        });
+    }
+    return records;
+}
+
+function convertToYAML(records) {
+    let yaml = "version: \"1.0\"\ngenerated_by: \"AllInOne Utilities\"\nrecords:\n";
+    records.forEach(r => {
+        yaml += `  - id: ${r.id}\n`;
+        yaml += `    name: "${r.name}"\n`;
+        yaml += `    email: "${r.email}"\n`;
+        yaml += `    role: "${r.role}"\n`;
+        yaml += `    department: "${r.department}"\n`;
+        yaml += `    active: ${r.active}\n`;
+        yaml += `    age: ${r.age}\n`;
+    });
+    return yaml;
+}
+
+const datasets = {
+    small: { count: 5, filename: "sample-small.yml", previewElement: "smallPreview", sizeElement: "smallSize" },
+    medium: { count: 25, filename: "sample-medium.yml", previewElement: "mediumPreview", sizeElement: "mediumSize" },
+    large: { count: 100, filename: "sample-large.yml", previewElement: "largePreview", sizeElement: "largeSize" }
+};
+
+function formatBytes(bytes) {
+    if (bytes < 1024) return bytes + " bytes";
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + " KB";
+    return (bytes / (1024 * 1024)).toFixed(2) + " MB";
+}
+
+function buildYAMLData(size) {
+    const config = datasets[size];
+    if (!config) return null;
+    const records = generateRecords(config.count);
+    return convertToYAML(records);
+}
+
+function updatePreviews() {
+    Object.keys(datasets).forEach(size => {
+        const config = datasets[size];
+        const yamlString = buildYAMLData(size);
+
+        const previewElement = document.getElementById(config.previewElement);
+        const sizeElement = document.getElementById(config.sizeElement);
+
+        if (previewElement) {
+            const previewLength = 700;
+            previewElement.textContent = yamlString.length > previewLength
+                ? yamlString.substring(0, previewLength) + "\n..."
+                : yamlString;
+        }
+
+        if (sizeElement) {
+            const blob = new Blob([yamlString], { type: "text/yaml" });
+            sizeElement.textContent = "Approx. Size: ~" + formatBytes(blob.size);
+        }
+    });
+}
+
+function downloadYAML(size) {
+    const config = datasets[size];
+    if (!config) {
+        alert("Invalid YAML dataset selected.");
+        return;
+    }
+
+    const yamlString = buildYAMLData(size);
+    const blob = new Blob([yamlString], { type: "text/yaml;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = config.filename;
+    link.style.display = "none";
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    setTimeout(() => {
+        URL.revokeObjectURL(url);
+    }, 1000);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    updatePreviews();
+});
+</script>
+
+</body>
+</html>

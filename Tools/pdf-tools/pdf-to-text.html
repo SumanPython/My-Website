@@ -2,31 +2,40 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#080d1b">
 <title>PDF to Text Converter Online — Free &amp; Private | AllInOne</title>
 <meta name="description" content="Extract raw text from PDF documents instantly in your browser. Copy text to clipboard or download as a .txt file. 100% client-side—your files never leave your device.">
-<link rel="canonical" href="https://allinone-utilities.com">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://allinone-utilities.com/Tools/pdf-tools/pdf-text.html">
+
+<!-- Open Graph SEO Meta Tags -->
+<meta property="og:title" content="PDF to Text Converter Online — Free &amp; Private | AllInOne">
+<meta property="og:description" content="Extract clean, selectable text from any PDF document in seconds. Copy directly to your clipboard or save as a .txt file.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://allinone-utilities.com/Tools/pdf-tools/pdf-text.html">
 
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#080d1b;color:#e6edf7;font-family:Arial,Helvetica,sans-serif}
-.site-header{border-bottom:1px solid #1d2940;background:#080d1b}
-.header-inner{max-width:1150px;margin:auto;padding:24px 30px;display:flex;align-items:center;justify-content:space-between}
-.brand{font-size:28px;font-weight:bold;color:#fff;text-decoration:none;letter-spacing:-0.5px}
-.brand span{color:#66a2ff}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body { margin: 0; background: #080d1b; color: #e6edf7; font-family: Arial, Helvetica, sans-serif; overflow-x: hidden; }
 
-nav{display:flex;gap:32px}
-.nav a{color:#cbd5e1;text-decoration:none;font-size:16px;font-weight:500;transition:0.2s}
-.nav a:hover{color:#60a5fa}
+.site-header { border-bottom: 1px solid #1d2940; background: #080d1b; position: sticky; top: 0; z-index: 100; }
+.header-inner { max-width: 1150px; margin: auto; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; }
+.brand { font-size: 26px; font-weight: bold; color: #fff; text-decoration: none; letter-spacing: -0.5px; }
+.brand span { color: #66a2ff; }
 
-.container{max-width:1150px;margin:45px auto;padding:35px;background:#101b30;border:1px solid #263a5c;border-radius:24px}
-h1{text-align:center;font-size:38px;margin:15px 0}
-.subtitle{text-align:center;color:#9aabc4;font-size:18px;line-height:1.7;margin-bottom:35px}
+nav { display: flex; gap: 24px; }
+nav a { color: #cbd5e1; text-decoration: none; font-size: 15px; font-weight: 500; transition: 0.2s; }
+nav a:hover { color: #60a5fa; }
+
+.container { max-width: 1150px; margin: 24px auto; padding: 24px; background: #101b30; border: 1px solid #263a5c; border-radius: 20px; }
+h1 { text-align: center; font-size: 32px; margin: 10px 0; color: #fff; }
+.subtitle { text-align: center; color: #9aabc4; font-size: 16px; line-height: 1.6; margin-bottom: 28px; }
 
 .badge { 
     display: flex;
     width: fit-content;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 16px auto;
     align-items: center;
     gap: 6px;
     background: rgba(52, 211, 153, 0.12); 
@@ -38,60 +47,69 @@ h1{text-align:center;font-size:38px;margin:15px 0}
     font-weight: 600; 
 }
 
-.drop-area{position:relative; border:2px dashed #3978c9;border-radius:20px;padding:55px 20px;text-align:center;background:#0c162b;transition:.2s;cursor:pointer}
-.drop-area:hover,.drop-area.dragging{background:#142342;border-color:#66a2ff}
-.drop-area h2{font-size:24px;margin:10px 0;color:#fff}
-.drop-area p{color:#98a9c1;font-size:16px;margin:10px 0}
-.choose-btn{background:#2864eb;color:white;border:none;padding:15px 32px;border-radius:10px;font-size:17px;font-weight:bold;cursor:pointer;margin-top:15px}
-.choose-btn:hover{background:#3977ff}
+.drop-area { position: relative; border: 2px dashed #3978c9; border-radius: 16px; padding: 40px 16px; text-align: center; background: #0c162b; transition: .2s; cursor: pointer; }
+.drop-area:hover, .drop-area.dragging { background: #142342; border-color: #66a2ff; }
+.drop-area h2 { font-size: 22px; margin: 8px 0; color: #fff; }
+.drop-area p { color: #98a9c1; font-size: 15px; margin: 8px 0; }
+.choose-btn { background: #2864eb; color: white; border: none; padding: 14px 28px; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 12px; width: 100%; max-width: 280px; min-height: 48px; }
+.choose-btn:hover { background: #3977ff; }
 
-#fileInput{display:none;}
+#fileInput { display: none; }
 
-.file-card{display:none;align-items:center;justify-content:space-between;gap:15px;background:#18253c;border:1px solid #304968;border-radius:15px;padding:20px;margin-bottom:25px}
-.file-info{display:flex;align-items:center;gap:15px;overflow:hidden}
-.file-symbol{font-size:35px}
-.file-name{font-size:17px;font-weight:bold;overflow-wrap:anywhere;color:#fff}
-.file-size{color:#94a6bf;margin-top:6px;font-size:14px}
-.remove-btn{color:#ff6868;font-size:26px;background:none;border:none;cursor:pointer;z-index:20;position:relative}
+.file-card { display: none; align-items: center; justify-content: space-between; gap: 12px; background: #18253c; border: 1px solid #304968; border-radius: 14px; padding: 16px; margin-bottom: 20px; }
+.file-info { display: flex; align-items: center; gap: 12px; overflow: hidden; width: 100%; }
+.file-symbol { font-size: 32px; flex-shrink: 0; }
+.file-name { font-size: 16px; font-weight: bold; overflow-wrap: anywhere; color: #fff; }
+.file-size { color: #94a6bf; margin-top: 4px; font-size: 13.5px; }
+.remove-btn { background: rgba(255, 104, 104, 0.15); border: 1px solid rgba(255, 104, 104, 0.3); color: #ff6868; font-size: 14px; font-weight: bold; padding: 8px 16px; border-radius: 8px; cursor: pointer; min-height: 40px; flex-shrink: 0; z-index: 20; position: relative; }
+.remove-btn:hover { background: rgba(255, 104, 104, 0.3); color: #ff9b9b; }
 
-.controls{display:flex;justify-content:space-between;align-items:center;margin:25px 0 15px 0;gap:20px;flex-wrap:wrap}
-.options{display:flex;align-items:center;gap:15px;font-size:15px;color:#9aabc4}
-.options input[type="checkbox"]{accent-color:#2864eb;width:16px;height:16px;cursor:pointer}
+.controls { display: flex; justify-content: space-between; align-items: center; margin: 20px 0 12px 0; gap: 16px; flex-wrap: wrap; }
+.options { display: flex; align-items: center; gap: 12px; font-size: 14.5px; color: #9aabc4; }
+.options input[type="checkbox"] { accent-color: #2864eb; width: 16px; height: 16px; cursor: pointer; }
 
-.btn-group{display:flex;gap:12px}
-button.tool-btn{background:#2864eb;color:white;border:none;padding:12px 24px;border-radius:10px;font-weight:bold;cursor:pointer;transition:0.2s;font-size:16px}
-button.tool-btn:hover:not(:disabled){background:#3977ff}
-button.tool-btn.secondary{background:#18253c;border:1px solid #304968;color:#dce6f4}
-button.tool-btn.secondary:hover:not(:disabled){background:#2864eb;color:white;border-color:#3977ff}
-button.tool-btn:disabled{opacity:0.45;cursor:not-allowed}
+.btn-group { display: flex; gap: 10px; width: 100%; }
+button.tool-btn { background: #2864eb; color: white; border: none; padding: 14px 20px; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.2s; font-size: 15px; min-height: 46px; flex: 1; text-align: center; display: inline-flex; align-items: center; justify-content: center; }
+button.tool-btn:hover:not(:disabled) { background: #3977ff; }
+button.tool-btn.secondary { background: #18253c; border: 1px solid #304968; color: #dce6f4; }
+button.tool-btn.secondary:hover:not(:disabled) { background: #2864eb; color: white; border-color: #3977ff; }
+button.tool-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 
-textarea{width:100%;min-height:320px;background:#080d1b;color:#e6edf7;border:1px solid #304968;border-radius:12px;padding:18px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14.5px;resize:vertical;outline:none}
-textarea:focus{border-color:#2864eb}
+textarea { width: 100%; min-height: 280px; background: #080d1b; color: #e6edf7; border: 1px solid #304968; border-radius: 12px; padding: 16px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; resize: vertical; outline: none; }
+textarea:focus { border-color: #2864eb; }
 
-.status{font-size:14px;color:#60a5fa;margin-bottom:12px;min-height:1.2em;font-weight:500}
+.status { font-size: 14px; color: #60a5fa; margin-bottom: 12px; min-height: 1.2em; font-weight: 500; }
 
-.card-section{background:#101b30;border:1px solid #263a5c;border-radius:24px;padding:35px;margin-bottom:35px}
-.card-section h2{font-size:24px;color:#fff;margin-bottom:18px}
+.card-section { background: #101b30; border: 1px solid #263a5c; border-radius: 20px; padding: 24px; margin-bottom: 24px; }
+.card-section h2 { font-size: 22px; color: #fff; margin-bottom: 14px; }
 
-.related-tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:20px}
-.related-link{display:block;padding:20px;background:#0c162b;border:1px solid #263a5c;border-radius:14px;color:#e6edf7;text-decoration:none;transition:0.2s}
-.related-link:hover{border-color:#60a5fa;transform:translateY(-2px)}
-.related-link strong{font-size:17px;color:#fff}
-.related-link span{display:block;font-size:14px;color:#9aabc4;margin-top:6px}
+.related-tools { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
+.related-link { display: block; padding: 18px; background: #0c162b; border: 1px solid #263a5c; border-radius: 12px; color: #e6edf7; text-decoration: none; transition: 0.2s; }
+.related-link:hover { border-color: #60a5fa; transform: translateY(-2px); }
+.related-link strong { font-size: 16px; color: #fff; }
+.related-link span { display: block; font-size: 13.5px; color: #9aabc4; margin-top: 4px; }
 
-.faq-item{margin-bottom:20px}
-.faq-item:last-child{margin-bottom:0}
-.faq-item h3{font-size:18px;margin-bottom:8px;color:#ffffff}
-.faq-item p{font-size:15px;color:#9aabc4;line-height:1.6}
+.faq-item { margin-bottom: 16px; }
+.faq-item:last-child { margin-bottom: 0; }
+.faq-item h3 { font-size: 17px; margin-bottom: 6px; color: #ffffff; }
+.faq-item p { font-size: 14.5px; color: #9aabc4; line-height: 1.6; }
 
-@media(max-width:750px){
-.container,.card-section{margin:15px;padding:20px}
-.header-inner{padding:20px}
-.brand{font-size:25px}
-h1{font-size:30px}
-.controls{flex-direction:column;align-items:stretch}
-.btn-group{width:100%}
-.btn-group button{flex:1}
+.info-section { max-width: 1150px; margin: 24px auto; padding: 24px; background: #101b30; border: 1px solid #263a5c; border-radius: 20px; }
+.info-section h2 { font-size: 22px; color: #fff; margin-bottom: 14px; }
+.info-section h3 { font-size: 17px; color: #fff; margin-top: 20px; margin-bottom: 8px; }
+.info-section p { color: #9aabc4; font-size: 14.5px; line-height: 1.65; margin-bottom: 12px; }
+.info-section ul { color: #9aabc4; font-size: 14.5px; line-height: 1.65; padding-left: 18px; margin-bottom: 12px; }
+.info-section li { margin-bottom: 6px; }
+
+@media(min-width: 640px) {
+    .container, .card-section, .info-section { margin: 35px auto; padding: 32px; }
+    .header-inner { padding: 20px 24px; }
+    .brand { font-size: 26px; }
+    h1 { font-size: 36px; }
+    .btn-group { width: auto; }
+    .btn-group button { flex: unset; min-width: 140px; }
+    .related-tools { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    textarea { min-height: 320px; }
 }
 </style>
 </head>
@@ -116,9 +134,9 @@ Copy directly to your clipboard or save as a plain <code>.txt</code> file.
 </div>
 
 <div class="drop-area" id="dropArea">
-    <div style="font-size:54px;margin-bottom:15px">📄</div>
+    <div style="font-size:48px;margin-bottom:12px">📄</div>
     <h2>Drop your PDF file here</h2>
-    <p>or click below to browse your files</p>
+    <p>or tap below to browse your files</p>
     <button class="choose-btn" type="button" id="chooseBtn">Choose PDF File</button>
 </div>
 <input type="file" id="fileInput" accept=".pdf,application/pdf">
@@ -131,7 +149,7 @@ Copy directly to your clipboard or save as a plain <code>.txt</code> file.
             <div class="file-size" id="fileSize"></div>
         </div>
     </div>
-    <button class="remove-btn" id="removeBtn" title="Remove file">×</button>
+    <button class="remove-btn" id="removeBtn" title="Remove file">Remove</button>
 </div>
 
 <div class="controls">
@@ -152,7 +170,33 @@ Copy directly to your clipboard or save as a plain <code>.txt</code> file.
 
 </main>
 
-<div style="max-width:1150px; margin:0 auto; padding: 0 35px;">
+<!-- Informational SEO Section (350+ words) -->
+<section class="info-section">
+    <h2>Why Extract Text From PDF Files Online?</h2>
+    <p>
+        PDF documents are wonderful for maintaining strict design layouts and ensuring that fonts, tables, and vector graphics render identically across different devices and operating systems. However, extracting paragraphs, data tables, or reference notes out of a locked PDF can quickly become tedious if you are forced to retype text manually. Whether you are compiling research notes, drafting reports, or repurposing content for presentations, an efficient PDF to Text converter saves invaluable time.
+    </p>
+    <p>
+        Our free online PDF text extraction tool parses digital documents instantly, stripping away restrictive formatting while preserving clean, selectable plain text. Best of all, because the entire process executes <strong>100% client-side</strong> right inside your browser memory using advanced JavaScript parsing libraries, your confidential paperwork and personal documents never get uploaded to external servers.
+    </p>
+
+    <h3>Key Benefits of Our PDF Text Extraction Tool</h3>
+    <ul>
+        <li><strong>Absolute Privacy &amp; Data Security:</strong> Your files remain safely inside your device's browser sandbox, ensuring zero risk of interception or cloud storage leaks.</li>
+        <li><strong>Instant Page-by-Page Parsing:</strong> Quickly extract raw text from multi-page documents with options to toggle page separator headers on or off.</li>
+        <li><strong>One-Click Actions:</strong> Instantly copy extracted text directly to your clipboard or download it as a clean, universal <code>.txt</code> file.</li>
+        <li><strong>Mobile-First Usability:</strong> Fully responsive interface optimized with touch-friendly buttons for smooth operation on smartphones and tablets.</li>
+    </ul>
+
+    <h3>How to Convert PDF to Text in Seconds</h3>
+    <p>
+        <strong>1. Upload Your PDF:</strong> Drag and drop your target document into the designated drop area or tap the choose button to select a file from your phone or computer.<br>
+        <strong>2. Review &amp; Customize:</strong> Watch real-time word and character counts populate as text is parsed locally. Toggle page headers if you need structured separation.<br>
+        <strong>3. Copy or Download:</strong> Use the copy button for immediate pasting into your text editor, or download the output as a standard text file instantly.
+    </p>
+</section>
+
+<div style="max-width:1150px; margin:0 auto; padding: 0 24px;">
     <section class="card-section">
       <h2>Related PDF Utilities</h2>
       <div class="related-tools">
@@ -184,7 +228,7 @@ Copy directly to your clipboard or save as a plain <code>.txt</code> file.
     </section>
 </div>
 
-<footer style="border-top:1px solid #1d2940;text-align:center;padding:28px 20px;color:#94a3b8;font-size:13px;background:#080d1b;">
+<footer style="border-top:1px solid #1d2940;text-align:center;padding:24px 16px;color:#94a3b8;font-size:13px;background:#080d1b;margin-top:40px;">
     AllInOne Utilities — Fast, secure document tools.
 </footer>
 

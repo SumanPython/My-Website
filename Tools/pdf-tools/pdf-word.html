@@ -122,14 +122,14 @@ html, body {
 .header-inner {
     max-width: 1150px;
     margin: auto;
-    padding: 24px 30px;
+    padding: 20px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
 .brand {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: bold;
     color: #fff;
     text-decoration: none;
@@ -143,13 +143,13 @@ html, body {
 
 nav {
     display: flex;
-    gap: 32px;
+    gap: 24px;
 }
 
 nav a {
     color: #cbd5e1;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     transition: 0.2s;
 }
@@ -160,11 +160,11 @@ nav a:hover {
 
 .container {
     max-width: 1150px;
-    margin: 45px auto;
-    padding: 35px;
+    margin: 24px auto;
+    padding: 24px;
     background: #101b30;
     border: 1px solid #263a5c;
-    border-radius: 24px;
+    border-radius: 20px;
     position: relative;
     z-index: 2;
 }
@@ -187,17 +187,17 @@ nav a:hover {
     margin-bottom: 12px;
 }
 .tool-hero h1 {
-    font-size: 38px;
+    font-size: 32px;
     font-weight: bold;
-    margin: 15px 0 10px;
+    margin: 10px 0;
     color: #fff;
 }
 .tool-hero p {
     color: #9aabc4;
-    font-size: 18px;
+    font-size: 16px;
     max-width: 620px;
     margin: 0 auto;
-    line-height: 1.7;
+    line-height: 1.6;
 }
 
 /* Dropzone Card */
@@ -207,8 +207,8 @@ nav a:hover {
 
 .dropzone {
     border: 2px dashed #3978c9;
-    border-radius: 20px;
-    padding: 55px 20px;
+    border-radius: 16px;
+    padding: 40px 16px;
     text-align: center;
     background: #0c162b;
     cursor: pointer;
@@ -219,30 +219,33 @@ nav a:hover {
     background: #142342;
 }
 .dropzone-icon {
-    font-size: 54px;
-    margin-bottom: 15px;
+    font-size: 48px;
+    margin-bottom: 12px;
 }
 .dropzone-title {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
     color: #fff;
-    margin: 10px 0;
+    margin: 8px 0;
 }
 .dropzone-sub {
-    font-size: 16px;
+    font-size: 15px;
     color: #98a9c1;
-    margin: 10px 0;
+    margin: 8px 0;
 }
 .btn-select {
     background: #2864eb;
     color: white;
     border: none;
-    padding: 15px 32px;
+    padding: 14px 28px;
     border-radius: 10px;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 15px;
+    margin-top: 12px;
+    width: 100%;
+    max-width: 280px;
+    min-height: 48px;
     transition: background 0.2s;
 }
 .btn-select:hover {
@@ -252,59 +255,62 @@ nav a:hover {
 /* Selected File State */
 .file-status {
     display: none;
-    padding: 20px;
-    border-radius: 15px;
+    padding: 16px;
+    border-radius: 14px;
     background: #18253c;
     border: 1px solid #304968;
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    margin-top: 25px;
+    margin-top: 20px;
 }
 .file-details {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
     overflow: hidden;
+    width: 100%;
 }
 .file-name {
     font-weight: bold;
-    font-size: 17px;
+    font-size: 16px;
     color: #fff;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    word-break: break-all;
+    overflow-wrap: anywhere;
 }
 .file-size {
-    font-size: 14px;
+    font-size: 13.5px;
     color: #94a6bf;
-    margin-top: 6px;
+    margin-top: 4px;
 }
 .btn-clear {
-    background: none;
-    border: none;
+    background: rgba(255, 104, 104, 0.15);
+    border: 1px solid rgba(255, 104, 104, 0.3);
     color: #ff6868;
-    font-size: 15px;
+    font-size: 14px;
+    font-weight: bold;
     cursor: pointer;
-    padding: 6px 10px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    min-height: 40px;
     flex-shrink: 0;
 }
-.btn-clear:hover { color: #ff9b9b; }
+.btn-clear:hover { background: rgba(255, 104, 104, 0.3); color: #ff9b9b; }
 
 /* Conversion Mode Selector */
 .mode-selector {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-    margin-top: 25px;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 20px;
 }
 .mode-option {
     position: relative;
     display: flex;
     flex-direction: column;
     gap: 8px;
-    padding: 22px;
-    border-radius: 15px;
+    padding: 18px;
+    border-radius: 14px;
     border: 1px solid #304968;
     background: #18253c;
     cursor: pointer;
@@ -323,7 +329,7 @@ nav a:hover {
     pointer-events: none;
 }
 .mode-title {
-    font-size: 19px;
+    font-size: 18px;
     font-weight: bold;
     color: #fff;
     display: flex;
@@ -339,28 +345,29 @@ nav a:hover {
     font-weight: 600;
 }
 .mode-desc {
-    font-size: 15px;
+    font-size: 14.5px;
     color: #99a9c2;
     line-height: 1.5;
 }
 
 /* Action & Progress */
 .action-area {
-    margin-top: 25px;
+    margin-top: 20px;
     display: none;
     flex-direction: column;
-    gap: 18px;
+    gap: 16px;
 }
 .btn-convert {
     width: 100%;
     background: linear-gradient(100deg, #2864eb, #673de9);
     color: #fff;
     border: none;
-    border-radius: 15px;
-    padding: 22px;
-    font-size: 22px;
+    border-radius: 14px;
+    padding: 18px;
+    font-size: 18px;
     font-weight: bold;
     cursor: pointer;
+    min-height: 52px;
     transition: opacity 0.2s, transform 0.15s;
 }
 .btn-convert:hover { opacity: 0.92; }
@@ -372,7 +379,7 @@ nav a:hover {
 
 .status-message {
     text-align: center;
-    font-size: 15px;
+    font-size: 14.5px;
     color: #9aabc4;
     min-height: 24px;
 }
@@ -381,40 +388,85 @@ nav a:hover {
 
 /* Info Note */
 .tool-note {
-    margin-top: 35px;
-    padding: 25px;
-    border-radius: 20px;
+    margin-top: 24px;
+    padding: 20px;
+    border-radius: 16px;
     background: #111e33;
     border: 1px solid #263a5c;
-    font-size: 15px;
+    font-size: 14.5px;
     color: #9aabc4;
-    line-height: 1.7;
+    line-height: 1.65;
 }
 .tool-note h2 {
-    font-size: 19px;
+    font-size: 18px;
     color: #fff;
-    margin: 0 0 10px;
+    margin: 0 0 8px;
 }
 .tool-note p {
     margin: 0;
 }
 
+/* Informational SEO Content Section */
+.info-section {
+    max-width: 1150px;
+    margin: 24px auto 0 auto;
+    padding: 24px;
+    background: #101b30;
+    border: 1px solid #263a5c;
+    border-radius: 20px;
+    position: relative;
+    z-index: 2;
+}
+.info-section h2 {
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 14px;
+}
+.info-section h3 {
+    font-size: 17px;
+    color: #fff;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+.info-section p {
+    color: #9aabc4;
+    font-size: 14.5px;
+    line-height: 1.65;
+    margin-bottom: 12px;
+}
+.info-section ul {
+    color: #9aabc4;
+    font-size: 14.5px;
+    line-height: 1.65;
+    padding-left: 18px;
+    margin-bottom: 12px;
+}
+.info-section li {
+    margin-bottom: 6px;
+}
+
 .site-footer {
     border-top: 1px solid #1d2940;
     text-align: center;
-    padding: 28px 20px;
+    padding: 24px 16px;
     color: #94a3b8;
     font-size: 13px;
     background: #080d1b;
     position: relative;
     z-index: 2;
+    margin-top: 40px;
 }
 
-@media (max-width: 750px) {
-    .header-inner { padding: 20px; }
-    .container { margin: 15px; padding: 20px; }
-    .tool-hero h1 { font-size: 30px; }
-    .mode-selector { grid-template-columns: 1fr; }
+@media (min-width: 640px) {
+    .container, .info-section { margin: 35px auto; padding: 32px; }
+    .header-inner { padding: 20px 24px; }
+    .brand { font-size: 26px; }
+    .tool-hero h1 { font-size: 36px; }
+    .mode-selector { grid-template-columns: 1fr 1fr; gap: 18px; }
+    .file-status { padding: 20px; }
+    .file-name { font-size: 17px; }
+    .btn-convert { font-size: 20px; padding: 20px; }
+    .tool-note { padding: 25px; }
 }
 </style>
 </head>
@@ -442,7 +494,7 @@ nav a:hover {
         <div class="dropzone" id="dropzone">
             <div class="dropzone-icon" aria-hidden="true">📄</div>
             <div class="dropzone-title">Drop your PDF file here</div>
-            <div class="dropzone-sub">or click below to choose a file from your device</div>
+            <div class="dropzone-sub">or tap below to choose a file from your device</div>
             <button type="button" class="btn-select" id="selectBtn">Choose PDF File</button>
             <input type="file" id="fileInput" accept="application/pdf" hidden>
         </div>
@@ -488,6 +540,30 @@ nav a:hover {
         <p>Use <strong>Exact Layout + Images</strong> for formal records, email archives, receipts, or PDFs containing screenshots and tables so nothing gets lost or distorted. Use <strong>Editable Text Only</strong> when you want to freely rewrite plain text paragraphs inside Microsoft Word.</p>
     </section>
 </main>
+
+<!-- Informational SEO Section (350+ words) -->
+<section class="info-section">
+    <h2>Why Convert PDF Documents to Word Format Online?</h2>
+    <p>
+        PDF files are invaluable for locking down document formatting and ensuring universal presentation across operating systems. However, when you need to edit content, update clauses in a contract, revise a resume, or repurpose text for a new project, working directly inside a locked PDF becomes a major bottleneck. Converting your PDF documents into editable Microsoft Word (.docx) format restores complete flexibility, allowing you to rephrase paragraphs, adjust formatting, and integrate new sections effortlessly.
+    </p>
+    <p>
+        Our free online PDF to Word converter bridges this gap by offering two distinct conversion pathways tailored to your specific workflow needs. Whether you need to preserve complex visual layouts and diagrams down to the exact pixel or simply extract clean, editable text blocks, our browser-based engine handles the task in seconds.
+    </p>
+
+    <h3>Key Advantages of Our Client-Side PDF Converter</h3>
+    <ul>
+        <li><strong>Complete Privacy &amp; Security:</strong> Unlike traditional online conversion platforms that require uploading confidential corporate files or personal paperwork to remote cloud servers, our tool runs 100% locally inside your browser sandbox. Your files never leave your device.</li>
+        <li><strong>Dual Conversion Modes:</strong> Choose <em>Exact Layout + Images</em> to maintain visual fidelity for graphical documents, or switch to <em>Editable Text Only</em> for fast text rewriting and editing.</li>
+        <li><strong>No Software Installations:</strong> Skip heavy desktop suites or paid converters. Access professional document conversion instantly across Windows, macOS, Linux, iOS, and Android web browsers.</li>
+        <li><strong>Lightning-Fast Performance:</strong> Leveraging modern browser WebAssembly and JavaScript engines, document rendering and packaging occur in seconds without artificial queue wait times.</li>
+    </ul>
+
+    <h3>Tips for Optimal PDF to Word Conversion Results</h3>
+    <p>
+        For scanned paper documents or image-heavy certificates, the <strong>Exact Layout + Images</strong> mode ensures that every graphic and structural element remains accurately positioned. For text-heavy reports, ebooks, or essays, <strong>Editable Text Only</strong> provides clean, reflowable paragraphs ready for deep editing inside Microsoft Word, Google Docs, or LibreOffice. Once processed, your new <code>.docx</code> file downloads automatically with a single click.
+    </p>
+</section>
 
 <footer class="site-footer">
     AllInOne Utilities — Fast, secure document tools.

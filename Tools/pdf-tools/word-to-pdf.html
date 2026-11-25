@@ -172,10 +172,12 @@ h1 { text-align: center; font-size: 38px; margin: 15px 0; color: #fff; font-weig
 
 .message { display: none; padding: 15px; border-radius: 10px; margin-top: 20px; font-size: 14px; line-height: 1.6; }
 .message.error { color: #fca5a5; background: rgba(127,29,29,0.18); border: 1px solid rgba(248,113,113,0.2); }
+.message.success { color: #86efac; background: rgba(20,83,45,0.18); border: 1px solid rgba(74,222,128,0.2); }
 
 /* Card Sections for SEO and FAQs */
 .card-section {
     max-width: 1150px;
+    width: 100%;
     margin: 0 auto 35px auto;
     padding: 35px;
     background: #101b30;
@@ -274,6 +276,7 @@ footer a:hover { color: #60a5fa; }
         </div>
 
         <div class="message error" id="errorMessage"></div>
+        <div class="message success" id="successMessage"></div>
     </div>
 </main>
 
@@ -329,6 +332,7 @@ const removeFileBtn = document.getElementById("removeFileBtn");
 const convertBtn = document.getElementById("convertBtn");
 const progressSection = document.getElementById("progressSection");
 const errorMessage = document.getElementById("errorMessage");
+const successMessage = document.getElementById("successMessage");
 
 let selectedFile = null;
 
@@ -346,7 +350,7 @@ fileInput.addEventListener("change", () => {
 });
 
 function handleFile(file) {
-    hideError();
+    hideMessages();
     if (!file.name.toLowerCase().endsWith(".docx")) {
         showError("Please upload a valid Word document (.docx).");
         return;
@@ -366,7 +370,7 @@ removeFileBtn.addEventListener("click", () => {
     fileInfoBox.style.display = "none";
     convertBtn.style.display = "none";
     dropArea.style.display = "block";
-    hideError();
+    hideMessages();
 });
 
 // Drag and drop support
@@ -382,38 +386,52 @@ dropArea.addEventListener("drop", (e) => {
     if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
 });
 
-// Convert Document with cleaned table parsing and robust formatting
+// Convert Document with compact title group, dotted TOC page references, nested lists, and image extraction
 convertBtn.addEventListener("click", async () => {
     if (!selectedFile) return;
 
     fileInfoBox.style.display = "none";
     convertBtn.style.display = "none";
     progressSection.style.display = "block";
-    hideError();
+    hideMessages();
 
     try {
         const arrayBuffer = await selectedFile.arrayBuffer();
 
         const options = {
             styleMap: [
+                "p[style-name='Title'] => h1.doc-title:fresh",
+                "p[style-name='Subtitle'] => p.doc-subtitle:fresh",
                 "p[style-name='Heading 1'] => h1:fresh",
                 "p[style-name='Heading 2'] => h2:fresh",
-                "p[style-name='Heading 3'] => h3:fresh"
-            ]
+                "p[style-name='Heading 3'] => h3:fresh",
+                "p[style-name='Heading 4'] => h4:fresh",
+                "p[style-name='Heading 5'] => h5:fresh",
+                "p[style-name='Heading 6'] => h6:fresh",
+                "p[style-name='TOC Heading'] => h2.toc-heading:fresh"
+            ],
+            convertImage: mammoth.images.imgElement(image => {
+                return image.read("base64").then(imageBuffer => {
+                    return {
+                        src: "data:" + image.contentType + ";base64," + imageBuffer
+                    };
+                });
+            })
         };
 
         const result = await mammoth.convertToHtml({ arrayBuffer: arrayBuffer }, options);
         const htmlString = result.value;
 
         if (!htmlString || htmlString.trim() === "") {
-            throw new Error("The Word document is empty.");
+            throw new Error("The Word document is empty or could not be parsed.");
         }
 
         const parser = new DOMParser();
         const doc = parser.parseFromString(htmlString, "text/html");
         const pdfContent = [];
+        const handledImgs = new Set();
 
-        function parseInlineRuns(el, baseStyle = {}) {
+        function parseInlineRuns(el, baseStyle = {}, ignoreInternalLinks = true) {
             const runs = [];
             el.childNodes.forEach((child) => {
                 if (child.nodeType === Node.TEXT_NODE) {
@@ -421,145 +439,269 @@ convertBtn.addEventListener("click", async () => {
                     if (cleanText) runs.push({ text: cleanText, ...baseStyle });
                 } else if (child.nodeType === Node.ELEMENT_NODE) {
                     const tag = child.tagName.toLowerCase();
+                    if (tag === "br") {
+                        runs.push({ text: "\n", ...baseStyle });
+                        return;
+                    }
                     const nextStyle = { ...baseStyle };
                     if (tag === "strong" || tag === "b") nextStyle.bold = true;
                     if (tag === "em" || tag === "i") nextStyle.italics = true;
                     if (tag === "u") nextStyle.decoration = "underline";
                     if (tag === "a" && child.getAttribute("href")) {
-                        nextStyle.link = child.getAttribute("href");
-                        nextStyle.color = "#2563eb";
-                        nextStyle.decoration = "underline";
+                        const href = child.getAttribute("href");
+                        if (!ignoreInternalLinks || !href.startsWith("#")) {
+                            nextStyle.link = href;
+                            nextStyle.color = "#2563eb";
+                            nextStyle.decoration = "underline";
+                        }
                     }
-                    runs.push(...parseInlineRuns(child, nextStyle));
+                    runs.push(...parseInlineRuns(child, nextStyle, ignoreInternalLinks));
                 }
             });
             return runs;
         }
 
-        const blockElements = doc.body.querySelectorAll("p, h1, h2, h3, h4, h5, h6, ul, ol, table, img");
-        const handledImgs = new Set();
+        // Recursive list handler to preserve nested bullets and numbering
+        function parseList(listEl, depth = 0) {
+            const isOrdered = listEl.tagName.toLowerCase() === "ol";
+            let itemIndex = 1;
 
-        blockElements.forEach((el, index) => {
-            const tag = el.tagName.toLowerCase();
+            Array.from(listEl.children).forEach((li) => {
+                if (li.tagName.toLowerCase() !== "li") return;
 
-            if (tag === "img") {
-                if (handledImgs.has(el)) return;
-                const src = el.getAttribute("src");
-                if (src && src.startsWith("data:image/")) {
+                const clone = li.cloneNode(true);
+                clone.querySelectorAll("ul, ol").forEach(nested => nested.remove());
+                const inlineLi = parseInlineRuns(clone);
+
+                if (inlineLi.length > 0) {
+                    const bulletChar = isOrdered
+                        ? `${itemIndex++}. `
+                        : depth === 0 ? "•  " : depth === 1 ? "◦  " : "▪  ";
+
                     pdfContent.push({
-                        image: src,
-                        fit: [515, 720],
-                        alignment: "center",
-                        margin: [0, 8, 0, 12]
+                        text: [{ text: bulletChar, bold: true, color: "#1e3a8a" }, ...inlineLi],
+                        fontSize: 10,
+                        color: "#1e293b",
+                        lineHeight: 1.35,
+                        margin: [14 + depth * 16, 0, 0, 4]
                     });
                 }
-                return;
-            }
 
-            // Clean table parsing avoiding malformed empty cells
-            if (tag === "table") {
-                const rows = [];
-                el.querySelectorAll("tr").forEach(tr => {
-                    const rowCells = [];
-                    tr.querySelectorAll("th, td").forEach(cell => {
-                        const cellText = cell.textContent.replace(/\s+/g, " ").trim();
-                        if (cellText !== "") {
-                            rowCells.push({
-                                text: cellText,
-                                fontSize: 9.5,
-                                margin: [4, 4, 4, 4]
-                            });
-                        }
-                    });
-                    if (rowCells.length > 0) rows.push(rowCells);
-                });
-                if (rows.length > 0) {
-                    pdfContent.push({
-                        table: {
-                            headerRows: 1,
-                            widths: Array(rows[0].length).fill('*'),
-                            body: rows
-                        },
-                        layout: 'lightHorizontalLines',
-                        margin: [0, 8, 0, 10]
-                    });
-                }
-                return;
-            }
-
-            if (tag === "ul" || tag === "ol") {
-                el.querySelectorAll("li").forEach(li => {
-                    const liText = li.textContent.replace(/\s+/g, " ").trim();
-                    if (liText) {
-                        pdfContent.push({
-                            text: [{ text: "• ", bold: true, color: "#2563eb" }, ...parseInlineRuns(li)],
-                            fontSize: 10,
-                            color: "#1e293b",
-                            lineHeight: 1.25,
-                            margin: [12, 0, 0, 4]
-                        });
+                Array.from(li.children).forEach((child) => {
+                    const childTag = child.tagName.toLowerCase();
+                    if (childTag === "ul" || childTag === "ol") {
+                        parseList(child, depth + 1);
                     }
                 });
-                return;
-            }
+            });
+        }
 
+        function extractImages(el) {
             el.querySelectorAll("img").forEach((img) => {
+                if (handledImgs.has(img)) return;
                 handledImgs.add(img);
                 const src = img.getAttribute("src");
                 if (src && src.startsWith("data:image/")) {
                     pdfContent.push({
                         image: src,
-                        fit: [515, 720],
+                        fit: [515, 400],
                         alignment: "center",
                         margin: [0, 8, 0, 12]
                     });
                 }
             });
+        }
+
+        const topElements = Array.from(doc.body.children);
+        let inTocSection = false;
+
+        topElements.forEach((el, index) => {
+            const tag = el.tagName.toLowerCase();
+
+            // 1. Standalone image
+            if (tag === "img") {
+                if (!handledImgs.has(el)) {
+                    handledImgs.add(el);
+                    const src = el.getAttribute("src");
+                    if (src && src.startsWith("data:image/")) {
+                        pdfContent.push({
+                            image: src,
+                            fit: [515, 400],
+                            alignment: "center",
+                            margin: [0, 8, 0, 12]
+                        });
+                    }
+                }
+                return;
+            }
+
+            // 2. Tables
+            if (tag === "table") {
+                const rows = [];
+                el.querySelectorAll("tr").forEach((tr, rIdx) => {
+                    const rowCells = [];
+                    tr.querySelectorAll("th, td").forEach(cell => {
+                        const isHeader = rIdx === 0 || cell.tagName.toLowerCase() === "th";
+                        const inlineContent = parseInlineRuns(cell, {
+                            fontSize: 9.5,
+                            bold: isHeader,
+                            color: isHeader ? "#0f172a" : "#1e293b"
+                        });
+                        rowCells.push({
+                            text: inlineContent.length > 0 ? inlineContent : cell.textContent.trim(),
+                            fillColor: isHeader ? "#f1f5f9" : null,
+                            margin: [6, 6, 6, 6]
+                        });
+                    });
+                    if (rowCells.length > 0) rows.push(rowCells);
+                });
+
+                if (rows.length > 0) {
+                    const maxCols = Math.max(...rows.map(r => r.length));
+                    rows.forEach(r => {
+                        while (r.length < maxCols) {
+                            r.push({ text: "", margin: [6, 6, 6, 6] });
+                        }
+                    });
+                    pdfContent.push({
+                        table: {
+                            headerRows: 1,
+                            widths: Array(maxCols).fill("*"),
+                            body: rows
+                        },
+                        layout: "lightHorizontalLines",
+                        margin: [0, 8, 0, 14]
+                    });
+                }
+                return;
+            }
+
+            // 3. Lists (with nesting support)
+            if (tag === "ul" || tag === "ol") {
+                parseList(el, 0);
+                pdfContent.push({ text: "", margin: [0, 0, 0, 4] });
+                return;
+            }
+
+            // Extract any inline images inside paragraphs/headings first
+            extractImages(el);
 
             const rawText = el.textContent.replace(/\s+/g, " ").trim();
             if (!rawText) return;
 
-            const isMainTitle = index === 0 && pdfContent.length === 0;
-            const isSectionHeading = 
-                tag.startsWith("h") || 
-                (rawText === rawText.toUpperCase() && rawText.length <= 45 && !rawText.includes("|") && !rawText.includes("http")) ||
-                ["EDUCATION", "CERTIFICATIONS", "ACHIEVEMENTS", "SUMMARY", "CORE SKILLS", "PROFESSIONAL EXPERIENCE", "EXPERIENCE", "SKILLS", "TABLE OF CONTENTS"].includes(rawText.toUpperCase());
+            // 4. Detect Table of Contents entries (internal #_Toc links with dotted page references)
+            const internalAnchor = el.querySelector("a[href^='#']");
+            if (internalAnchor) {
+                inTocSection = true;
+                const cleanTocTitle = rawText.replace(/\s+\d+$/, "").trim();
+                const isSubToc = el.style.marginLeft || /^\s{2,}/.test(el.textContent);
+                
+                pdfContent.push({
+                    columns: [
+                        { 
+                            text: cleanTocTitle, 
+                            fontSize: 9.5, 
+                            color: "#334155", 
+                            margin: [isSubToc ? 16 : 4, 2, 0, 2] 
+                        },
+                        { 
+                            text: "..................................................................................................................................................", 
+                            fontSize: 8, 
+                            color: "#cbd5e1", 
+                            alignment: "center", 
+                            margin: [4, 4, 4, 0] 
+                        },
+                        { 
+                            text: "", 
+                            width: 25, 
+                            pageReference: internalAnchor.getAttribute("href").substring(1), 
+                            fontSize: 9.5, 
+                            color: "#334155", 
+                            alignment: "right", 
+                            margin: [0, 2, 0, 2] 
+                        }
+                    ],
+                    columnGap: 5
+                });
+                return;
+            }
 
-            const isSubheadingOrContact = rawText.includes("|") || rawText.includes("http") || rawText.includes("Developer |") || rawText.startsWith("Ref:");
+            // Insert a clean page break right after the Table of Contents ends
+            if (inTocSection && !internalAnchor) {
+                inTocSection = false;
+                pdfContent.push({ text: "", pageBreak: "after" });
+            }
 
-            if (isMainTitle) {
+            // 5. Headings (H1 - H6)
+            if (tag === "h1") {
                 pdfContent.push({
                     text: rawText,
-                    fontSize: 20,
+                    fontSize: index < 3 ? 22 : 16,
                     bold: true,
                     color: "#0f172a",
-                    margin: [0, 0, 0, 4]
+                    margin: [0, index === 0 ? 0 : 14, 0, 6],
+                    pageBreak: "avoid"
                 });
-            } else if (isSectionHeading) {
+                return;
+            }
+            if (tag === "h2") {
                 pdfContent.push({
                     text: rawText,
-                    fontSize: 12.5,
+                    fontSize: 13.5,
                     bold: true,
                     color: "#1e3a8a",
-                    margin: [0, 12, 0, 4],
-                    decoration: "underline"
+                    margin: [0, 12, 0, 5],
+                    pageBreak: "avoid"
                 });
-            } else if (isSubheadingOrContact) {
-                pdfContent.push({
-                    text: parseInlineRuns(el),
-                    fontSize: 10,
-                    color: "#475569",
-                    margin: [0, 0, 0, 6]
-                });
-            } else {
-                pdfContent.push({
-                    text: parseInlineRuns(el),
-                    fontSize: 10,
-                    color: "#1e293b",
-                    lineHeight: 1.25,
-                    margin: [0, 0, 0, 4]
-                });
+                return;
             }
+            if (tag === "h3" || tag === "h4" || tag === "h5" || tag === "h6") {
+                pdfContent.push({
+                    text: rawText,
+                    fontSize: 11.5,
+                    bold: true,
+                    color: "#1e293b",
+                    margin: [0, 10, 0, 4],
+                    pageBreak: "avoid"
+                });
+                return;
+            }
+
+            // 6. Title block lines at the very top of the document (tightly grouped)
+            if (index <= 4 && rawText.length < 60 && !rawText.endsWith(".")) {
+                const isFirst = index === 0 && pdfContent.length === 0;
+                pdfContent.push({
+                    text: rawText,
+                    fontSize: isFirst ? 22 : 11,
+                    bold: isFirst || rawText.startsWith("Ref:"),
+                    color: isFirst ? "#0f172a" : "#475569",
+                    margin: [0, 0, 0, isFirst ? 4 : 2]
+                });
+                return;
+            }
+
+            // 7. Standalone bold paragraph acting as a subheading
+            const strongOnly = el.children.length === 1 && el.children[0].tagName.toLowerCase() === "strong" && rawText.length < 80;
+            if (strongOnly) {
+                pdfContent.push({
+                    text: rawText,
+                    fontSize: 10.5,
+                    bold: true,
+                    color: "#0f172a",
+                    margin: [0, 8, 0, 3],
+                    pageBreak: "avoid"
+                });
+                return;
+            }
+
+            // 8. Standard Body Paragraph
+            pdfContent.push({
+                text: parseInlineRuns(el),
+                fontSize: 10,
+                color: "#1e293b",
+                lineHeight: 1.35,
+                margin: [0, 0, 0, 6]
+            });
         });
 
         if (pdfContent.length === 0) {
@@ -570,7 +712,16 @@ convertBtn.addEventListener("click", async () => {
             pageSize: "A4",
             content: pdfContent,
             defaultStyle: { font: "Roboto" },
-            pageMargins: [36, 36, 36, 36]
+            pageMargins: [36, 36, 36, 36],
+            footer: function(currentPage, pageCount) {
+                return {
+                    text: `Page ${currentPage} of ${pageCount}`,
+                    alignment: 'center',
+                    fontSize: 9,
+                    color: '#94a3b8',
+                    margin: [0, 10, 0, 0]
+                };
+            }
         };
 
         pdfMake.createPdf(docDefinition).download(
@@ -581,6 +732,7 @@ convertBtn.addEventListener("click", async () => {
         dropArea.style.display = "block";
         selectedFile = null;
         fileInput.value = "";
+        showSuccess("Word document successfully converted to PDF and downloaded!");
 
     } catch (err) {
         console.error(err);
@@ -591,8 +743,9 @@ convertBtn.addEventListener("click", async () => {
     }
 });
 
-function showError(m) { errorMessage.textContent = m; errorMessage.style.display = "block"; }
-function hideError() { errorMessage.style.display = "none"; }
+function showError(m) { errorMessage.textContent = m; errorMessage.style.display = "block"; successMessage.style.display = "none"; }
+function showSuccess(m) { successMessage.textContent = m; successMessage.style.display = "block"; errorMessage.style.display = "none"; }
+function hideMessages() { errorMessage.style.display = "none"; successMessage.style.display = "none"; }
 </script>
 
 </body>

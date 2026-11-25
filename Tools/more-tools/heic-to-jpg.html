@@ -3,64 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HEIC to JPG Converter - AllInOne</title>
-<meta name="description" content="Convert iPhone HEIC images to standard JPG format online. Fast, secure, client-side batch processing with instant ZIP download.">
+<title>Free HEIC to JPG Converter Online — 100% Private &amp; Secure | AllInOne</title>
+<meta name="description" content="Convert iPhone HEIC and HEIF photos to standard JPG format instantly online. Batch convert multiple images securely in your browser with instant ZIP download. No server uploads.">
 <link rel="canonical" href="https://allinone-utilities.com/Tools/more-tools/heic-to-jpg.html">
 
-<!-- heic2any & JSZip libraries for client-side batch conversion and ZIP bundling -->
+<!-- Open Graph SEO Meta Tags -->
+<meta property="og:title" content="Free HEIC to JPG Converter Online — AllInOne">
+<meta property="og:description" content="Convert iPhone HEIC images to standard JPG format online. Fast, secure, client-side batch processing with instant ZIP download.">
+<meta property="og:type" content="website">
+
+<!-- heic2any & JSZip libraries loaded from fast CDNs for client-side execution -->
 <script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#080d1b;color:#e6edf7;font-family:Arial,Helvetica,sans-serif}
-.site-header{border-bottom:1px solid #1d2940;background:#080d1b}
-.header-inner{max-width:1150px;margin:auto;padding:24px 30px;display:flex;align-items:center;justify-content:space-between}
-.brand{font-size:28px;font-weight:bold;color:#fff;text-decoration:none;letter-spacing:-0.5px}
+body{margin:0;background:#080d1b;color:#e6edf7;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+
+.site-header{border-bottom:1px solid #1d2940;background:#080d1b;position:sticky;top:0;z-index:100}
+.header-inner{max-width:1150px;margin:auto;padding:20px 24px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-size:26px;font-weight:bold;color:#fff;text-decoration:none;letter-spacing:-0.5px}
 .brand span{color:#66a2ff}
 
-nav{display:flex;gap:32px}
-.nav a{color:#cbd5e1;text-decoration:none;font-size:16px;font-weight:500;transition:0.2s}
+nav{display:flex;gap:24px}
+.nav a{color:#cbd5e1;text-decoration:none;font-size:15px;font-weight:500;transition:0.2s}
 .nav a:hover{color:#60a5fa}
 
-.container{max-width:1150px;margin:45px auto;padding:35px;background:#101b30;border:1px solid #263a5c;border-radius:24px}
-h1{text-align:center;font-size:38px;margin:15px 0}
-.subtitle{text-align:center;color:#9aabc4;font-size:18px;line-height:1.7;margin-bottom:35px}
+.container{max-width:1150px;margin:24px auto;padding:24px;background:#101b30;border:1px solid #263a5c;border-radius:20px}
+h1{text-align:center;font-size:32px;margin:10px 0;color:#fff}
+.subtitle{text-align:center;color:#9aabc4;font-size:16px;line-height:1.6;margin-bottom:28px}
 
-.drop-area{border:2px dashed #3978c9;border-radius:20px;padding:55px 20px;text-align:center;background:#0c162b;transition:.2s;cursor:pointer}
+.drop-area{border:2px dashed #3978c9;border-radius:16px;padding:40px 16px;text-align:center;background:#0c162b;transition:.2s;cursor:pointer}
 .drop-area:hover,.drop-area.dragging{background:#142342;border-color:#66a2ff}
-.file-icon{font-size:54px;margin-bottom:15px}
-.drop-area h2{font-size:24px;margin:10px 0}
-.drop-area p{color:#98a9c1;font-size:16px;margin:10px 0}
-.choose-btn{background:#2864eb;color:white;border:none;padding:15px 32px;border-radius:10px;font-size:17px;font-weight:bold;cursor:pointer;margin-top:15px}
+.file-icon{font-size:48px;margin-bottom:12px}
+.drop-area h2{font-size:22px;margin:8px 0;color:#fff}
+.drop-area p{color:#98a9c1;font-size:15px;margin:8px 0}
+.choose-btn{background:#2864eb;color:white;border:none;padding:14px 28px;border-radius:10px;font-size:16px;font-weight:bold;cursor:pointer;margin-top:12px;width:100%;max-width:280px;min-height:48px}
 .choose-btn:hover{background:#3977ff}
 #fileInput{display:none}
 
 .action-bar{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
     gap: 12px;
-    margin-top: 25px;
+    margin-top: 24px;
 }
 
 .convert-btn {
-    padding: 16px 32px;
+    width: 100%;
+    min-height: 50px;
+    padding: 15px 24px;
     border-radius: 12px;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: bold;
     background: linear-gradient(100deg,#2864eb,#673de9);
     color: #fff;
     border: none;
     cursor: pointer;
+    transition: opacity 0.2s;
 }
 .convert-btn:hover { opacity: 0.92; }
 .convert-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 
 .zip-btn {
-    padding: 16px 28px;
+    width: 100%;
+    min-height: 50px;
+    padding: 15px 24px;
     border-radius: 12px;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: bold;
     background: #0bad7d;
     color: #fff;
@@ -68,53 +78,58 @@ h1{text-align:center;font-size:38px;margin:15px 0}
     cursor: pointer;
     display: none;
     align-items: center;
+    justify-content: center;
     gap: 6px;
+    transition: background 0.2s;
 }
 .zip-btn:hover { background: #10c98f; }
 
 .clear-btn {
-    padding: 16px 24px;
+    width: 100%;
+    min-height: 48px;
+    padding: 14px 24px;
     border-radius: 12px;
-    font-size: 17px;
+    font-size: 16px;
     background: #192b3a;
     color: #dce6f4;
     border: 1px solid #304968;
     cursor: pointer;
     display: none;
+    transition: background 0.2s;
 }
 .clear-btn:hover { color: #fff; border-color: rgba(148, 163, 184, 0.5); }
 
 .file-list {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    margin-top: 25px;
+    gap: 12px;
+    margin-top: 20px;
 }
 
 .file-row {
     background: #18253c;
     border: 1px solid #304968;
-    border-radius: 15px;
-    padding: 20px;
+    border-radius: 14px;
+    padding: 16px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
+    flex-direction: column;
+    gap: 12px;
 }
 .file-details {
     min-width: 0;
-    flex: 1;
+    width: 100%;
 }
 .file-name {
-    font-size: 17px;
+    font-size: 16px;
     font-weight: bold;
     color: #fff;
+    word-break: break-all;
     overflow-wrap: anywhere;
 }
 .file-status {
-    font-size: 14px;
+    font-size: 13.5px;
     color: #94a6bf;
-    margin-top: 6px;
+    margin-top: 4px;
 }
 .file-status.done { color: #56d9a9; }
 .file-status.error { color: #ff9b9b; }
@@ -122,12 +137,15 @@ h1{text-align:center;font-size:38px;margin:15px 0}
 .row-actions {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 10px;
-    flex-shrink: 0;
+    width: 100%;
 }
 
 .download-item-btn {
-    padding: 10px 18px;
+    flex: 1;
+    text-align: center;
+    padding: 12px 16px;
     border-radius: 10px;
     font-size: 14px;
     font-weight: bold;
@@ -136,26 +154,77 @@ h1{text-align:center;font-size:38px;margin:15px 0}
     border: none;
     text-decoration: none;
     cursor: pointer;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 .download-item-btn:hover { background: #10c98f; }
 
 .remove-item-btn {
-    background: none;
-    border: none;
+    background: rgba(255, 104, 104, 0.15);
+    border: 1px solid rgba(255, 104, 104, 0.3);
     color: #ff6868;
-    font-size: 26px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
     cursor: pointer;
+    min-height: 44px;
+}
+.remove-item-btn:hover { background: rgba(255, 104, 104, 0.3); }
+
+/* Informational Content Section for SEO */
+.info-section {
+    max-width: 1150px;
+    margin: 24px auto 0 auto;
+    padding: 24px;
+    background: #101b30;
+    border: 1px solid #263a5c;
+    border-radius: 20px;
+}
+.info-section h2 {
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 14px;
+}
+.info-section h3 {
+    font-size: 17px;
+    color: #fff;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+.info-section p {
+    color: #9aabc4;
+    font-size: 14.5px;
+    line-height: 1.65;
+    margin-bottom: 12px;
+}
+.info-section ul {
+    color: #9aabc4;
+    font-size: 14.5px;
+    line-height: 1.65;
+    padding-left: 18px;
+    margin-bottom: 12px;
+}
+.info-section li {
+    margin-bottom: 6px;
 }
 
 .site-footer {
-    border-top: 1px solid #1d2940; text-align: center; padding: 28px 20px; color: #94a3b8; font-size: 13px; background: #080d1b;
+    border-top: 1px solid #1d2940; text-align: center; padding: 24px 16px; color: #94a3b8; font-size: 13px; background: #080d1b; margin-top: 40px;
 }
 
-@media(max-width: 750px) {
-    .container{margin:15px;padding:20px}
-    .header-inner{padding:20px}
-    .brand{font-size:25px}
-    h1{font-size:30px}
+@media(min-width: 640px) {
+    .container, .info-section { margin: 35px auto; padding: 32px; }
+    h1 { font-size: 36px; }
+    .action-bar { flex-direction: row; justify-content: center; flex-wrap: wrap; }
+    .convert-btn, .zip-btn, .clear-btn { width: auto; min-width: 200px; }
+    .file-row { flex-direction: row; align-items: center; justify-content: space-between; padding: 18px 20px; }
+    .row-actions { width: auto; justify-content: flex-end; }
+    .download-item-btn { flex: unset; }
+    .remove-item-btn { background: none; border: none; color: #ff6868; font-size: 26px; padding: 0; min-height: auto; }
+    .remove-item-btn:hover { background: none; color: #ff8888; }
 }
 </style>
 </head>
@@ -180,7 +249,7 @@ h1{text-align:center;font-size:38px;margin:15px 0}
     <div class="drop-area" id="dropzone" onclick="document.getElementById('fileInput').click()">
         <div class="file-icon">📸</div>
         <h2>Drop your HEIC files here</h2>
-        <p>or click below to browse your photos</p>
+        <p>or tap below to browse your photos</p>
         <button class="choose-btn" type="button">Choose HEIC Files</button>
         <input type="file" id="fileInput" accept=".heic,.heif" multiple onchange="addFiles(this.files)">
     </div>
@@ -193,6 +262,36 @@ h1{text-align:center;font-size:38px;margin:15px 0}
 
     <div class="file-list" id="fileList"></div>
 </main>
+
+<!-- Informational SEO Section -->
+<section class="info-section">
+    <h2>Why Convert HEIC to JPG Online?</h2>
+    <p>
+        HEIC (High Efficiency Image Container) has been the default image format for Apple iPhones and iPads since iOS 11. While HEIC is fantastic for saving device storage space—offering superior compression and supporting high-quality features like Live Photos and transparency—it comes with a major drawback: compatibility. Many older web browsers, Windows operating systems, Android devices, website upload portals, and graphic design software still struggle to open or display HEIC files properly. 
+    </p>
+    <p>
+        Converting your HEIC photos to standard JPG format solves these compatibility roadblocks instantly. JPG files are universally recognized across every operating system, web browser, printer, and social media platform worldwide.
+    </p>
+
+    <h3>How Our Free HEIC Converter Works</h3>
+    <p>
+        Unlike traditional online converters that require you to upload your personal photos to an external cloud server, AllInOne's HEIC to JPG tool operates <strong>100% client-side</strong> right inside your web browser. Your images never leave your local device, ensuring absolute privacy and security for confidential photos, family memories, or professional snapshots.
+    </p>
+    <ul>
+        <li><strong>Drag &amp; Drop Simplicity:</strong> Easily select or drag multiple HEIC or HEIF files directly into the conversion queue.</li>
+        <li><strong>Batch Processing:</strong> Convert dozens of high-resolution iPhone photos simultaneously with just a single click.</li>
+        <li><strong>Instant ZIP Download:</strong> Once conversion is complete, download all your converted JPG files bundled neatly into a single ZIP archive, or download them individually.</li>
+        <li><strong>Zero Installation:</strong> No need to install heavy desktop software, plugins, or third-party apps on your computer or phone.</li>
+    </ul>
+
+    <h3>Frequently Asked Questions</h3>
+    <p>
+        <strong>Is my data private?</strong> Yes. Because all image processing and rendering are executed locally in your browser sandbox using JavaScript and WebAssembly, your files are never transmitted over the internet or stored on any server.
+    </p>
+    <p>
+        <strong>Will I lose image quality?</strong> Our converter utilizes optimized compression settings to preserve the sharpness, color accuracy, and clarity of your original iPhone photos while translating them into universal JPEG format.
+    </p>
+</section>
 
 <footer class="site-footer">
     AllInOne Utilities — 100% client-side processing. Your files never leave your device.
@@ -258,13 +357,13 @@ h1{text-align:center;font-size:38px;margin:15px 0}
             ? `Convert ${pendingCount} File${pendingCount > 1 ? "s" : ""} to JPG`
             : "All Files Converted";
 
-        clearBtn.style.display = total > 0 ? "inline-block" : "none";
-        zipBtn.style.display = doneCount > 1 ? "inline-flex" : "none";
+        clearBtn.style.display = total > 0 ? "block" : "none";
+        zipBtn.style.display = doneCount > 1 ? "flex" : "none";
 
         fileList.innerHTML = fileQueue.map(item => {
             const sizeMB = (item.file.size / 1024 / 1024).toFixed(2);
             let statusHtml = `<div class="file-status">Ready (${sizeMB} MB)</div>`;
-            let actionHtml = `<button type="button" class="remove-item-btn" onclick="removeFile(${item.id})" title="Remove">×</button>`;
+            let actionHtml = `<button type="button" class="remove-item-btn" onclick="removeFile(${item.id})">Remove</button>`;
 
             if (item.status === "converting") {
                 statusHtml = `<div class="file-status">Converting to JPG...</div>`;
@@ -275,10 +374,11 @@ h1{text-align:center;font-size:38px;margin:15px 0}
                 statusHtml = `<div class="file-status done">✓ Converted (${outSizeKB} KB)</div>`;
                 actionHtml = `
                     <a href="${url}" download="${item.outName}" class="download-item-btn">Download JPG</a>
-                    <button type="button" class="remove-item-btn" onclick="removeFile(${item.id})" title="Remove">×</button>
+                    <button type="button" class="remove-item-btn" onclick="removeFile(${item.id})">Remove</button>
                 `;
             } else if (item.status === "error") {
                 statusHtml = `<div class="file-status error">✕ Conversion error occurred</div>`;
+                actionHtml = `<button type="button" class="remove-item-btn" onclick="removeFile(${item.id})">Remove</button>`;
             }
 
             return `
