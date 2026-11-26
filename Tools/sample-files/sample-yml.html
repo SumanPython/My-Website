@@ -247,15 +247,21 @@ body {
 .size-medium { color: #818cf8; font-weight: 600; }
 .size-large { color: #34d399; font-weight: 600; }
 
-/* Download Button */
-.download-btn {
-    width: 100%;
+/* Action Button Group */
+.action-group {
+    display: flex;
+    gap: 10px;
+}
+
+/* Download / Copy Buttons */
+.action-btn {
+    flex: 1;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 14px;
+    padding: 12px 10px;
     border-radius: 10px;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     background: var(--cat-bg-tint);
     color: var(--cat-accent);
@@ -266,10 +272,34 @@ body {
     min-height: 48px;
     transition: background 0.15s, color 0.15s, transform 0.15s;
 }
-.download-btn:hover {
+.action-btn:hover {
     background: var(--cat-accent);
     color: #060a14;
     transform: translateY(-1px);
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #0f182c;
+    border: 1px solid var(--cat-border);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(15px);
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Card Sections for SEO and FAQs */
@@ -385,7 +415,10 @@ footer a:hover { color: var(--cat-accent); }
                     <span class="size-small" id="smallSize">Approx. Size: Calculating...</span>
                 </div>
             </div>
-            <button type="button" class="download-btn" onclick="downloadYAML('small')">&#11015; Download Small YAML</button>
+            <div class="action-group">
+                <button type="button" class="action-btn" onclick="copyYAML('small')">📋 Copy YAML</button>
+                <button type="button" class="action-btn" onclick="downloadYAML('small')">📥 Download</button>
+            </div>
         </div>
 
         <!-- Medium YAML -->
@@ -404,7 +437,10 @@ footer a:hover { color: var(--cat-accent); }
                     <span class="size-medium" id="mediumSize">Approx. Size: Calculating...</span>
                 </div>
             </div>
-            <button type="button" class="download-btn" onclick="downloadYAML('medium')">&#11015; Download Medium YAML</button>
+            <div class="action-group">
+                <button type="button" class="action-btn" onclick="copyYAML('medium')">📋 Copy YAML</button>
+                <button type="button" class="action-btn" onclick="downloadYAML('medium')">📥 Download</button>
+            </div>
         </div>
 
         <!-- Large YAML -->
@@ -423,10 +459,16 @@ footer a:hover { color: var(--cat-accent); }
                     <span class="size-large" id="largeSize">Approx. Size: Calculating...</span>
                 </div>
             </div>
-            <button type="button" class="download-btn" onclick="downloadYAML('large')">&#11015; Download Large YAML</button>
+            <div class="action-group">
+                <button type="button" class="action-btn" onclick="copyYAML('large')">📋 Copy YAML</button>
+                <button type="button" class="action-btn" onclick="downloadYAML('large')">📥 Download</button>
+            </div>
         </div>
     </div>
 </main>
+
+<!-- Toast Notification -->
+<div class="toast" id="toastNotification">YAML copied to clipboard successfully!</div>
 
 <!-- Informational SEO Section (350+ words) -->
 <section class="info-section">
@@ -466,9 +508,9 @@ footer a:hover { color: var(--cat-accent); }
       <strong>Sample Text Files &rarr;</strong>
       <span>Download plain text sample documents.</span>
     </a>
-    <a href="../more-tools/formatters.html" class="related-link">
-      <strong>YAML Formatter &amp; Validator &rarr;</strong>
-      <span>Beautify and validate your YAML files.</span>
+    <a href="../developer-tools/json-to-yaml.html" class="related-link">
+      <strong>JSON to YAML Converter &rarr;</strong>
+      <span>Convert JSON payloads to YAML configurations.</span>
     </a>
   </div>
 </section>
@@ -590,6 +632,27 @@ function updatePreviews() {
             const blob = new Blob([yamlString], { type: "text/yaml" });
             sizeElement.textContent = "Approx. Size: ~" + formatBytes(blob.size);
         }
+    });
+}
+
+function showToast(message) {
+    const toast = document.getElementById("toastNotification");
+    toast.textContent = message;
+    toast.classList.add("show");
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2500);
+}
+
+function copyYAML(size) {
+    const yamlString = buildYAMLData(size);
+    if (!yamlString) return;
+
+    navigator.clipboard.writeText(yamlString).then(() => {
+        showToast(`${size.charAt(0).toUpperCase() + size.slice(1)} YAML copied to clipboard!`);
+    }).catch(err => {
+        console.error("Failed to copy: ", err);
+        showToast("Failed to copy to clipboard.");
     });
 }
 

@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#080d1b">
+<title>JSON Formatter &amp; Beautifier Online — Free &amp; Secure | AllInOne</title>
+<meta name="description" content="Beautify, minify, sort keys, and format messy JSON payloads instantly in your browser. 100% free, private, and secure with zero server uploads.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://allinone-utilities.com/Tools/developer-tools/json-formatter.html">
+
+<!-- Open Graph SEO Meta Tags -->
+<meta property="og:title" content="JSON Formatter &amp; Beautifier Online — Free &amp; Secure | AllInOne">
+<meta property="og:description" content="Beautify, minify, and clean up messy JSON payloads instantly in your browser without uploading files to a server.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://allinone-utilities.com/Tools/developer-tools/json-formatter.html">
+
+<!-- FAQ Rich Snippet Schema for Google SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is it safe to format confidential JSON payloads here?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. All JSON formatting and minification happens 100% client-side inside your browser memory. Your data is never uploaded to any external server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I minify JSON or sort object keys alphabetically?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! You can format with 2 spaces, 4 spaces, or tabs, sort keys alphabetically, or minify payloads to a single compact line."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I upload local .json files and download the formatted output?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Use the Load .json File button to import local files, then copy the formatted result or download it directly as a .json file."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+body {
+    background-color: #080d1b;
+    background-image:
+        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 4px),
+        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 3px),
+        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 4px);
+    background-size: 550px 550px, 350px 350px, 250px 250px;
+    background-position: 0 0, 40px 60px, 130px 270px;
+    color: #e6edf7;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* Header */
+.site-header { 
+    border-bottom: 1px solid #1d2940; 
+    background: #080d1b; 
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.header-inner { 
+    max-width: 1150px; 
+    margin: auto; 
+    padding: 20px 24px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+}
+.brand { 
+    font-size: 26px; 
+    font-weight: bold; 
+    color: #fff; 
+    text-decoration: none; 
+    letter-spacing: -0.5px;
+}
+.brand span { color: #66a2ff; }
+
+nav { display: flex; gap: 24px; }
+.nav a { color: #cbd5e1; text-decoration: none; font-size: 15px; font-weight: 500; transition: 0.2s; }
+.nav a:hover { color: #60a5fa; }
+
+/* Main Container */
+.container { 
+    max-width: 1150px; 
+    width: 100%; 
+    margin: 24px auto; 
+    padding: 24px; 
+    background: #101b30; 
+    border: 1px solid #263a5c; 
+    border-radius: 20px; 
+}
+.privacy-badge {
+    display: flex;
+    width: fit-content;
+    margin: 0 auto 16px auto;
+    align-items: center;
+    gap: 6px;
+    background: rgba(52, 211, 153, 0.12);
+    color: #34d399;
+    border: 1px solid rgba(52, 211, 153, 0.3);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.tool-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+.tool-header h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+    margin: 10px 0;
+}
+.tool-header p {
+    color: #9aabc4;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Controls & Toolbar */
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+.options-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 12px 16px;
+    background: #0c162b;
+    border: 1px solid #263a5c;
+    border-radius: 12px;
+    margin-bottom: 14px;
+}
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #cbd5e1;
+}
+.control-group select {
+    background: #18253c;
+    color: #fff;
+    border: 1px solid #304968;
+    padding: 8px 12px;
+    border-radius: 8px;
+    outline: none;
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    min-height: 38px;
+}
+.control-group select:focus { border-color: #66a2ff; }
+
+.checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #cbd5e1;
+    cursor: pointer;
+    user-select: none;
+}
+.checkbox-label input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    accent-color: #2864eb;
+    cursor: pointer;
+}
+
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+}
+
+button {
+    font-family: inherit;
+    font-size: 14.5px;
+    font-weight: bold;
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: 1px solid #304968;
+    background: #18253c;
+    color: #e2e8f0;
+    cursor: pointer;
+    transition: 0.2s;
+    min-height: 44px;
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+button:hover {
+    border-color: #66a2ff;
+    background: #233554;
+    color: #fff;
+}
+.choose-btn { 
+    background: #2864eb; 
+    color: white; 
+    border: none; 
+}
+.choose-btn:hover { background: #3977ff; }
+#fileInput { display: none; }
+
+/* JSON Editor Textarea */
+.editor-wrap { position: relative; }
+textarea {
+    width: 100%;
+    height: 330px;
+    background: #0c162b;
+    border: 2px dashed #3978c9;
+    border-radius: 16px;
+    padding: 16px;
+    color: #f8fafc;
+    font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: vertical;
+    outline: none;
+    transition: 0.2s;
+}
+textarea:focus {
+    border-color: #66a2ff;
+    background: #142342;
+}
+textarea::placeholder { color: #64748b; }
+
+/* Result Box */
+.result-box {
+    margin-top: 18px;
+    padding: 15px 18px;
+    border-radius: 12px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    display: none;
+}
+.result-valid {
+    display: block;
+    background: rgba(16, 185, 129, 0.14);
+    border: 1px solid rgba(52, 211, 153, 0.35);
+    color: #34d399;
+}
+.result-invalid {
+    display: block;
+    background: rgba(239, 68, 68, 0.14);
+    border: 1px solid rgba(248, 113, 113, 0.35);
+    color: #f87171;
+}
+.result-title {
+    font-weight: bold;
+    font-size: 15.5px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.result-meta {
+    font-size: 13.5px;
+    opacity: 0.92;
+    font-family: monospace;
+    word-break: break-word;
+}
+
+/* Informational SEO & Card Sections */
+.card-section, .info-section {
+    max-width: 1150px;
+    width: 100%;
+    margin: 24px auto;
+    padding: 24px;
+    background: #101b30;
+    border: 1px solid #263a5c;
+    border-radius: 20px;
+}
+.card-section h2, .info-section h2 { font-size: 22px; color: #fff; margin-bottom: 14px; }
+.info-section h3 { font-size: 17px; color: #fff; margin-top: 20px; margin-bottom: 8px; }
+.info-section p { color: #9aabc4; font-size: 14.5px; line-height: 1.65; margin-bottom: 12px; }
+.info-section ul { color: #9aabc4; font-size: 14.5px; line-height: 1.65; padding-left: 18px; margin-bottom: 12px; }
+.info-section li { margin-bottom: 6px; }
+.info-section code { background: #0c162b; padding: 2px 6px; border-radius: 5px; color: #cbd5e1; font-family: monospace; }
+
+.related-tools {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 16px;
+}
+.related-link {
+    display: block;
+    padding: 18px;
+    background: #0c162b;
+    border: 1px solid #263a5c;
+    border-radius: 12px;
+    color: #e6edf7;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.related-link:hover { border-color: #60a5fa; transform: translateY(-2px); }
+.related-link strong { font-size: 16px; color: #fff; }
+.related-link span { display: block; font-size: 13.5px; color: #9aabc4; margin-top: 4px; }
+
+.faq-item { margin-bottom: 16px; }
+.faq-item:last-child { margin-bottom: 0; }
+.faq-item h3 { font-size: 17px; margin-bottom: 6px; color: #ffffff; }
+.faq-item p { font-size: 14.5px; color: #9aabc4; line-height: 1.6; }
+
+/* Footer */
+footer {
+    border-top: 1px solid #1d2940;
+    text-align: center;
+    padding: 24px 16px;
+    color: #94a3b8;
+    font-size: 13px;
+    background: #080d1b;
+    margin-top: auto;
+}
+footer a { color: #94a3b8; text-decoration: none; margin: 0 10px; }
+footer a:hover { color: #60a5fa; }
+
+@media(min-width: 640px) {
+    .container, .card-section, .info-section { margin: 35px auto; padding: 32px; }
+    .tool-header h1 { font-size: 36px; }
+    .btn-group { width: auto; }
+    button { flex: unset; min-width: 125px; }
+    .related-tools { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    textarea { height: 380px; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a class="brand" href="../../index.html">AllIn<span>One</span></a>
+        <nav class="nav">
+            <a href="../../index.html#category-boxes-section">Categories</a>
+        </nav>
+    </div>
+</header>
+
+<main style="max-width: 1150px; width: 100%; margin: 24px auto; padding: 0 24px;">
+    <div class="container" style="margin: 0 auto; width: 100%;">
+        <div class="privacy-badge">🔒 100% Browser-Based • Zero Server Uploads</div>
+        
+        <div class="tool-header">
+            <h1>JSON Formatter &amp; Beautifier</h1>
+            <p>Beautify, minify, sort keys, and clean up messy JSON payloads for readability.</p>
+        </div>
+
+        <div class="options-bar">
+            <div class="control-group">
+                <label for="indentSelect">Indentation:</label>
+                <select id="indentSelect">
+                    <option value="2" selected>2 Spaces</option>
+                    <option value="4">4 Spaces</option>
+                    <option value="tab">Tab</option>
+                </select>
+            </div>
+            <label class="checkbox-label">
+                <input type="checkbox" id="sortKeysCheck">
+                Sort Keys Alphabetically
+            </label>
+        </div>
+
+        <div class="toolbar">
+            <div class="btn-group">
+                <button class="choose-btn" id="formatBtn">✨ Beautify JSON</button>
+                <button id="minifyBtn">📦 Minify JSON</button>
+                <button id="uploadBtn">📁 Load .json File</button>
+                <input type="file" id="fileInput" accept=".json,application/json,text/plain">
+            </div>
+            <div class="btn-group">
+                <button id="copyBtn">📋 Copy</button>
+                <button id="downloadBtn">⬇ Download</button>
+                <button id="sampleBtn">Sample</button>
+                <button id="clearBtn">Clear</button>
+            </div>
+        </div>
+
+        <div class="editor-wrap">
+            <textarea 
+                id="jsonInput" 
+                spellcheck="false" 
+                autocomplete="off" 
+                autocorrect="off" 
+                autocapitalize="off" 
+                data-gramm="false" 
+                data-gramm_editor="false" 
+                data-enable-grammarly="false"
+                placeholder='Paste raw or minified JSON here... e.g. {"service":"AllInOne","tools":75,"active":true}'
+            ></textarea>
+        </div>
+
+        <div id="resultBox" class="result-box"></div>
+    </div>
+</main>
+
+<!-- Informational SEO Section (400+ Words) -->
+<section class="info-section">
+    <h2>Why Use an Online JSON Formatter &amp; Beautifier?</h2>
+    <p>
+        JavaScript Object Notation (JSON) is the universal standard for REST APIs, microservices, cloud configuration files, and NoSQL document databases. In production environments, servers and logging pipelines routinely compress JSON responses into dense, single-line minified strings to reduce bandwidth consumption and accelerate network transfer speeds. While compact JSON is great for machines, reading or debugging thousands of unformatted characters on a single line is exhausting and error-prone for software developers and QA engineers.
+    </p>
+    <p>
+        AllInOne's free online JSON Formatter &amp; Beautifier transforms raw, tangled, or minified JSON payloads into cleanly structured, human-readable code in milliseconds. Whether you are inspecting nested webhook events, reviewing database exports, or cleaning up application settings, our formatter expands your data hierarchy with clear indentation so every object key, array element, and nested structure stands out immediately. Because all parsing and formatting executes 100% client-side in your browser memory, sensitive API tokens, authentication headers, and proprietary payloads never leave your computer.
+    </p>
+
+    <h3>Key Features of Our Client-Side JSON Beautifier</h3>
+    <ul>
+        <li><strong>Customizable Indentation Styles:</strong> Switch seamlessly between 2-space, 4-space, or tab indentation to match your project's style guide or IDE conventions.</li>
+        <li><strong>Recursive Alphabetical Key Sorting:</strong> Enable key sorting to automatically organize every object property alphabetically, making side-by-side API response diffs and code reviews dramatically easier.</li>
+        <li><strong>Instant Payload Minification:</strong> Strip out all unnecessary spaces, tabs, and line breaks with a single click to generate ultra-compact JSON ready for production APIs or environment variables.</li>
+        <li><strong>Local File Import &amp; Export:</strong> Load local <code>.json</code> files directly from your device without uploading them to a server, then copy the formatted output to your clipboard or download a clean file instantly.</li>
+        <li><strong>Built-In Syntax Verification:</strong> Automatically detects malformed brackets, missing quotes, or trailing commas before formatting and displays clear error feedback.</li>
+    </ul>
+
+    <h3>Beautifying vs. Minifying JSON: When to Use Each</h3>
+    <p>
+        Use <strong>Beautify JSON</strong> during active development, API debugging, log inspection, and documentation writing whenever human readability and structural clarity are top priorities. Conversely, use <strong>Minify JSON</strong> when preparing payloads for HTTP requests, storing serialized objects in local storage or cookies, or embedding configuration strings inside CI/CD environment variables where minimizing byte size improves performance.
+    </p>
+</section>
+
+<!-- Internal Cross-Linking for SEO -->
+<section class="card-section">
+  <h2>Related Developer Utilities</h2>
+  <div class="related-tools">
+    <a href="json-validator.html" class="related-link">
+      <strong>JSON Validator &rarr;</strong>
+      <span>Check JSON syntax and get smart error fixes.</span>
+    </a>
+    <a href="base64.html" class="related-link">
+      <strong>Base64 Encoder / Decoder &rarr;</strong>
+      <span>Encode and decode text or binary payloads.</span>
+    </a>
+    <a href="jwt-decoder.html" class="related-link">
+      <strong>JWT Decoder &rarr;</strong>
+      <span>Inspect OAuth tokens and session claims locally.</span>
+    </a>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="card-section">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <h3>Is it safe to format confidential JSON payloads here?</h3>
+    <p>Yes. All JSON formatting and minification happens 100% client-side inside your browser memory. Your data is never uploaded to any external server.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Can I minify JSON or sort object keys alphabetically?</h3>
+    <p>Yes! You can format with 2 spaces, 4 spaces, or tabs, sort keys alphabetically, or minify payloads to a single compact line.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Can I upload local .json files and download the formatted output?</h3>
+    <p>Yes. Use the Load .json File button to import local files, then copy the formatted result or download it directly as a .json file.</p>
+  </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 AllInOne Utilities — Fast, secure developer &amp; document tools.</p>
+    <p style="margin-top:10px;">
+        <a href="../../index.html">Home</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+    </p>
+</footer>
+
+<script>
+const jsonInput = document.getElementById("jsonInput");
+const resultBox = document.getElementById("resultBox");
+const indentSelect = document.getElementById("indentSelect");
+const sortKeysCheck = document.getElementById("sortKeysCheck");
+const formatBtn = document.getElementById("formatBtn");
+const minifyBtn = document.getElementById("minifyBtn");
+const uploadBtn = document.getElementById("uploadBtn");
+const fileInput = document.getElementById("fileInput");
+const copyBtn = document.getElementById("copyBtn");
+const downloadBtn = document.getElementById("downloadBtn");
+const sampleBtn = document.getElementById("sampleBtn");
+const clearBtn = document.getElementById("clearBtn");
+
+function showResult(isValid, title, meta = "") {
+    resultBox.className = `result-box ${isValid ? "result-valid" : "result-invalid"}`;
+    resultBox.innerHTML = `
+        <div class="result-title">${title}</div>
+        ${meta ? `<div class="result-meta">${meta}</div>` : ""}
+    `;
+}
+
+function sortObjectKeys(value) {
+    if (Array.isArray(value)) {
+        return value.map(sortObjectKeys);
+    }
+    if (value !== null && typeof value === "object") {
+        return Object.keys(value).sort().reduce((acc, key) => {
+            acc[key] = sortObjectKeys(value[key]);
+            return acc;
+        }, {});
+    }
+    return value;
+}
+
+function getIndentValue() {
+    const val = indentSelect.value;
+    return val === "tab" ? "\t" : parseInt(val, 10);
+}
+
+function formatJSON(minify = false) {
+    const raw = jsonInput.value.trim();
+    if (!raw) {
+        showResult(false, "⚠️ Empty Input", "Please paste or load JSON data before formatting.");
+        return;
+    }
+
+    try {
+        let parsed = JSON.parse(raw);
+        if (sortKeysCheck.checked) {
+            parsed = sortObjectKeys(parsed);
+        }
+
+        const beforeBytes = new Blob([raw]).size;
+        const output = minify
+            ? JSON.stringify(parsed)
+            : JSON.stringify(parsed, null, getIndentValue());
+        const afterBytes = new Blob([output]).size;
+
+        jsonInput.value = output;
+
+        const modeLabel = minify ? "Minified" : "Beautified";
+        const sortLabel = sortKeysCheck.checked ? " • Keys Sorted" : "";
+        showResult(
+            true,
+            `✅ JSON ${modeLabel} Successfully`,
+            `Before: ${beforeBytes} bytes → After: ${afterBytes} bytes${sortLabel}`
+        );
+    } catch (err) {
+        showResult(false, "❌ Invalid JSON Syntax", err.message);
+    }
+}
+
+formatBtn.addEventListener("click", () => formatJSON(false));
+minifyBtn.addEventListener("click", () => formatJSON(true));
+
+uploadBtn.addEventListener("click", () => fileInput.click());
+fileInput.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+        jsonInput.value = event.target.result;
+        formatJSON(false);
+    };
+    reader.readAsText(file);
+    fileInput.value = "";
+});
+
+copyBtn.addEventListener("click", async () => {
+    const text = jsonInput.value.trim();
+    if (!text) {
+        showResult(false, "⚠️ Nothing to Copy", "The editor is currently empty.");
+        return;
+    }
+    try {
+        await navigator.clipboard.writeText(jsonInput.value);
+        showResult(true, "📋 Copied to Clipboard", `${new Blob([jsonInput.value]).size} bytes copied.`);
+    } catch {
+        jsonInput.select();
+        document.execCommand("copy");
+        showResult(true, "📋 Copied to Clipboard");
+    }
+});
+
+downloadBtn.addEventListener("click", () => {
+    const text = jsonInput.value.trim();
+    if (!text) {
+        showResult(false, "⚠️ Nothing to Download", "Please enter or format JSON first.");
+        return;
+    }
+    const blob = new Blob([jsonInput.value], { type: "application/json;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "formatted.json";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showResult(true, "⬇ Downloaded formatted.json");
+});
+
+sampleBtn.addEventListener("click", () => {
+    jsonInput.value = '{"z_status":"active","platform":"AllInOne Utilities","clientSide":true,"stats":{"totalTools":75,"completed":21},"tags":["json","formatter","developer"]}';
+    formatJSON(false);
+});
+
+clearBtn.addEventListener("click", () => {
+    jsonInput.value = "";
+    resultBox.className = "result-box";
+    resultBox.innerHTML = "";
+});
+</script>
+
+</body>
+</html>
