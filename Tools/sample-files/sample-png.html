@@ -6,13 +6,13 @@
 <meta name="theme-color" content="#080d1b">
 
 <title>Sample PNG Images — Download Test Photos | AllInOne</title>
-<meta name="description" content="Download free sample PNG images in small, Full HD, and 4K resolutions. Use PNG test images for image converters, compressors, uploads, and development testing. 100% free and secure browser-based tool.">
+<meta name="description" content="Download free sample PNG images in small, Full HD, 4K, and transparent alpha channel resolutions. Use PNG test images for image converters, compressors, uploads, and development testing. 100% free and secure browser-based tool.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://allinone-utilities.com/Tools/sample-files/sample-png.html">
 
 <!-- Open Graph SEO Meta Tags -->
 <meta property="og:title" content="Sample PNG Images — Download Test Photos | AllInOne">
-<meta property="og:description" content="Download free PNG test images in multiple resolutions instantly in your browser for testing and development.">
+<meta property="og:description" content="Download free PNG test images including transparent alpha channel graphics instantly in your browser for testing and development.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://allinone-utilities.com/Tools/sample-files/sample-png.html">
 
@@ -35,7 +35,15 @@
       "name": "What resolutions are available for download?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You can download Small (640x480), Medium Full HD (1920x1080), and 4K UHD (3840x2160) test image resolutions in PNG format."
+        "text": "You can download Transparent Alpha Channel, Small (640x480), Medium Full HD (1920x1080), and 4K UHD (3840x2160) test image resolutions in PNG format."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do these sample PNG files support transparency (alpha channel)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! Our transparent sample PNG features a checkerboard preview with a centered badge and transparent corners, specifically built to test alpha channel transparency and UI rendering."
       }
     }
   ]
@@ -184,7 +192,7 @@ nav a:hover { color: #60a5fa; }
     transform: translateY(-2px);
 }
 
-/* Image Preview */
+/* Image Preview with Checkerboard for Transparency */
 .sample-preview {
     display: block;
     width: 100%;
@@ -192,7 +200,14 @@ nav a:hover { color: #60a5fa; }
     border-radius: 10px;
     object-fit: cover;
     margin-bottom: 14px;
-    background: #1e293b;
+    background-color: #1e293b;
+    background-image: 
+        linear-gradient(45deg, #26334d 25%, transparent 25%), 
+        linear-gradient(-45deg, #26334d 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, #26334d 75%), 
+        linear-gradient(-45deg, transparent 75%, #26334d 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -295,9 +310,12 @@ footer a:hover { color: #60a5fa; }
     .container, .card-section, .info-section { margin: 35px auto; padding: 32px; }
     .brand { font-size: 26px; }
     .tool-header h1 { font-size: 36px; }
-    .samples-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .samples-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
     .sample-card { padding: 22px; }
     .related-tools { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+}
+@media(min-width: 1024px) {
+    .samples-grid { grid-template-columns: repeat(4, 1fr); }
 }
 </style>
 </head>
@@ -328,10 +346,24 @@ footer a:hover { color: #60a5fa; }
         
         <div class="tool-header">
             <h1>Sample PNG Images</h1>
-            <p>Download free PNG test images in multiple resolutions for testing image converters, upload forms, compressors, responsive layouts, and development projects.</p>
+            <p>Download free PNG test images including transparent alpha channel graphics in multiple resolutions for testing image converters, upload forms, compressors, and UI layouts.</p>
         </div>
 
         <div class="samples-grid">
+            <!-- TRANSPARENT PNG -->
+            <div class="sample-card">
+                <div>
+                    <canvas id="previewTransparent" class="sample-preview" width="300" height="200"></canvas>
+                    <div class="sample-title">Transparent PNG</div>
+                    <div class="sample-meta">
+                        Resolution: 800 &times; 600 px<br>
+                        Format: Alpha Channel PNG<br>
+                        <span style="color:#c084fc; font-weight:600;">Approx. Size: ~35 KB</span>
+                    </div>
+                </div>
+                <button type="button" class="download-btn" onclick="downloadPng('transparent')">&#11015; Download Transparent</button>
+            </div>
+
             <!-- SMALL PNG -->
             <div class="sample-card">
                 <div>
@@ -381,23 +413,23 @@ footer a:hover { color: #60a5fa; }
 <section class="info-section">
     <h2>Why Use Sample PNG Images for Software Development and Testing?</h2>
     <p>
-        Portable Network Graphics (PNG) files are a foundational raster graphics format across web design and software engineering, prized for supporting lossless data compression and crisp pixel definition. Whether you are building file upload components, testing image format converters, validating compression pipelines, or designing responsive web application layouts, having reliable and predictable test images is indispensable.
+        Portable Network Graphics (PNG) files are a foundational raster graphics format across web design and software engineering, prized for supporting lossless data compression, crisp pixel definition, and transparent alpha channels. Whether you are building file upload components, testing image format converters, validating compression pipelines, or designing responsive web application layouts, having reliable and predictable test images is indispensable.
     </p>
     <p>
-        Searching across public repositories or stock photo sites for clean sample graphics in specific dimensions can be cumbersome. Our free sample PNG repository gives developers, QA testers, and UI designers instant access to properly structured test graphics across multiple resolution tiers (Small VGA, Full HD, and 4K Ultra HD). Best of all, because all sample graphics are rendered dynamically right inside your browser memory using HTML5 canvas technology, your testing operations remain entirely private with zero server uploads.
+        Searching across public repositories or stock photo sites for clean sample graphics in specific dimensions—especially graphics with true alpha transparency—can be cumbersome. Our free sample PNG repository gives developers, QA testers, and UI designers instant access to properly structured test graphics across multiple resolution tiers, featuring dedicated transparent background cards designed specifically to verify transparency rendering. Best of all, because all sample graphics are rendered dynamically right inside your browser memory using HTML5 canvas technology, your testing operations remain entirely private with zero server uploads.
     </p>
 
     <h3>Key Benefits of Our Sample PNG Test Files</h3>
     <ul>
+        <li><strong>Transparent Alpha Channel Support:</strong> Test UI transparency layers, drop shadows, and overlay components using our dedicated transparent PNG sample featuring a centered badge and clean transparent corners.</li>
         <li><strong>Lossless Compression Quality:</strong> Every downloaded file is structured as a pristine PNG graphic, making them ideal for testing image optimization, scaling artifacts, and pixel-level conversion tools.</li>
         <li><strong>Multi-Resolution Standards:</strong> Evaluate responsive layouts, image loading behavior, and compression routines using Small (640&times;480), Full HD (1920&times;1080), and Ultra HD 4K (3840&times;2160) dimensions.</li>
-        <li><strong>Optimized File Sizes:</strong> Keep automated test suites fast and lightweight with file sizes ranging from ~40 KB up to ~800 KB for minimal network overhead.</li>
         <li><strong>100% Client-Side Rendering:</strong> Instant graphic generation directly within your browser environment with zero external server dependencies or waiting queues.</li>
     </ul>
 
     <h3>How to Use These Sample PNG Files in Your Testing Workflow</h3>
     <p>
-        <strong>1. Choose Your Resolution:</strong> Select the small VGA thumbnail, Full HD medium photo, or high-resolution 4K test card depending on your testing requirements.<br>
+        <strong>1. Choose Your Resolution:</strong> Select the transparent alpha badge, small VGA thumbnail, Full HD medium photo, or high-resolution 4K test card depending on your testing requirements.<br>
         <strong>2. Download Instantly:</strong> Click the download button to save the sample <code>.png</code> file directly to your local computer or mobile device.<br>
         <strong>3. Test &amp; Debug:</strong> Drag your downloaded sample into your web application upload dropzone, image conversion utility, or automated test suite.
     </p>
@@ -431,7 +463,11 @@ footer a:hover { color: #60a5fa; }
   </div>
   <div class="faq-item">
     <h3>What resolutions are available for download?</h3>
-    <p>You can download Small (640x480), Medium Full HD (1920x1080), and 4K UHD (3840x2160) test image resolutions in PNG format.</p>
+    <p>You can download Transparent Alpha Channel, Small (640x480), Medium Full HD (1920x1080), and 4K UHD (3840x2160) test image resolutions in PNG format.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Do these sample PNG files support transparency (alpha channel)?</h3>
+    <p>Yes! Our transparent sample PNG features a checkerboard preview with a centered badge and transparent corners, specifically built to test alpha channel transparency and UI rendering.</p>
   </div>
 </section>
 
@@ -445,37 +481,69 @@ footer a:hover { color: #60a5fa; }
 </footer>
 
 <script>
-function drawThumbnail(canvasId, width, height, label, colorStops) {
+function drawCheckerboard(ctx, width, height) {
+    const size = 16;
+    for (let x = 0; x < width; x += size) {
+        for (let y = 0; y < height; y += size) {
+            ctx.fillStyle = (x / size + y / size) % 2 === 0 ? "#26334d" : "#1e293b";
+            ctx.fillRect(x, y, size, size);
+        }
+    }
+}
+
+function drawThumbnail(canvasId, width, height, label, colorStops, isTransparent = false) {
     const canvas = document.getElementById(canvasId);
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
-    const grad = ctx.createLinearGradient(0, 0, width, height);
-    grad.addColorStop(0, colorStops[0]);
-    grad.addColorStop(0.5, colorStops[1]);
-    grad.addColorStop(1, colorStops[2]);
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, width, height);
 
-    ctx.strokeStyle = "rgba(255,255,255,0.15)";
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    ctx.moveTo(0, height / 2);
-    ctx.lineTo(width, height / 2);
-    ctx.moveTo(width / 2, 0);
-    ctx.lineTo(width / 2, height);
-    ctx.stroke();
+    if (isTransparent) {
+        drawCheckerboard(ctx, width, height);
+        
+        // Draw a centered badge with transparent corners
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(width / 2, height / 2, 60, 0, Math.PI * 2);
+        ctx.fillStyle = "#c084fc";
+        ctx.shadowColor = "rgba(0,0,0,0.4)";
+        ctx.shadowBlur = 12;
+        ctx.fill();
+        ctx.restore();
 
-    ctx.fillStyle = "#ffffff";
-    ctx.font = "bold 20px sans-serif";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.shadowColor = "rgba(0,0,0,0.6)";
-    ctx.shadowBlur = 8;
-    ctx.fillText(label, width / 2, height / 2);
-    ctx.shadowBlur = 0;
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 16px sans-serif";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText("ALPHA PNG", width / 2, height / 2);
+    } else {
+        const grad = ctx.createLinearGradient(0, 0, width, height);
+        grad.addColorStop(0, colorStops[0]);
+        grad.addColorStop(0.5, colorStops[1]);
+        grad.addColorStop(1, colorStops[2]);
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, width, height);
+
+        ctx.strokeStyle = "rgba(255,255,255,0.15)";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(0, height / 2);
+        ctx.lineTo(width, height / 2);
+        ctx.moveTo(width / 2, 0);
+        ctx.lineTo(width / 2, height);
+        ctx.stroke();
+
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 20px sans-serif";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.shadowColor = "rgba(0,0,0,0.6)";
+        ctx.shadowBlur = 8;
+        ctx.fillText(label, width / 2, height / 2);
+        ctx.shadowBlur = 0;
+    }
 }
 
 function initThumbnails() {
+    drawThumbnail("previewTransparent", 300, 200, "Transparent", [], true);
     drawThumbnail("previewSmall", 300, 200, "640 x 480 PNG", ["#0ea5e9", "#2563eb", "#1e1b4b"]);
     drawThumbnail("previewMed", 300, 200, "1920 x 1080 FHD", ["#6366f1", "#8b5cf6", "#311042"]);
     drawThumbnail("preview4k", 300, 200, "3840 x 2160 4K", ["#10b981", "#059669", "#064e3b"]);
@@ -491,9 +559,15 @@ function downloadPng(type) {
     let w = 640;
     let h = 480;
     let name = "sample-640x480.png";
+    let isTransparent = false;
     let colors = ["#0ea5e9", "#2563eb", "#1e1b4b"];
 
-    if (type === "medium") {
+    if (type === "transparent") {
+        w = 800;
+        h = 600;
+        name = "sample-transparent-alpha.png";
+        isTransparent = true;
+    } else if (type === "medium") {
         w = 1920;
         h = 1080;
         name = "sample-1920x1080.png";
@@ -510,19 +584,39 @@ function downloadPng(type) {
     tempCanvas.height = h;
     const ctx = tempCanvas.getContext("2d");
 
-    const grad = ctx.createLinearGradient(0, 0, w, h);
-    grad.addColorStop(0, colors[0]);
-    grad.addColorStop(0.5, colors[1]);
-    grad.addColorStop(1, colors[2]);
+    if (isTransparent) {
+        // Clear canvas to transparent, then draw a central badge/shape with transparent corners
+        ctx.clearRect(0, 0, w, h);
 
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, w, h);
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(w / 2, h / 2, w * 0.22, 0, Math.PI * 2);
+        ctx.fillStyle = "#c084fc";
+        ctx.shadowColor = "rgba(0,0,0,0.5)";
+        ctx.shadowBlur = w * 0.03;
+        ctx.fill();
+        ctx.restore();
 
-    ctx.fillStyle = "#ffffff";
-    ctx.font = `bold ${Math.max(26, w / 22)}px sans-serif`;
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillText(`AllInOne Utilities Test Image (${w}x${h})`, w / 2, h / 2);
+        ctx.fillStyle = "#ffffff";
+        ctx.font = `bold ${Math.max(22, w / 25)}px sans-serif`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText("AllInOne Alpha PNG", w / 2, h / 2);
+    } else {
+        const grad = ctx.createLinearGradient(0, 0, w, h);
+        grad.addColorStop(0, colors[0]);
+        grad.addColorStop(0.5, colors[1]);
+        grad.addColorStop(1, colors[2]);
+
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, w, h);
+
+        ctx.fillStyle = "#ffffff";
+        ctx.font = `bold ${Math.max(26, w / 22)}px sans-serif`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(`AllInOne Utilities Test Image (${w}x${h})`, w / 2, h / 2);
+    }
 
     const dataUrl = tempCanvas.toDataURL("image/png");
     const link = document.createElement("a");
