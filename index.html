@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AllInOne — Fast, Private Browser-Based Utilities &amp; Converters</title>
+    <title>OnlineToolCollection — Fast, Private Browser-Based Utilities &amp; Converters</title>
     <meta name="description" content="Free online utility platform featuring professional PDF tools, audio &amp; video tools, WebP image converters, Base64 &amp; JWT decoders, and sample test file downloads. 100% private, client-side processing with zero server uploads.">
     <link rel="canonical" href="https://allinone-utilities.com/">
 
@@ -26,6 +26,31 @@ body{margin:0;background:#080d1b;color:#e6edf7;font-family:Arial,Helvetica,sans-
 .header-inner{max-width:1150px;margin:auto;padding:24px 35px;display:flex;align-items:center;justify-content:space-between}
 .brand{font-size:28px;font-weight:bold;color:#fff;text-decoration:none;letter-spacing:-0.5px}
 .brand span{color:#66a2ff}
+.brand{display:flex;align-items:center;gap:9px;white-space:nowrap}
+.brand .brand-short{
+    font-size:clamp(22px,3vw,30px);
+    font-weight:900;
+    letter-spacing:-1px;
+    background:linear-gradient(110deg,#22d3ee,#4f66ff,#a855f7);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent!important;
+}
+.brand .brand-o{color:#ff8c24!important;background:none!important;-webkit-text-fill-color:#ff8c24}
+.brand .brand-t{color:#ffffff!important;background:none!important;-webkit-text-fill-color:#ffffff}
+.brand .brand-c{color:#22c55e!important;background:none!important;-webkit-text-fill-color:#22c55e}
+
+.brand .brand-name{
+    color:#ffffff!important;
+    font-size:clamp(14px,2vw,20px);
+    font-weight:700;
+    letter-spacing:-0.35px;
+}
+@media(max-width:480px){
+    .brand .brand-name{display:none}
+    .brand .brand-short{font-size:27px}
+}
+
 
 .container{max-width:1150px;margin:30px auto;padding:16px 35px 35px 35px;background:#101b30;border:1px solid #263a5c;border-radius:24px;position:relative;z-index:2}
 
@@ -614,6 +639,10 @@ body{margin:0;background:#080d1b;color:#e6edf7;font-family:Arial,Helvetica,sans-
 .theme-cyan { --cat-accent: #22d3ee; --cat-border: rgba(34, 211, 238, 0.58); --cat-glow: rgba(6, 182, 212, 0.25); --cat-bg-tint: rgba(6, 182, 212, 0.16); }
 .theme-emerald { --cat-accent: #34d399; --cat-border: rgba(52, 211, 153, 0.58); --cat-glow: rgba(16, 185, 129, 0.25); --cat-bg-tint: rgba(16, 185, 129, 0.16); }
 .theme-orange { --cat-accent: #fb923c; --cat-border: rgba(251, 146, 60, 0.58); --cat-glow: rgba(249, 115, 22, 0.25); --cat-bg-tint: rgba(249, 115, 22, 0.16); }
+
+/* OTC brand tagline: header-only styling */
+.brand-tagline{display:inline-block;color:#a9b7cf;font-size:12px;font-weight:500;letter-spacing:.1px;margin-left:5px;white-space:nowrap}
+@media(max-width:750px){.brand-tagline{display:none}}
 </style>
 </head>
 <body>
@@ -630,7 +659,7 @@ body{margin:0;background:#080d1b;color:#e6edf7;font-family:Arial,Helvetica,sans-
 <!-- Matching Header -->
 <header class="site-header">
     <div class="header-inner">
-        <a class="brand" href="index.html">AllIn<span>One</span></a>
+        <a class="brand" href="index.html"><span class="brand-short"><span class="brand-o">O</span><span class="brand-t">T</span><span class="brand-c">C</span></span><span class="brand-name">OnlineToolCollection</span><span class="brand-tagline">Tools for every task. All in one place.</span></a>
     </div>
 </header>
 
@@ -649,7 +678,7 @@ body{margin:0;background:#080d1b;color:#e6edf7;font-family:Arial,Helvetica,sans-
 
 <main class="container">
     <section class="hero">
-        <h1>AllInOne Utilities</h1>
+        <h1>OnlineToolCollection Utilities</h1>
         
         <div class="search-wrap" id="searchWrap">
             <span class="search-icon" aria-hidden="true">🔍</span>
@@ -699,7 +728,7 @@ body{margin:0;background:#080d1b;color:#e6edf7;font-family:Arial,Helvetica,sans-
                     <div class="tool-name">PDF Tools</div>
                     <div class="tool-desc">Compress, merge, split by bookmarks, extract images, and convert PDFs.</div>
                 </div>
-                <span class="tool-badge badge-cat"><span class="badge-dot"></span>15 Tools</span>
+                <span class="tool-badge badge-cat"><span class="badge-dot"></span>11 Tools</span>
             </a>
 
             <a href="#video-tools" class="category-box-card theme-video">
@@ -735,7 +764,7 @@ body{margin:0;background:#080d1b;color:#e6edf7;font-family:Arial,Helvetica,sans-
                     <div class="tool-name">Sample Files</div>
                     <div class="tool-desc">Download lightweight JPG, PNG, HEIC, SVG, PDF, MOV, JSON, YAML, NDJSON, WAV, and CSV datasets.</div>
                 </div>
-                <span class="tool-badge badge-cat"><span class="badge-dot"></span>17 Files</span>
+                <span class="tool-badge badge-cat"><span class="badge-dot"></span>15 Files</span>
             </a>
         </div>
     </section>
@@ -865,7 +894,7 @@ body{margin:0;background:#080d1b;color:#e6edf7;font-family:Arial,Helvetica,sans-
             </div>
             <div class="section-header">
                 <h2 id="pdf-heading">PDF Tools</h2>
-                <span>15 professional document utilities</span>
+                <span>11 professional document utilities</span>
             </div>
             <div class="tools-grid">
                 <a href="Tools/pdf-tools/compress.html" class="tool-card" data-name="compress pdf reduce size optimizer">
@@ -999,54 +1028,6 @@ body{margin:0;background:#080d1b;color:#e6edf7;font-family:Arial,Helvetica,sans-
                     </div>
                     <span class="tool-badge badge-available"><span class="badge-dot"></span>Client-Side</span>
                 </a>
-
-                <div class="tool-card placeholder" data-name="ocr text extraction scan parse" data-tool-name="OCR Text Extraction">
-                    <div>
-                        <div class="tool-top">
-                            <div class="tool-icon" aria-hidden="true">🔍</div>
-                            <span class="tool-arrow" aria-hidden="true">→</span>
-                        </div>
-                        <div class="tool-name">OCR Text Extraction</div>
-                        <div class="tool-desc">Extract selectable and searchable text from scanned documents or images.</div>
-                    </div>
-                    <span class="tool-badge badge-soon"><span class="badge-dot"></span>Planned</span>
-                </div>
-
-                <div class="tool-card placeholder" data-name="sign fill pdf signature annotate" data-tool-name="Sign & Fill PDF">
-                    <div>
-                        <div class="tool-top">
-                            <div class="tool-icon" aria-hidden="true">✍️</div>
-                            <span class="tool-arrow" aria-hidden="true">→</span>
-                        </div>
-                        <div class="tool-name">Sign &amp; Fill PDF</div>
-                        <div class="tool-desc">Draw or type your signature and fill out form fields directly on your PDF.</div>
-                    </div>
-                    <span class="tool-badge badge-soon"><span class="badge-dot"></span>Planned</span>
-                </div>
-
-                <div class="tool-card placeholder" data-name="protect pdf encrypt password secure" data-tool-name="Protect PDF">
-                    <div>
-                        <div class="tool-top">
-                            <div class="tool-icon" aria-hidden="true">🔒</div>
-                            <span class="tool-arrow" aria-hidden="true">→</span>
-                        </div>
-                        <div class="tool-name">Protect PDF</div>
-                        <div class="tool-desc">Encrypt sensitive PDF documents with a secure user password to restrict access.</div>
-                    </div>
-                    <span class="tool-badge badge-soon"><span class="badge-dot"></span>Planned</span>
-                </div>
-
-                <div class="tool-card placeholder" data-name="unlock pdf or decrypt password" data-tool-name="Unlock PDF">
-                    <div>
-                        <div class="tool-top">
-                            <div class="tool-icon" aria-hidden="true">🔓</div>
-                            <span class="tool-arrow" aria-hidden="true">→</span>
-                        </div>
-                        <div class="tool-name">Unlock PDF</div>
-                        <div class="tool-desc">Remove known password security restrictions from PDF files instantly.</div>
-                    </div>
-                    <span class="tool-badge badge-soon"><span class="badge-dot"></span>Planned</span>
-                </div>
             </div>
         </section>
 
@@ -1208,7 +1189,7 @@ body{margin:0;background:#080d1b;color:#e6edf7;font-family:Arial,Helvetica,sans-
                     <span class="tool-badge badge-available"><span class="badge-dot"></span>Client-Side</span>
                 </a>
 
-                <div class="tool-card placeholder" data-name="yaml to json converter docker kubernetes" data-tool-name="YAML to JSON Converter">
+                <a href="Tools/developer-tools/yaml-to-json.html" class="tool-card" data-name="yaml to json converter docker kubernetes" data-tool-name="YAML to JSON Converter">
                     <div>
                         <div class="tool-top">
                             <div class="tool-icon" aria-hidden="true">⚙️</div>
@@ -1217,10 +1198,10 @@ body{margin:0;background:#080d1b;color:#e6edf7;font-family:Arial,Helvetica,sans-
                         <div class="tool-name">YAML to JSON Converter</div>
                         <div class="tool-desc">Convert Docker Compose and Kubernetes YAML configuration files to JSON.</div>
                     </div>
-                    <span class="tool-badge badge-soon"><span class="badge-dot"></span>Planned</span>
-                </div>
+                    <span class="tool-badge badge-available"><span class="badge-dot"></span>Client-Side</span>
+                </a>
 
-                <div class="tool-card placeholder" data-name="cron expression generator tester schedule job" data-tool-name="Cron Expression Generator & Tester">
+                <a href="Tools/developer-tools/cron-generator.html" class="tool-card" data-name="cron expression generator tester schedule job" data-tool-name="Cron Expression Generator & Tester">
                     <div>
                         <div class="tool-top">
                             <div class="tool-icon" aria-hidden="true">⏱️</div>
@@ -1229,10 +1210,10 @@ body{margin:0;background:#080d1b;color:#e6edf7;font-family:Arial,Helvetica,sans-
                         <div class="tool-name">Cron Expression Generator &amp; Tester</div>
                         <div class="tool-desc">Build cron schedules visually, preview upcoming run times, and test expressions locally.</div>
                     </div>
-                    <span class="tool-badge badge-soon"><span class="badge-dot"></span>Planned</span>
-                </div>
+                    <span class="tool-badge badge-available"><span class="badge-dot"></span>Client-Side</span>
+                </a>
 
-                <div class="tool-card placeholder" data-name="webhook payload generator mock api event test" data-tool-name="Webhook Payload Generator">
+                <a href="Tools/developer-tools/webhook-generator.html" class="tool-card" data-name="webhook payload generator mock api event test" data-tool-name="Webhook Payload Generator">
                     <div>
                         <div class="tool-top">
                             <div class="tool-icon" aria-hidden="true">📡</div>
@@ -1241,10 +1222,10 @@ body{margin:0;background:#080d1b;color:#e6edf7;font-family:Arial,Helvetica,sans-
                         <div class="tool-name">Webhook Payload Generator</div>
                         <div class="tool-desc">Generate realistic mock JSON and event payloads for testing webhook endpoints and integrations.</div>
                     </div>
-                    <span class="tool-badge badge-soon"><span class="badge-dot"></span>Planned</span>
-                </div>
+                    <span class="tool-badge badge-available"><span class="badge-dot"></span>Client-Side</span>
+                </a>
 
-                <div class="tool-card placeholder" data-name="xml validator syntax parse structure check" data-tool-name="XML Validator">
+                <a href="Tools/developer-tools/xml-validator.html" class="tool-card" data-name="xml validator syntax parse structure check" data-tool-name="XML Validator">
                     <div>
                         <div class="tool-top">
                             <div class="tool-icon" aria-hidden="true">📋</div>
@@ -1253,8 +1234,8 @@ body{margin:0;background:#080d1b;color:#e6edf7;font-family:Arial,Helvetica,sans-
                         <div class="tool-name">XML Validator</div>
                         <div class="tool-desc">Validate XML markup syntax, check element nesting, and troubleshoot SOAP/RSS feeds.</div>
                     </div>
-                    <span class="tool-badge badge-soon"><span class="badge-dot"></span>Planned</span>
-                </div>
+                    <span class="tool-badge badge-available"><span class="badge-dot"></span>Client-Side</span>
+                </a>
             </div>
         </section>
 
@@ -1488,7 +1469,7 @@ body{margin:0;background:#080d1b;color:#e6edf7;font-family:Arial,Helvetica,sans-
     }
     background.appendChild(starFrag);
 
-    // 2. Toast Notification for Planned Cards
+    // 2. Toast Notification for Planned Cards (No longer needed for these 4, but kept for other placeholders)
     const toast = document.getElementById("toastNotification");
     const toastText = document.getElementById("toastText");
     let toastTimer;
@@ -1711,6 +1692,7 @@ body{margin:0;background:#080d1b;color:#e6edf7;font-family:Arial,Helvetica,sans-
             if (searchInput.value.trim()) filterTools(searchInput.value);
         } else if (e.key === "Escape") {
             if (searchDropdown.classList.contains("open")) {
+                searchDropdown.classList.resets = false;
                 searchDropdown.classList.remove("open");
                 searchInput.setAttribute("aria-expanded", "false");
             } else if (searchInput.value.trim() !== "" || document.activeElement === searchInput) {

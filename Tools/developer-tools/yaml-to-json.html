@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#080d1b">
+<title>YAML to JSON Converter Online — Free &amp; Secure | OnlineToolCollection</title>
+<meta name="description" content="Convert Docker Compose, Kubernetes, and CI/CD YAML configuration files into clean, formatted JSON instantly in your browser. 100% free, private, and secure with zero server uploads.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://allinone-utilities.com/Tools/developer-tools/yaml-to-json.html">
+
+<!-- Open Graph SEO Meta Tags -->
+<meta property="og:title" content="YAML to JSON Converter Online — Free &amp; Secure | OnlineToolCollection">
+<meta property="og:description" content="Convert YAML configuration files into clean, formatted JSON structures instantly in your browser without uploading files to external servers.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://allinone-utilities.com/Tools/developer-tools/yaml-to-json.html">
+
+<!-- FAQ Rich Snippet Schema for Google SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is it safe to convert confidential YAML configuration files here?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. All YAML parsing and JSON conversion happen 100% client-side inside your browser memory. Your configuration files and secrets are never uploaded to any external server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this YAML to JSON converter support nested objects, lists, and comments?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The built-in parser accurately handles multi-level indentation, arrays, inline lists, booleans, numbers, null values, and strips YAML comments cleanly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I upload local .yaml or .yml files and download the JSON output?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Click Load YAML File to import local .yaml or .yml files, then copy the formatted JSON output or download it as a .json file."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+body {
+    background-color: #080d1b;
+    background-image:
+        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 4px),
+        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 3px),
+        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 4px);
+    background-size: 550px 550px, 350px 350px, 250px 250px;
+    background-position: 0 0, 40px 60px, 130px 270px;
+    color: #e6edf7;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* Header matching exact layout */
+.site-header { 
+    border-bottom: 1px solid #1d2940; 
+    background: #080d1b; 
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.header-inner { 
+    max-width: 1150px; 
+    margin: auto; 
+    padding: 20px 24px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+}
+.brand { 
+    font-size: 26px; 
+    font-weight: bold; 
+    color: #fff; 
+    text-decoration: none; 
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    white-space: nowrap;
+}
+.brand .brand-short {
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 900;
+    letter-spacing: -1px;
+    background: linear-gradient(110deg, #22d3ee, #4f66ff, #a855f7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+}
+.brand .brand-o { color: #ff8c24 !important; background: none !important; -webkit-text-fill-color: #ff8c24; }
+.brand .brand-t { color: #ffffff !important; background: none !important; -webkit-text-fill-color: #ffffff; }
+.brand .brand-c { color: #22c55e !important; background: none !important; -webkit-text-fill-color: #22c55e; }
+
+.brand .brand-name {
+    color: #ffffff !important;
+    font-size: clamp(14px, 2vw, 20px);
+    font-weight: 700;
+    letter-spacing: -0.35px;
+}
+@media(max-width:480px) {
+    .brand .brand-name { display: none; }
+    .brand .brand-short { font-size: 27px; }
+}
+
+.brand-tagline {
+    display: inline-block;
+    color: #a9b7cf;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .1px;
+    margin-left: 5px;
+    white-space: nowrap;
+}
+@media(max-width:750px) { .brand-tagline { display: none; } }
+
+nav { display: flex; gap: 24px; }
+.nav a { 
+    color: #cbd5e1; 
+    text-decoration: none; 
+    font-size: 15px; 
+    font-weight: 500;
+    transition: 0.2s; 
+}
+.nav a:hover { color: #60a5fa; }
+
+/* Main Container */
+.container { 
+    max-width: 1150px; 
+    width: 100%; 
+    margin: 24px auto; 
+    padding: 24px; 
+    background: #101b30; 
+    border: 1px solid #263a5c; 
+    border-radius: 20px; 
+}
+.privacy-badge {
+    display: flex;
+    width: fit-content;
+    margin: 0 auto 16px auto;
+    align-items: center;
+    gap: 6px;
+    background: rgba(52, 211, 153, 0.12);
+    color: #34d399;
+    border: 1px solid rgba(52, 211, 153, 0.3);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.tool-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+.tool-header h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+    margin: 10px 0;
+}
+.tool-header p {
+    color: #9aabc4;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Toolbar */
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+}
+
+button {
+    font-family: inherit;
+    font-size: 14.5px;
+    font-weight: bold;
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: 1px solid #304968;
+    background: #18253c;
+    color: #e2e8f0;
+    cursor: pointer;
+    transition: 0.2s;
+    min-height: 44px;
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    white-space: nowrap; /* Prevents button text wrapping */
+}
+button:hover {
+    border-color: #66a2ff;
+    background: #233554;
+    color: #fff;
+}
+.choose-btn { 
+    background: #2864eb; 
+    color: white; 
+    border: none; 
+}
+.choose-btn:hover { background: #3977ff; }
+#fileInput { display: none; }
+
+/* Editor Grid */
+.dual-editor-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+@media(max-width: 850px) {
+    .dual-editor-grid { grid-template-columns: 1fr; }
+}
+.pane-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.pane-label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #cbd5e1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.pane-label span { font-weight: normal; font-size: 12px; color: #788ca8; }
+
+.editor-wrap { position: relative; }
+textarea {
+    width: 100%;
+    height: 350px;
+    background: #0c162b;
+    border: 2px dashed #3978c9;
+    border-radius: 16px;
+    padding: 16px;
+    color: #f8fafc;
+    font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: vertical;
+    outline: none;
+    transition: 0.2s;
+}
+textarea:focus {
+    border-color: #66a2ff;
+    background: #142342;
+}
+textarea::placeholder { color: #64748b; }
+
+/* Result Box */
+.result-box {
+    margin-top: 18px;
+    padding: 15px 18px;
+    border-radius: 12px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    display: none;
+}
+.result-valid {
+    display: block;
+    background: rgba(16, 185, 129, 0.14);
+    border: 1px solid rgba(52, 211, 153, 0.35);
+    color: #34d399;
+}
+.result-invalid {
+    display: block;
+    background: rgba(239, 68, 68, 0.14);
+    border: 1px solid rgba(248, 113, 113, 0.35);
+    color: #f87171;
+}
+.result-title {
+    font-weight: bold;
+    font-size: 15.5px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.result-meta {
+    font-size: 13.5px;
+    opacity: 0.92;
+    font-family: monospace;
+    word-break: break-word;
+}
+
+/* Informational SEO & Card Sections */
+.card-section, .info-section {
+    max-width: 1150px;
+    width: 100%;
+    margin: 24px auto;
+    padding: 24px;
+    background: #101b30;
+    border: 1px solid #263a5c;
+    border-radius: 20px;
+}
+.card-section h2, .info-section h2 { font-size: 22px; color: #fff; margin-bottom: 14px; }
+.info-section h3 { font-size: 17px; color: #fff; margin-top: 20px; margin-bottom: 8px; }
+.info-section p { color: #9aabc4; font-size: 14.5px; line-height: 1.65; margin-bottom: 12px; }
+.info-section ul { color: #9aabc4; font-size: 14.5px; line-height: 1.65; padding-left: 18px; margin-bottom: 12px; }
+.info-section li { margin-bottom: 6px; }
+.info-section code { background: #0c162b; padding: 2px 6px; border-radius: 5px; color: #cbd5e1; font-family: monospace; }
+
+.related-tools {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 16px;
+}
+.related-link {
+    display: block;
+    padding: 18px;
+    background: #0c162b;
+    border: 1px solid #263a5c;
+    border-radius: 12px;
+    color: #e6edf7;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.related-link:hover { border-color: #60a5fa; transform: translateY(-2px); }
+.related-link strong { font-size: 16px; color: #fff; }
+.related-link span { display: block; font-size: 13.5px; color: #9aabc4; margin-top: 4px; }
+
+.faq-item { margin-bottom: 16px; }
+.faq-item:last-child { margin-bottom: 0; }
+.faq-item h3 { font-size: 17px; margin-bottom: 6px; color: #ffffff; }
+.faq-item p { font-size: 14.5px; color: #9aabc4; line-height: 1.6; }
+
+/* Footer */
+footer {
+    border-top: 1px solid #1d2940;
+    text-align: center;
+    padding: 24px 16px;
+    color: #94a3b8;
+    font-size: 13px;
+    background: #080d1b;
+    margin-top: auto;
+}
+footer a { color: #94a3b8; text-decoration: none; margin: 0 10px; }
+footer a:hover { color: #60a5fa; }
+
+@media(min-width: 640px) {
+    .related-tools { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a class="brand" href="../../index.html"><span class="brand-short"><span class="brand-o">O</span><span class="brand-t">T</span><span class="brand-c">C</span></span><span class="brand-name">OnlineToolCollection</span><span class="brand-tagline">Tools for every task. All in one place.</span></a>
+        <nav class="nav">
+            <a href="../../index.html#category-boxes-section">Categories</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <div class="privacy-badge" role="note">
+        <span>🔒</span> 100% Private &amp; Secure — Client-Side Processing Only
+    </div>
+
+    <div class="tool-header">
+        <h1>YAML to JSON Converter</h1>
+        <p>Transform Docker Compose, Kubernetes, and configuration YAML files into valid, clean JSON instantly.</p>
+    </div>
+
+    <div class="toolbar">
+        <div class="btn-group">
+            <button type="button" class="choose-btn" onclick="document.getElementById('fileInput').click()">📁 Load YAML File</button>
+            <input type="file" id="fileInput" accept=".yaml,.yml,text/yaml" onchange="loadYamlFile(event)">
+            <button type="button" onclick="loadSampleYaml()">📋 Load Sample</button>
+            <button type="button" onclick="convertYamlToJson()">⚡ Convert to JSON</button>
+            <button type="button" onclick="copyJsonOutput()">📋 Copy JSON</button>
+            <button type="button" onclick="downloadJsonFile()">💾 Download JSON</button>
+            <button type="button" onclick="clearAllEditors()">🗑️ Clear</button>
+        </div>
+    </div>
+
+    <div class="dual-editor-grid">
+        <div class="pane-group">
+            <div class="pane-label">
+                Input YAML <span>Paste or load YAML below</span>
+            </div>
+            <div class="editor-wrap">
+                <textarea id="yamlInput" placeholder="version: '3.8'&#10;services:&#10;  web:&#10;    image: nginx:latest&#10;    ports:&#10;      - &quot;80:80&quot;" oninput="convertYamlToJson()"></textarea>
+            </div>
+        </div>
+
+        <div class="pane-group">
+            <div class="pane-label">
+                Formatted JSON Output <span>Generated result</span>
+            </div>
+            <div class="editor-wrap">
+                <textarea id="jsonOutput" placeholder="Converted JSON will appear here..." readonly></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div id="resultMessage" class="result-box" role="status" aria-live="polite"></div>
+</main>
+
+<!-- Informational SEO Section (350+ words) -->
+<section class="info-section">
+    <h2>Why Use an Online YAML to JSON Converter?</h2>
+    <p>
+        YAML (YAML Ain't Markup Language) has become the gold standard for configuration files, Docker Compose deployment manifests, Kubernetes orchestration scripts, and CI/CD pipelines due to its clean indentation and human-readable syntax. However, modern APIs, frontend web applications, microservices, and database parsers frequently require standard JSON (JavaScript Object Notation) formats. Bridging this gap manually can be tedious and prone to indentation errors, missing quotes, or syntax mismatches.
+    </p>
+    <p>
+        Our free online YAML to JSON converter provides developers, cloud architects, and system administrators with a lightning-fast, secure client-side utility. As you type, paste, or upload your configuration scripts, our parsing engine evaluates multi-level indentation, arrays, booleans, and nested objects in real-time, instantly converting them into properly structured and formatted JSON. Best of all, because all conversions happen 100% locally inside your browser sandbox, your confidential infrastructure secrets and environment files never leave your device.
+    </p>
+
+    <h3>Key Features of Our Conversion Tool</h3>
+    <ul>
+        <li><strong>Real-Time Live Translation:</strong> Watch your YAML structures translate into cleanly formatted JSON instantly as you type or edit.</li>
+        <li><strong>Local File Support:</strong> Import local <code>.yaml</code> or <code>.yml</code> files directly from your computer with a single click.</li>
+        <li><strong>One-Click Actions:</strong> Easily copy your generated JSON payload to your clipboard or download it directly as a <code>.json</code> file.</li>
+        <li><strong>Absolute Privacy &amp; Security:</strong> Zero server uploads guarantee that your sensitive API keys, database credentials, and production configurations remain entirely private.</li>
+    </ul>
+
+    <h3>How to Convert YAML to JSON in 3 Simple Steps</h3>
+    <p>
+        <strong>1. Input Your YAML:</strong> Paste your configuration code into the left editor box, click "Load Sample" for a template, or upload a local file.<br>
+        <strong>2. Convert &amp; Inspect:</strong> The engine validates and translates your syntax instantly, displaying formatted JSON on the right.<br>
+        <strong>3. Export &amp; Deploy:</strong> Copy your converted JSON payload to your clipboard or save it as a file for your application or deployment pipeline.
+    </p>
+</section>
+
+<!-- Internal Cross-Linking for SEO -->
+<section class="card-section">
+  <h2>Related Developer Utilities</h2>
+  <div class="related-tools">
+    <a href="json-formatter.html" class="related-link">
+      <strong>JSON Formatter &rarr;</strong>
+      <span>Beautify and minify JSON payloads.</span>
+    </a>
+    <a href="json-validator.html" class="related-link">
+      <strong>JSON Validator &rarr;</strong>
+      <span>Check syntax and spot errors.</span>
+    </a>
+    <a href="base64.html" class="related-link">
+      <strong>Base64 Encoder &rarr;</strong>
+      <span>Encode and decode text payloads.</span>
+    </a>
+  </div>
+</section>
+
+<!-- SEO & FAQ Content -->
+<section class="card-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+        <h3>Is it safe to convert confidential YAML configuration files here?</h3>
+        <p>Yes. All YAML parsing and JSON conversion happen 100% client-side inside your browser memory. Your configuration files and secrets are never uploaded to any external server.</p>
+    </div>
+    <div class="faq-item">
+        <h3>Does this YAML to JSON converter support nested objects, lists, and comments?</h3>
+        <p>Yes. The built-in parser accurately handles multi-level indentation, arrays, inline lists, booleans, numbers, null values, and strips YAML comments cleanly.</p>
+    </div>
+    <div class="faq-item">
+        <h3>Can I upload local .yaml or .yml files and download the JSON output?</h3>
+        <p>Yes. Click Load YAML File to import local .yaml or .yml files, then copy the formatted JSON output or download it as a .json file.</p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 AllInOne Utilities — Fast, secure document tools.</p>
+    <p style="margin-top:10px;">
+        <a href="../../index.html">Home</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+    </p>
+</footer>
+
+<!-- Light YAML parser helper or js-yaml fallback if needed, plus main logic -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+<script>
+    function showResult(isValid, title, meta) {
+        const box = document.getElementById("resultMessage");
+        box.className = "result-box " + (isValid ? "result-valid" : "result-invalid");
+        box.innerHTML = `
+            <div class="result-title">${isValid ? '✅' : '❌'} ${title}</div>
+            <div class="result-meta">${meta}</div>
+        `;
+    }
+
+    function convertYamlToJson() {
+        const input = document.getElementById("yamlInput").value;
+        const outputField = document.getElementById("jsonOutput");
+        const box = document.getElementById("resultMessage");
+
+        if (!input.trim()) {
+            outputField.value = "";
+            box.style.display = "none";
+            return;
+        }
+
+        try {
+            const parsedObj = jsyaml.load(input);
+            const jsonString = JSON.stringify(parsedObj, null, 2);
+            outputField.value = jsonString;
+            showResult(true, "YAML Converted Successfully", "Valid YAML structure parsed and formatted to JSON.");
+        } catch (err) {
+            outputField.value = "";
+            showResult(false, "YAML Parsing Error", err.message);
+        }
+    }
+
+    function loadSampleYaml() {
+        const sample = `# Docker Compose Sample with comments & inline arrays
+version: '3.8'
+services:
+  web:
+    image: nginx:latest
+    ports: ["80:80", "443:443"]
+    environment:
+      NODE_ENV: production
+      DEBUG: false
+  database:
+    image: postgres:15
+    volumes:
+      - db_data:/var/lib/postgresql/data
+volumes:
+  db_data:
+    driver: local`;
+        document.getElementById("yamlInput").value = sample;
+        convertYamlToJson();
+    }
+
+    function loadYamlFile(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById("yamlInput").value = e.target.result;
+            convertYamlToJson();
+        };
+        reader.readAsText(file);
+    }
+
+    function copyJsonOutput() {
+        const output = document.getElementById("jsonOutput");
+        if (!output.value.trim()) return;
+        navigator.clipboard.writeText(output.value).then(() => {
+            showResult(true, "Copied to Clipboard!", "Formatted JSON payload copied successfully.");
+        });
+    }
+
+    function downloadJsonFile() {
+        const output = document.getElementById("jsonOutput");
+        if (!output.value.trim()) return;
+        const blob = new Blob([output.value], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "converted-config.json";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+
+    function clearAllEditors() {
+        document.getElementById("yamlInput").value = "";
+        document.getElementById("jsonOutput").value = "";
+        document.getElementById("resultMessage").style.display = "none";
+        document.getElementById("fileInput").value = "";
+    }
+</script>
+
+</body>
+</html>

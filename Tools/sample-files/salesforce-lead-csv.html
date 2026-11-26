@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#080d1b">
-<title>Salesforce Lead CSV Generator — Free &amp; Secure | AllInOne</title>
+<title>Salesforce Lead CSV Generator — Free &amp; Secure | OnlineToolCollection</title>
 <meta name="description" content="Generate and download valid Salesforce Lead CSV datasets for data migration and CRM ingestion tests. 100% free and secure browser-based tool.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://allinone-utilities.com/Tools/sample-files/salesforce-lead-csv.html">
@@ -26,7 +26,7 @@
       "name": "Are these CSV files compatible with Salesforce Data Loader and Import Wizard?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes! The generated CSV files include standard Salesforce Lead object fields like FirstName, LastName, Company, Email, Phone, LeadSource, Industry, and Status."
+        "text": "Yes! The generated CSV files include standard Salesforce Lead object fields for both Data Loader bulk imports and Web-to-Lead form capture endpoints."
       }
     },
     {
@@ -59,6 +59,24 @@ body {
     overflow-x: hidden;
 }
 
+/* Background Stars */
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #ffffff;
+    opacity: 0.35;
+    border-radius: 50%;
+}
+
 /* Header matching exact layout */
 .site-header { 
     border-bottom: 1px solid #1d2940; 
@@ -75,14 +93,40 @@ body {
     align-items: center; 
     justify-content: space-between; 
 }
-.brand { 
-    font-size: 26px; 
-    font-weight: bold; 
-    color: #fff; 
-    text-decoration: none; 
+.brand {
+    font-size: 26px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
     letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    white-space: nowrap;
 }
-.brand span { color: #66a2ff; }
+.brand .brand-short {
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 900;
+    letter-spacing: -1px;
+    background: linear-gradient(110deg, #22d3ee, #4f66ff, #a855f7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+}
+.brand .brand-o { color: #ff8c24 !important; background: none !important; -webkit-text-fill-color: #ff8c24; }
+.brand .brand-t { color: #ffffff !important; background: none !important; -webkit-text-fill-color: #ffffff; }
+.brand .brand-c { color: #22c55e !important; background: none !important; -webkit-text-fill-color: #22c55e; }
+
+.brand .brand-name {
+    color: #ffffff !important;
+    font-size: clamp(14px, 2vw, 20px);
+    font-weight: 700;
+    letter-spacing: -0.35px;
+}
+@media(max-width:480px) {
+    .brand .brand-name { display: none; }
+    .brand .brand-short { font-size: 27px; }
+}
 
 nav {
     display: flex;
@@ -282,14 +326,34 @@ footer a:hover { color: #60a5fa; }
     .choose-btn { font-size: 20px; padding: 20px; }
     .related-tools { grid-template-columns: repeat(3, 1fr); gap: 18px; }
 }
+
+/* OTC brand tagline: header-only styling */
+.brand-tagline {
+    display: inline-block;
+    color: #a9b7cf;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .1px;
+    margin-left: 5px;
+    white-space: nowrap;
+}
+@media(max-width:750px) { .brand-tagline { display: none; } }
 </style>
 </head>
 
 <body>
 
+<div class="background" id="background"></div>
+
 <header class="site-header">
     <div class="header-inner">
-        <a class="brand" href="../../index.html">AllIn<span>One</span></a>
+        <a class="brand" href="../../index.html">
+            <span class="brand-short">
+                <span class="brand-o">O</span><span class="brand-t">T</span><span class="brand-c">C</span>
+            </span>
+            <span class="brand-name">OnlineToolCollection</span>
+            <span class="brand-tagline">Tools for every task. All in one place.</span>
+        </a>
         <nav class="nav">
             <a href="../../index.html#category-boxes-section">Categories</a>
         </nav>
@@ -341,21 +405,21 @@ footer a:hover { color: #60a5fa; }
     </div>
 </main>
 
-<!-- Informational SEO Section (350+ words) -->
+<!-- Informational SEO Section -->
 <section class="info-section">
     <h2>Why Use a Salesforce Lead CSV Generator?</h2>
     <p>
         Implementing enterprise CRM architectures, testing data migration pipelines, or configuring automated web-to-lead ingestion forms frequently requires realistic lead datasets. Creating mock records manually is tedious and prone to formatting errors. Utilizing a standardized CSV template built specifically for Salesforce Lead object fields enables developers, administrators, and QA engineers to test data loader upserts, assignment rules, and validation triggers efficiently.
     </p>
     <p>
-        Our free online Salesforce Lead CSV Generator creates clean, fully compliant comma-separated datasets tailored for Salesforce Data Loader and Import Wizard tools. Each generated row includes essential CRM properties such as first name, last name, company name, corporate email address, phone number, lead source, industry category, and lead status. Best of all, because dataset generation executes <strong>100% client-side</strong> in your browser, your proprietary schema configurations and test parameters never leave your device.
+        Our free online Salesforce Lead CSV Generator creates clean, fully compliant comma-separated datasets tailored for Salesforce Data Loader and Web-to-Lead API endpoints. Each generated profile accurately structures object fields—from standard Data Loader bulk attributes (FirstName, LastName, Title, Rating, Status) to lowercase snake_case Web-to-Lead form fields (`first_name`, `last_name`, `lead_source`, `country`, `description`). Best of all, because dataset generation executes <strong>100% client-side</strong> in your browser, your proprietary schema configurations and test parameters never leave your device.
     </p>
 
     <h3>Key Benefits of Our CRM Dataset Generator</h3>
     <ul>
-        <li><strong>Salesforce-Ready Field Mapping:</strong> Automatically formats columns around standard Lead object attributes like FirstName, LastName, Company, Email, and Status.</li>
+        <li><strong>Salesforce-Ready Field Mapping:</strong> Automatically adapts columns to match either Bulk Data Loader schemas or Web-to-Lead API form specifications.</li>
         <li><strong>Configurable Volume:</strong> Generate anywhere from 10 quick test records up to 100 leads for comprehensive migration stress testing.</li>
-        <li><strong>Flexible Export Profiles:</strong> Switch between standard data loader formats and simulated web-to-lead ingestion payloads.</li>
+        <li><strong>Realistic Metadata:</strong> Includes professional job titles, lead ratings (Hot, Warm, Cold), and contextual website inquiry notes.</li>
         <li><strong>Instant Client-Side Downloads:</strong> Instantaneous file compilation directly in your browser with zero server latency or waiting queues.</li>
     </ul>
 
@@ -391,7 +455,7 @@ footer a:hover { color: #60a5fa; }
   <h2>Frequently Asked Questions</h2>
   <div class="faq-item">
     <h3>Are these CSV files compatible with Salesforce Data Loader and Import Wizard?</h3>
-    <p>Yes! The generated CSV files include standard Salesforce Lead object fields like FirstName, LastName, Company, Email, Phone, LeadSource, Industry, and Status.</p>
+    <p>Yes! The generated CSV files include standard Salesforce Lead object fields tailored for both Data Loader bulk imports and Web-to-Lead form capture endpoints.</p>
   </div>
   <div class="faq-item">
     <h3>Do I need to install any software to generate these datasets?</h3>
@@ -409,6 +473,16 @@ footer a:hover { color: #60a5fa; }
 </footer>
 
 <script>
+// Background Stars Animation
+const background = document.getElementById("background");
+for (let i = 0; i < 70; i++) {
+    const star = document.createElement("div");
+    star.className = "star";
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    background.appendChild(star);
+}
+
 const datasetSizeSelect = document.getElementById("datasetSize");
 const exportProfileSelect = document.getElementById("exportProfile");
 const csvPreview = document.getElementById("csvPreview");
@@ -432,26 +506,61 @@ const companies = [
     "BrightPath Academy", "Quantum Logic", "Crestline Capital", "VitalCare Diagnostics", "ForgeWorks", 
     "UrbanCart", "FiberLink Networks", "EcoVolt", "EdVantage Learning", "CyberPulse Security"
 ];
-const leadSources = ["Web", "Phone Inquiry", "Partner Referral", "Purchased List", "Other"];
+const titles = [
+    "VP of Engineering", "Product Manager", "Director of Sales", "CTO", "Operations Manager", 
+    "IT Administrator", "Senior Architect", "Marketing Director", "Account Executive", "DevOps Lead"
+];
+const leadSourcesStandard = ["Trade Show", "Partner Referral", "Web", "Cold Call", "PPC Campaign"];
+const ratings = ["Hot", "Warm", "Cold"];
 const industries = ["Technology", "Financial Services", "Healthcare", "Manufacturing", "Retail", "Telecommunications", "Energy", "Education"];
 const statuses = ["Open - Not Contacted", "Working - Contacted", "Closed - Converted", "Closed - Not Converted"];
+const countries = ["United States", "United Kingdom", "Canada", "Australia", "Germany", "Singapore", "Japan", "France"];
+const inquiryDescriptions = [
+    "Requested enterprise demo via pricing page",
+    "Downloaded whitepaper on CRM security & compliance",
+    "Inquired about volume tier pricing for 50+ seats",
+    "Submitted contact form regarding API rate limits",
+    "Registered for upcoming webinar on automated workflows"
+];
 
 function generateCSVData() {
     const count = parseInt(datasetSizeSelect.value, 10);
+    const profile = exportProfileSelect.value;
     
-    let csv = "FirstName,LastName,Company,Email,Phone,LeadSource,Industry,Status\n";
+    let csv = "";
     
-    for (let i = 1; i <= count; i++) {
-        const fn = firstNames[(i - 1) % firstNames.length];
-        const ln = lastNames[(i - 1) % lastNames.length];
-        const company = companies[(i - 1) % companies.length];
-        const source = leadSources[(i - 1) % leadSources.length];
-        const industry = industries[(i - 1) % industries.length];
-        const status = statuses[(i - 1) % statuses.length];
-        const email = `${fn.toLowerCase()}.${ln.toLowerCase()}${i}@example.com`;
-        const phone = `1555${String(100 + i).slice(-3)}${String(4500 + i).slice(-4)}`;
+    if (profile === "Standard") {
+        csv = "FirstName,LastName,Company,Title,Email,Phone,LeadSource,Industry,Rating,Status\n";
         
-        csv += `"${fn}","${ln}","${company}","${email}","${phone}","${source}","${industry}","${status}"\n`;
+        for (let i = 1; i <= count; i++) {
+            const fn = firstNames[(i - 1) % firstNames.length];
+            const ln = lastNames[(i - 1) % lastNames.length];
+            const company = companies[(i - 1) % companies.length];
+            const title = titles[(i - 1) % titles.length];
+            const source = leadSourcesStandard[(i - 1) % leadSourcesStandard.length];
+            const industry = industries[(i - 1) % industries.length];
+            const rating = ratings[(i - 1) % ratings.length];
+            const status = statuses[(i - 1) % statuses.length];
+            const email = `${fn.toLowerCase()}.${ln.toLowerCase()}${i}@example.com`;
+            const phone = `+1-555-${String(100 + i).slice(-3)}-${String(4500 + i).slice(-4)}`;
+            
+            csv += `"${fn}","${ln}","${company}","${title}","${email}","${phone}","${source}","${industry}","${rating}","${status}"\n`;
+        }
+    } else {
+        // Web-to-Lead Form (Salesforce lowercase snake_case API field names)
+        csv = "first_name,last_name,company,email,phone,lead_source,country,description\n";
+        
+        for (let i = 1; i <= count; i++) {
+            const fn = firstNames[(i - 1) % firstNames.length];
+            const ln = lastNames[(i - 1) % lastNames.length];
+            const company = companies[(i - 1) % companies.length];
+            const country = countries[(i - 1) % countries.length];
+            const desc = inquiryDescriptions[(i - 1) % inquiryDescriptions.length];
+            const email = `${fn.toLowerCase()}.${ln.toLowerCase()}${i}@example.com`;
+            const phone = `+1-555-${String(100 + i).slice(-3)}-${String(4500 + i).slice(-4)}`;
+            
+            csv += `"${fn}","${ln}","${company}","${email}","${phone}","Web","${country}","${desc}"\n`;
+        }
     }
     
     return csv;
@@ -469,12 +578,13 @@ exportProfileSelect.addEventListener("change", updatePreview);
 
 downloadBtn.addEventListener("click", () => {
     const csvContent = generateCSVData();
+    const profileKey = exportProfileSelect.value === "Standard" ? "dataloader-leads" : "webtolead-leads";
     const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
     
     const a = document.createElement("a");
     a.href = url;
-    a.download = `salesforce-leads-${datasetSizeSelect.value}.csv`;
+    a.download = `${profileKey}-${datasetSizeSelect.value}.csv`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);

@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#080d1b">
+<title>Webhook Payload Generator &amp; Tester — Free &amp; Secure | OnlineToolCollection</title>
+<meta name="description" content="Generate realistic mock JSON and event payloads for testing webhook endpoints and integrations. 100% free, private, and secure with zero server uploads.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://allinone-utilities.com/Tools/developer-tools/webhook-generator.html">
+
+<!-- Open Graph SEO Meta Tags -->
+<meta property="og:title" content="Webhook Payload Generator &amp; Tester — Free &amp; Secure | OnlineToolCollection">
+<meta property="og:description" content="Generate realistic mock JSON and event payloads instantly in your browser without uploading data to external servers.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://allinone-utilities.com/Tools/developer-tools/webhook-generator.html">
+
+<!-- FAQ Rich Snippet Schema for Google SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is it safe to test confidential webhook payloads here?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. All webhook payload generation, JSON formatting, and customization happen 100% client-side inside your browser memory. Your event data and endpoint structures are never uploaded to any external server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What webhook event types are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The tool supports multiple pre-built mock event templates including Stripe payment events, GitHub push events, Shopify order events, and custom JSON payloads."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I customize the generated webhook payload?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can edit any field in the JSON editor, randomize IDs and timestamps, and copy or simulate sending webhook requests instantly."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+body {
+    background-color: #080d1b;
+    background-image:
+        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 4px),
+        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 3px),
+        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 4px);
+    background-size: 550px 550px, 350px 350px, 250px 250px;
+    background-position: 0 0, 40px 60px, 130px 270px;
+    color: #e6edf7;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* Header matching exact layout */
+.site-header { 
+    border-bottom: 1px solid #1d2940; 
+    background: #080d1b; 
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.header-inner { 
+    max-width: 1150px; 
+    margin: auto; 
+    padding: 20px 24px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+}
+.brand { 
+    font-size: 26px; 
+    font-weight: bold; 
+    color: #fff; 
+    text-decoration: none; 
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    white-space: nowrap;
+}
+.brand .brand-short {
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 900;
+    letter-spacing: -1px;
+    background: linear-gradient(110deg, #22d3ee, #4f66ff, #a855f7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+}
+.brand .brand-o { color: #ff8c24 !important; background: none !important; -webkit-text-fill-color: #ff8c24; }
+.brand .brand-t { color: #ffffff !important; background: none !important; -webkit-text-fill-color: #ffffff; }
+.brand .brand-c { color: #22c55e !important; background: none !important; -webkit-text-fill-color: #22c55e; }
+
+.brand .brand-name {
+    color: #ffffff !important;
+    font-size: clamp(14px, 2vw, 20px);
+    font-weight: 700;
+    letter-spacing: -0.35px;
+}
+@media(max-width:480px) {
+    .brand .brand-name { display: none; }
+    .brand .brand-short { font-size: 27px; }
+}
+
+.brand-tagline {
+    display: inline-block;
+    color: #a9b7cf;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .1px;
+    margin-left: 5px;
+    white-space: nowrap;
+}
+@media(max-width:750px) { .brand-tagline { display: none; } }
+
+nav { display: flex; gap: 24px; }
+.nav a { 
+    color: #cbd5e1; 
+    text-decoration: none; 
+    font-size: 15px; 
+    font-weight: 500;
+    transition: 0.2s; 
+}
+.nav a:hover { color: #60a5fa; }
+
+/* Main Container */
+.container { 
+    max-width: 1150px; 
+    width: 100%; 
+    margin: 24px auto; 
+    padding: 24px; 
+    background: #101b30; 
+    border: 1px solid #263a5c; 
+    border-radius: 20px; 
+}
+.privacy-badge {
+    display: flex;
+    width: fit-content;
+    margin: 0 auto 16px auto;
+    align-items: center;
+    gap: 6px;
+    background: rgba(52, 211, 153, 0.12);
+    color: #34d399;
+    border: 1px solid rgba(52, 211, 153, 0.3);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.tool-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+.tool-header h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+    margin: 10px 0;
+}
+.tool-header p {
+    color: #9aabc4;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Toolbar & Controls */
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+}
+
+button {
+    font-family: inherit;
+    font-size: 14.5px;
+    font-weight: bold;
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: 1px solid #304968;
+    background: #18253c;
+    color: #e2e8f0;
+    cursor: pointer;
+    transition: 0.2s;
+    min-height: 44px;
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+button:hover {
+    border-color: #66a2ff;
+    background: #233554;
+    color: #fff;
+}
+.choose-btn { 
+    background: #2864eb; 
+    color: white; 
+    border: none; 
+}
+.choose-btn:hover { background: #3977ff; }
+
+.control-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+@media(max-width: 650px) {
+    .control-row { grid-template-columns: 1fr; }
+}
+
+.field-group {
+    background: #0c162b;
+    border: 1px solid #263a5c;
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.field-label {
+    font-size: 13px;
+    font-weight: bold;
+    color: #cbd5e1;
+    display: flex;
+    justify-content: space-between;
+}
+.field-label span { font-weight: normal; font-size: 11px; color: #788ca8; }
+
+select, input[type="text"] {
+    width: 100%;
+    background: #142342;
+    border: 1px solid #304968;
+    border-radius: 8px;
+    padding: 10px;
+    color: #f8fafc;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
+}
+select:focus, input[type="text"]:focus {
+    border-color: #66a2ff;
+}
+
+/* Editor Container */
+.editor-container {
+    background: #0c162b;
+    border: 1px solid #263a5c;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+.editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.editor-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #93c5fd;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+textarea {
+    width: 100%;
+    height: 320px;
+    background: #070d1a;
+    border: 1px solid #263a5c;
+    border-radius: 10px;
+    padding: 14px;
+    color: #34d399;
+    font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
+    font-size: 13.5px;
+    line-height: 1.5;
+    resize: vertical;
+    outline: none;
+    transition: 0.2s;
+}
+textarea:focus { border-color: #66a2ff; }
+
+/* Result Box */
+.result-box {
+    margin-top: 18px;
+    padding: 15px 18px;
+    border-radius: 12px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    display: none;
+}
+.result-valid {
+    display: block;
+    background: rgba(16, 185, 129, 0.14);
+    border: 1px solid rgba(52, 211, 153, 0.35);
+    color: #34d399;
+}
+.result-invalid {
+    display: block;
+    background: rgba(239, 68, 68, 0.14);
+    border: 1px solid rgba(248, 113, 113, 0.35);
+    color: #f87171;
+}
+.result-title {
+    font-weight: bold;
+    font-size: 15.5px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.result-meta {
+    font-size: 13.5px;
+    opacity: 0.92;
+    font-family: monospace;
+    word-break: break-word;
+}
+
+/* Informational SEO & Card Sections */
+.card-section, .info-section {
+    max-width: 1150px;
+    width: 100%;
+    margin: 24px auto;
+    padding: 24px;
+    background: #101b30;
+    border: 1px solid #263a5c;
+    border-radius: 20px;
+}
+.card-section h2, .info-section h2 { font-size: 22px; color: #fff; margin-bottom: 14px; }
+.info-section h3 { font-size: 17px; color: #fff; margin-top: 20px; margin-bottom: 8px; }
+.info-section p { color: #9aabc4; font-size: 14.5px; line-height: 1.65; margin-bottom: 12px; }
+.info-section ul { color: #9aabc4; font-size: 14.5px; line-height: 1.65; padding-left: 18px; margin-bottom: 12px; }
+.info-section li { margin-bottom: 6px; }
+.info-section code { background: #0c162b; padding: 2px 6px; border-radius: 5px; color: #cbd5e1; font-family: monospace; }
+
+.related-tools {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 16px;
+}
+.related-link {
+    display: block;
+    padding: 18px;
+    background: #0c162b;
+    border: 1px solid #263a5c;
+    border-radius: 12px;
+    color: #e6edf7;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.related-link:hover { border-color: #60a5fa; transform: translateY(-2px); }
+.related-link strong { font-size: 16px; color: #fff; }
+.related-link span { display: block; font-size: 13.5px; color: #9aabc4; margin-top: 4px; }
+
+.faq-item { margin-bottom: 16px; }
+.faq-item:last-child { margin-bottom: 0; }
+.faq-item h3 { font-size: 17px; margin-bottom: 6px; color: #ffffff; }
+.faq-item p { font-size: 14.5px; color: #9aabc4; line-height: 1.6; }
+
+/* Footer */
+footer {
+    border-top: 1px solid #1d2940;
+    text-align: center;
+    padding: 24px 16px;
+    color: #94a3b8;
+    font-size: 13px;
+    background: #080d1b;
+    margin-top: auto;
+}
+footer a { color: #94a3b8; text-decoration: none; margin: 0 10px; }
+footer a:hover { color: #60a5fa; }
+
+@media(min-width: 640px) {
+    .related-tools { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a class="brand" href="../../index.html"><span class="brand-short"><span class="brand-o">O</span><span class="brand-t">T</span><span class="brand-c">C</span></span><span class="brand-name">OnlineToolCollection</span><span class="brand-tagline">Tools for every task. All in one place.</span></a>
+        <nav class="nav">
+            <a href="../../index.html#category-boxes-section">Categories</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <div class="privacy-badge" role="note">
+        <span>🔒</span> 100% Private &amp; Secure — Client-Side Processing Only
+    </div>
+
+    <div class="tool-header">
+        <h1>Webhook Payload Generator</h1>
+        <p>Generate realistic mock JSON and event payloads for testing webhook endpoints and integrations.</p>
+    </div>
+
+    <div class="control-row">
+        <div class="field-group">
+            <label class="field-label">Template Preset <span>Select service schema</span></label>
+            <select id="templateSelect" onchange="loadTemplate()">
+                <option value="stripe">💳 Stripe (payment_intent.succeeded)</option>
+                <option value="github">🐙 GitHub (push event)</option>
+                <option value="shopify">🛍️ Shopify (orders/create)</option>
+                <option value="custom">⚙️ Custom Generic JSON</option>
+            </select>
+        </div>
+        <div class="field-group">
+            <label class="field-label">Action Controls <span>Quick tools</span></label>
+            <div style="display: flex; gap: 8px;">
+                <button type="button" onclick="randomizePayload()" style="padding: 10px;">🎲 Randomize IDs</button>
+                <button type="button" onclick="formatJSON()" style="padding: 10px;">✨ Format JSON</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="editor-container">
+        <div class="editor-header">
+            <div class="editor-title">📝 Webhook JSON Payload</div>
+            <span id="jsonStatus" style="font-size: 12px; color: #34d399;">Valid JSON</span>
+        </div>
+        <textarea id="jsonPayload" oninput="validateJSON()"></textarea>
+    </div>
+
+    <div class="toolbar">
+        <div class="btn-group">
+            <button type="button" class="choose-btn" onclick="copyPayload()">📋 Copy Payload</button>
+            <button type="button" onclick="downloadJSON()">💾 Download JSON File</button>
+            <button type="button" onclick="simulateTest()">🚀 Simulate Webhook Dispatch</button>
+        </div>
+    </div>
+
+    <div id="resultMessage" class="result-box" role="status" aria-live="polite"></div>
+</main>
+
+<!-- Informational SEO Section (~400 words) -->
+<section class="info-section">
+    <h2>Why Use an Online Webhook Payload Generator?</h2>
+    <p>
+        Building and testing webhook integrations requires reliable event payloads that mirror production data structures from providers like Stripe, GitHub, Shopify, and custom backend services. Manually crafting JSON objects with accurate event IDs, timestamps, and nested properties can be tedious and prone to formatting errors. A malformed webhook payload can break receiver endpoints, cause silent integration failures, and complicate debugging during development cycles.
+    </p>
+    <p>
+        Our free online Webhook Payload Generator gives developers, backend engineers, and QA testers an immediate way to generate, customize, and validate realistic JSON event payloads. Whether you are testing webhook receiver handlers, configuring serverless functions, or setting up CI/CD pipeline triggers, our tool provides pre-built templates for popular platforms. Because all processing runs 100% locally inside your browser sandbox, your test credentials, endpoints, and data payloads remain entirely secure and private.
+    </p>
+
+    <h3>Key Features of Our Webhook Tool</h3>
+    <ul>
+        <li><strong>Popular Service Templates:</strong> Instantly load pre-configured schema templates for Stripe, GitHub, Shopify, and generic REST APIs.</li>
+        <li><strong>Real-Time JSON Validator:</strong> Instantly catch syntax errors, mismatched brackets, and trailing commas as you edit payloads.</li>
+        <li><strong>Randomizer &amp; Formatter:</strong> Quickly randomize unique identifiers and timestamps or beautify dense JSON structures with a single click.</li>
+        <li><strong>Absolute Privacy &amp; Security:</strong> Zero server uploads guarantee that your mock data and integration secrets never leave your device.</li>
+    </ul>
+
+    <h3>How to Test Webhook Endpoints in 3 Simple Steps</h3>
+    <p>
+        <strong>1. Choose a Template:</strong> Select your target service template from the dropdown menu (e.g., Stripe payment event or GitHub push webhook).<br>
+        <strong>2. Customize &amp; Validate:</strong> Edit properties, randomize event IDs, or paste your own JSON structure with real-time syntax validation.<br>
+        <strong>3. Copy or Dispatch:</strong> Copy your formatted JSON payload to your clipboard or download it as a file for local testing with cURL, Postman, or webhook debugging proxies.
+    </p>
+</section>
+
+<!-- Internal Cross-Linking for SEO -->
+<section class="card-section">
+  <h2>Related Developer Utilities</h2>
+  <div class="related-tools">
+    <a href="json-formatter.html" class="related-link">
+      <strong>JSON Formatter &rarr;</strong>
+      <span>Beautify and minify JSON payloads.</span>
+    </a>
+    <a href="json-validator.html" class="related-link">
+      <strong>JSON Validator &rarr;</strong>
+      <span>Check syntax and spot errors.</span>
+    </a>
+    <a href="base64.html" class="related-link">
+      <strong>Base64 Encoder &rarr;</strong>
+      <span>Encode and decode text payloads.</span>
+    </a>
+  </div>
+</section>
+
+<!-- SEO & FAQ Content -->
+<section class="card-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+        <h3>Is it safe to test confidential webhook payloads here?</h3>
+        <p>Yes. All webhook payload generation, JSON formatting, and customization happen 100% client-side inside your browser memory. Your event data and endpoint structures are never uploaded to any external server.</p>
+    </div>
+    <div class="faq-item">
+        <h3>What webhook event types are supported?</h3>
+        <p>The tool supports multiple pre-built mock event templates including Stripe payment events, GitHub push events, Shopify order events, and custom JSON payloads.</p>
+    </div>
+    <div class="faq-item">
+        <h3>Can I customize the generated webhook payload?</h3>
+        <p>Yes. You can edit any field in the JSON editor, randomize IDs and timestamps, and copy or simulate sending webhook requests instantly.</p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 OnlineToolCollection — Fast, secure developer tools.</p>
+    <p style="margin-top:10px;">
+        <a href="../../index.html">Home</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+    </p>
+</footer>
+
+<script>
+    const templates = {
+        stripe: {
+            id: "evt_3Mowhg2eZvKYlo2C1hZz1234",
+            object: "event",
+            api_version: "2023-10-16",
+            created: 1711459200,
+            data: {
+                object: {
+                    id: "pi_3Mowhg2eZvKYlo2C1hZ9876",
+                    object: "payment_intent",
+                    amount: 4999,
+                    currency: "usd",
+                    status: "succeeded",
+                    customer: "cus_Nq1XyZ82aBcdEf",
+                    payment_method: "pm_1Mowhe2eZvKYlo2C0abc1234",
+                    description: "Pro Subscription - Monthly"
+                }
+            },
+            type: "payment_intent.succeeded"
+        },
+        github: {
+            ref: "refs/heads/main",
+            before: "8aa0342573c46101234567890abcdef12345678",
+            after: "9876543210fedcba0987654321fedcba98765432",
+            repository: {
+                id: 1296269,
+                name: "onlinetoolcollection",
+                full_name: "developer/onlinetoolcollection",
+                private: false,
+                html_url: "https://github.com/developer/onlinetoolcollection"
+            },
+            pusher: {
+                name: "dev-lead",
+                email: "developer@example.com"
+            },
+            commits: [
+                {
+                    id: "9876543210fedcba0987654321fedcba98765432",
+                    message: "Add webhook payload generator tool with mobile-first SEO layout",
+                    timestamp: "2026-11-26T22:42:00Z",
+                    url: "https://github.com/developer/onlinetoolcollection/commit/9876543210fedcba0987654321fedcba98765432"
+                }
+            ]
+        },
+        shopify: {
+            id: 7654321098765,
+            admin_graphql_api_id: "gid://shopify/Order/7654321098765",
+            created_at: "2026-11-26T22:42:00-05:00",
+            currency: "USD",
+            current_total_price: "129.00",
+            email: "customer@example.com",
+            financial_status: "paid",
+            fulfillment_status: null,
+            line_items: [
+                {
+                    id: 1234567890123,
+                    name: "Developer Productivity Toolkit",
+                    price: "129.00",
+                    quantity: 1,
+                    sku: "DEV-TOOL-01"
+                }
+            ],
+            customer: {
+                id: 9876543210123,
+                first_name: "Alvi",
+                last_name: "Senamin-Palisetty",
+                email: "customer@example.com"
+            }
+        },
+        custom: {
+            event_id: "evt_gen_883921",
+            timestamp: 1711459200,
+            event_type: "user.updated",
+            data: {
+                user_id: "usr_99281",
+                status: "active",
+                role: "administrator",
+                metadata: {
+                    source: "web_dashboard",
+                    region: "ap-south-1"
+                }
+            }
+        }
+    };
+
+    function loadTemplate() {
+        const type = document.getElementById("templateSelect").value;
+        const obj = templates[type] || templates.custom;
+        document.getElementById("jsonPayload").value = JSON.stringify(obj, null, 4);
+        validateJSON();
+    }
+
+    function validateJSON() {
+        const val = document.getElementById("jsonPayload").value;
+        const statusSpan = document.getElementById("jsonStatus");
+        try {
+            JSON.parse(val);
+            statusSpan.textContent = "Valid JSON";
+            statusSpan.style.color = "#34d399";
+            return true;
+        } catch (e) {
+            statusSpan.textContent = "Invalid JSON Syntax";
+            statusSpan.style.color = "#f87171";
+            return false;
+        }
+    }
+
+    function formatJSON() {
+        const val = document.getElementById("jsonPayload").value;
+        try {
+            const parsed = JSON.parse(val);
+            document.getElementById("jsonPayload").value = JSON.stringify(parsed, null, 4);
+            validateJSON();
+            showResult(true, "JSON Formatted", "Payload has been successfully formatted and beautified.");
+        } catch (e) {
+            showResult(false, "Formatting Failed", "Cannot format payload due to invalid JSON syntax: " + e.message);
+        }
+    }
+
+    // Helper to generate random 40-char hex string for GitHub commit SHAs
+    function randomHex40() {
+        let hex = "";
+        const chars = "0123456789abcdef";
+        for (let i = 0; i < 40; i++) {
+            hex += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return hex;
+    }
+
+    function randomizePayload() {
+        const val = document.getElementById("jsonPayload").value;
+        try {
+            let parsed = JSON.parse(val);
+            
+            // 1. Stripe Randomizer
+            if (parsed.id && typeof parsed.id === 'string' && parsed.id.startsWith("evt_")) {
+                parsed.id = "evt_" + Math.random().toString(36).substring(2, 12);
+            }
+            if (parsed.created) parsed.created = Math.floor(Date.now() / 1000);
+            if (parsed.data && parsed.data.object && parsed.data.object.id) {
+                parsed.data.object.id = "pi_" + Math.random().toString(36).substring(2, 12);
+            }
+
+            // 2. GitHub Randomizer (SHAs, repo ID, commit URLs)
+            if (parsed.before && parsed.after) {
+                parsed.before = randomHex40();
+                parsed.after = randomHex40();
+                if (parsed.repository && parsed.repository.id) {
+                    parsed.repository.id = Math.floor(Math.random() * 9000000 + 1000000);
+                }
+                if (Array.isArray(parsed.commits) && parsed.commits.length > 0) {
+                    const newSha = randomHex40();
+                    parsed.commits[0].id = newSha;
+                    parsed.commits[0].timestamp = new Date().toISOString();
+                    if (parsed.commits[0].url && parsed.repository && parsed.repository.html_url) {
+                        parsed.commits[0].url = `${parsed.repository.html_url}/commit/${newSha}`;
+                    }
+                }
+            }
+
+            // 3. Shopify Randomizer (Order ID, GraphQL GID, line items, customer ID)
+            if (parsed.admin_graphql_api_id && parsed.admin_graphql_api_id.includes("gid://shopify/Order/")) {
+                const randomOrderNum = Math.floor(Math.random() * 9000000000000 + 1000000000000);
+                parsed.id = randomOrderNum;
+                parsed.admin_graphql_api_id = `gid://shopify/Order/${randomOrderNum}`;
+                parsed.created_at = new Date().toISOString();
+                if (Array.isArray(parsed.line_items) && parsed.line_items.length > 0) {
+                    parsed.line_items.forEach(item => {
+                        item.id = Math.floor(Math.random() * 9000000000000 + 1000000000000);
+                    });
+                }
+                if (parsed.customer && parsed.customer.id) {
+                    parsed.customer.id = Math.floor(Math.random() * 9000000000000 + 1000000000000);
+                }
+            }
+
+            // 4. Custom Generic Randomizer
+            if (parsed.event_id) {
+                parsed.event_id = "evt_gen_" + Math.floor(Math.random() * 900000 + 100000);
+            }
+            if (parsed.timestamp) {
+                parsed.timestamp = Math.floor(Date.now() / 1000);
+            }
+
+            document.getElementById("jsonPayload").value = JSON.stringify(parsed, null, 4);
+            validateJSON();
+            showResult(true, "Payload Randomized", "Unique IDs, SHAs, and timestamps have been freshly randomized.");
+        } catch (e) {
+            showResult(false, "Randomize Failed", "Please fix JSON syntax before randomizing.");
+        }
+    }
+
+    function copyPayload() {
+        const val = document.getElementById("jsonPayload").value;
+        if (!validateJSON()) {
+            showResult(false, "Copy Failed", "Payload contains invalid JSON syntax.");
+            return;
+        }
+        navigator.clipboard.writeText(val).then(() => {
+            showResult(true, "Copied to Clipboard!", "Webhook JSON payload copied successfully.");
+        });
+    }
+
+    function downloadJSON() {
+        const val = document.getElementById("jsonPayload").value;
+        if (!validateJSON()) {
+            showResult(false, "Download Failed", "Payload contains invalid JSON syntax.");
+            return;
+        }
+        const blob = new Blob([val], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "webhook-payload.json";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        showResult(true, "Download Started", "Webhook payload saved as `webhook-payload.json`.");
+    }
+
+    function simulateTest() {
+        if (!validateJSON()) {
+            showResult(false, "Simulation Failed", "Please resolve JSON syntax errors before simulating dispatch.");
+            return;
+        }
+        const type = document.getElementById("templateSelect").value;
+        let headerInfo = "";
+        if (type === 'stripe') {
+            headerInfo = "Headers: `Stripe-Signature: t=1711459200,v1=3c32...` | Status: 200 OK";
+        } else if (type === 'github') {
+            headerInfo = "Headers: `X-GitHub-Event: push`, `X-Hub-Signature-256: sha256=a8f2...` | Status: 204 No Content";
+        } else if (type === 'shopify') {
+            headerInfo = "Headers: `X-Shopify-Topic: orders/create`, `X-Shopify-Hmac-Sha256: ...` | Status: 200 OK";
+        } else {
+            headerInfo = "Headers: `Content-Type: application/json` | Status: 200 OK";
+        }
+        showResult(true, "Webhook Dispatch Simulated 🚀", `HTTP POST request dispatched successfully.<br><small style="font-family:monospace; opacity:0.85;">${headerInfo}</small>`);
+    }
+
+    function showResult(isValid, title, meta) {
+        const box = document.getElementById("resultMessage");
+        box.className = "result-box " + (isValid ? "result-valid" : "result-invalid");
+        box.innerHTML = `
+            <div class="result-title">${isValid ? '✅' : '❌'} ${title}</div>
+            <div class="result-meta">${meta}</div>
+        `;
+    }
+
+    // Initialize with Stripe template on load
+    loadTemplate();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#080d1b">
+
+    <title>XML Validator &amp; Formatter Online — Free &amp; Secure | OnlineToolCollection</title>
+    <meta name="description" content="Validate, format, beautify and minify XML online for free. Check XML syntax errors, format XML with indentation, and compress XML instantly in your browser.">
+    <meta name="keywords" content="XML validator, XML formatter, XML beautifier, XML minifier, validate XML online, format XML, XML syntax checker">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://allinone-utilities.com/Tools/developer-tools/xml-validator.html">
+
+    <!-- Open Graph SEO Meta Tags -->
+    <meta property="og:title" content="XML Validator &amp; Formatter Online — Free &amp; Secure | OnlineToolCollection">
+    <meta property="og:description" content="Validate, format and minify XML instantly in your browser with our free XML Validator.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://allinone-utilities.com/Tools/developer-tools/xml-validator.html">
+
+    <!-- FAQ Rich Snippet Schema for Google SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I validate XML online?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Paste your XML content into the input editor and click Validate XML. The tool checks XML syntax and displays whether the document is well-formed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I format and beautify XML?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Click Format XML to add readable indentation and line breaks to your XML document."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does XML minification do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "XML minification removes formatting-only whitespace between elements to create a compact XML document while preserving meaningful text."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this XML Validator free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. OnlineToolCollection XML Validator is free to use for validating, formatting and minifying XML."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are my XML files uploaded to a server?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "XML processing is performed in your browser. Your pasted XML is not uploaded to our server by this tool."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080d1b;
+            color: #e6edf7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Background Stars */
+        .background {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #ffffff;
+            opacity: 0.35;
+            border-radius: 50%;
+        }
+
+        /* Header */
+        .site-header {
+            border-bottom: 1px solid #1d2940;
+            background: #080d1b;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            max-width: 1150px;
+            margin: auto;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            font-size: 26px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            white-space: nowrap;
+        }
+
+        .brand .brand-short {
+            font-size: clamp(22px, 3vw, 30px);
+            font-weight: 900;
+            letter-spacing: -1px;
+            background: linear-gradient(110deg, #22d3ee, #4f66ff, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent !important;
+        }
+
+        .brand .brand-o { color: #ff8c24 !important; background: none !important; -webkit-text-fill-color: #ff8c24; }
+        .brand .brand-t { color: #ffffff !important; background: none !important; -webkit-text-fill-color: #ffffff; }
+        .brand .brand-c { color: #22c55e !important; background: none !important; -webkit-text-fill-color: #22c55e; }
+
+        .brand .brand-name {
+            color: #ffffff !important;
+            font-size: clamp(14px, 2vw, 20px);
+            font-weight: 700;
+            letter-spacing: -0.35px;
+        }
+
+        @media(max-width:480px) {
+            .brand .brand-name { display: none; }
+            .brand .brand-short { font-size: 27px; }
+        }
+
+        /* OTC brand tagline */
+        .brand-tagline {
+            display: inline-block;
+            color: #a9b7cf;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: .1px;
+            margin-left: 5px;
+            white-space: nowrap;
+        }
+
+        @media(max-width:750px) {
+            .brand-tagline { display: none; }
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: #60a5fa;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1150px;
+            width: 100%;
+            margin: 24px auto;
+            padding: 24px;
+            background: #101b30;
+            border: 1px solid #263a5c;
+            border-radius: 20px;
+        }
+
+        .badge {
+            display: flex;
+            width: fit-content;
+            max-width: 100%;
+            margin: 0 auto 16px auto;
+            align-items: center;
+            gap: 6px;
+            background: rgba(52, 211, 153, 0.12);
+            color: #34d399;
+            border: 1px solid rgba(52, 211, 153, 0.3);
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            margin: 10px 0;
+            color: #ffffff;
+            line-height: 1.25;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #9aabc4;
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 760px;
+            margin: 0 auto 28px auto;
+        }
+
+        /* Tool Card Inner Box */
+        .tool-card {
+            background: #0c162b;
+            border: 1px solid #263a5c;
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .toolbar {
+            margin-bottom: 22px;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        button {
+            border: 1px solid transparent;
+            border-radius: 10px;
+            padding: 12px 16px;
+            cursor: pointer;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            min-height: 44px;
+            transition: transform .15s, opacity .2s, background .2s;
+        }
+
+        button:hover {
+            opacity: .92;
+            transform: translateY(-1px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:focus-visible {
+            outline: 2px solid #60a5fa;
+            outline-offset: 3px;
+        }
+
+        .btn-validate {
+            background: #2864eb;
+            color: #ffffff;
+        }
+
+        .btn-validate:hover {
+            background: #3977ff;
+        }
+
+        .btn-format {
+            background: linear-gradient(100deg, #2864eb, #673de9);
+            color: #ffffff;
+        }
+
+        .btn-minify {
+            background: #18253c;
+            border-color: #304968;
+            color: #e2e8f0;
+        }
+
+        .btn-minify:hover {
+            border-color: #66a2ff;
+            background: #233554;
+        }
+
+        .btn-sample {
+            background: #18253c;
+            border-color: #304968;
+            color: #cbd5e1;
+        }
+
+        .btn-sample:hover {
+            border-color: #66a2ff;
+            background: #233554;
+        }
+
+        .btn-broken {
+            background: rgba(255, 104, 104, 0.15);
+            border-color: rgba(255, 104, 104, 0.3);
+            color: #ff6868;
+        }
+
+        .btn-broken:hover {
+            background: rgba(255, 104, 104, 0.3);
+            color: #ff9b9b;
+        }
+
+        .btn-clear {
+            background: #18253c;
+            border-color: #304968;
+            color: #94a3b8;
+        }
+
+        .btn-clear:hover {
+            background: #233554;
+            color: #ffffff;
+        }
+
+        .btn-copy {
+            background: #2864eb;
+        }
+
+        .btn-copy:hover {
+            background: #3977ff;
+        }
+
+        .btn-download {
+            background: #18253c;
+            border-color: #304968;
+            color: #56d9a9;
+        }
+
+        .btn-download:hover {
+            border-color: #34d399;
+            background: #233554;
+        }
+
+        .dual-editor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .pane-group {
+            min-width: 0;
+        }
+
+        .pane-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            color: #e6edf7;
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .pane-label span {
+            color: #98a9c1;
+            font-size: 12.5px;
+            font-weight: normal;
+        }
+
+        textarea {
+            display: block;
+            width: 100%;
+            min-height: 320px;
+            resize: vertical;
+            border: 1px solid #304968;
+            border-radius: 12px;
+            background: #080d1b;
+            color: #e2e8f0;
+            padding: 15px;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 14px;
+            line-height: 1.65;
+            outline: none;
+            transition: border-color .2s, box-shadow .2s;
+        }
+
+        textarea:focus {
+            border-color: #66a2ff;
+            box-shadow: 0 0 0 3px rgba(102, 162, 255, .15);
+        }
+
+        textarea::placeholder {
+            color: #71829b;
+        }
+
+        textarea[readonly] {
+            opacity: .96;
+        }
+
+        .status {
+            display: none;
+            margin: 20px 0 0;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 14.5px;
+            line-height: 1.6;
+            overflow-wrap: anywhere;
+        }
+
+        .status.success {
+            display: block;
+            color: #56d9a9;
+            background: #0e222e;
+            border: 1px solid #14534b;
+        }
+
+        .status.error {
+            display: block;
+            color: #ff9b9b;
+            background: #261b2b;
+            border: 1px solid #63344b;
+        }
+
+        .status.info {
+            display: block;
+            background: rgba(75, 140, 255, .1);
+            border: 1px solid rgba(75, 140, 255, .4);
+            color: #9fc2ff;
+        }
+
+        .output-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .output-actions button {
+            padding: 10px 14px;
+            font-size: 13.5px;
+            min-height: 40px;
+        }
+
+        /* Card Sections for SEO and FAQs */
+        .card-section, .info-section {
+            max-width: 1150px;
+            width: 100%;
+            margin: 24px auto;
+            padding: 24px;
+            background: #101b30;
+            border: 1px solid #263a5c;
+            border-radius: 20px;
+        }
+
+        .card-section h2, .info-section h2 {
+            font-size: 22px;
+            color: #fff;
+            margin-bottom: 14px;
+        }
+
+        .info-section h3 {
+            font-size: 17px;
+            color: #fff;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        .info-section p {
+            color: #9aabc4;
+            font-size: 14.5px;
+            line-height: 1.65;
+            margin-bottom: 12px;
+        }
+
+        .info-section ul {
+            color: #9aabc4;
+            font-size: 14.5px;
+            line-height: 1.65;
+            padding-left: 18px;
+            margin-bottom: 12px;
+        }
+
+        .info-section li {
+            margin-bottom: 6px;
+        }
+
+        .faq-item {
+            margin-bottom: 16px;
+            border-top: 1px solid #263a5c;
+            padding-top: 16px;
+        }
+
+        .faq-item:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-item h3 {
+            font-size: 17px;
+            margin-bottom: 6px;
+            color: #ffffff;
+        }
+
+        .faq-item p {
+            font-size: 14.5px;
+            color: #9aabc4;
+            line-height: 1.6;
+        }
+
+        .related-tools {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .related-link {
+            display: block;
+            padding: 18px;
+            background: #0c162b;
+            border: 1px solid #263a5c;
+            border-radius: 12px;
+            color: #e6edf7;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .related-link:hover {
+            border-color: #60a5fa;
+            transform: translateY(-2px);
+        }
+
+        .related-link strong {
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .related-link span {
+            display: block;
+            font-size: 13.5px;
+            color: #9aabc4;
+            margin-top: 4px;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid #1d2940;
+            text-align: center;
+            padding: 24px 16px;
+            color: #94a3b8;
+            font-size: 13px;
+            background: #080d1b;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            color: #60a5fa;
+        }
+
+        @media (min-width: 640px) {
+            .container, .card-section, .info-section {
+                margin: 35px auto;
+                padding: 32px;
+            }
+            .header-inner {
+                padding: 20px 24px;
+            }
+            .brand {
+                font-size: 26px;
+            }
+            h1 {
+                font-size: 36px;
+            }
+            .related-tools {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 18px;
+            }
+        }
+
+        @media (max-width: 750px) {
+            .dual-editor-grid {
+                grid-template-columns: 1fr;
+            }
+
+            textarea {
+                min-height: 260px;
+                font-size: 13px;
+            }
+
+            .btn-group button {
+                flex: 1 1 calc(50% - 10px);
+            }
+
+            .output-actions button {
+                flex: 1 1 auto;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .btn-group button {
+                flex-basis: 100%;
+            }
+
+            .pane-label {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            button {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="background" id="background"></div>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a class="brand" href="../../index.html"><span class="brand-short"><span class="brand-o">O</span><span class="brand-t">T</span><span class="brand-c">C</span></span><span class="brand-name">OnlineToolCollection</span><span class="brand-tagline">Tools for every task. All in one place.</span></a>
+        <nav class="nav">
+            <a href="../../index.html#category-boxes-section">Categories</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    <div class="badge" role="note">🔒 100% Private &bull; Secure Client-Side Processing</div>
+    <h1>XML Validator &amp; Formatter</h1>
+    <div class="subtitle">
+        Validate XML syntax, format XML with proper indentation, or minify XML instantly in your browser.
+    </div>
+
+    <section class="tool-card" aria-label="XML Validator Tool">
+
+        <div class="toolbar">
+            <div class="btn-group">
+                <button type="button" class="btn-validate" id="validateBtn">✓ Validate XML</button>
+                <button type="button" class="btn-format" id="formatBtn">Format XML</button>
+                <button type="button" class="btn-minify" id="minifyBtn">Minify XML</button>
+                <button type="button" class="btn-sample" id="sampleBtn">📋 Load Sample</button>
+                <button type="button" class="btn-broken" id="brokenBtn">⚠ Broken XML Sample</button>
+                <button type="button" class="btn-clear" id="clearBtn">Clear</button>
+            </div>
+        </div>
+
+        <div class="dual-editor-grid">
+
+            <div class="pane-group">
+                <div class="pane-label">
+                    Input XML <span>Paste your XML here</span>
+                </div>
+                <textarea
+                    id="xmlInput"
+                    spellcheck="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    data-gramm="false"
+                    data-gramm_editor="false"
+                    data-enable-grammarly="false"
+                    placeholder="Paste your XML content here..."
+                    aria-label="XML input"></textarea>
+            </div>
+
+            <div class="pane-group">
+                <div class="pane-label">
+                    Output <span>Results appear here</span>
+                </div>
+                <textarea
+                    id="output"
+                    spellcheck="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    readonly
+                    data-gramm="false"
+                    data-gramm_editor="false"
+                    data-enable-grammarly="false"
+                    placeholder="Formatted or minified XML will appear here..."
+                    aria-label="XML output"></textarea>
+
+                <div class="output-actions">
+                    <button type="button" class="btn-copy" id="copyBtn">📋 Copy Output</button>
+                    <button type="button" class="btn-download" id="downloadBtn">💾 Download XML</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="status" class="status" role="status" aria-live="polite"></div>
+
+    </section>
+
+</main>
+
+<section class="info-section">
+    <h2>Free Online XML Validator &amp; Formatter</h2>
+
+    <p>
+        XML (Extensible Markup Language) is widely used to store, organize,
+        and exchange structured information between applications, services,
+        and systems. Even a small syntax mistake, such as a missing closing
+        tag, incorrectly nested element, or invalid attribute, can cause an
+        XML document to fail when another application tries to read it.
+        Our free XML Validator helps you check XML content quickly without
+        installing software.
+    </p>
+
+    <p>
+        Paste your XML into the input editor and click <strong>Validate XML</strong>
+        to check whether it is well-formed. If your document contains a
+        syntax problem, the validator will display an error to help you
+        identify and fix the issue. This is useful when working with
+        configuration files, API responses, application settings, data feeds,
+        or XML documents generated by other systems.
+    </p>
+
+    <h3>Format and Beautify XML</h3>
+    <p>
+        XML files can become difficult to read when everything is written on
+        one line or when indentation is missing. Use the Format XML button
+        to organize the document with readable indentation and line breaks.
+        Properly formatted XML makes it easier to understand the relationship
+        between parent elements, child elements, attributes, and values.
+        It can also make troubleshooting and reviewing XML files simpler.
+    </p>
+
+    <h3>Minify XML to Create Compact Output</h3>
+    <p>
+        The Minify XML feature removes unnecessary formatting whitespace
+        between elements and produces a compact output. Minified XML can be
+        helpful when you want to reduce visual clutter, prepare content for
+        compact storage, or copy structured data into systems that prefer
+        a compact representation. The tool keeps the XML structure while
+        removing formatting-only whitespace where appropriate.
+    </p>
+
+    <h3>Why Use OnlineToolCollection XML Tools?</h3>
+    <p>
+        OnlineToolCollection provides simple browser-based utilities designed
+        to help with everyday tasks. This XML tool combines validation,
+        formatting, and minification in one interface, so you do not need
+        to switch between multiple websites for basic XML processing.
+        The tool is designed to work on desktop, tablet, and mobile
+        screens with a straightforward interface.
+    </p>
+
+    <ul>
+        <li>Validate XML syntax directly in your browser.</li>
+        <li>Format XML with readable indentation.</li>
+        <li>Minify XML into compact output.</li>
+        <li>Load a sample XML document for quick testing.</li>
+        <li>Test validation using an intentionally broken XML sample.</li>
+        <li>Copy the output or download it as an XML file.</li>
+        <li>Use the tool without installing additional software.</li>
+    </ul>
+
+    <p>
+        Whether you are a developer, student, tester, or someone working
+        with XML data, this free XML Validator and Formatter can help
+        simplify your workflow. Validate your XML before using it in your
+        application, format it for easier inspection, and minify it when
+        you need a compact version.
+    </p>
+</section>
+
+<section class="card-section">
+    <h2>Related Developer Tools</h2>
+    <div class="related-tools">
+        <a href="json-validator.html" class="related-link">
+            <strong>JSON Validator &rarr;</strong>
+            <span>Check JSON syntax and identify formatting errors.</span>
+        </a>
+
+        <a href="yaml-to-json.html" class="related-link">
+            <strong>YAML to JSON Converter &rarr;</strong>
+            <span>Convert YAML configuration data into JSON.</span>
+        </a>
+
+        <a href="json-formatter.html" class="related-link">
+            <strong>JSON Formatter &rarr;</strong>
+            <span>Beautify or minify JSON for easier readability.</span>
+        </a>
+    </div>
+</section>
+
+<section class="card-section">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+        <h3>1. What is an XML Validator?</h3>
+        <p>
+            An XML validator checks whether an XML document follows XML syntax
+            rules, such as proper tag nesting, matching opening and closing
+            tags, and valid document structure.
+        </p>
+    </div>
+
+    <div class="faq-item">
+        <h3>2. How do I validate XML online?</h3>
+        <p>
+            Paste your XML content into the input box and click Validate XML.
+            The tool will check the document and show whether it contains
+            valid XML syntax or parsing errors.
+        </p>
+    </div>
+
+    <div class="faq-item">
+        <h3>3. What does formatting XML do?</h3>
+        <p>
+            Formatting XML adds indentation and line breaks to make the document
+            easier to read. It helps you inspect elements, attributes,
+            and nested structures more clearly.
+        </p>
+    </div>
+
+    <div class="faq-item">
+        <h3>4. What is XML minification?</h3>
+        <p>
+            XML minification removes unnecessary formatting whitespace between
+            elements and makes the XML output more compact while retaining
+            its document structure.
+        </p>
+    </div>
+
+    <div class="faq-item">
+        <h3>5. Does this tool fix XML errors automatically?</h3>
+        <p>
+            The validator identifies XML syntax errors, but it does not
+            automatically repair every error. You need to correct the
+            reported problem in your input and validate it again.
+        </p>
+    </div>
+
+    <div class="faq-item">
+        <h3>6. Does formatting change my XML data?</h3>
+        <p>
+            Formatting is intended to improve readability by adjusting
+            indentation and whitespace between elements. Whitespace within
+            text values is preserved where meaningful.
+        </p>
+    </div>
+
+    <div class="faq-item">
+        <h3>7. Can I download the formatted XML?</h3>
+        <p>
+            Yes. After formatting or minifying your XML, click Download XML
+            to save the output to your device as an XML file.
+        </p>
+    </div>
+
+    <div class="faq-item">
+        <h3>8. Is this XML Validator free?</h3>
+        <p>
+            Yes. OnlineToolCollection XML Validator is free to use for
+            validating, formatting, and minifying XML documents.
+        </p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; <span id="year"></span> OnlineToolCollection — Fast, secure developer tools.</p>
+    <p style="margin-top:10px">
+        <a href="../../index.html">Home</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+    </p>
+</footer>
+
+<script>
+"use strict";
+
+// Background Stars Animation
+const background = document.getElementById("background");
+for (let i = 0; i < 70; i++) {
+    const star = document.createElement("div");
+    star.className = "star";
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    background.appendChild(star);
+}
+
+// Current year
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// XML tool elements
+const xmlInput = document.getElementById("xmlInput");
+const output = document.getElementById("output");
+const statusBox = document.getElementById("status");
+
+// Show a status message
+function showStatus(message, type) {
+    statusBox.className = "status " + type;
+    statusBox.textContent = message;
+}
+
+// Clear status message
+function clearStatus() {
+    statusBox.className = "status";
+    statusBox.textContent = "";
+}
+
+// Preserve XML declaration when present
+function getXMLDeclaration(text) {
+    const match = text.match(/^\s*(<\?xml[\s\S]*?\?>)/i);
+    return match ? match[1] : "";
+}
+
+// Parse XML and detect syntax errors
+function parseXML(text) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(text, "application/xml");
+    const errors = doc.getElementsByTagName("parsererror");
+
+    if (errors.length > 0) {
+        throw new Error((errors[0].textContent || "Invalid XML syntax.").trim());
+    }
+
+    if (!doc.documentElement) {
+        throw new Error("XML document has no root element.");
+    }
+
+    return doc;
+}
+
+// Try to extract line and column from browser parser message
+function getErrorDetails(message) {
+    const lineMatch = message.match(/line\s*[: ]\s*(\d+)/i);
+    const columnMatch = message.match(/column\s*[: ]\s*(\d+)/i);
+
+    if (lineMatch && columnMatch) {
+        return "Line " + lineMatch[1] + ", Column " + columnMatch[1];
+    }
+
+    const lineColumnMatch = message.match(/(\d+)\s*[:,]\s*(\d+)/);
+
+    if (lineColumnMatch) {
+        return "Line " + lineColumnMatch[1] + ", Column " + lineColumnMatch[2];
+    }
+
+    return "";
+}
+
+// Escape text for XML
+function escapeXML(text) {
+    return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+}
+
+// Escape XML attribute values
+function escapeXMLAttribute(text) {
+    return escapeXML(text)
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&apos;");
+}
+
+// Format an XML node recursively
+function formatNode(node, depth) {
+    const indent = "  ".repeat(depth);
+
+    switch (node.nodeType) {
+        case Node.ELEMENT_NODE: {
+            const tagName = node.nodeName;
+
+            let attributes = "";
+            for (let i = 0; i < node.attributes.length; i++) {
+                const attr = node.attributes[i];
+                attributes += ` ${attr.name}="${escapeXMLAttribute(attr.value)}"`;
+            }
+
+            const children = Array.from(node.childNodes);
+
+            if (children.length === 0) {
+                return `${indent}<${tagName}${attributes}/>`;
+            }
+
+            const hasElementChildren = children.some(
+                child => child.nodeType === Node.ELEMENT_NODE
+            );
+
+            // Preserve mixed content without inserting whitespace into text.
+            const hasSignificantText = children.some(
+                child =>
+                    child.nodeType === Node.TEXT_NODE &&
+                    (child.nodeValue || "").trim() !== ""
+            );
+
+            if (hasElementChildren && hasSignificantText) {
+                const serialized = new XMLSerializer().serializeToString(node);
+                return indent + serialized;
+            }
+
+            // Text-only element: preserve its text content
+            if (!hasElementChildren) {
+                const inner = children.map(child => {
+                    if (child.nodeType === Node.TEXT_NODE) {
+                        return escapeXML(child.nodeValue || "");
+                    }
+
+                    if (child.nodeType === Node.CDATA_SECTION_NODE) {
+                        return `<![CDATA[${child.nodeValue || ""}]]>`;
+                    }
+
+                    if (child.nodeType === Node.COMMENT_NODE) {
+                        return `<!--${child.nodeValue || ""}-->`;
+                    }
+
+                    if (child.nodeType === Node.PROCESSING_INSTRUCTION_NODE) {
+                        return `<?${child.nodeName} ${child.nodeValue || ""}?>`;
+                    }
+
+                    return "";
+                }).join("");
+
+                if (inner.trim() === "") {
+                    return `${indent}<${tagName}${attributes}/>`;
+                }
+
+                return `${indent}<${tagName}${attributes}>${inner}</${tagName}>`;
+            }
+
+            // Element children: put each child on its own line
+            const formattedChildren = children
+                .filter(child => !(
+                    child.nodeType === Node.TEXT_NODE &&
+                    (child.nodeValue || "").trim() === ""
+                ))
+                .map(child => {
+                    if (child.nodeType === Node.ELEMENT_NODE) {
+                        return formatNode(child, depth + 1);
+                    }
+
+                    if (child.nodeType === Node.TEXT_NODE) {
+                        return "  ".repeat(depth + 1) +
+                            escapeXML((child.nodeValue || "").trim());
+                    }
+
+                    if (child.nodeType === Node.CDATA_SECTION_NODE) {
+                        return "  ".repeat(depth + 1) +
+                            `<![CDATA[${child.nodeValue || ""}]]>`;
+                    }
+
+                    if (child.nodeType === Node.COMMENT_NODE) {
+                        return "  ".repeat(depth + 1) +
+                            `<!--${child.nodeValue || ""}-->`;
+                    }
+
+                    if (child.nodeType === Node.PROCESSING_INSTRUCTION_NODE) {
+                        return "  ".repeat(depth + 1) +
+                            `<?${child.nodeName} ${child.nodeValue || ""}?>`;
+                    }
+
+                    return "";
+                })
+                .filter(Boolean)
+                .join("\n");
+
+            return `${indent}<${tagName}${attributes}>\n${formattedChildren}\n${indent}</${tagName}>`;
+        }
+
+        case Node.TEXT_NODE:
+            return indent + escapeXML(node.nodeValue || "");
+
+        case Node.CDATA_SECTION_NODE:
+            return indent + `<![CDATA[${node.nodeValue || ""}]]>`;
+
+        case Node.COMMENT_NODE:
+            return indent + `<!--${node.nodeValue || ""}-->`;
+
+        case Node.PROCESSING_INSTRUCTION_NODE:
+            return indent + `<?${node.nodeName} ${node.nodeValue || ""}?>`;
+
+        default:
+            return "";
+    }
+}
+
+// Format XML
+function formatXMLString(text) {
+    const doc = parseXML(text);
+    const declaration = getXMLDeclaration(text);
+
+    let formatted = formatNode(doc.documentElement, 0);
+
+    if (declaration) {
+        formatted = declaration + "\n" + formatted;
+    }
+
+    return formatted;
+}
+
+// Remove whitespace-only text nodes between child elements
+function removeFormattingWhitespace(node) {
+    const children = Array.from(node.childNodes);
+
+    const hasElementChildren = children.some(
+        child => child.nodeType === Node.ELEMENT_NODE
+    );
+
+    if (hasElementChildren) {
+        children.forEach(child => {
+            if (
+                child.nodeType === Node.TEXT_NODE &&
+                (child.nodeValue || "").trim() === ""
+            ) {
+                node.removeChild(child);
+            }
+        });
+    }
+
+    Array.from(node.childNodes).forEach(child => {
+        if (child.nodeType === Node.ELEMENT_NODE) {
+            removeFormattingWhitespace(child);
+        }
+    });
+}
+
+// Minify XML
+function minifyXMLString(text) {
+    const doc = parseXML(text);
+    const declaration = getXMLDeclaration(text);
+
+    removeFormattingWhitespace(doc.documentElement);
+
+    const serializer = new XMLSerializer();
+    let compact = serializer.serializeToString(doc.documentElement);
+
+    compact = compact.replace(/>\s+</g, "><").trim();
+
+    if (declaration) {
+        compact = declaration + "\n" + compact;
+    }
+
+    return compact;
+}
+
+// Validate XML
+function validateXML() {
+    clearStatus();
+
+    const text = xmlInput.value.trim();
+
+    if (!text) {
+        showStatus("Please enter XML content to validate.", "error");
+        return;
+    }
+
+    try {
+        parseXML(text);
+        showStatus("✓ Valid XML! No syntax errors found.", "success");
+    } catch (error) {
+        const message = error.message || "Invalid XML syntax.";
+        const details = getErrorDetails(message);
+
+        showStatus(
+            "✗ Invalid XML: " + message +
+            (details ? " (" + details + ")" : ""),
+            "error"
+        );
+    }
+}
+
+// Format XML
+function formatXML() {
+    clearStatus();
+
+    const text = xmlInput.value.trim();
+
+    if (!text) {
+        showStatus("Please enter XML content to format.", "error");
+        return;
+    }
+
+    try {
+        output.value = formatXMLString(text);
+        showStatus("✓ XML formatted successfully.", "success");
+    } catch (error) {
+        const message = error.message || "Unable to format XML.";
+        const details = getErrorDetails(message);
+
+        showStatus(
+            "✗ " + message + (details ? " (" + details + ")" : ""),
+            "error"
+        );
+    }
+}
+
+// Minify XML
+function minifyXML() {
+    clearStatus();
+
+    const text = xmlInput.value.trim();
+
+    if (!text) {
+        showStatus("Please enter XML content to minify.", "error");
+        return;
+    }
+
+    try {
+        output.value = minifyXMLString(text);
+        showStatus("✓ XML minified successfully into compact output.", "success");
+    } catch (error) {
+        const message = error.message || "Unable to minify XML.";
+        const details = getErrorDetails(message);
+
+        showStatus(
+            "✗ " + message + (details ? " (" + details + ")" : ""),
+            "error"
+        );
+    }
+}
+
+// Load valid sample XML
+function loadSample() {
+    xmlInput.value = `<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+  <book id="101">
+    <title>Learning XML</title>
+    <author>John Smith</author>
+    <price currency="USD">29.99</price>
+    <category>Programming</category>
+  </book>
+  <book id="102">
+    <title>Web Development Basics</title>
+    <author>Jane Doe</author>
+    <price currency="USD">39.50</price>
+    <category>Technology</category>
+  </book>
+</catalog>`;
+
+    output.value = "";
+    clearStatus();
+    showStatus("✓ Valid sample XML loaded. Click Validate XML or Format XML.", "info");
+}
+
+// Load intentionally broken sample
+function loadBrokenSample() {
+    xmlInput.value = `<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+  <book id="101">
+    <title>Learning XML</title>
+    <author>John Smith</author>
+    <price currency="USD">29.99</price>
+    <description>This tag is intentionally not closed
+  </book>
+</catalog>`;
+
+    output.value = "";
+    clearStatus();
+    showStatus("⚠ Broken XML sample loaded intentionally. Click Validate XML to see the error.", "info");
+}
+
+// Clear input and output
+function clearAll() {
+    xmlInput.value = "";
+    output.value = "";
+    clearStatus();
+    xmlInput.focus();
+}
+
+// Copy output
+async function copyOutput() {
+    if (!output.value) {
+        showStatus("Nothing to copy. Format or minify XML first.", "error");
+        return;
+    }
+
+    try {
+        await navigator.clipboard.writeText(output.value);
+        showStatus("✓ Output copied to clipboard.", "success");
+    } catch (error) {
+        output.focus();
+        output.select();
+
+        const copied = document.execCommand("copy");
+
+        if (copied) {
+            showStatus("✓ Output copied to clipboard.", "success");
+        } else {
+            showStatus("Unable to copy automatically. Please select and copy the output.", "error");
+        }
+    }
+}
+
+// Download XML output
+function downloadXML() {
+    if (!output.value) {
+        showStatus("Nothing to download. Format or minify XML first.", "error");
+        return;
+    }
+
+    const blob = new Blob([output.value], {
+        type: "application/xml;charset=utf-8"
+    });
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = "formatted.xml";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    URL.revokeObjectURL(url);
+
+    showStatus("✓ XML file downloaded.", "success");
+}
+
+// Button event handlers
+document.getElementById("validateBtn").addEventListener("click", validateXML);
+document.getElementById("formatBtn").addEventListener("click", formatXML);
+document.getElementById("minifyBtn").addEventListener("click", minifyXML);
+document.getElementById("sampleBtn").addEventListener("click", loadSample);
+document.getElementById("brokenBtn").addEventListener("click", loadBrokenSample);
+document.getElementById("clearBtn").addEventListener("click", clearAll);
+document.getElementById("copyBtn").addEventListener("click", copyOutput);
+document.getElementById("downloadBtn").addEventListener("click", downloadXML);
+</script>
+
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Compress PDF Online — Reduce PDF File Size Securely | AllInOne</title>
+<title>Free Compress PDF Online — Reduce PDF File Size Securely | OnlineToolCollection</title>
 <meta name="description" content="Compress PDF files online for free. Reduce PDF document size quickly without losing readable quality. Choose your preferred compression level and download instantly.">
 <link rel="canonical" href="https://allinone-utilities.com/Tools/pdf-tools/compress.html">
 
@@ -20,6 +20,32 @@ body{margin:0;background:#080d1b;color:#e6edf7;font-family:Arial,Helvetica,sans-
 .header-inner{max-width:1150px;margin:auto;padding:20px 24px;display:flex;align-items:center;justify-content:space-between}
 .brand{font-size:26px;font-weight:bold;color:#fff;text-decoration:none;letter-spacing:-0.5px}
 .brand span{color:#66a2ff}
+/* OTC brand update: logo/header only */
+.brand{display:flex;align-items:center;gap:9px;white-space:nowrap}
+.brand .brand-short{
+    font-size:clamp(22px,3vw,30px);
+    font-weight:900;
+    letter-spacing:-1px;
+    background:linear-gradient(110deg,#22d3ee,#4f66ff,#a855f7);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent!important;
+}
+.brand .brand-o{color:#ff8c24!important;background:none!important;-webkit-text-fill-color:#ff8c24}
+.brand .brand-t{color:#ffffff!important;background:none!important;-webkit-text-fill-color:#ffffff}
+.brand .brand-c{color:#22c55e!important;background:none!important;-webkit-text-fill-color:#22c55e}
+
+.brand .brand-name{
+    color:#ffffff!important;
+    font-size:clamp(14px,2vw,20px);
+    font-weight:700;
+    letter-spacing:-0.35px;
+}
+@media(max-width:480px){
+    .brand .brand-name{display:none}
+    .brand .brand-short{font-size:27px}
+}
+
 
 nav{display:flex;gap:24px}
 .nav a{color:#cbd5e1;text-decoration:none;font-size:15px;font-weight:500;transition:0.2s}
@@ -131,6 +157,10 @@ h1{text-align:center;font-size:32px;margin:10px 0;color:#fff}
     .file-name { font-size: 17px; }
     .compress-btn { font-size: 20px; padding: 20px; }
 }
+
+/* OTC brand tagline: header-only styling */
+.brand-tagline{display:inline-block;color:#a9b7cf;font-size:12px;font-weight:500;letter-spacing:.1px;margin-left:5px;white-space:nowrap}
+@media(max-width:750px){.brand-tagline{display:none}}
 </style>
 </head>
 
@@ -138,7 +168,7 @@ h1{text-align:center;font-size:32px;margin:10px 0;color:#fff}
 
 <header class="site-header">
     <div class="header-inner">
-        <a class="brand" href="../../index.html">AllIn<span>One</span></a>
+        <a class="brand" href="../../index.html"><span class="brand-short"><span class="brand-o">O</span><span class="brand-t">T</span><span class="brand-c">C</span></span><span class="brand-name">OnlineToolCollection</span><span class="brand-tagline">Tools for every task. All in one place.</span></a>
         <nav class="nav">
             <a href="../../index.html#category-boxes-section">Categories</a>
         </nav>
