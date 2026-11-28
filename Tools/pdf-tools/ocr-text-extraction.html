@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#080d1b">
+
+    <title>OCR Text Extraction Online Free — Image &amp; Scanned PDF to Text | OnlineToolCollection</title>
+    <meta name="description" content="Extract selectable and searchable text from scanned PDF documents, photos, receipts, and screenshots online. Multi-language OCR powered 100% client-side in your browser with zero file uploads.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://allinone-utilities.com">
+
+    <meta property="og:title" content="OCR Text Extraction Online Free — Scanned PDF &amp; Image to Text | OnlineToolCollection">
+    <meta property="og:description" content="Convert scanned PDFs, photos, and screenshots into editable, copyable text directly in your browser with zero uploads.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://allinone-utilities.com">
+
+    <!-- Safe Dynamic Loader for Tesseract.js & pdf.js -->
+    <script>
+    (function() {
+        var libs = [
+            "tesseract.js/5.1.1/tesseract.min.js",
+            "pdf.js/3.11.174/pdf.min.js"
+        ];
+        libs.forEach(function(lib) {
+            var s = document.createElement("script");
+            s.src = ["https:/", "cdnjs" + ".cloudflare.com", "ajax", "libs", lib].join("/");
+            document.head.appendChild(s);
+        });
+    })();
+    </script>
+
+    <!-- FAQ Rich Snippet Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I extract text from a scanned PDF or image online?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Upload any scanned PDF, photo, receipt, or screenshot into the drop zone, choose the document language, and click Extract Text (OCR). You can then copy the extracted text or download it as a .txt file."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which file types and languages are supported?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It supports multi-page PDF documents as well as JPG, PNG, WebP, and BMP images across multiple languages including English, Hindi, Spanish, French, German, and Arabic."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are my scanned documents uploaded to a server?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Optical character recognition runs 100% client-side inside your browser using WebAssembly. Your files never leave your device."
+          }
+        }
+      ]
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { font-family: Arial, Helvetica, sans-serif; background: #080d1b; color: #e6edf7; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+        .background { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: -1; }
+        .star { position: absolute; width: 2px; height: 2px; background: #ffffff; opacity: 0.35; border-radius: 50%; }
+        .site-header { border-bottom: 1px solid #1d2940; background: #080d1b; position: sticky; top: 0; z-index: 100; }
+        .header-inner { max-width: 1150px; margin: auto; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; }
+        .brand { font-size: 26px; font-weight: bold; color: #fff; text-decoration: none; letter-spacing: -0.5px; display: flex; align-items: center; gap: 9px; white-space: nowrap; }
+        .brand .brand-short { font-size: clamp(22px, 3vw, 30px); font-weight: 900; letter-spacing: -1px; background: linear-gradient(110deg, #22d3ee, #4f66ff, #a855f7); -webkit-background-clip: text; background-clip: text; color: transparent !important; }
+        .brand .brand-o { color: #ff8c24 !important; background: none !important; -webkit-text-fill-color: #ff8c24; }
+        .brand .brand-t { color: #ffffff !important; background: none !important; -webkit-text-fill-color: #ffffff; }
+        .brand .brand-c { color: #22c55e !important; background: none !important; -webkit-text-fill-color: #22c55e; }
+        .brand .brand-name { color: #ffffff !important; font-size: clamp(14px, 2vw, 20px); font-weight: 700; letter-spacing: -0.35px; }
+        @media(max-width:480px) { .brand .brand-name { display: none; } .brand .brand-short { font-size: 27px; } }
+        .brand-tagline { display: inline-block; color: #a9b7cf; font-size: 12px; font-weight: 500; letter-spacing: .1px; margin-left: 5px; white-space: nowrap; }
+        @media(max-width:750px) { .brand-tagline { display: none; } }
+        nav { display: flex; gap: 24px; }
+        nav a { color: #cbd5e1; text-decoration: none; font-size: 15px; font-weight: 500; transition: 0.2s; }
+        nav a:hover { color: #60a5fa; }
+        .container { max-width: 1150px; width: 100%; margin: 24px auto; padding: 24px; background: #101b30; border: 1px solid #263a5c; border-radius: 20px; }
+        .badge { display: flex; width: fit-content; max-width: 100%; margin: 0 auto 16px auto; align-items: center; gap: 6px; background: rgba(52, 211, 153, 0.12); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; text-align: center; }
+        h1 { text-align: center; font-size: 32px; margin: 10px 0; color: #ffffff; line-height: 1.25; }
+        .subtitle { text-align: center; color: #9aabc4; font-size: 16px; line-height: 1.6; max-width: 760px; margin: 0 auto 28px auto; }
+        .drop-area { border: 2px dashed #3978c9; border-radius: 16px; padding: 40px 20px; text-align: center; background: #0c162b; transition: 0.2s; cursor: pointer; margin-bottom: 24px; }
+        .drop-area:hover, .drop-area.dragover { border-color: #66a2ff; background: #142342; }
+        .file-icon { font-size: 48px; margin-bottom: 12px; }
+        .drop-area h2 { font-size: 20px; color: #fff; margin-bottom: 8px; }
+        .drop-area p { color: #98a9c1; font-size: 14px; }
+        #fileInput { display: none; }
+        .workspace-container { display: none; background: #080d1b; border: 1px solid #263a5c; border-radius: 14px; padding: 24px; margin-bottom: 24px; }
+        .workspace-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 18px; border-bottom: 1px solid #1d2940; padding-bottom: 14px; }
+        .file-meta { display: flex; flex-direction: column; gap: 4px; }
+        .file-meta strong { color: #ffffff; font-size: 16px; word-break: break-all; }
+        .file-meta span { color: #9aabc4; font-size: 13px; }
+        .controls-bar { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; background: #0c162b; border: 1px solid #1f3150; border-radius: 12px; padding: 14px 16px; margin-bottom: 18px; }
+        .control-group { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+        .control-group label { font-size: 13.5px; color: #cbd5e1; font-weight: 600; }
+        select { background: #101b30; color: #ffffff; border: 1px solid #304968; border-radius: 8px; padding: 9px 12px; font-size: 14px; outline: none; }
+        select:focus { border-color: #60a5fa; }
+        .progress-wrap { display: none; margin-bottom: 18px; background: #0c162b; border: 1px solid #1f3150; border-radius: 10px; padding: 12px 14px; }
+        .progress-top { display: flex; justify-content: space-between; font-size: 13px; color: #9fc2ff; margin-bottom: 8px; font-weight: 600; }
+        .progress-bar-bg { width: 100%; height: 10px; background: #101b30; border-radius: 999px; overflow: hidden; }
+        .progress-bar-fill { width: 0%; height: 100%; background: linear-gradient(90deg, #22d3ee, #4f66ff, #a855f7); transition: width 0.2s ease; }
+        .output-wrap { margin-bottom: 18px; }
+        .output-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 13px; color: #9aabc4; }
+        textarea { width: 100%; min-height: 280px; background: #0c162b; color: #e6edf7; border: 1px solid #263a5c; border-radius: 12px; padding: 16px; font-family: "Courier New", Courier, monospace; font-size: 14.5px; line-height: 1.6; resize: vertical; outline: none; }
+        textarea:focus { border-color: #60a5fa; }
+        .btn-group { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+        button { border: none; border-radius: 12px; padding: 14px 24px; cursor: pointer; color: white; font-size: 15px; font-weight: bold; min-height: 48px; transition: transform .15s, opacity .2s, background .2s; }
+        button:hover:not(:disabled) { opacity: .92; transform: translateY(-1px); }
+        button:active:not(:disabled) { transform: translateY(0); }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-primary { background: linear-gradient(100deg, #2864eb, #673de9); }
+        .btn-secondary { background: #18253c; border: 1px solid #304968; color: #cbd5e1; }
+        .btn-secondary:hover:not(:disabled) { border-color: #66a2ff; background: #233554; }
+        .status { display: none; padding: 16px; border-radius: 12px; font-size: 14.5px; line-height: 1.6; text-align: center; margin-top: 16px; }
+        .status.success { display: block; color: #56d9a9; background: #0e222e; border: 1px solid #14534b; }
+        .status.error { display: block; color: #ff9b9b; background: #261b2b; border: 1px solid #63344b; }
+        .status.info { display: block; background: rgba(75, 140, 255, .1); border: 1px solid rgba(75, 140, 255, .4); color: #9fc2ff; }
+        .card-section, .info-section { max-width: 1150px; width: 100%; margin: 24px auto; padding: 24px; background: #101b30; border: 1px solid #263a5c; border-radius: 20px; }
+        .card-section h2, .info-section h2 { font-size: 22px; color: #fff; margin-bottom: 14px; }
+        .info-section h3 { font-size: 17px; color: #fff; margin-top: 20px; margin-bottom: 8px; }
+        .info-section p { color: #9aabc4; font-size: 14.5px; line-height: 1.65; margin-bottom: 12px; }
+        .info-section ul { color: #9aabc4; font-size: 14.5px; line-height: 1.65; padding-left: 18px; margin-bottom: 12px; }
+        .info-section li { margin-bottom: 6px; }
+        .faq-item { margin-bottom: 16px; border-top: 1px solid #263a5c; padding-top: 16px; }
+        .faq-item:first-of-type { border-top: none; padding-top: 0; }
+        .faq-item h3 { font-size: 17px; margin-bottom: 6px; color: #ffffff; }
+        .faq-item p { font-size: 14.5px; color: #9aabc4; line-height: 1.6; }
+        .related-tools { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
+        .related-link { display: block; padding: 18px; background: #0c162b; border: 1px solid #263a5c; border-radius: 12px; color: #e6edf7; text-decoration: none; transition: 0.2s; }
+        .related-link:hover { border-color: #60a5fa; transform: translateY(-2px); }
+        .related-link strong { font-size: 16px; color: #fff; }
+        .related-link span { display: block; font-size: 13.5px; color: #9aabc4; margin-top: 4px; }
+        footer { border-top: 1px solid #1d2940; text-align: center; padding: 24px 16px; color: #9aabc4; font-size: 13px; background: #080d1b; margin-top: auto; }
+        footer a { color: #9aabc4; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: #60a5fa; }
+        @media (max-width: 600px) { .btn-group button { width: 100%; } }
+        @media (min-width: 640px) {
+            .container, .card-section, .info-section { margin: 35px auto; padding: 32px; }
+            h1 { font-size: 36px; }
+            .related-tools { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="background" id="background"></div>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a class="brand" href="../../index.html">
+            <span class="brand-short"><span class="brand-o">O</span><span class="brand-t">T</span><span class="brand-c">C</span></span>
+            <span class="brand-name">OnlineToolCollection</span>
+            <span class="brand-tagline">Tools for every task. All in one place.</span>
+        </a>
+        <nav class="nav">
+            <a href="../../index.html#category-boxes-section">Categories</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <div class="badge" role="note">🔒 No Upload &bull; 100% Client-Side Processing</div>
+    <h1>OCR Text Extraction</h1>
+    <div class="subtitle">
+        Extract selectable and searchable text from scanned PDF documents, photos, receipts, or screenshots directly in your browser.
+    </div>
+
+    <div class="drop-area" id="dropArea">
+        <div class="file-icon">🔍</div>
+        <h2>Drag &amp; Drop a Scanned PDF or Image here</h2>
+        <p>Supports .pdf, .jpg, .jpeg, .png, .webp &mdash; or click to browse</p>
+        <input type="file" id="fileInput" accept=".pdf,application/pdf,image/*" />
+    </div>
+
+    <div class="workspace-container" id="workspaceContainer">
+        <div class="workspace-header">
+            <div class="file-meta">
+                <strong id="fileNameDisplay">document.pdf</strong>
+                <span id="fileStatsDisplay">Ready to scan</span>
+            </div>
+            <button type="button" class="btn-secondary" id="resetBtn" style="padding: 10px 16px; min-height: 40px; font-size: 13.5px;">Change File</button>
+        </div>
+
+        <div class="controls-bar">
+            <div class="control-group">
+                <label for="langSelect">Document Language:</label>
+                <select id="langSelect">
+                    <option value="eng" selected>English (eng)</option>
+                    <option value="hin">Hindi (hin)</option>
+                    <option value="tel">Telugu (tel)</option>
+                    <option value="tam">Tamil (tam)</option>
+                    <option value="spa">Spanish (spa)</option>
+                    <option value="fra">French (fra)</option>
+                    <option value="deu">German (deu)</option>
+                    <option value="ara">Arabic (ara)</option>
+                </select>
+            </div>
+            <button type="button" class="btn-primary" id="runOcrBtn" style="padding: 11px 22px; min-height: 42px;">🔍 Run OCR Extraction</button>
+        </div>
+
+        <div class="progress-wrap" id="progressWrap">
+            <div class="progress-top">
+                <span id="progressLabel">Initializing OCR engine...</span>
+                <span id="progressPercent">0%</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progressBarFill"></div>
+            </div>
+        </div>
+
+        <div class="output-wrap">
+            <div class="output-toolbar">
+                <span>Extracted Text Output</span>
+                <span id="wordCountLabel">0 words &bull; 0 characters</span>
+            </div>
+            <textarea id="outputText" placeholder="Click 'Run OCR Extraction' to scan your document and extract editable text here..."></textarea>
+        </div>
+
+        <div class="btn-group">
+            <button type="button" class="btn-secondary" id="copyBtn">📋 Copy Text</button>
+            <button type="button" class="btn-primary" id="downloadTxtBtn">⬇️ Download .TXT File</button>
+        </div>
+    </div>
+
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+</main>
+<section class="info-section">
+    <h2>Free Online OCR Text Extraction — Convert Scanned PDFs &amp; Images to Text</h2>
+    <p>
+        Have a scanned PDF contract, photographed receipt, book page, or screenshot where you cannot highlight or copy the words? Our <strong>OCR Text Extraction</strong> tool uses Optical Character Recognition (OCR) to read text inside images and scanned documents and turn it into clean, editable, searchable text in seconds.
+    </p>
+    <p>
+        Everything runs <strong>100% client-side inside your web browser</strong> using WebAssembly. Your sensitive invoices, IDs, academic notes, and scanned PDFs are never uploaded to any external server.
+    </p>
+    <h3>Key Features</h3>
+    <ul>
+        <li><strong>Supports Both Scanned PDFs &amp; Images:</strong> Upload multi-page PDF documents or standard image formats (<code>.jpg</code>, <code>.png</code>, <code>.webp</code>).</li>
+        <li><strong>Multi-Language Recognition:</strong> Extract text accurately across English, Hindi, Telugu, Tamil, Spanish, French, German, and Arabic.</li>
+        <li><strong>Instant Copy &amp; Export:</strong> Edit the recognized text right inside the workspace, copy it to your clipboard with one click, or download it as a <code>.txt</code> file.</li>
+    </ul>
+    <h3>How to Extract Text Using OCR</h3>
+    <p>
+        Drop your scanned PDF or image into the upload box above, pick the matching document language, and click <strong>Run OCR Extraction</strong>. Once complete, copy the extracted text or save it as a plain text file.
+    </p>
+</section>
+
+<section class="card-section">
+    <h2>Related PDF &amp; Document Tools</h2>
+    <div class="related-tools">
+        <a href="extract-images.html" class="related-link">
+            <strong>Extract Images from PDF &rarr;</strong>
+            <span>Pull embedded photos and graphics out of any PDF file.</span>
+        </a>
+        <a href="add-page-numbers.html" class="related-link">
+            <strong>Add Page Numbers &rarr;</strong>
+            <span>Insert customizable page numbers onto any PDF document.</span>
+        </a>
+        <a href="compress.html" class="related-link">
+            <strong>Compress PDF &rarr;</strong>
+            <span>Reduce PDF file size while preserving document quality.</span>
+        </a>
+    </div>
+</section>
+
+<section class="card-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+        <h3>1. Can I extract text from a multi-page scanned PDF?</h3>
+        <p>Yes! When you upload a PDF, the tool renders each page at high resolution in your browser and runs OCR page-by-page, clearly labeling each page in the extracted text output.</p>
+    </div>
+    <div class="faq-item">
+        <h3>2. Why does the first scan take a few extra seconds?</h3>
+        <p>On your first run for a selected language, your browser downloads the compact OCR language training model directly from Cloudflare's CDN and caches it locally for faster subsequent scans.</p>
+    </div>
+    <div class="faq-item">
+        <h3>3. Are my files uploaded to a server?</h3>
+        <p>No. All PDF rendering and OCR text recognition happen 100% locally in your browser with zero file uploads.</p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; <span id="year"></span> OnlineToolCollection — Fast, secure document tools.</p>
+    <p style="margin-top:10px">
+        <a href="../../index.html">Home</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+    </p>
+</footer>
+<script>
+"use strict";
+
+const background = document.getElementById("background");
+if (background) {
+    for (let i = 0; i < 70; i++) {
+        const star = document.createElement("div");
+        star.className = "star";
+        star.style.left = Math.random() * 100 + "%";
+        star.style.top = Math.random() * 100 + "%";
+        background.appendChild(star);
+    }
+}
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const dropArea = document.getElementById("dropArea");
+const fileInput = document.getElementById("fileInput");
+const workspaceContainer = document.getElementById("workspaceContainer");
+const fileNameDisplay = document.getElementById("fileNameDisplay");
+const fileStatsDisplay = document.getElementById("fileStatsDisplay");
+const langSelect = document.getElementById("langSelect");
+const runOcrBtn = document.getElementById("runOcrBtn");
+const progressWrap = document.getElementById("progressWrap");
+const progressLabel = document.getElementById("progressLabel");
+const progressPercent = document.getElementById("progressPercent");
+const progressBarFill = document.getElementById("progressBarFill");
+const outputText = document.getElementById("outputText");
+const wordCountLabel = document.getElementById("wordCountLabel");
+const copyBtn = document.getElementById("copyBtn");
+const downloadTxtBtn = document.getElementById("downloadTxtBtn");
+const resetBtn = document.getElementById("resetBtn");
+const statusBox = document.getElementById("status");
+
+let selectedFile = null;
+let baseFileName = "extracted-text";
+
+function showStatus(message, type) {
+    statusBox.className = "status " + type;
+    statusBox.textContent = message;
+}
+
+function clearStatus() {
+    statusBox.className = "status";
+    statusBox.textContent = "";
+}
+
+function updateProgress(label, pct) {
+    progressWrap.style.display = "block";
+    progressLabel.textContent = label;
+    const clamped = Math.max(0, Math.min(100, Math.round(pct)));
+    progressPercent.textContent = clamped + "%";
+    progressBarFill.style.width = clamped + "%";
+}
+
+function updateWordCount() {
+    const text = outputText.value.trim();
+    const chars = outputText.value.length;
+    const words = text ? text.split(/\s+/).length : 0;
+    wordCountLabel.textContent = `${words} ${words === 1 ? "word" : "words"} • ${chars} ${chars === 1 ? "character" : "characters"}`;
+}
+
+outputText.addEventListener("input", updateWordCount);
+
+dropArea.addEventListener("click", () => fileInput.click());
+
+["dragenter", "dragover"].forEach(eventName => {
+    dropArea.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        dropArea.classList.add("dragover");
+    }, false);
+});
+
+["dragleave", "drop"].forEach(eventName => {
+    dropArea.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        dropArea.classList.remove("dragover");
+    }, false);
+});
+
+dropArea.addEventListener("drop", (e) => {
+    const files = e.dataTransfer.files;
+    if (files.length) handleFile(files.item(0));
+});
+
+fileInput.addEventListener("change", (e) => {
+    if (e.target.files.length) handleFile(e.target.files.item(0));
+});
+function formatFileSize(bytes) {
+    if (bytes < 1024) return bytes + " B";
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + " KB";
+    return (bytes / (1024 * 1024)).toFixed(2) + " MB";
+}
+
+function handleFile(file) {
+    clearStatus();
+    const isPdf = file.name.toLowerCase().endsWith(".pdf") || file.type === "application/pdf";
+    const isImage = file.type.startsWith("image/") || /\.(jpe?g|png|webp|bmp|gif)$/i.test(file.name);
+
+    if (!isPdf && !isImage) {
+        showStatus("Please upload a valid PDF or image file (.pdf, .jpg, .png, .webp).", "error");
+        return;
+    }
+
+    selectedFile = file;
+    baseFileName = file.name.replace(/\.[^/.]+$/, "");
+    fileNameDisplay.textContent = file.name;
+    fileStatsDisplay.textContent = `${isPdf ? "PDF Document" : "Image File"} • ${formatFileSize(file.size)}`;
+    outputText.value = "";
+    updateWordCount();
+    progressWrap.style.display = "none";
+
+    dropArea.style.display = "none";
+    workspaceContainer.style.display = "block";
+    showStatus("File ready. Choose the document language and click 'Run OCR Extraction'.", "info");
+}
+
+async function renderPdfPageToCanvas(pdf, pageNum) {
+    const page = await pdf.getPage(pageNum);
+    const viewport = page.getViewport({ scale: 2.0 });
+    const canvas = document.createElement("canvas");
+    canvas.width = Math.floor(viewport.width);
+    canvas.height = Math.floor(viewport.height);
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    await page.render({ canvasContext: ctx, viewport }).promise;
+    return canvas;
+}
+runOcrBtn.addEventListener("click", async () => {
+    if (!selectedFile) return;
+
+    if (!window.Tesseract) {
+        showStatus("OCR engine is still loading. Please wait 2 seconds and try again.", "error");
+        return;
+    }
+
+    const isPdf = selectedFile.name.toLowerCase().endsWith(".pdf") || selectedFile.type === "application/pdf";
+    if (isPdf && !window.pdfjsLib) {
+        showStatus("PDF engine is still loading. Please wait 2 seconds and try again.", "error");
+        return;
+    }
+
+    runOcrBtn.disabled = true;
+    resetBtn.disabled = true;
+    clearStatus();
+    outputText.value = "";
+    updateWordCount();
+
+    const lang = langSelect.value;
+    let worker = null;
+
+    try {
+        updateProgress("Loading OCR language model...", 5);
+        worker = await window.Tesseract.createWorker(lang, 1, {
+            logger: (m) => {
+                if (m.status === "recognizing text" && typeof m.progress === "number") {
+                    updateProgress("Recognizing text...", 10 + m.progress * 85);
+                }
+            }
+        });
+
+        if (isPdf) {
+            window.pdfjsLib.GlobalWorkerOptions.workerSrc = [
+                "https:/",
+                "cdnjs" + ".cloudflare.com",
+                "ajax",
+                "libs",
+                "pdf.js/3.11.174/pdf.worker.min.js"
+            ].join("/");
+
+            const arrayBuffer = await selectedFile.arrayBuffer();
+            const pdf = await window.pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+            const numPages = pdf.numPages;
+            const pageTexts = [];
+
+            for (let pageNum = 1; pageNum <= numPages; pageNum++) {
+                const basePct = ((pageNum - 1) / numPages) * 100;
+                updateProgress(`Scanning page ${pageNum} of ${numPages}...`, basePct + 5);
+                const canvas = await renderPdfPageToCanvas(pdf, pageNum);
+                const { data } = await worker.recognize(canvas);
+                const cleaned = (data.text || "").trim();
+                pageTexts.push(`--- Page ${pageNum} ---\n${cleaned || "[No text detected on this page]"}`);
+                outputText.value = pageTexts.join("\n\n");
+                updateWordCount();
+            }
+
+            updateProgress("Completed!", 100);
+            showStatus(`✓ OCR complete across ${numPages} ${numPages === 1 ? "page" : "pages"}!`, "success");
+        } else {
+            updateProgress("Scanning image for text...", 15);
+            const { data } = await worker.recognize(selectedFile);
+            outputText.value = (data.text || "").trim();
+            updateWordCount();
+            updateProgress("Completed!", 100);
+
+            if (outputText.value.length > 0) {
+                showStatus("✓ Text extracted successfully! You can copy or download it below.", "success");
+            } else {
+                showStatus("No readable text was detected in this image.", "info");
+            }
+        }
+    } catch (err) {
+        showStatus("Error during OCR extraction: " + err.message, "error");
+    } finally {
+        if (worker) {
+            try { await worker.terminate(); } catch (e) {}
+        }
+        runOcrBtn.disabled = false;
+        resetBtn.disabled = false;
+    }
+});
+
+copyBtn.addEventListener("click", async () => {
+    const text = outputText.value;
+    if (!text.trim()) {
+        showStatus("There is no extracted text to copy yet.", "info");
+        return;
+    }
+    try {
+        await navigator.clipboard.writeText(text);
+        showStatus("✓ Extracted text copied to clipboard!", "success");
+    } catch (err) {
+        outputText.select();
+        document.execCommand("copy");
+        showStatus("✓ Extracted text copied to clipboard!", "success");
+    }
+});
+
+downloadTxtBtn.addEventListener("click", () => {
+    const text = outputText.value;
+    if (!text.trim()) {
+        showStatus("There is no extracted text to download yet.", "info");
+        return;
+    }
+    const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${baseFileName}_ocr.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    showStatus(`✓ Downloaded ${baseFileName}_ocr.txt!`, "success");
+});
+
+resetBtn.addEventListener("click", () => {
+    fileInput.value = "";
+    selectedFile = null;
+    outputText.value = "";
+    updateWordCount();
+    progressWrap.style.display = "none";
+    workspaceContainer.style.display = "none";
+    dropArea.style.display = "block";
+    clearStatus();
+});
+</script>
+
+</body>
+</html>

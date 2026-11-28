@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#080d1b">
+
+    <title>Extract Images from PDF Online Free — Download Photos &amp; Graphics | OnlineToolCollection</title>
+    <meta name="description" content="Pull embedded photos, illustrations, logos, and graphics out of any PDF file online. Preview thumbnails and download individually as PNG/JPG or all together in a ZIP. 100% client-side with zero uploads.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://allinone-utilities.com">
+
+    <meta property="og:title" content="Extract Images from PDF Online Free | OnlineToolCollection">
+    <meta property="og:description" content="Extract original embedded photos and graphics from PDFs directly in your browser with zero uploads.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://allinone-utilities.com">
+
+    <!-- Safe Dynamic Loader for pdf.js & JSZip -->
+    <script>
+    (function() {
+        var libs = [
+            "pdf.js/3.11.174/pdf.min.js",
+            "jszip/3.10.1/jszip.min.js"
+        ];
+        libs.forEach(function(lib) {
+            var s = document.createElement("script");
+            s.src = ["https:/", "cdnjs" + ".cloudflare.com", "ajax", "libs", lib].join("/");
+            document.head.appendChild(s);
+        });
+    })();
+    </script>
+
+    <!-- FAQ Rich Snippet Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I extract images from a PDF online?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Upload your PDF file into the drop zone. The tool scans every page for embedded images, displays a thumbnail gallery with pixel dimensions, and lets you download images individually or all together as a ZIP archive."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between Extract Images from PDF and PDF to JPG?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PDF to JPG converts entire pages (including text and backgrounds) into screenshots, whereas Extract Images pulls out the individual embedded photos, logos, and illustrations stored inside the PDF."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are my PDF files uploaded to a server?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. All image extraction happens 100% locally inside your web browser. Your files never leave your device."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { font-family: Arial, Helvetica, sans-serif; background: #080d1b; color: #e6edf7; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+        .background { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: -1; }
+        .star { position: absolute; width: 2px; height: 2px; background: #ffffff; opacity: 0.35; border-radius: 50%; }
+        .site-header { border-bottom: 1px solid #1d2940; background: #080d1b; position: sticky; top: 0; z-index: 100; }
+        .header-inner { max-width: 1150px; margin: auto; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; }
+        .brand { font-size: 26px; font-weight: bold; color: #fff; text-decoration: none; letter-spacing: -0.5px; display: flex; align-items: center; gap: 9px; white-space: nowrap; }
+        .brand .brand-short { font-size: clamp(22px, 3vw, 30px); font-weight: 900; letter-spacing: -1px; background: linear-gradient(110deg, #22d3ee, #4f66ff, #a855f7); -webkit-background-clip: text; background-clip: text; color: transparent !important; }
+        .brand .brand-o { color: #ff8c24 !important; background: none !important; -webkit-text-fill-color: #ff8c24; }
+        .brand .brand-t { color: #ffffff !important; background: none !important; -webkit-text-fill-color: #ffffff; }
+        .brand .brand-c { color: #22c55e !important; background: none !important; -webkit-text-fill-color: #22c55e; }
+        .brand .brand-name { color: #ffffff !important; font-size: clamp(14px, 2vw, 20px); font-weight: 700; letter-spacing: -0.35px; }
+        @media(max-width:480px) { .brand .brand-name { display: none; } .brand .brand-short { font-size: 27px; } }
+        .brand-tagline { display: inline-block; color: #a9b7cf; font-size: 12px; font-weight: 500; letter-spacing: .1px; margin-left: 5px; white-space: nowrap; }
+        @media(max-width:750px) { .brand-tagline { display: none; } }
+        nav { display: flex; gap: 24px; }
+        nav a { color: #cbd5e1; text-decoration: none; font-size: 15px; font-weight: 500; transition: 0.2s; }
+        nav a:hover { color: #60a5fa; }
+        .container { max-width: 1150px; width: 100%; margin: 24px auto; padding: 24px; background: #101b30; border: 1px solid #263a5c; border-radius: 20px; }
+        .badge { display: flex; width: fit-content; max-width: 100%; margin: 0 auto 16px auto; align-items: center; gap: 6px; background: rgba(52, 211, 153, 0.12); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; text-align: center; }
+        h1 { text-align: center; font-size: 32px; margin: 10px 0; color: #ffffff; line-height: 1.25; }
+        .subtitle { text-align: center; color: #9aabc4; font-size: 16px; line-height: 1.6; max-width: 760px; margin: 0 auto 28px auto; }
+        .drop-area { border: 2px dashed #3978c9; border-radius: 16px; padding: 40px 20px; text-align: center; background: #0c162b; transition: 0.2s; cursor: pointer; margin-bottom: 24px; }
+        .drop-area:hover, .drop-area.dragover { border-color: #66a2ff; background: #142342; }
+        .file-icon { font-size: 48px; margin-bottom: 12px; }
+        .drop-area h2 { font-size: 20px; color: #fff; margin-bottom: 8px; }
+        .drop-area p { color: #98a9c1; font-size: 14px; }
+        #fileInput { display: none; }
+        .workspace-container { display: none; background: #080d1b; border: 1px solid #263a5c; border-radius: 14px; padding: 24px; margin-bottom: 24px; }
+        .workspace-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 18px; border-bottom: 1px solid #1d2940; padding-bottom: 14px; }
+        .file-meta { display: flex; flex-direction: column; gap: 4px; }
+        .file-meta strong { color: #ffffff; font-size: 16px; word-break: break-all; }
+        .file-meta span { color: #9aabc4; font-size: 13px; }
+        .controls-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; background: #0c162b; border: 1px solid #1f3150; border-radius: 12px; padding: 14px 16px; margin-bottom: 20px; }
+        .control-group { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+        .control-group label { font-size: 13.5px; color: #cbd5e1; font-weight: 600; }
+        select { background: #101b30; color: #ffffff; border: 1px solid #304968; border-radius: 8px; padding: 8px 12px; font-size: 14px; outline: none; }
+        select:focus { border-color: #60a5fa; }
+        .image-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .image-card { background: #0c162b; border: 1px solid #263a5c; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: border-color 0.2s, transform 0.2s; }
+        .image-card:hover { border-color: #60a5fa; transform: translateY(-2px); }
+        .thumb-wrap { height: 170px; background: repeating-conic-gradient(#131f38 0% 25%, #0b1324 0% 50%) 50% / 16px 16px; display: flex; align-items: center; justify-content: center; padding: 10px; border-bottom: 1px solid #1d2940; }
+        .thumb-wrap img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 4px; }
+        .card-info { padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+        .card-meta-row { display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: #9aabc4; }
+        .card-meta-row strong { color: #e6edf7; font-size: 13px; }
+        .btn-mini { padding: 8px 12px; min-height: 36px; font-size: 13px; border-radius: 8px; background: #18253c; border: 1px solid #304968; color: #e6edf7; width: 100%; cursor: pointer; font-weight: bold; }
+        .btn-mini:hover { border-color: #60a5fa; background: #233554; }
+        .btn-group { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+        button { border: none; border-radius: 12px; padding: 14px 26px; cursor: pointer; color: white; font-size: 15px; font-weight: bold; min-height: 48px; transition: transform .15s, opacity .2s, background .2s; }
+        button:hover:not(:disabled) { opacity: .92; transform: translateY(-1px); }
+        button:active:not(:disabled) { transform: translateY(0); }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-primary { background: linear-gradient(100deg, #2864eb, #673de9); }
+        .btn-secondary { background: #18253c; border: 1px solid #304968; color: #cbd5e1; }
+        .btn-secondary:hover:not(:disabled) { border-color: #66a2ff; background: #233554; }
+        .status { display: none; padding: 16px; border-radius: 12px; font-size: 14.5px; line-height: 1.6; text-align: center; margin-top: 16px; }
+        .status.success { display: block; color: #56d9a9; background: #0e222e; border: 1px solid #14534b; }
+        .status.error { display: block; color: #ff9b9b; background: #261b2b; border: 1px solid #63344b; }
+        .status.info { display: block; background: rgba(75, 140, 255, .1); border: 1px solid rgba(75, 140, 255, .4); color: #9fc2ff; }
+        .card-section, .info-section { max-width: 1150px; width: 100%; margin: 24px auto; padding: 24px; background: #101b30; border: 1px solid #263a5c; border-radius: 20px; }
+        .card-section h2, .info-section h2 { font-size: 22px; color: #fff; margin-bottom: 14px; }
+        .info-section h3 { font-size: 17px; color: #fff; margin-top: 20px; margin-bottom: 8px; }
+        .info-section p { color: #9aabc4; font-size: 14.5px; line-height: 1.65; margin-bottom: 12px; }
+        .info-section ul { color: #9aabc4; font-size: 14.5px; line-height: 1.65; padding-left: 18px; margin-bottom: 12px; }
+        .info-section li { margin-bottom: 6px; }
+        .faq-item { margin-bottom: 16px; border-top: 1px solid #263a5c; padding-top: 16px; }
+        .faq-item:first-of-type { border-top: none; padding-top: 0; }
+        .faq-item h3 { font-size: 17px; margin-bottom: 6px; color: #ffffff; }
+        .faq-item p { font-size: 14.5px; color: #9aabc4; line-height: 1.6; }
+        .related-tools { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
+        .related-link { display: block; padding: 18px; background: #0c162b; border: 1px solid #263a5c; border-radius: 12px; color: #e6edf7; text-decoration: none; transition: 0.2s; }
+        .related-link:hover { border-color: #60a5fa; transform: translateY(-2px); }
+        .related-link strong { font-size: 16px; color: #fff; }
+        .related-link span { display: block; font-size: 13.5px; color: #9aabc4; margin-top: 4px; }
+        footer { border-top: 1px solid #1d2940; text-align: center; padding: 24px 16px; color: #9aabc4; font-size: 13px; background: #080d1b; margin-top: auto; }
+        footer a { color: #9aabc4; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: #60a5fa; }
+        @media (max-width: 600px) { .btn-group button { width: 100%; } }
+        @media (min-width: 640px) {
+            .container, .card-section, .info-section { margin: 35px auto; padding: 32px; }
+            h1 { font-size: 36px; }
+            .related-tools { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        }
+    
+    .source-file-label { font-size: 12px; color: #91a7c6; overflow-wrap: anywhere; margin: 4px 0 8px; }
+</style>
+</head>
+<body>
+
+<div class="background" id="background"></div>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a class="brand" href="../../index.html">
+            <span class="brand-short"><span class="brand-o">O</span><span class="brand-t">T</span><span class="brand-c">C</span></span>
+            <span class="brand-name">OnlineToolCollection</span>
+            <span class="brand-tagline">Tools for every task. All in one place.</span>
+        </a>
+        <nav class="nav">
+            <a href="../../index.html#category-boxes-section">Categories</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <div class="badge" role="note">🔒 No Upload &bull; 100% Client-Side Processing</div>
+    <h1>Extract Images from PDF</h1>
+    <div class="subtitle">
+        Pull embedded photos, illustrations, and graphics out of PDFs and download them individually or as a ZIP.
+    </div>
+
+    <div class="drop-area" id="dropArea">
+        <div class="file-icon">🖼️</div>
+        <h2>Drag &amp; Drop PDF files here</h2>
+        <p>or click to browse from your device. Select multiple PDFs at once.</p>
+        <input type="file" id="fileInput" accept=".pdf,application/pdf" multiple />
+    </div>
+
+    <div class="workspace-container" id="workspaceContainer">
+        <div class="workspace-header">
+            <div class="file-meta">
+                <strong id="fileNameDisplay">document.pdf</strong>
+                <span id="fileStatsDisplay">Scanning pages...</span>
+            </div>
+            <button type="button" class="btn-secondary" id="resetBtn" style="padding: 10px 16px; min-height: 40px; font-size: 13.5px;">Change File</button>
+        </div>
+
+        <div class="controls-bar">
+            <div class="control-group">
+                <label for="formatSelect">Export Format:</label>
+                <select id="formatSelect">
+                    <option value="png" selected>PNG (Lossless Quality)</option>
+                    <option value="jpeg">JPG (Smaller File Size)</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="minSizeSelect">Filter Tiny Icons:</label>
+                <select id="minSizeSelect">
+                    <option value="0">Show All Images</option>
+                    <option value="32" selected>Hide Tiny Icons (&lt; 32px)</option>
+                    <option value="100">Photos &amp; Diagrams Only (&ge; 100px)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="image-grid" id="imageGrid"></div>
+
+        <div class="btn-group">
+            <button type="button" class="btn-primary" id="downloadZipBtn">⬇️ Download All Images (ZIP)</button>
+        </div>
+    </div>
+
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+</main>
+<section class="info-section">
+    <h2>Extract Embedded Images from PDF Online — Free &amp; Private</h2>
+    <p>
+        Need to pull original photos, charts, logos, or diagrams out of a PDF brochure, eBook, or presentation without taking blurry screenshots? Our <strong>Extract Images from PDF</strong> tool scans the internal object stream of every page in your PDF and extracts each embedded image at its native resolution.
+    </p>
+    <p>
+        Unlike cloud-based PDF tools that require uploading sensitive reports or client files to external servers, this tool runs <strong>100% client-side inside your web browser</strong>. Your documents stay completely private on your device from start to finish.
+    </p>
+    <h3>Key Features for Quick Image Extraction</h3>
+    <ul>
+        <li><strong>True Embedded Asset Extraction:</strong> Pulls individual photos and illustrations directly rather than rendering whole pages.</li>
+        <li><strong>Smart Tiny-Icon Filter:</strong> Automatically hides 1px spacer graphics or tiny bullet icons so you only see meaningful photos and diagrams.</li>
+        <li><strong>PNG or JPG Export:</strong> Choose lossless PNG quality or compact JPG files before downloading individual images or a full batch ZIP archive.</li>
+    </ul>
+    <h3>How to Extract Images from a PDF</h3>
+    <p>
+        Drag and drop your PDF into the upload box above. Once scanned, browse the extracted thumbnail gallery, click <strong>Download</strong> on any single image, or click <strong>Download All Images (ZIP)</strong> to save everything at once.
+    </p>
+</section>
+
+<section class="card-section">
+    <h2>Related PDF &amp; Document Tools</h2>
+    <div class="related-tools">
+        <a href="add-page-numbers.html" class="related-link">
+            <strong>Add Page Numbers &rarr;</strong>
+            <span>Insert customizable page numbers onto any PDF document.</span>
+        </a>
+        <a href="compress.html" class="related-link">
+            <strong>Compress PDF &rarr;</strong>
+            <span>Reduce PDF file size while preserving document quality.</span>
+        </a>
+        <a href="merge.html" class="related-link">
+            <strong>Merge PDF &rarr;</strong>
+            <span>Combine multiple PDF files into a single unified document.</span>
+        </a>
+    </div>
+</section>
+
+<section class="card-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+        <h3>1. Does this convert whole pages into images or extract individual photos?</h3>
+        <p>It extracts the <strong>individual embedded images</strong> (photos, logos, charts, and graphics) stored inside the PDF rather than taking full-page screenshots.</p>
+    </div>
+    <div class="faq-item">
+        <h3>2. Why are tiny icons hidden by default?</h3>
+        <p>Many PDFs contain dozens of tiny 1×1 pixel dividers or bullet icons. Our filter hides images smaller than 32px by default, and you can switch the dropdown to <strong>Show All Images</strong> anytime.</p>
+    </div>
+    <div class="faq-item">
+        <h3>3. Are my PDF files uploaded to a server?</h3>
+        <p>No. All scanning and image decoding happen 100% locally in your web browser with zero server uploads.</p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; <span id="year"></span> OnlineToolCollection — Fast, secure document tools.</p>
+    <p style="margin-top:10px">
+        <a href="../../index.html">Home</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+    </p>
+</footer>
+<script>
+"use strict";
+
+const background = document.getElementById("background");
+if (background) {
+    for (let i = 0; i < 70; i++) {
+        const star = document.createElement("div");
+        star.className = "star";
+        star.style.left = Math.random() * 100 + "%";
+        star.style.top = Math.random() * 100 + "%";
+        background.appendChild(star);
+    }
+}
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const dropArea = document.getElementById("dropArea");
+const fileInput = document.getElementById("fileInput");
+const workspaceContainer = document.getElementById("workspaceContainer");
+const fileNameDisplay = document.getElementById("fileNameDisplay");
+const fileStatsDisplay = document.getElementById("fileStatsDisplay");
+const formatSelect = document.getElementById("formatSelect");
+const minSizeSelect = document.getElementById("minSizeSelect");
+const imageGrid = document.getElementById("imageGrid");
+const downloadZipBtn = document.getElementById("downloadZipBtn");
+const resetBtn = document.getElementById("resetBtn");
+const statusBox = document.getElementById("status");
+
+let extractedImages = [];
+let baseFileName = "document";
+let batchBaseName = "extracted-images";
+
+function showStatus(message, type) {
+    statusBox.className = "status " + type;
+    statusBox.textContent = message;
+}
+
+function clearStatus() {
+    statusBox.className = "status";
+    statusBox.textContent = "";
+}
+
+dropArea.addEventListener("click", () => fileInput.click());
+
+["dragenter", "dragover"].forEach(eventName => {
+    dropArea.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        dropArea.classList.add("dragover");
+    }, false);
+});
+
+["dragleave", "drop"].forEach(eventName => {
+    dropArea.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        dropArea.classList.remove("dragover");
+    }, false);
+});
+
+dropArea.addEventListener("drop", (e) => {
+    const files = Array.from(e.dataTransfer.files || []).filter(isPdfFile);
+    if (files.length) handleFiles(files);
+});
+
+fileInput.addEventListener("change", (e) => {
+    const files = Array.from(e.target.files || []).filter(isPdfFile);
+    if (files.length) handleFiles(files);
+    fileInput.value = ""; // Allow selecting the same PDFs again.
+});
+
+function isPdfFile(file) {
+    return file && (file.name.toLowerCase().endsWith(".pdf") || file.type === "application/pdf");
+}
+function imageObjToDataURL(imgObj) {
+    const width = imgObj.width;
+    const height = imgObj.height;
+    if (!width || !height) return null;
+
+    const canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext("2d");
+
+    if (imgObj.bitmap) {
+        ctx.drawImage(imgObj.bitmap, 0, 0);
+        return canvas.toDataURL("image/png");
+    }
+
+    if (imgObj.data) {
+        const imgData = ctx.createImageData(width, height);
+        const src = imgObj.data;
+        const dst = imgData.data;
+
+        if (src.length === width * height * 4) {
+            dst.set(src);
+        } else if (src.length === width * height * 3) {
+            for (let i = 0, j = 0; i < src.length; i += 3, j += 4) {
+                dst[j] = src[i];
+                dst[j + 1] = src[i + 1];
+                dst[j + 2] = src[i + 2];
+                dst[j + 3] = 255;
+            }
+        } else if (src.length === width * height) {
+            for (let i = 0, j = 0; i < src.length; i++, j += 4) {
+                const v = src[i];
+                dst[j] = v;
+                dst[j + 1] = v;
+                dst[j + 2] = v;
+                dst[j + 3] = 255;
+            }
+        } else {
+            return null;
+        }
+
+        ctx.putImageData(imgData, 0, 0);
+        return canvas.toDataURL("image/png");
+    }
+
+    return null;
+}
+
+function getFilteredImages() {
+    const minPx = parseInt(minSizeSelect.value, 10) || 0;
+    return extractedImages.filter(img => img.width >= minPx && img.height >= minPx);
+}
+
+function renderGallery() {
+    imageGrid.innerHTML = "";
+    const visible = getFilteredImages();
+
+    if (visible.length === 0) {
+        downloadZipBtn.disabled = true;
+        return;
+    }
+
+    downloadZipBtn.disabled = false;
+
+    visible.forEach((item, idx) => {
+        const card = document.createElement("div");
+        card.className = "image-card";
+
+        const thumbWrap = document.createElement("div");
+        thumbWrap.className = "thumb-wrap";
+
+        const img = document.createElement("img");
+        img.src = item.pngDataUrl;
+        img.alt = `Extracted image ${idx + 1} from page ${item.page}`;
+        thumbWrap.appendChild(img);
+
+        const info = document.createElement("div");
+        info.className = "card-info";
+
+        const metaRow = document.createElement("div");
+        metaRow.className = "card-meta-row";
+        metaRow.innerHTML = `<strong>Page ${item.page}</strong><span>${item.width} &times; ${item.height} px</span>`;
+        if (item.sourceFileName) {
+            const sourceLabel = document.createElement("div");
+            sourceLabel.className = "source-file-label";
+            sourceLabel.textContent = item.sourceFileName;
+            sourceLabel.title = item.sourceFileName;
+            info.appendChild(sourceLabel);
+        }
+
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "btn-mini";
+        btn.textContent = "⬇ Download Image";
+        btn.addEventListener("click", () => downloadSingleImage(item, idx));
+
+        info.appendChild(metaRow);
+        info.appendChild(btn);
+
+        card.appendChild(thumbWrap);
+        card.appendChild(info);
+        imageGrid.appendChild(card);
+    });
+}
+
+minSizeSelect.addEventListener("change", renderGallery);
+async function convertDataUrlToBlob(pngDataUrl, format) {
+    if (format === "png") {
+        const res = await fetch(pngDataUrl);
+        return await res.blob();
+    }
+
+    return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => {
+            const canvas = document.createElement("canvas");
+            canvas.width = img.width;
+            canvas.height = img.height;
+            const ctx = canvas.getContext("2d");
+            ctx.fillStyle = "#ffffff";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0);
+            canvas.toBlob(blob => resolve(blob), "image/jpeg", 0.92);
+        };
+        img.src = pngDataUrl;
+    });
+}
+
+function triggerDownload(blob, filename) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+async function downloadSingleImage(item, index) {
+    const fmt = formatSelect.value;
+    const ext = fmt === "jpeg" ? "jpg" : "png";
+    const num = String(index + 1).padStart(2, "0");
+    const blob = await convertDataUrlToBlob(item.pngDataUrl, fmt);
+    triggerDownload(blob, `${item.sourceBaseName || baseFileName}_page${item.page}_img${num}.${ext}`);
+}
+
+downloadZipBtn.addEventListener("click", async () => {
+    const visible = getFilteredImages();
+    if (!visible.length || !window.JSZip) return;
+
+    downloadZipBtn.disabled = true;
+    const fmt = formatSelect.value;
+    const ext = fmt === "jpeg" ? "jpg" : "png";
+    showStatus(`Packaging ${visible.length} images into ZIP...`, "info");
+
+    try {
+        const zip = new window.JSZip();
+        for (let i = 0; i < visible.length; i++) {
+            const item = visible[i];
+            const num = String(i + 1).padStart(2, "0");
+            const blob = await convertDataUrlToBlob(item.pngDataUrl, fmt);
+            zip.file(`${item.sourceBaseName || baseFileName}/${item.sourceBaseName || baseFileName}_page${item.page}_img${num}.${ext}`, blob);
+        }
+        const zipBlob = await zip.generateAsync({ type: "blob" });
+        triggerDownload(zipBlob, `${batchBaseName}_images.zip`);
+        showStatus(`✓ Downloaded ${visible.length} images in ZIP archive!`, "success");
+    } catch (err) {
+        showStatus("Error creating ZIP: " + err.message, "error");
+    } finally {
+        downloadZipBtn.disabled = false;
+    }
+});
+// --- Scan safeguards: timeouts, cancellation, and memory protection ---
+const PAGE_TIMEOUT_MS = 30000;
+const IMAGE_TIMEOUT_MS = 12000;
+const MAX_IMAGE_PIXELS = 45000000; // Avoid decoding huge images that can exhaust browser memory.
+let activeLoadingTask = null;
+let scanCancelled = false;
+let cancelScanBtn = null;
+
+function withTimeout(promise, ms, label) {
+    let timeoutId;
+    const timeoutPromise = new Promise((_, reject) => {
+        timeoutId = setTimeout(() => reject(new Error(`${label} timed out after ${Math.round(ms / 1000)} seconds.`)), ms);
+    });
+    return Promise.race([promise, timeoutPromise]).finally(() => clearTimeout(timeoutId));
+}
+
+
+function ensureCancelButton() {
+    if (cancelScanBtn) return cancelScanBtn;
+    cancelScanBtn = document.createElement('button');
+    cancelScanBtn.type = 'button';
+    cancelScanBtn.textContent = 'Cancel Scan';
+    cancelScanBtn.className = 'btn-secondary';
+    cancelScanBtn.style.cssText = 'padding:10px 16px;min-height:40px;font-size:13.5px;margin-left:8px;';
+    cancelScanBtn.addEventListener('click', () => {
+        scanCancelled = true;
+        if (activeLoadingTask) activeLoadingTask.destroy();
+        showStatus('Scan cancelled. You can choose the PDF again.', 'info');
+        fileStatsDisplay.textContent = 'Scan cancelled';
+        cancelScanBtn.disabled = true;
+        downloadZipBtn.disabled = true;
+    });
+    resetBtn.parentElement.appendChild(cancelScanBtn);
+    return cancelScanBtn;
+}
+
+
+function hideCancelButton() {
+    if (cancelScanBtn) {
+        cancelScanBtn.remove();
+        cancelScanBtn = null;
+    }
+}
+
+
+async function handleFiles(files) {
+    const validFiles = files.filter(isPdfFile);
+    if (!validFiles.length) {
+        showStatus('Please select valid PDF files.', 'error');
+        return;
+    }
+    if (!window.pdfjsLib) {
+        showStatus('PDF engine is still loading. Please wait a moment and try again.', 'error');
+        return;
+    }
+    scanCancelled = false;
+    if (activeLoadingTask) { try { await activeLoadingTask.destroy(); } catch (_) {} activeLoadingTask = null; }
+    extractedImages = [];
+    imageGrid.innerHTML = '';
+    downloadZipBtn.disabled = true;
+    baseFileName = validFiles.length === 1 ? validFiles[0].name.replace(/\.pdf$/i, '') : 'pdf-batch';
+    batchBaseName = validFiles.length === 1 ? baseFileName : 'extracted-images';
+    fileNameDisplay.textContent = validFiles.length === 1 ? validFiles[0].name : `${validFiles.length} PDF files selected`;
+    fileStatsDisplay.textContent = 'Preparing batch scan...';
+    dropArea.style.display = 'none';
+    workspaceContainer.style.display = 'block';
+    showStatus(`Scanning ${validFiles.length} PDF${validFiles.length === 1 ? '' : 's'} sequentially. Slow pages/images are skipped where possible.`, 'info');
+    const cancelBtn = ensureCancelButton(); cancelBtn.disabled = false;
+    window.pdfjsLib.GlobalWorkerOptions.workerSrc = ['https:/', 'cdnjs' + '.cloudflare.com', 'ajax', 'libs', 'pdf.js/3.11.174/pdf.worker.min.js'].join('/');
+
+    let filesCompleted = 0, totalPages = 0, skippedPages = 0, skippedImages = 0, filesFailed = 0;
+    const usedFolderNames = new Set();
+    try {
+        for (let fileIndex = 0; fileIndex < validFiles.length; fileIndex++) {
+            if (scanCancelled) break;
+            const file = validFiles[fileIndex];
+            let sourceBaseName = file.name.replace(/\.pdf$/i, '').replace(/[\\/:*?"<>|]/g, '_');
+            if (usedFolderNames.has(sourceBaseName.toLowerCase())) {
+                let suffix = 2;
+                while (usedFolderNames.has(`${sourceBaseName}_${suffix}`.toLowerCase())) suffix++;
+                sourceBaseName = `${sourceBaseName}_${suffix}`;
+            }
+            usedFolderNames.add(sourceBaseName.toLowerCase());
+            fileNameDisplay.textContent = `PDF ${fileIndex + 1} of ${validFiles.length}: ${file.name}`;
+            fileStatsDisplay.textContent = `Preparing ${file.name}... (${extractedImages.length} images found overall)`;
+            showStatus(`Scanning PDF ${fileIndex + 1} of ${validFiles.length}: ${file.name}`, 'info');
+            try {
+                const result = await scanOnePdf(file, sourceBaseName);
+                totalPages += result.pages; skippedPages += result.skippedPages; skippedImages += result.skippedImages; filesCompleted++;
+            } catch (fileErr) {
+                if (scanCancelled) break;
+                filesFailed++;
+                showStatus(`Could not scan ${file.name}: ${fileErr.message}. Continuing with remaining PDFs.`, 'error');
+            }
+            renderGallery();
+        }
+        if (scanCancelled) {
+            fileStatsDisplay.textContent = `Batch cancelled • ${filesCompleted}/${validFiles.length} PDFs processed • ${extractedImages.length} images found`;
+            showStatus(`Batch scan cancelled. ${extractedImages.length} extracted image(s) retained for download.`, 'info');
+        } else {
+            fileNameDisplay.textContent = `${validFiles.length} PDF${validFiles.length === 1 ? '' : 's'} processed`;
+            fileStatsDisplay.textContent = `${filesCompleted} PDF(s) processed • ${totalPages} pages scanned • ${extractedImages.length} images found${skippedPages ? ` • ${skippedPages} page(s) skipped` : ''}${filesFailed ? ` • ${filesFailed} PDF(s) failed` : ''}`;
+            if (extractedImages.length) {
+                let msg = `✓ Extracted ${extractedImages.length} image(s) from ${filesCompleted} PDF(s).`;
+                if (skippedPages || skippedImages || filesFailed) msg += ` Skipped ${skippedPages} page(s), ${skippedImages} image(s), and failed ${filesFailed} PDF(s).`;
+                showStatus(msg, 'success');
+            } else showStatus(`No embedded images were extracted. ${skippedPages} page(s) and ${skippedImages} image(s) skipped; ${filesFailed} PDF(s) failed.`, 'info');
+        }
+    } finally {
+        if (activeLoadingTask) { try { await activeLoadingTask.destroy(); } catch (_) {} activeLoadingTask = null; }
+        hideCancelButton(); downloadZipBtn.disabled = getFilteredImages().length === 0;
+    }
+}
+
+
+async function scanOnePdf(file, sourceBaseName) {
+    const arrayBuffer = await file.arrayBuffer();
+    // PDF.js 3.x expects onPassword on the loading task, not inside getDocument options.
+    const loadingTask = window.pdfjsLib.getDocument({ data: arrayBuffer });
+    activeLoadingTask = loadingTask;
+    loadingTask.onPassword = (updatePassword, reason) => {
+        if (scanCancelled) return;
+        const msg = reason === window.pdfjsLib.PasswordResponses.INCORRECT_PASSWORD
+            ? `Incorrect password for ${file.name}. Try again:`
+            : `PDF "${file.name}" is password protected. Enter its document password:`;
+        const password = window.prompt(msg, '');
+        if (password === null) {
+            // Cancel only this file's load; do not cancel the entire batch.
+            try { loadingTask.destroy(); } catch (_) {}
+            return;
+        }
+        updatePassword(password);
+    };
+    const pdf = await loadingTask.promise;
+    const numPages = pdf.numPages, OPS = window.pdfjsLib.OPS, seenNames = new Set();
+    let skippedPages = 0, skippedImages = 0;
+    for (let pageNum = 1; pageNum <= numPages; pageNum++) {
+        if (scanCancelled) break;
+        fileStatsDisplay.textContent = `Scanning ${file.name} • page ${pageNum}/${numPages} • ${extractedImages.length} images overall`;
+        let page;
+        try {
+            page = await withTimeout(pdf.getPage(pageNum), PAGE_TIMEOUT_MS, `Page ${pageNum} loading`);
+            const opList = await withTimeout(page.getOperatorList(), PAGE_TIMEOUT_MS, `Page ${pageNum} analysis`);
+            for (let i = 0; i < opList.fnArray.length; i++) {
+                if (scanCancelled) break;
+                const fn = opList.fnArray[i];
+                if (fn !== OPS.paintImageXObject && fn !== OPS.paintJpegXObject && fn !== OPS.paintImageXObjectRepeat) continue;
+                const args = opList.argsArray[i], objName = args && args[0];
+                if (!objName || seenNames.has(objName)) continue;
+                seenNames.add(objName);
+                try {
+                    const imgObj = await withTimeout(new Promise((resolve, reject) => { try { page.objs.get(objName, resolve); } catch (err) { reject(err); } }), IMAGE_TIMEOUT_MS, `Image ${objName} on page ${pageNum}`);
+                    if (!imgObj || !imgObj.width || !imgObj.height || imgObj.width * imgObj.height > MAX_IMAGE_PIXELS) { skippedImages++; continue; }
+                    const pngDataUrl = imageObjToDataURL(imgObj);
+                    if (pngDataUrl) extractedImages.push({ page: pageNum, width: imgObj.width, height: imgObj.height, pngDataUrl, sourceBaseName, sourceFileName: file.name }); else skippedImages++;
+                } catch (_) { skippedImages++; }
+            }
+        } catch (_) { skippedPages++; }
+        finally { if (page && !scanCancelled) { try { page.cleanup(); } catch (_) {} } }
+        renderGallery();
+    }
+    try { await pdf.destroy(); } catch (_) {}
+    activeLoadingTask = null;
+    return { pages: numPages, skippedPages, skippedImages };
+}
+
+resetBtn.addEventListener('click', async () => {
+    scanCancelled = true;
+    if (activeLoadingTask) {
+        try { await activeLoadingTask.destroy(); } catch (_) {}
+        activeLoadingTask = null;
+    }
+    fileInput.value = '';
+    extractedImages = [];
+    baseFileName = 'document';
+    batchBaseName = 'extracted-images';
+    imageGrid.innerHTML = '';
+    downloadZipBtn.disabled = true;
+    workspaceContainer.style.display = 'none';
+    dropArea.style.display = 'block';
+    hideCancelButton();
+    clearStatus();
+});
+</script>
+
+</body>
+</html>

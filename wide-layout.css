@@ -1,0 +1,130 @@
+/* Outer container sets 1100px / 90% once */
+html body .container,
+html body main.container,
+html body .main-container,
+html body .wrapper,
+html body .content-wrapper,
+html body .page-wrapper,
+html body .tool-container,
+html body .app-container,
+html body .page-container,
+html body main {
+    max-width: 1100px !important;
+    width: 90% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+}
+
+/* Inner cards and sections fill 100% of that container cleanly */
+html body main > div,
+html body main > section,
+html body .tool-card,
+html body .main-card,
+html body .info-card,
+html body .content-card,
+html body .category-card,
+html body .categories-wrapper,
+html body .card,
+html body .tool-card .hero {
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Keep header inner wrappers full-width so Categories stays visible on the right */
+header [class*="container"],
+header [class*="wrapper"],
+.site-header [class*="container"],
+.site-header [class*="wrapper"] {
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+/* Improve muted text contrast on dark backgrounds for 100 Accessibility */
+.tagline,
+.hero-meta,
+.file-size,
+.file-meta,
+.drop-zone p,
+.content-card p,
+.info-card p,
+footer {
+    color: #cbd5e1 !important;
+}
+
+/* Brighten card descriptions and category pill badges for 100 Accessibility */
+.card p,
+.tool-card p,
+.category-card p,
+[class*="desc"],
+[class*="subtitle"] {
+    color: #cbd5e1 !important;
+}
+
+.badge,
+.pill,
+.tag,
+[class*="badge"],
+[class*="pill"],
+[class*="count"] {
+    color: #f8fafc !important;
+    font-weight: 600 !important;
+}
+
+/* Align standalone bottom SEO sections with the inner tool cards */
+body > section,
+main > section:last-of-type {
+    max-width: 1100px !important;
+    width: 90% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+}
+
+/* Keep top header pinned and solid across all pages */
+/* header,
+.site-header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    background-color: #0a0f1c !important;
+    border-bottom: 1px solid #1e293b !important;
+} */
+
+/* Keep top header pinned and solid across all pages */
+html body header,
+html body .site-header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    background-color: #0a0f1c !important;
+    border-bottom: 1px solid #1e293b !important;
+}
+
+
+/* Consistent compact centered pill above H1 on all tool pages */
+.otc-private-pill {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    align-self: center !important;
+    width: fit-content !important;
+    max-width: 100% !important;
+    margin: 0 auto 1rem auto !important;
+    gap: 0.45rem !important;
+    background: rgba(16, 185, 129, 0.12) !important;
+    border: 1px solid rgba(52, 211, 153, 0.35) !important;
+    color: #e2e8f0 !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    padding: 0.38rem 1rem !important;
+    border-radius: 999px !important;
+}
+
+.otc-private-pill-wrap {
+    display: flex !important;
+    justify-content: center !important;
+    align-self: center !important;
+    width: 100% !important;
+}

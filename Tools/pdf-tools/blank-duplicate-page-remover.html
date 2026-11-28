@@ -1,0 +1,1629 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#060a14">
+
+<title>Remove Blank & Duplicate PDF Pages Online Free | OnlineToolCollection</title>
+
+<meta name="description" content="Remove blank and duplicate pages from PDF files online for free. Scan PDF pages, review detected blank and duplicate pages, and download a cleaner PDF.">
+<meta name="keywords" content="remove blank pages from PDF, remove duplicate PDF pages, blank PDF page remover, duplicate PDF page remover, clean PDF online, delete PDF pages free">
+<meta name="author" content="Online Tool Collection">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<link rel="canonical" href="https://allinone-utilities.com/Tools/pdf-tools/blank-duplicate-page-remover.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Online Tool Collection">
+<meta property="og:title" content="Blank & Duplicate PDF Page Remover Online">
+<meta property="og:description" content="Find blank and duplicate PDF pages, review the detected pages, and remove them easily for free.">
+<meta property="og:url" content="https://allinone-utilities.com/Tools/pdf-tools/blank-duplicate-page-remover.html">
+<meta property="og:image" content="https://allinone-utilities.com/assets/og-cover.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Blank & Duplicate PDF Page Remover">
+<meta name="twitter:description" content="Find and remove blank or duplicate pages from PDF documents online.">
+<meta name="twitter:image" content="https://allinone-utilities.com/assets/og-cover.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Blank & Duplicate PDF Page Remover - Online Tool Collection",
+  "url": "https://allinone-utilities.com/Tools/pdf-tools/blank-duplicate-page-remover.html",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "Free browser-based tool for detecting and removing blank and visually duplicated PDF pages."
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" defer></script>
+
+<style>
+:root {
+    --bg-primary: #060a14;
+    --bg-card: #101b30;
+    --border-subtle: rgba(148,163,184,.14);
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --accent-blue: #60a5fa;
+    --green-text: #34d399;
+    --green-border: rgba(52,211,153,.3);
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #080d1b;
+    color: #e6edf7;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    min-height: 100vh;
+}
+
+button, input {
+    font: inherit;
+}
+
+button {
+    touch-action: manipulation;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(6,10,20,.9);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(148,163,184,.3);
+    border-radius: 6px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+.ambient-glow {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+        radial-gradient(circle at 50% -10%,rgba(59,130,246,.18),transparent 55%),
+        radial-gradient(circle at 85% 35%,rgba(99,102,241,.08),transparent 45%);
+}
+
+.site-header {
+    border-bottom: 1px solid #1d2940;
+    background: #080d1b;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-inner {
+    max-width: 1150px;
+    margin: auto;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.brand-short {
+    font-size: clamp(22px,3vw,30px);
+    font-weight: 900;
+    letter-spacing: -1px;
+    background: linear-gradient(110deg,#22d3ee,#4f66ff,#a855f7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.brand-o {
+    color: #ff8c24;
+}
+
+.brand-t {
+    color: #fff;
+}
+
+.brand-c {
+    color: #22c55e;
+}
+
+.brand-name {
+    color: #fff;
+    font-size: clamp(14px,2vw,20px);
+    font-weight: 700;
+    letter-spacing: -.35px;
+}
+
+.brand-tagline {
+    color: #a9b7cf;
+    font-size: 12px;
+    font-weight: 500;
+    margin-left: 5px;
+    white-space: nowrap;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+nav a:hover {
+    color: #60a5fa;
+}
+
+.container {
+    width: calc(100% - 24px);
+    max-width: 1150px;
+    margin: 24px auto;
+    padding: 22px;
+    background: #101b30;
+    border: 1px solid #263a5c;
+    border-radius: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.tool-hero {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.privacy-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(16,185,129,.12);
+    border: 1px solid var(--green-border);
+    color: var(--green-text);
+    font-size: 12.5px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.tool-hero h1 {
+    font-size: clamp(24px,4vw,36px);
+    margin: 10px 0;
+    color: #fff;
+    line-height: 1.2;
+}
+
+.tool-hero p {
+    color: #9aabc4;
+    font-size: 16px;
+    max-width: 700px;
+    margin: auto;
+    line-height: 1.65;
+}
+
+.dropzone {
+    border: 2px dashed #3978c9;
+    border-radius: 16px;
+    padding: 35px 15px;
+    text-align: center;
+    background: #0c162b;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.dropzone:hover,
+.dropzone.dragover {
+    border-color: #66a2ff;
+    background: #142342;
+}
+
+.dropzone-icon {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.dropzone-title {
+    font-size: 21px;
+    font-weight: bold;
+    color: #fff;
+    margin: 8px 0;
+}
+
+.dropzone-sub {
+    font-size: 14.5px;
+    color: #98a9c1;
+    margin: 8px 0;
+}
+
+.btn-select {
+    background: #2864eb;
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 12px;
+    width: 100%;
+    max-width: 280px;
+    min-height: 48px;
+}
+
+.btn-select:hover {
+    background: #3977ff;
+}
+
+.file-status {
+    display: none;
+    padding: 15px;
+    border-radius: 14px;
+    background: #18253c;
+    border: 1px solid #304968;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.file-details {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    overflow: hidden;
+    min-width: 0;
+}
+
+.file-name {
+    font-weight: bold;
+    color: #fff;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+.file-size {
+    font-size: 13px;
+    color: #94a6bf;
+    margin-top: 4px;
+}
+
+.btn-clear {
+    background: rgba(255,104,104,.15);
+    border: 1px solid rgba(255,104,104,.3);
+    color: #ff6868;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 9px 12px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    min-height: 40px;
+}
+
+.btn-clear:hover {
+    background: rgba(255,104,104,.3);
+}
+
+.action-area {
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.settings-panel {
+    background: #0c162b;
+    border: 1px solid #263a5c;
+    border-radius: 14px;
+    padding: 18px;
+}
+
+.settings-panel h2 {
+    color: #fff;
+    font-size: 18px;
+    margin: 0 0 12px;
+}
+
+.setting-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 12px 0;
+    color: #d5dfef;
+    font-size: 14.5px;
+    line-height: 1.5;
+}
+
+.setting-row input {
+    width: 18px;
+    height: 18px;
+    accent-color: #4384ff;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.setting-row small {
+    display: block;
+    color: #94a6bf;
+    margin-top: 3px;
+}
+
+.btn-scan {
+    width: 100%;
+    background: linear-gradient(100deg,#2864eb,#673de9);
+    color: #fff;
+    border: none;
+    border-radius: 14px;
+    padding: 17px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    min-height: 52px;
+}
+
+.btn-scan:hover {
+    opacity: .93;
+}
+
+.btn-scan:disabled {
+    opacity: .55;
+    cursor: not-allowed;
+}
+
+.status-message {
+    text-align: center;
+    font-size: 14px;
+    color: #9aabc4;
+    min-height: 22px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.status-message.success {
+    color: #56d9a9;
+    font-weight: bold;
+}
+
+.status-message.error {
+    color: #ff9b9b;
+}
+
+.progress-track {
+    display: none;
+    width: 100%;
+    height: 8px;
+    background: #1e2d47;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg,#3b82f6,#8b5cf6);
+    transition: width .2s;
+}
+
+.results {
+    display: none;
+    margin-top: 24px;
+}
+
+.results-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.results-header h2 {
+    color: #fff;
+    font-size: 21px;
+    margin: 0;
+}
+
+.result-summary {
+    background: #0c162b;
+    border: 1px solid #263a5c;
+    border-radius: 12px;
+    padding: 14px;
+    color: #a9b7cf;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.result-summary strong {
+    color: #fff;
+}
+
+.page-grid {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 14px;
+}
+
+.page-card {
+    border: 1px solid #304968;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #0c162b;
+    min-width: 0;
+}
+
+.page-card.selected {
+    border-color: #f87171;
+}
+
+.page-card canvas {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    background: white;
+}
+
+.page-card-info {
+    padding: 11px;
+}
+
+.page-card-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+    align-items: center;
+}
+
+.page-number {
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.page-badge {
+    font-size: 11px;
+    font-weight: bold;
+    padding: 4px 7px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.page-badge.blank {
+    background: rgba(245,158,11,.15);
+    color: #fbbf24;
+}
+
+.page-badge.duplicate {
+    background: rgba(248,113,113,.15);
+    color: #f87171;
+}
+
+.page-badge.clean {
+    background: rgba(52,211,153,.12);
+    color: #34d399;
+}
+
+.page-card-info label {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    color: #b8c7dc;
+    font-size: 13px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.page-card-info input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    accent-color: #ef4444;
+}
+
+.selection-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 16px 0;
+}
+
+.btn-secondary {
+    border: 1px solid #395577;
+    background: #172744;
+    color: #cbd5e1;
+    padding: 10px 14px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 14px;
+    min-height: 42px;
+}
+
+.btn-secondary:hover {
+    border-color: #60a5fa;
+}
+
+.btn-remove {
+    width: 100%;
+    background: linear-gradient(100deg,#dc2626,#b91c1c);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 17px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    min-height: 52px;
+    margin-top: 8px;
+}
+
+.btn-remove:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+.tool-note {
+    margin-top: 24px;
+    padding: 20px;
+    border-radius: 16px;
+    background: #111e33;
+    border: 1px solid #263a5c;
+    font-size: 14.5px;
+    color: #9aabc4;
+    line-height: 1.65;
+}
+
+.tool-note h2 {
+    font-size: 18px;
+    color: #fff;
+    margin: 0 0 8px;
+}
+
+.info-section,
+.card-section {
+    width: calc(100% - 24px);
+    max-width: 1200px;
+    margin: 24px auto 0;
+    padding: 24px;
+    background: #101b30;
+    border: 1px solid #263a5c;
+    border-radius: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.info-section h2,
+.card-section h2 {
+    font-size: 22px;
+    color: #fff;
+    margin: 0 0 14px;
+}
+
+.info-section h3 {
+    font-size: 17px;
+    color: #fff;
+    margin: 20px 0 8px;
+}
+
+.info-section p,
+.info-section ul {
+    color: #9aabc4;
+    font-size: 14.5px;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+.info-section ul {
+    padding-left: 20px;
+}
+
+.info-section li {
+    margin-bottom: 7px;
+}
+
+.related-tools {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 14px;
+}
+
+.related-link {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 18px;
+    border: 1px solid #263a5c;
+    border-radius: 14px;
+    background: #0d172b;
+    text-decoration: none;
+    transition: border-color .2s;
+}
+
+.related-link:hover {
+    border-color: #3b82f6;
+}
+
+.related-link strong {
+    color: #fff;
+    font-size: 16px;
+}
+
+.related-link span {
+    color: #9aabc4;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.faq-item {
+    padding: 14px 0;
+    border-bottom: 1px solid #263a5c;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.faq-item h3 {
+    color: #fff;
+    font-size: 17px;
+    margin: 0 0 8px;
+}
+
+.faq-item p {
+    color: #9aabc4;
+    font-size: 14.5px;
+    line-height: 1.65;
+    margin: 0;
+}
+
+.site-footer {
+    border-top: 1px solid #1d2940;
+    text-align: center;
+    padding: 24px 16px;
+    color: #94a3b8;
+    font-size: 13px;
+    background: #080d1b;
+    position: relative;
+    z-index: 2;
+    margin-top: 40px;
+}
+
+@media (min-width:640px) {
+    .container,
+    .info-section,
+    .card-section {
+        padding: 32px;
+    }
+
+    .page-grid {
+        grid-template-columns: repeat(4,minmax(0,1fr));
+    }
+}
+
+@media (max-width:760px) {
+    .related-tools {
+        grid-template-columns: 1fr;
+    }
+
+    .page-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+    }
+
+    .brand-tagline {
+        display: none;
+    }
+
+    .container {
+        padding: 18px;
+    }
+}
+
+@media (max-width:500px) {
+    .header-inner {
+        padding: 14px;
+    }
+
+    .brand-name {
+        display: none;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    .container,
+    .info-section,
+    .card-section {
+        width: calc(100% - 16px);
+        padding: 16px;
+        border-radius: 14px;
+    }
+
+    .tool-hero h1 {
+        font-size: 26px;
+    }
+
+    .tool-hero p {
+        font-size: 14.5px;
+    }
+
+    .dropzone {
+        padding: 26px 12px;
+    }
+
+    .dropzone-title {
+        font-size: 18px;
+    }
+
+    .dropzone-sub {
+        font-size: 13.5px;
+    }
+
+    .file-status {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .btn-clear {
+        width: 100%;
+    }
+
+    .settings-panel {
+        padding: 14px;
+    }
+
+    .page-grid {
+        gap: 9px;
+    }
+
+    .page-card-info {
+        padding: 9px;
+    }
+
+    .page-number {
+        font-size: 12px;
+    }
+
+    .page-badge {
+        font-size: 9px;
+        padding: 3px 5px;
+    }
+
+    .page-card-info label {
+        font-size: 12px;
+    }
+
+    .selection-actions button {
+        flex: 1;
+    }
+}
+
+@media (max-width:340px) {
+    .container,
+    .info-section,
+    .card-section {
+        padding: 12px;
+    }
+
+    .page-grid {
+        gap: 7px;
+    }
+
+    .page-card-info {
+        padding: 7px;
+    }
+
+    .results-header h2 {
+        font-size: 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="ambient-glow" aria-hidden="true"></div>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a class="brand" href="../../index.html">
+            <span class="brand-short">
+                <span class="brand-o">O</span><span class="brand-t">T</span><span class="brand-c">C</span>
+            </span>
+            <span class="brand-name">OnlineToolCollection</span>
+            <span class="brand-tagline">Tools for every task. All in one place.</span>
+        </a>
+        <nav>
+            <a href="../../index.html#category-boxes-section">Categories</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="tool-hero">
+        <div class="privacy-pill">🔒 Local Browser Processing</div>
+        <h1>Blank &amp; Duplicate PDF Page Remover</h1>
+        <p>Find blank pages and visually duplicated pages in your PDF. Review the detected pages, select what you want to remove, and download a cleaner PDF in seconds.</p>
+    </section>
+
+    <section class="converter-card">
+
+        <div class="dropzone" id="dropzone">
+            <div class="dropzone-icon" aria-hidden="true">📄</div>
+            <div class="dropzone-title">Drop your PDF file here</div>
+            <div class="dropzone-sub">Or tap below to select a PDF from your device</div>
+            <button type="button" class="btn-select" id="selectBtn">Choose PDF File</button>
+            <input type="file" id="fileInput" accept=".pdf,application/pdf" hidden>
+        </div>
+
+        <div class="file-status" id="fileStatus">
+            <div class="file-details">
+                <span style="font-size:28px">📑</span>
+                <div style="overflow:hidden;min-width:0">
+                    <div class="file-name" id="fileName">document.pdf</div>
+                    <div class="file-size" id="fileSize">0 KB</div>
+                </div>
+            </div>
+            <button type="button" class="btn-clear" id="btnClear">✕ Remove</button>
+        </div>
+
+        <div class="action-area" id="actionArea">
+
+            <div class="settings-panel">
+                <h2>Detection Options</h2>
+
+                <label class="setting-row">
+                    <input type="checkbox" id="detectBlank" checked>
+                    <span>
+                        <strong>Detect blank pages</strong>
+                        <small>Find pages that appear to contain no meaningful visible content.</small>
+                    </span>
+                </label>
+
+                <label class="setting-row">
+                    <input type="checkbox" id="detectDuplicates" checked>
+                    <span>
+                        <strong>Detect duplicate pages</strong>
+                        <small>Find visually similar pages and flag repeated pages for review.</small>
+                    </span>
+                </label>
+            </div>
+
+            <button type="button" class="btn-scan" id="scanBtn">Scan PDF Pages</button>
+
+            <div class="progress-track" id="progressTrack">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <div class="status-message" id="statusMsg" aria-live="polite"></div>
+        </div>
+
+        <section class="results" id="results">
+            <div class="results-header">
+                <h2>Scan Results</h2>
+            </div>
+
+            <div class="result-summary" id="resultSummary"></div>
+
+            <div class="selection-actions">
+                <button type="button" class="btn-secondary" id="selectDetectedBtn">Select detected</button>
+                <button type="button" class="btn-secondary" id="deselectAllBtn">Deselect all</button>
+            </div>
+
+            <div class="page-grid" id="pageGrid"></div>
+
+            <button type="button" class="btn-remove" id="removeBtn" disabled>
+                Remove Selected Pages &amp; Download PDF
+            </button>
+
+            <div class="status-message" id="removeStatus" aria-live="polite"></div>
+        </section>
+
+    </section>
+
+    <section class="tool-note">
+        <h2>Review Before Removing Pages</h2>
+        <p>Blank pages and duplicate pages are detected automatically, but you can review the page previews and change the selection before downloading. A duplicate page is identified by visual similarity, so always check the previews before removing pages from important documents.</p>
+    </section>
+
+    <section class="card-section">
+        <h2>Related PDF Utilities</h2>
+        <div class="related-tools">
+            <a class="related-link" href="compress.html">
+                <strong>Compress PDF</strong>
+                <span>Reduce PDF file size for easier sharing and storage.</span>
+            </a>
+            <a class="related-link" href="split.html">
+                <strong>Split PDF</strong>
+                <span>Separate pages or sections from a PDF document.</span>
+            </a>
+            <a class="related-link" href="merge.html">
+                <strong>Merge PDF</strong>
+                <span>Combine multiple PDF files into one document.</span>
+            </a>
+        </div>
+    </section>
+
+    <section class="card-section">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <h3>How does the blank page detector work?</h3>
+            <p>The tool renders each page and checks the amount of visible content. Pages that are nearly empty are flagged as potential blank pages for review.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How are duplicate PDF pages detected?</h3>
+            <p>Rendered page images are compared for visual similarity. Pages that look very similar are flagged as possible duplicates. You should review the previews before deleting them.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Will it delete pages automatically?</h3>
+            <p>No. Detected pages are presented for review. You choose which pages to remove before creating the cleaned PDF.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Are my PDF files uploaded?</h3>
+            <p>No upload is required. The PDF is processed locally in your browser using JavaScript libraries.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Can I use this on mobile?</h3>
+            <p>Yes. The page is responsive and supports mobile browsers, tablets, and desktop devices.</p>
+        </div>
+    </section>
+
+</main>
+
+<!-- SEO Content: Approximately 400 words -->
+<section class="info-section">
+
+    <h2>Remove Blank and Duplicate Pages from PDF Files Online</h2>
+
+    <p>
+        Unwanted blank pages and repeated content can make a PDF document difficult to read, print, share, or organize. Whether you are working with scanned paperwork, reports, study materials, invoices, manuals, or business documents, removing unnecessary pages can make your file cleaner and easier to manage. Our free blank and duplicate PDF page remover helps you identify pages that may not need to be included in your document.
+    </p>
+
+    <p>
+        Instead of manually opening every page of a large PDF, use this tool to scan the document and identify nearly empty pages and visually repeated pages. After the scan is complete, review the page previews, select the pages you want to delete, and download a new PDF containing the remaining pages.
+    </p>
+
+    <h3>Find Blank PDF Pages Quickly</h3>
+
+    <p>
+        Blank pages can appear when scanning books, printing double-sided documents, combining files, or exporting documents from other applications. Our blank page detection feature checks the visible content of rendered PDF pages and flags pages that appear to be empty. This can help you clean up unnecessary pages in scanned documents and reduce the number of pages you need to print. Very faint marks, small page numbers, or light content may affect automatic detection, so reviewing flagged pages is recommended.
+    </p>
+
+    <h3>Detect Repeated PDF Pages</h3>
+
+    <p>
+        Duplicate pages can occur when documents are scanned more than once, files are merged incorrectly, or the same page is accidentally included in multiple sections. The duplicate detection feature compares page appearance and identifies pages that look similar. It can help with repeated forms, reports, handouts, and other documents. Since pages with similar layouts may contain different information, check the previews before deciding which pages to remove.
+    </p>
+
+    <h3>Simple, Private PDF Cleanup</h3>
+
+    <p>
+        The tool works directly in your web browser, so you do not need to install additional software or create an account. Your selected PDF is processed locally on your device rather than being uploaded to a conversion server. Choose a file, scan it, review the results, select unwanted pages, and download the cleaned document. The tool is designed to make PDF cleanup straightforward on desktop computers, tablets, and mobile phones.
+    </p>
+
+    <h3>Keep the Pages You Need</h3>
+
+    <p>
+        Automatic detection is designed to save time, not replace your judgment. You remain in control of the final selection. Use the Blank and Duplicate PDF Page Remover to review unnecessary pages, clean up documents, and prepare a more organized PDF for sharing, archiving, or printing.
+    </p>
+
+</section>
+
+<footer class="site-footer">
+    Online Tool Collection — Fast, secure document tools.
+</footer>
+
+<script>
+(function() {
+    "use strict";
+
+    const dropzone = document.getElementById("dropzone");
+    const fileInput = document.getElementById("fileInput");
+    const selectBtn = document.getElementById("selectBtn");
+    const fileStatus = document.getElementById("fileStatus");
+    const fileNameEl = document.getElementById("fileName");
+    const fileSizeEl = document.getElementById("fileSize");
+    const btnClear = document.getElementById("btnClear");
+    const actionArea = document.getElementById("actionArea");
+    const scanBtn = document.getElementById("scanBtn");
+    const statusMsg = document.getElementById("statusMsg");
+    const results = document.getElementById("results");
+    const resultSummary = document.getElementById("resultSummary");
+    const pageGrid = document.getElementById("pageGrid");
+    const selectDetectedBtn = document.getElementById("selectDetectedBtn");
+    const deselectAllBtn = document.getElementById("deselectAllBtn");
+    const removeBtn = document.getElementById("removeBtn");
+    const removeStatus = document.getElementById("removeStatus");
+    const progressTrack = document.getElementById("progressTrack");
+    const progressBar = document.getElementById("progressBar");
+
+    let selectedFile = null;
+    let pdfDocument = null;
+    let pageResults = [];
+    let scanned = false;
+
+    // PDF.js worker
+    function configurePDFJS() {
+        if (window.pdfjsLib) {
+            pdfjsLib.GlobalWorkerOptions.workerSrc =
+                "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+        }
+    }
+
+    function formatBytes(bytes) {
+        if (!bytes) return "0 Bytes";
+        const units = ["Bytes", "KB", "MB", "GB"];
+        const i = Math.floor(Math.log(bytes) / Math.log(1024));
+        return (bytes / Math.pow(1024, i)).toFixed(i === 0 ? 0 : 2) + " " + units[i];
+    }
+
+    function showStatus(message, type = "") {
+        statusMsg.textContent = message;
+        statusMsg.className = "status-message" + (type ? " " + type : "");
+    }
+
+    function showRemoveStatus(message, type = "") {
+        removeStatus.textContent = message;
+        removeStatus.className = "status-message" + (type ? " " + type : "");
+    }
+
+    function setProgress(percent) {
+        progressTrack.style.display = "block";
+        progressBar.style.width = Math.max(0, Math.min(100, percent)) + "%";
+    }
+
+    function resetProgress() {
+        progressTrack.style.display = "none";
+        progressBar.style.width = "0%";
+    }
+
+    function handleFile(file) {
+        if (!file) return;
+
+        if (file.type !== "application/pdf" && !file.name.toLowerCase().endsWith(".pdf")) {
+            showStatus("Please select a valid PDF file.", "error");
+            actionArea.style.display = "flex";
+            return;
+        }
+
+        selectedFile = file;
+        scanned = false;
+        pdfDocument = null;
+        pageResults = [];
+
+        fileNameEl.textContent = file.name;
+        fileSizeEl.textContent = formatBytes(file.size);
+
+        dropzone.style.display = "none";
+        fileStatus.style.display = "flex";
+        actionArea.style.display = "flex";
+        results.style.display = "none";
+
+        scanBtn.disabled = false;
+        scanBtn.textContent = "Scan PDF Pages";
+        showStatus("Ready to scan your PDF.");
+        showRemoveStatus("");
+    }
+
+    selectBtn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        fileInput.click();
+    });
+
+    dropzone.addEventListener("click", function() {
+        fileInput.click();
+    });
+
+    fileInput.addEventListener("change", function(e) {
+        if (e.target.files.length) {
+            handleFile(e.target.files[0]);
+        }
+    });
+
+    dropzone.addEventListener("dragover", function(e) {
+        e.preventDefault();
+        dropzone.classList.add("dragover");
+    });
+
+    dropzone.addEventListener("dragleave", function() {
+        dropzone.classList.remove("dragover");
+    });
+
+    dropzone.addEventListener("drop", function(e) {
+        e.preventDefault();
+        dropzone.classList.remove("dragover");
+        if (e.dataTransfer.files.length) {
+            handleFile(e.dataTransfer.files[0]);
+        }
+    });
+
+    btnClear.addEventListener("click", function() {
+        selectedFile = null;
+        pdfDocument = null;
+        pageResults = [];
+        scanned = false;
+        fileInput.value = "";
+
+        fileStatus.style.display = "none";
+        actionArea.style.display = "none";
+        results.style.display = "none";
+        dropzone.style.display = "block";
+
+        pageGrid.innerHTML = "";
+        showStatus("");
+        showRemoveStatus("");
+        resetProgress();
+    });
+
+    // Render a page into a small preview canvas
+    async function renderPage(page, maxWidth = 420) {
+        const viewport = page.getViewport({ scale: 1 });
+        const scale = Math.min(maxWidth / viewport.width, 1);
+        const scaledViewport = page.getViewport({ scale });
+
+        const canvas = document.createElement("canvas");
+        canvas.width = Math.max(1, Math.round(scaledViewport.width));
+        canvas.height = Math.max(1, Math.round(scaledViewport.height));
+
+        const context = canvas.getContext("2d", { willReadFrequently: true });
+
+        await page.render({
+            canvasContext: context,
+            viewport: scaledViewport,
+            background: "#ffffff"
+        }).promise;
+
+        return canvas;
+    }
+
+    // Normalize a page to a fixed-size comparison image
+    async function createComparisonData(page) {
+        const targetWidth = 120;
+        const targetHeight = 160;
+
+        const viewport = page.getViewport({ scale: 1 });
+        const scale = Math.min(
+            targetWidth / viewport.width,
+            targetHeight / viewport.height
+        );
+
+        const scaled = page.getViewport({ scale });
+
+        const canvas = document.createElement("canvas");
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
+
+        const ctx = canvas.getContext("2d", { willReadFrequently: true });
+
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, targetWidth, targetHeight);
+
+        const x = (targetWidth - scaled.width) / 2;
+        const y = (targetHeight - scaled.height) / 2;
+
+        await page.render({
+            canvasContext: ctx,
+            viewport: scaled,
+            transform: [1, 0, 0, 1, x, y],
+            background: "#ffffff"
+        }).promise;
+
+        return ctx.getImageData(0, 0, targetWidth, targetHeight).data;
+    }
+
+    // Detect nearly blank pages by counting pixels that differ from white.
+    function isBlankPage(imageData) {
+        const totalPixels = imageData.length / 4;
+        let nonWhitePixels = 0;
+
+        for (let i = 0; i < imageData.length; i += 4) {
+            const r = imageData[i];
+            const g = imageData[i + 1];
+            const b = imageData[i + 2];
+
+            // Ignore very light marks and background noise.
+            if (r < 245 || g < 245 || b < 245) {
+                nonWhitePixels++;
+            }
+        }
+
+        const contentRatio = nonWhitePixels / totalPixels;
+
+        // Conservative threshold: flag pages with very little visible content.
+        return contentRatio < 0.0018;
+    }
+
+    // Compare two normalized page images.
+    function comparePages(dataA, dataB) {
+        if (dataA.length !== dataB.length) return false;
+
+        let totalDifference = 0;
+        let significantDifferentPixels = 0;
+        const pixelCount = dataA.length / 4;
+
+        for (let i = 0; i < dataA.length; i += 4) {
+            const diffR = Math.abs(dataA[i] - dataB[i]);
+            const diffG = Math.abs(dataA[i + 1] - dataB[i + 1]);
+            const diffB = Math.abs(dataA[i + 2] - dataB[i + 2]);
+
+            const averageDiff = (diffR + diffG + diffB) / 3;
+            totalDifference += averageDiff;
+
+            if (averageDiff > 35) {
+                significantDifferentPixels++;
+            }
+        }
+
+        const averageDifference = totalDifference / pixelCount;
+        const differentPixelRatio = significantDifferentPixels / pixelCount;
+
+        // Conservative visual similarity thresholds.
+        return averageDifference < 8 && differentPixelRatio < 0.035;
+    }
+
+    async function scanPDF() {
+        if (!selectedFile) {
+            showStatus("Please select a PDF file first.", "error");
+            return;
+        }
+
+        const detectBlank = document.getElementById("detectBlank").checked;
+        const detectDuplicates = document.getElementById("detectDuplicates").checked;
+
+        if (!detectBlank && !detectDuplicates) {
+            showStatus("Please select at least one detection option.", "error");
+            return;
+        }
+
+        scanBtn.disabled = true;
+        scanBtn.textContent = "Scanning...";
+        results.style.display = "none";
+        pageGrid.innerHTML = "";
+        resetProgress();
+
+        try {
+            configurePDFJS();
+
+            if (!window.pdfjsLib || !window.PDFLib) {
+                throw new Error("PDF libraries could not be loaded. Check your internet connection and refresh the page.");
+            }
+
+            showStatus("Reading PDF file...");
+            const arrayBuffer = await selectedFile.arrayBuffer();
+
+            pdfDocument = await pdfjsLib.getDocument({
+                data: arrayBuffer.slice(0)
+            }).promise;
+
+            const totalPages = pdfDocument.numPages;
+
+            if (totalPages < 1) {
+                throw new Error("This PDF does not contain any pages.");
+            }
+
+            // Very large PDFs can take time on mobile devices.
+            if (totalPages > 300) {
+                const proceed = confirm(
+                    "This PDF contains " + totalPages +
+                    " pages. Scanning may take longer on mobile devices. Continue?"
+                );
+                if (!proceed) {
+                    showStatus("Scan cancelled.");
+                    scanBtn.disabled = false;
+                    scanBtn.textContent = "Scan PDF Pages";
+                    return;
+                }
+            }
+
+            const pageData = [];
+            pageResults = [];
+
+            for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
+                showStatus("Analyzing page " + pageNum + " of " + totalPages + "...");
+                setProgress((pageNum / totalPages) * 50);
+
+                const page = await pdfDocument.getPage(pageNum);
+                const previewCanvas = await renderPage(page, 420);
+                const compareData = await createComparisonData(page);
+                const blank = detectBlank ? isBlankPage(compareData) : false;
+
+                pageData.push({
+                    pageNumber: pageNum,
+                    previewCanvas,
+                    compareData,
+                    blank,
+                    duplicate: false,
+                    duplicateOf: null,
+                    selected: blank
+                });
+
+                page.cleanup();
+            }
+
+            // Duplicate detection compares pages in document order.
+            if (detectDuplicates) {
+                showStatus("Comparing pages for duplicates...");
+
+                for (let i = 0; i < pageData.length; i++) {
+                    if (pageData[i].blank) continue;
+
+                    for (let j = 0; j < i; j++) {
+                        if (pageData[j].blank) continue;
+
+                        if (comparePages(pageData[i].compareData, pageData[j].compareData)) {
+                            pageData[i].duplicate = true;
+                            pageData[i].duplicateOf = pageData[j].pageNumber;
+                            pageData[i].selected = true;
+                            break;
+                        }
+                    }
+
+                    setProgress(50 + ((i + 1) / pageData.length) * 50);
+                }
+            }
+
+            pageResults = pageData;
+            scanned = true;
+
+            renderResults();
+
+            const blankCount = pageResults.filter(p => p.blank).length;
+            const duplicateCount = pageResults.filter(p => p.duplicate).length;
+            const selectedCount = pageResults.filter(p => p.selected).length;
+
+            showStatus(
+                "Scan complete! Found " + blankCount + " blank page(s) and " +
+                duplicateCount + " possible duplicate page(s).",
+                "success"
+            );
+
+            resultSummary.innerHTML =
+                "<strong>" + totalPages + "</strong> total pages scanned. " +
+                "<strong>" + blankCount + "</strong> blank page(s) and " +
+                "<strong>" + duplicateCount + "</strong> possible duplicate(s) detected. " +
+                "<strong>" + selectedCount + "</strong> page(s) currently selected for removal. Review each preview before proceeding.";
+
+            results.style.display = "block";
+            updateRemoveButton();
+            resetProgress();
+
+        } catch (error) {
+            console.error(error);
+            showStatus(error.message || "Unable to scan this PDF. It may be corrupted or password-protected.", "error");
+        } finally {
+            scanBtn.disabled = false;
+            scanBtn.textContent = "Scan PDF Pages";
+        }
+    }
+
+    function renderResults() {
+        pageGrid.innerHTML = "";
+
+        pageResults.forEach(function(pageResult) {
+            const card = document.createElement("div");
+            card.className = "page-card" + (pageResult.selected ? " selected" : "");
+
+            const canvas = pageResult.previewCanvas;
+            const preview = document.createElement("canvas");
+            preview.width = canvas.width;
+            preview.height = canvas.height;
+
+            const previewContext = preview.getContext("2d");
+            previewContext.drawImage(canvas, 0, 0);
+
+            const badge = document.createElement("span");
+            badge.className = "page-badge";
+
+            if (pageResult.blank) {
+                badge.classList.add("blank");
+                badge.textContent = "Blank";
+            } else if (pageResult.duplicate) {
+                badge.classList.add("duplicate");
+                badge.textContent = "Duplicate";
+            } else {
+                badge.classList.add("clean");
+                badge.textContent = "Keep";
+            }
+
+            const info = document.createElement("div");
+            info.className = "page-card-info";
+
+            const top = document.createElement("div");
+            top.className = "page-card-top";
+
+            const number = document.createElement("span");
+            number.className = "page-number";
+            number.textContent = "Page " + pageResult.pageNumber;
+
+            top.appendChild(number);
+            top.appendChild(badge);
+
+            info.appendChild(top);
+
+            if (pageResult.duplicate && pageResult.duplicateOf) {
+                const duplicateInfo = document.createElement("div");
+                duplicateInfo.style.cssText = "font-size:11px;color:#9aabc4;margin-top:6px;";
+                duplicateInfo.textContent = "Similar to page " + pageResult.duplicateOf;
+                info.appendChild(duplicateInfo);
+            }
+
+            const label = document.createElement("label");
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.checked = pageResult.selected;
+            checkbox.setAttribute("aria-label", "Select page " + pageResult.pageNumber + " for removal");
+
+            checkbox.addEventListener("change", function() {
+                pageResult.selected = checkbox.checked;
+                card.classList.toggle("selected", checkbox.checked);
+                updateRemoveButton();
+            });
+
+            const labelText = document.createElement("span");
+            labelText.textContent = pageResult.selected ? "Remove this page" : "Keep this page";
+
+            checkbox.addEventListener("change", function() {
+                labelText.textContent = checkbox.checked ? "Remove this page" : "Keep this page";
+            });
+
+            label.appendChild(checkbox);
+            label.appendChild(labelText);
+            info.appendChild(label);
+
+            card.appendChild(preview);
+            card.appendChild(info);
+            pageGrid.appendChild(card);
+        });
+    }
+
+    function updateRemoveButton() {
+        const selectedCount = pageResults.filter(p => p.selected).length;
+        removeBtn.disabled = selectedCount === 0 || !scanned;
+        removeBtn.textContent = selectedCount === 0
+            ? "No Pages Selected"
+            : "Remove " + selectedCount + " Selected Page(s) & Download PDF";
+    }
+
+    selectDetectedBtn.addEventListener("click", function() {
+        pageResults.forEach(function(page) {
+            page.selected = page.blank || page.duplicate;
+        });
+        renderResults();
+        updateRemoveButton();
+    });
+
+    deselectAllBtn.addEventListener("click", function() {
+        pageResults.forEach(function(page) {
+            page.selected = false;
+        });
+        renderResults();
+        updateRemoveButton();
+    });
+
+    async function removeSelectedPages() {
+        if (!selectedFile || !scanned) return;
+
+        const selectedPages = pageResults
+            .filter(p => p.selected)
+            .map(p => p.pageNumber);
+
+        if (selectedPages.length === 0) {
+            showRemoveStatus("Select at least one page to remove.", "error");
+            return;
+        }
+
+        if (selectedPages.length >= pageResults.length) {
+            showRemoveStatus("You cannot remove every page. Keep at least one page in the PDF.", "error");
+            return;
+        }
+
+        removeBtn.disabled = true;
+        showRemoveStatus("Preparing your cleaned PDF...");
+
+        try {
+            const { PDFDocument } = PDFLib;
+
+            const bytes = await selectedFile.arrayBuffer();
+            const pdfDoc = await PDFDocument.load(bytes);
+
+            // Copy pages to a new PDF, excluding selected pages.
+            const newPdf = await PDFDocument.create();
+            const totalPages = pdfDoc.getPageCount();
+
+            const pagesToKeep = [];
+
+            for (let i = 0; i < totalPages; i++) {
+                const pageNumber = i + 1;
+                if (!selectedPages.includes(pageNumber)) {
+                    pagesToKeep.push(i);
+                }
+            }
+
+            const copiedPages = await newPdf.copyPages(pdfDoc, pagesToKeep);
+            copiedPages.forEach(page => newPdf.addPage(page));
+
+            const newBytes = await newPdf.save();
+
+            const blob = new Blob([newBytes], {
+                type: "application/pdf"
+            });
+
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+
+            const baseName = selectedFile.name.replace(/\.pdf$/i, "");
+            link.href = url;
+            link.download = baseName + "-cleaned.pdf";
+
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+
+            setTimeout(function() {
+                URL.revokeObjectURL(url);
+            }, 1000);
+
+            showRemoveStatus(
+                "Successfully removed " + selectedPages.length +
+                " page(s). Your cleaned PDF download has started.",
+                "success"
+            );
+
+        } catch (error) {
+            console.error(error);
+            showRemoveStatus(
+                "Could not create the cleaned PDF. The file may be password-protected or damaged.",
+                "error"
+            );
+        } finally {
+            removeBtn.disabled = false;
+            updateRemoveButton();
+        }
+    }
+
+    scanBtn.addEventListener("click", scanPDF);
+    removeBtn.addEventListener("click", removeSelectedPages);
+
+})();
+</script>
+
+</body>
+</html>

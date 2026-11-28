@@ -8,7 +8,7 @@
     <link rel="canonical" href="https://allinone-utilities.com/Tools/pdf-tools/merge.html">
 
     <!-- Open Graph SEO Meta Tags -->
-    <meta property="og:title" content="Free Merge PDF Online — AllInOne Utilities">
+    <meta property="og:title" content="Free Merge PDF Online — Online Tool Collection">
     <meta property="og:description" content="Combine multiple PDF files into one unified document online for free. Fast, secure, and processed instantly.">
     <meta property="og:type" content="website">
 
@@ -273,12 +273,16 @@
             justify-content: space-between;
             gap: 8px;
             width: 100%;
+            flex-wrap: wrap;
         }
 
         .action-btns-group {
             display: flex;
             gap: 6px;
+            flex: 1 1 auto;
         }
+        .action-btns-group .action-btn { flex: 1 1 0; min-width: 0; }
+        .file-actions > .remove-btn { flex: 0 0 auto; }
 
         .action-btn {
             background: #192b3a;
@@ -436,14 +440,57 @@
             .brand { font-size: 26px; }
             .tool-header h1 { font-size: 36px; }
             .file-item { flex-direction: row; align-items: center; justify-content: space-between; padding: 18px 20px; }
-            .file-actions { width: auto; justify-content: flex-end; }
+            .file-info { flex: 1 1 auto; }
+            .file-actions { width: auto; justify-content: flex-end; flex-wrap: nowrap; }
+            .action-btns-group { flex: 0 0 auto; }
+            .action-btns-group .action-btn { flex: 0 0 auto; }
             .remove-btn { background: rgba(255, 104, 104, 0.15); border: 1px solid rgba(255, 104, 104, 0.3); font-size: 14px; padding: 8px 16px; }
             .merge-button { font-size: 20px; padding: 20px; }
+        }
+        @media(max-width:639px) {
+            body { overflow-x: hidden; }
+            .header-inner { padding: 14px 16px; gap: 12px; }
+            nav { gap: 10px; }
+            nav a { font-size: 13px; }
+            main, .info-section, .card-section { padding: 16px; border-radius: 14px; }
+            main { margin: 16px 12px; }
+            .section-wrapper { padding: 0 12px; }
+            .tool-header h1 { font-size: 27px; }
+            .tool-header p { font-size: 14px; }
+            .upload-area { padding: 28px 12px; }
+            .upload-area h3 { font-size: 18px; }
+            .file-item { padding: 12px; }
+            .file-actions { justify-content: flex-start; }
+            .action-btns-group { width: 100%; }
+            .action-btn { padding: 8px 9px; font-size: 13px; }
+            .remove-btn { flex: 1 1 100%; }
+            .merge-button { padding: 15px; font-size: 17px; }
+        }
+        @media(max-width:360px) {
+            .action-btns-group { gap: 5px; }
+            .action-btn { padding: 7px 5px; font-size: 12px; }
+            .brand .brand-short { font-size: 24px; }
         }
     
 /* OTC brand tagline: header-only styling */
 .brand-tagline{display:inline-block;color:#a9b7cf;font-size:12px;font-weight:500;letter-spacing:.1px;margin-left:5px;white-space:nowrap}
 @media(max-width:750px){.brand-tagline{display:none}}
+
+        /* Related utilities and FAQ — matching the PDF-to-Text reference layout */
+        .section-wrapper { max-width: 1150px; margin: 0 auto; padding: 0 24px; }
+        .card-section { background: #101b30; border: 1px solid #263a5c; border-radius: 20px; padding: 24px; margin-bottom: 24px; }
+        .card-section h2 { font-size: 22px; color: #fff; margin-bottom: 14px; }
+        .related-tools { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
+        .related-link { display: block; padding: 18px; background: #0c162b; border: 1px solid #263a5c; border-radius: 12px; color: #e6edf7; text-decoration: none; transition: 0.2s; }
+        .related-link:hover { border-color: #60a5fa; transform: translateY(-2px); }
+        .related-link strong { font-size: 16px; color: #fff; }
+        .related-link span { display: block; font-size: 13.5px; color: #9aabc4; margin-top: 4px; }
+        .faq-item { margin-bottom: 16px; }
+        .faq-item:last-child { margin-bottom: 0; }
+        .faq-item h3 { font-size: 17px; margin-bottom: 6px; color: #fff; }
+        .faq-item p { font-size: 14.5px; color: #9aabc4; line-height: 1.6; }
+        @media(min-width:640px) { .section-wrapper { margin: 35px auto; } .card-section { padding: 32px; } .related-tools { grid-template-columns: repeat(3, 1fr); gap: 18px; } }
+
 </style>
 </head>
 
@@ -517,8 +564,27 @@
         </p>
     </section>
 
+
+    <div class="section-wrapper">
+        <section class="card-section">
+            <h2>Related PDF Utilities</h2>
+            <div class="related-tools">
+                <a href="compress.html" class="related-link"><strong>Compress PDF &rarr;</strong><span>Reduce PDF file size for easier sharing.</span></a>
+                <a href="split.html" class="related-link"><strong>Split PDF &rarr;</strong><span>Separate PDF documents into individual files.</span></a>
+                <a href="pdf-page-counter.html" class="related-link"><strong>PDF Page Counter &amp; Page Size Checker &rarr;</strong><span>Check page count, dimensions, and orientation.</span></a>
+            </div>
+        </section>
+        <section class="card-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item"><h3>How many PDF files can I merge?</h3><p>You can select multiple PDF files. Choose at least two files to merge, then arrange them in the order you want before combining.</p></div>
+            <div class="faq-item"><h3>Can I change the order of PDFs before merging?</h3><p>Yes. Use the Up and Down controls beside each selected file to set the order. The merged document follows that sequence.</p></div>
+            <div class="faq-item"><h3>Are my original PDF files changed?</h3><p>No. The merge process creates a new combined PDF download. Your original files remain unchanged on your device.</p></div>
+            <div class="faq-item"><h3>Why did my PDF merge fail?</h3><p>Check that you selected at least two valid PDF files. A damaged, password-protected, or unsupported PDF may prevent the merge from completing.</p></div>
+        </section>
+    </div>
+
     <footer>
-        <p>AllInOne Utilities — Fast, secure document tools.</p>
+        <p>Online Tool Collection — Fast, secure document tools.</p>
     </footer>
 
     <script>
@@ -560,8 +626,14 @@
             successMessage.classList.remove("visible");
         }
 
-        browseButton.addEventListener("click", () => fileInput.click());
-        uploadArea.addEventListener("click", () => fileInput.click());
+        browseButton.addEventListener("click", (event) => {
+            event.stopPropagation();
+            fileInput.click();
+        });
+        uploadArea.addEventListener("click", (event) => {
+            if (event.target.closest("button") || event.target === fileInput) return;
+            fileInput.click();
+        });
 
         fileInput.addEventListener("change", (e) => {
             const newFiles = Array.from(e.target.files);
@@ -571,21 +643,24 @@
 
         function addFiles(files) {
             clearMessages();
+            let skipped = [];
             files.forEach(file => {
                 if (file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf")) {
-                    selectedFiles.push(file);
+                    const duplicate = selectedFiles.some(existing => existing.name === file.name && existing.size === file.size && existing.lastModified === file.lastModified);
+                    if (!duplicate) selectedFiles.push(file);
                 } else {
-                    showError(`Skipped non-PDF file: ${file.name}`);
+                    skipped.push(file.name);
                 }
             });
             renderFileList();
+            if (skipped.length) showError(`Skipped non-PDF file(s): ${skipped.join(", ")}`);
         }
 
         function renderFileList() {
             fileList.innerHTML = "";
             if (selectedFiles.length > 0) {
                 fileListContainer.classList.add("visible");
-                mergeButton.disabled = false;
+                mergeButton.disabled = selectedFiles.length < 2;
             } else {
                 fileListContainer.classList.remove("visible");
                 mergeButton.disabled = true;
@@ -603,32 +678,39 @@
                     </div>
                     <div class="file-actions">
                         <div class="action-btns-group">
-                            <button class="action-btn" onclick="moveFile(${index}, -1)" ${index === 0 ? 'disabled' : ''}>⬆️ Up</button>
-                            <button class="action-btn" onclick="moveFile(${index}, 1)" ${index === selectedFiles.length - 1 ? 'disabled' : ''}>⬇️ Down</button>
+                            <button type="button" class="action-btn" data-action="up" data-index="${index}" ${index === 0 ? 'disabled' : ''}>⬆️ Up</button>
+                            <button type="button" class="action-btn" data-action="down" data-index="${index}" ${index === selectedFiles.length - 1 ? 'disabled' : ''}>⬇️ Down</button>
                         </div>
-                        <button class="action-btn remove-btn" onclick="removeFile(${index})">Remove</button>
+                        <button type="button" class="action-btn remove-btn" data-action="remove" data-index="${index}">Remove</button>
                     </div>
                 `;
                 fileList.appendChild(item);
             });
         }
 
-        window.moveFile = function(index, direction) {
+        function moveFile(index, direction) {
             const newIndex = index + direction;
             if (newIndex < 0 || newIndex >= selectedFiles.length) return;
-            
-            const temp = selectedFiles[index];
-            selectedFiles[index] = selectedFiles[newIndex];
-            selectedFiles[newIndex] = temp;
-            
+            [selectedFiles[index], selectedFiles[newIndex]] = [selectedFiles[newIndex], selectedFiles[index]];
             renderFileList();
-        };
+            clearMessages();
+        }
 
-        window.removeFile = function(index) {
+        function removeFile(index) {
+            if (index < 0 || index >= selectedFiles.length) return;
             selectedFiles.splice(index, 1);
             renderFileList();
             clearMessages();
-        };
+        }
+
+        fileList.addEventListener("click", (event) => {
+            const button = event.target.closest("button[data-action]");
+            if (!button) return;
+            const index = Number(button.dataset.index);
+            if (button.dataset.action === "up") moveFile(index, -1);
+            if (button.dataset.action === "down") moveFile(index, 1);
+            if (button.dataset.action === "remove") removeFile(index);
+        });
 
         // Drag and Drop support
         ["dragenter", "dragover"].forEach(eventName => {
@@ -675,8 +757,12 @@
                 });
 
                 if (!response.ok) {
-                    const errData = await response.json();
-                    throw new Error(errData.error || "Failed to merge PDFs.");
+                    let errMessage = "Failed to merge PDFs. Please check your files and try again.";
+                    try {
+                        const errData = await response.json();
+                        if (errData && errData.error) errMessage = errData.error;
+                    } catch (_) {}
+                    throw new Error(errMessage);
                 }
 
                 // --- EXTRACT DYNAMIC FILENAME FROM SERVER HEADER ---
@@ -698,7 +784,7 @@
                 document.body.appendChild(a);
                 a.click();
                 a.remove();
-                window.URL.revokeObjectURL(url);
+                setTimeout(() => window.URL.revokeObjectURL(url), 1000);
 
                 showSuccess("PDFs successfully merged and downloaded!");
 

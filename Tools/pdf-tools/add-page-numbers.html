@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#080d1b">
+
+    <title>Add Page Numbers to PDF Online Free — Custom Position &amp; Format | OnlineToolCollection</title>
+    <meta name="description" content="Insert customizable page numbers (1, 1/10, Page 1 of 10) into any PDF file online. Choose position, font size, color, and starting number. 100% private, client-side with zero uploads.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://allinone-utilities.com">
+
+    <meta property="og:title" content="Add Page Numbers to PDF Online Free | OnlineToolCollection">
+    <meta property="og:description" content="Stamp customizable page numbers onto your PDF documents directly in your browser with zero file uploads.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://allinone-utilities.com">
+
+    <!-- Safe Dynamic Loader for pdf-lib -->
+    <script>
+    (function() {
+        var s = document.createElement("script");
+        s.src = ["https:/", "cdnjs" + ".cloudflare.com", "ajax", "libs", "pdf-lib/1.17.1/pdf-lib.min.js"].join("/");
+        document.head.appendChild(s);
+    })();
+    </script>
+
+    <!-- FAQ Rich Snippet Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I add page numbers to a PDF online for free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Upload your PDF file, select your preferred position (such as Bottom Center or Bottom Right), choose a number format like Page 1 of 10, and click Add Page Numbers & Download PDF."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I skip adding a page number on the cover page?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Simply set the Start Numbering From Page option to page 2 so your cover page remains clean."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are my PDF documents uploaded to a server?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. All PDF processing happens 100% client-side inside your web browser. Your files never leave your device."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { font-family: Arial, Helvetica, sans-serif; background: #080d1b; color: #e6edf7; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+        .background { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: -1; }
+        .star { position: absolute; width: 2px; height: 2px; background: #ffffff; opacity: 0.35; border-radius: 50%; }
+        .site-header { border-bottom: 1px solid #1d2940; background: #080d1b; position: sticky; top: 0; z-index: 100; }
+        .header-inner { max-width: 1150px; margin: auto; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; }
+        .brand { font-size: 26px; font-weight: bold; color: #fff; text-decoration: none; letter-spacing: -0.5px; display: flex; align-items: center; gap: 9px; white-space: nowrap; }
+        .brand .brand-short { font-size: clamp(22px, 3vw, 30px); font-weight: 900; letter-spacing: -1px; background: linear-gradient(110deg, #22d3ee, #4f66ff, #a855f7); -webkit-background-clip: text; background-clip: text; color: transparent !important; }
+        .brand .brand-o { color: #ff8c24 !important; background: none !important; -webkit-text-fill-color: #ff8c24; }
+        .brand .brand-t { color: #ffffff !important; background: none !important; -webkit-text-fill-color: #ffffff; }
+        .brand .brand-c { color: #22c55e !important; background: none !important; -webkit-text-fill-color: #22c55e; }
+        .brand .brand-name { color: #ffffff !important; font-size: clamp(14px, 2vw, 20px); font-weight: 700; letter-spacing: -0.35px; }
+        @media(max-width:480px) { .brand .brand-name { display: none; } .brand .brand-short { font-size: 27px; } }
+        .brand-tagline { display: inline-block; color: #a9b7cf; font-size: 12px; font-weight: 500; letter-spacing: .1px; margin-left: 5px; white-space: nowrap; }
+        @media(max-width:750px) { .brand-tagline { display: none; } }
+        nav { display: flex; gap: 24px; }
+        nav a { color: #cbd5e1; text-decoration: none; font-size: 15px; font-weight: 500; transition: 0.2s; }
+        nav a:hover { color: #60a5fa; }
+        .container { max-width: 1150px; width: 100%; margin: 24px auto; padding: 24px; background: #101b30; border: 1px solid #263a5c; border-radius: 20px; }
+        .badge { display: flex; width: fit-content; max-width: 100%; margin: 0 auto 16px auto; align-items: center; gap: 6px; background: rgba(52, 211, 153, 0.12); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; text-align: center; }
+        h1 { text-align: center; font-size: 32px; margin: 10px 0; color: #ffffff; line-height: 1.25; }
+        .subtitle { text-align: center; color: #9aabc4; font-size: 16px; line-height: 1.6; max-width: 760px; margin: 0 auto 28px auto; }
+        .drop-area { border: 2px dashed #3978c9; border-radius: 16px; padding: 40px 20px; text-align: center; background: #0c162b; transition: 0.2s; cursor: pointer; margin-bottom: 24px; }
+        .drop-area:hover, .drop-area.dragover { border-color: #66a2ff; background: #142342; }
+        .file-icon { font-size: 48px; margin-bottom: 12px; }
+        .drop-area h2 { font-size: 20px; color: #fff; margin-bottom: 8px; }
+        .drop-area p { color: #98a9c1; font-size: 14px; }
+        #fileInput { display: none; }
+        .workspace-container { display: none; background: #080d1b; border: 1px solid #263a5c; border-radius: 14px; padding: 24px; margin-bottom: 24px; }
+        .workspace-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 20px; border-bottom: 1px solid #1d2940; padding-bottom: 14px; }
+        .file-meta { display: flex; flex-direction: column; gap: 4px; }
+        .file-meta strong { color: #ffffff; font-size: 16px; word-break: break-all; }
+        .file-meta span { color: #9aabc4; font-size: 13px; }
+        .settings-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 20px; }
+        @media (min-width: 640px) { .settings-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 900px) { .settings-grid { grid-template-columns: repeat(3, 1fr); } }
+        .setting-card { background: #0c162b; border: 1px solid #1f3150; border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
+        .setting-card label { font-size: 13px; color: #9aabc4; font-weight: 600; }
+        select, input[type="number"], input[type="text"], input[type="color"] { background: #101b30; color: #ffffff; border: 1px solid #304968; border-radius: 8px; padding: 10px 12px; font-size: 14px; outline: none; width: 100%; }
+        input[type="color"] { height: 42px; padding: 4px 8px; cursor: pointer; }
+        select:focus, input:focus { border-color: #60a5fa; }
+        .preview-box { background: #0c162b; border: 1px solid #2b426b; border-radius: 12px; padding: 16px; text-align: center; margin-bottom: 20px; }
+        .preview-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.8px; color: #9aabc4; margin-bottom: 8px; }
+        .preview-sample { display: inline-block; background: #ffffff; color: #111827; padding: 10px 24px; border-radius: 6px; font-weight: 600; font-size: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.35); }
+        .btn-group { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+        button { border: none; border-radius: 12px; padding: 14px 26px; cursor: pointer; color: white; font-size: 15px; font-weight: bold; min-height: 48px; transition: transform .15s, opacity .2s, background .2s; }
+        button:hover:not(:disabled) { opacity: .92; transform: translateY(-1px); }
+        button:active:not(:disabled) { transform: translateY(0); }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-primary { background: linear-gradient(100deg, #2864eb, #673de9); }
+        .btn-secondary { background: #18253c; border: 1px solid #304968; color: #cbd5e1; }
+        .btn-secondary:hover:not(:disabled) { border-color: #66a2ff; background: #233554; }
+        .status { display: none; padding: 16px; border-radius: 12px; font-size: 14.5px; line-height: 1.6; text-align: center; margin-top: 16px; }
+        .status.success { display: block; color: #56d9a9; background: #0e222e; border: 1px solid #14534b; }
+        .status.error { display: block; color: #ff9b9b; background: #261b2b; border: 1px solid #63344b; }
+        .status.info { display: block; background: rgba(75, 140, 255, .1); border: 1px solid rgba(75, 140, 255, .4); color: #9fc2ff; }
+        .card-section, .info-section { max-width: 1150px; width: 100%; margin: 24px auto; padding: 24px; background: #101b30; border: 1px solid #263a5c; border-radius: 20px; }
+        .card-section h2, .info-section h2 { font-size: 22px; color: #fff; margin-bottom: 14px; }
+        .info-section h3 { font-size: 17px; color: #fff; margin-top: 20px; margin-bottom: 8px; }
+        .info-section p { color: #9aabc4; font-size: 14.5px; line-height: 1.65; margin-bottom: 12px; }
+        .info-section ul { color: #9aabc4; font-size: 14.5px; line-height: 1.65; padding-left: 18px; margin-bottom: 12px; }
+        .info-section li { margin-bottom: 6px; }
+        .faq-item { margin-bottom: 16px; border-top: 1px solid #263a5c; padding-top: 16px; }
+        .faq-item:first-of-type { border-top: none; padding-top: 0; }
+        .faq-item h3 { font-size: 17px; margin-bottom: 6px; color: #ffffff; }
+        .faq-item p { font-size: 14.5px; color: #9aabc4; line-height: 1.6; }
+        .related-tools { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
+        .related-link { display: block; padding: 18px; background: #0c162b; border: 1px solid #263a5c; border-radius: 12px; color: #e6edf7; text-decoration: none; transition: 0.2s; }
+        .related-link:hover { border-color: #60a5fa; transform: translateY(-2px); }
+        .related-link strong { font-size: 16px; color: #fff; }
+        .related-link span { display: block; font-size: 13.5px; color: #9aabc4; margin-top: 4px; }
+        footer { border-top: 1px solid #1d2940; text-align: center; padding: 24px 16px; color: #9aabc4; font-size: 13px; background: #080d1b; margin-top: auto; }
+        footer a { color: #9aabc4; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: #60a5fa; }
+        @media (max-width: 600px) { .btn-group button { width: 100%; } }
+        @media (min-width: 640px) {
+            .container, .card-section, .info-section { margin: 35px auto; padding: 32px; }
+            h1 { font-size: 36px; }
+            .related-tools { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="background" id="background"></div>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a class="brand" href="../../index.html">
+            <span class="brand-short"><span class="brand-o">O</span><span class="brand-t">T</span><span class="brand-c">C</span></span>
+            <span class="brand-name">OnlineToolCollection</span>
+            <span class="brand-tagline">Tools for every task. All in one place.</span>
+        </a>
+        <nav class="nav">
+            <a href="../../index.html#category-boxes-section">Categories</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <div class="badge" role="note">🔒 No Upload &bull; 100% Client-Side Processing</div>
+    <h1>Add Page Numbers to PDF</h1>
+    <div class="subtitle">
+        Insert clean, customizable page numbers into any PDF document directly in your browser. Choose position, numbering format, starting page, font size, and color.
+    </div>
+
+    <div class="drop-area" id="dropArea">
+        <div class="file-icon">🔢</div>
+        <h2>Drag &amp; Drop your PDF file here</h2>
+        <p>or click to browse from your device (.pdf)</p>
+        <input type="file" id="fileInput" accept=".pdf,application/pdf" />
+    </div>
+
+    <div class="workspace-container" id="workspaceContainer">
+        <div class="workspace-header">
+            <div class="file-meta">
+                <strong id="fileNameDisplay">document.pdf</strong>
+                <span id="fileStatsDisplay">0 pages</span>
+            </div>
+            <button type="button" class="btn-secondary" id="resetBtn" style="padding: 10px 16px; min-height: 40px; font-size: 13.5px;">Change File</button>
+        </div>
+
+        <div class="settings-grid">
+            <div class="setting-card">
+                <label for="positionSelect">Position on Page</label>
+                <select id="positionSelect">
+                    <option value="bottom-center" selected>Bottom Center</option>
+                    <option value="bottom-right">Bottom Right</option>
+                    <option value="bottom-left">Bottom Left</option>
+                    <option value="top-center">Top Center</option>
+                    <option value="top-right">Top Right</option>
+                    <option value="top-left">Top Left</option>
+                </select>
+            </div>
+
+            <div class="setting-card">
+                <label for="formatSelect">Number Format</label>
+                <select id="formatSelect">
+                    <option value="n">1, 2, 3 ...</option>
+                    <option value="n-of-total" selected>Page 1 of 10</option>
+                    <option value="n-slash-total">1 / 10</option>
+                    <option value="dash-n-dash">- 1 -</option>
+                </select>
+            </div>
+
+            <div class="setting-card">
+                <label for="startPageInput">Start Numbering From Page</label>
+                <input type="number" id="startPageInput" value="1" min="1" />
+            </div>
+
+            <div class="setting-card">
+                <label for="firstNumberInput">First Page Number Value</label>
+                <input type="number" id="firstNumberInput" value="1" min="0" />
+            </div>
+
+            <div class="setting-card">
+                <label for="fontSizeInput">Font Size (pt)</label>
+                <input type="number" id="fontSizeInput" value="12" min="6" max="48" />
+            </div>
+
+            <div class="setting-card">
+                <label for="textColorInput">Text Color</label>
+                <input type="color" id="textColorInput" value="#1e293b" />
+            </div>
+        </div>
+
+        <div class="preview-box">
+            <div class="preview-label">Live Numbering Preview (First Numbered Page)</div>
+            <div class="preview-sample" id="previewSample">Page 1 of 1</div>
+        </div>
+
+        <div class="btn-group">
+            <button type="button" class="btn-primary" id="applyBtn">⬇️ Add Page Numbers &amp; Download PDF</button>
+        </div>
+    </div>
+
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+</main>
+<section class="info-section">
+    <h2>Add Page Numbers to PDF Online — Fast, Free &amp; Private</h2>
+    <p>
+        Whether you are submitting a university thesis, preparing legal court exhibits, compiling business reports, or organizing scanned receipts, clearly numbered pages make any document easier to read and reference. Our <strong>Add Page Numbers to PDF</strong> tool lets you stamp crisp, properly aligned page numbers onto every page of your PDF in seconds—without installing Adobe Acrobat or uploading sensitive files to external servers.
+    </p>
+    <p>
+        Everything runs <strong>100% client-side inside your web browser</strong>. Your PDF never leaves your computer or phone, ensuring total privacy for confidential contracts, academic drafts, and personal records.
+    </p>
+    <h3>Customizable Numbering Options</h3>
+    <ul>
+        <li><strong>Six Flexible Positions:</strong> Place numbers at the Bottom Center, Bottom Right, Bottom Left, Top Center, Top Right, or Top Left with clean, balanced page margins.</li>
+        <li><strong>Multiple Numbering Styles:</strong> Choose simple numbers (<code>1</code>), fraction style (<code>1 / 10</code>), formal pagination (<code>Page 1 of 10</code>), or decorative dashes (<code>- 1 -</code>).</li>
+        <li><strong>Skip Cover Pages Easily:</strong> Set <em>Start Numbering From Page</em> to <code>2</code> (or any page) so your title page or table of contents remains unnumbered.</li>
+        <li><strong>Custom Font Size &amp; Color:</strong> Match your document's typography by adjusting the point size and picking any hex color.</li>
+    </ul>
+    <h3>How to Insert Page Numbers into a PDF</h3>
+    <p>
+        Drag and drop your PDF file into the upload box above, pick your preferred position and format using the live preview badge, and click <strong>Add Page Numbers &amp; Download PDF</strong> to save your numbered document immediately.
+    </p>
+</section>
+
+<section class="card-section">
+    <h2>Related PDF &amp; Document Tools</h2>
+    <div class="related-tools">
+        <a href="word-to-pdf.html" class="related-link">
+            <strong>Word to PDF &rarr;</strong>
+            <span>Convert Microsoft Word DOCX files into clean PDF documents.</span>
+        </a>
+        <a href="compress.html" class="related-link">
+            <strong>Compress PDF &rarr;</strong>
+            <span>Reduce PDF file size while preserving document quality.</span>
+        </a>
+        <a href="merge.html" class="related-link">
+            <strong>Merge PDF &rarr;</strong>
+            <span>Combine multiple PDF files into a single unified document.</span>
+        </a>
+    </div>
+</section>
+
+<section class="card-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+        <h3>1. Can I start numbering from page 2 to keep my cover page blank?</h3>
+        <p>Yes! Set <strong>Start Numbering From Page</strong> to <code>2</code> and keep <strong>First Page Number Value</strong> at <code>1</code>. Page 1 will stay untouched, and Page 2 will be labeled as Page 1.</p>
+    </div>
+    <div class="faq-item">
+        <h3>2. Does this work on scanned PDFs or single-page PDFs?</h3>
+        <p>Yes. It works on 100% of standard and scanned PDFs regardless of page count or internal structure.</p>
+    </div>
+    <div class="faq-item">
+        <h3>3. Are my files uploaded anywhere?</h3>
+        <p>Never. All page numbering happens locally in your browser's memory, so your documents stay completely private on your device.</p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; <span id="year"></span> OnlineToolCollection — Fast, secure document tools.</p>
+    <p style="margin-top:10px">
+        <a href="../../index.html">Home</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+    </p>
+</footer>
+<script>
+"use strict";
+
+const background = document.getElementById("background");
+if (background) {
+    for (let i = 0; i < 70; i++) {
+        const star = document.createElement("div");
+        star.className = "star";
+        star.style.left = Math.random() * 100 + "%";
+        star.style.top = Math.random() * 100 + "%";
+        background.appendChild(star);
+    }
+}
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const dropArea = document.getElementById("dropArea");
+const fileInput = document.getElementById("fileInput");
+const workspaceContainer = document.getElementById("workspaceContainer");
+const fileNameDisplay = document.getElementById("fileNameDisplay");
+const fileStatsDisplay = document.getElementById("fileStatsDisplay");
+const positionSelect = document.getElementById("positionSelect");
+const formatSelect = document.getElementById("formatSelect");
+const startPageInput = document.getElementById("startPageInput");
+const firstNumberInput = document.getElementById("firstNumberInput");
+const fontSizeInput = document.getElementById("fontSizeInput");
+const textColorInput = document.getElementById("textColorInput");
+const previewSample = document.getElementById("previewSample");
+const applyBtn = document.getElementById("applyBtn");
+const resetBtn = document.getElementById("resetBtn");
+const statusBox = document.getElementById("status");
+
+let sourcePdfBytes = null;
+let totalPages = 0;
+let baseFileName = "document";
+
+function showStatus(message, type) {
+    statusBox.className = "status " + type;
+    statusBox.textContent = message;
+}
+
+function clearStatus() {
+    statusBox.className = "status";
+    statusBox.textContent = "";
+}
+
+function hexToRgbNormalized(hex) {
+    const clean = hex.replace("#", "");
+    const r = parseInt(clean.substring(0, 2), 16) / 255;
+    const g = parseInt(clean.substring(2, 4), 16) / 255;
+    const b = parseInt(clean.substring(4, 6), 16) / 255;
+    return { r, g, b };
+}
+
+function formatNumberLabel(currentNum, totalNumbered) {
+    const fmt = formatSelect.value;
+    if (fmt === "n") return String(currentNum);
+    if (fmt === "n-slash-total") return `${currentNum} / ${totalNumbered}`;
+    if (fmt === "dash-n-dash") return `- ${currentNum} -`;
+    return `Page ${currentNum} of ${totalNumbered}`;
+}
+
+function updatePreview() {
+    const startPage = Math.max(1, Math.min(totalPages || 1, parseInt(startPageInput.value, 10) || 1));
+    const firstNum = Math.max(0, parseInt(firstNumberInput.value, 10) || 1);
+    const numberedCount = Math.max(1, (totalPages || 1) - startPage + 1);
+    const totalEndNum = firstNum + numberedCount - 1;
+    previewSample.textContent = formatNumberLabel(firstNum, totalEndNum);
+    previewSample.style.color = textColorInput.value;
+}
+
+[positionSelect, formatSelect, startPageInput, firstNumberInput, fontSizeInput, textColorInput].forEach(el => {
+    el.addEventListener("input", updatePreview);
+    el.addEventListener("change", updatePreview);
+});
+
+dropArea.addEventListener("click", () => fileInput.click());
+
+["dragenter", "dragover"].forEach(eventName => {
+    dropArea.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        dropArea.classList.add("dragover");
+    }, false);
+});
+
+["dragleave", "drop"].forEach(eventName => {
+    dropArea.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        dropArea.classList.remove("dragover");
+    }, false);
+});
+
+dropArea.addEventListener("drop", (e) => {
+    const files = e.dataTransfer.files;
+    if (files.length) handleFile(files.item(0));
+});
+
+fileInput.addEventListener("change", (e) => {
+    if (e.target.files.length) handleFile(e.target.files.item(0));
+});
+
+async function handleFile(file) {
+    clearStatus();
+    if (!file.name.toLowerCase().endsWith(".pdf") && file.type !== "application/pdf") {
+        showStatus("Please upload a valid .pdf file.", "error");
+        return;
+    }
+
+    if (!window.PDFLib) {
+        showStatus("PDF engine is still loading. Please wait 2 seconds and try again.", "error");
+        return;
+    }
+
+    baseFileName = file.name.replace(/\.pdf$/i, "");
+    fileNameDisplay.textContent = file.name;
+    showStatus("Loading PDF...", "info");
+
+    try {
+        const { PDFDocument } = window.PDFLib;
+        sourcePdfBytes = await file.arrayBuffer();
+        const pdfDoc = await PDFDocument.load(sourcePdfBytes, { ignoreEncryption: true });
+        totalPages = pdfDoc.getPageCount();
+
+        startPageInput.max = totalPages;
+        startPageInput.value = 1;
+        firstNumberInput.value = 1;
+        fileStatsDisplay.textContent = `${totalPages} ${totalPages === 1 ? "page" : "pages"} ready`;
+
+        dropArea.style.display = "none";
+        workspaceContainer.style.display = "block";
+        updatePreview();
+        clearStatus();
+    } catch (err) {
+        showStatus("Error reading PDF: " + err.message, "error");
+    }
+}
+
+applyBtn.addEventListener("click", async () => {
+    if (!sourcePdfBytes || !window.PDFLib) return;
+
+    applyBtn.disabled = true;
+    showStatus("Adding page numbers to your PDF...", "info");
+
+    try {
+        const { PDFDocument, StandardFonts, rgb } = window.PDFLib;
+        const pdfDoc = await PDFDocument.load(sourcePdfBytes, { ignoreEncryption: true });
+        const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+        const pages = pdfDoc.getPages();
+
+        const position = positionSelect.value;
+        const startPage = Math.max(1, Math.min(pages.length, parseInt(startPageInput.value, 10) || 1));
+        const firstNum = Math.max(0, parseInt(firstNumberInput.value, 10) || 1);
+        const fontSize = Math.max(6, Math.min(72, parseInt(fontSizeInput.value, 10) || 12));
+        const { r, g, b } = hexToRgbNormalized(textColorInput.value);
+        const color = rgb(r, g, b);
+
+        const numberedCount = pages.length - startPage + 1;
+        const totalEndNum = firstNum + numberedCount - 1;
+        const marginX = 36;
+        const marginY = 26;
+
+        for (let i = startPage - 1; i < pages.length; i++) {
+            const page = pages.item ? pages.item(i) : pages.at(i);
+            const { width, height } = page.getSize();
+            const currentNum = firstNum + (i - (startPage - 1));
+            const label = formatNumberLabel(currentNum, totalEndNum);
+            const textWidth = font.widthOfTextAtSize(label, fontSize);
+
+            let x = (width - textWidth) / 2;
+            let y = marginY;
+
+            if (position.includes("left")) x = marginX;
+            if (position.includes("right")) x = Math.max(marginX, width - textWidth - marginX);
+            if (position.includes("top")) y = Math.max(marginY, height - marginY - fontSize);
+
+            page.drawText(label, { x, y, size: fontSize, font, color });
+        }
+
+        const outBytes = await pdfDoc.save();
+        const blob = new Blob([outBytes], { type: "application/pdf" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `${baseFileName}_numbered.pdf`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+        showStatus(`✓ Page numbers added across ${numberedCount} ${numberedCount === 1 ? "page" : "pages"} and downloaded!`, "success");
+    } catch (err) {
+        showStatus("Error adding page numbers: " + err.message, "error");
+    } finally {
+        applyBtn.disabled = false;
+    }
+});
+
+resetBtn.addEventListener("click", () => {
+    fileInput.value = "";
+    sourcePdfBytes = null;
+    totalPages = 0;
+    workspaceContainer.style.display = "none";
+    dropArea.style.display = "block";
+    clearStatus();
+});
+</script>
+
+</body>
+</html>

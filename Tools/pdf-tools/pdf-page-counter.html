@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDF Page Counter &amp; Page Size Checker | Free Online PDF Tool</title>
+<meta name="description" content="Count PDF pages and check paper sizes, dimensions, and orientation online. Free PDF page counter and page size checker with private, client-side processing.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://alltoocollection.com/Tools/pdf-tools/pdf-page-counter.html">
+<meta property="og:title" content="PDF Page Counter &amp; Page Size Checker">
+<meta property="og:description" content="Instantly check the page count, dimensions, paper size, and orientation of a PDF. Private browser-based tool.">
+<meta property="og:type" content="website">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,Helvetica,sans-serif;background:#080d1b;color:#e6edf7;min-height:100vh;overflow-x:hidden;line-height:1.6}
+.background{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:-1}
+.star{position:absolute;width:2px;height:2px;background:#fff;opacity:.35;border-radius:50%}
+.site-header{border-bottom:1px solid #1d2940;background:#080d1b;position:sticky;top:0;z-index:100}
+.header-inner{max-width:1150px;margin:auto;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:9px;white-space:nowrap;font-weight:800;text-decoration:none;font-size:23px;color:#fff}
+.brand-short{font-size:clamp(22px,3vw,30px);font-weight:900;letter-spacing:-1px}
+.brand-o{color:#ff8c24}.brand-t{color:#fff}.brand-c{color:#22c55e}
+.brand-name{color:#fff;font-size:clamp(14px,2vw,20px);font-weight:700;letter-spacing:-.35px}
+.brand-tagline{display:inline-block;color:#a9b7cf;font-size:12px;font-weight:500;letter-spacing:.1px;margin-left:5px;white-space:nowrap}
+nav{display:flex;gap:24px}nav a{color:#cbd5e1;text-decoration:none;font-size:15px;font-weight:500;transition:.2s}nav a:hover{color:#60a5fa}
+main{width:100%;max-width:1150px;margin:24px auto;padding:24px;background:#101b30;border:1px solid #263a5c;border-radius:20px}
+.tool-header{text-align:center;margin-bottom:28px}.tool-header .icon{font-size:48px;margin-bottom:12px}
+.tool-header h1{text-align:center;font-size:32px;margin:10px 0;color:#fff;line-height:1.2}
+.tool-header p{text-align:center;color:#9aabc4;font-size:16px;line-height:1.6;margin-bottom:0}
+.converter-card{background:transparent}.upload{border:2px dashed #3978c9;border-radius:16px;padding:40px 16px;text-align:center;background:#0c162b;cursor:pointer;transition:.2s}
+.upload:hover,.upload.drag{background:#142342;border-color:#66a2ff}.upload-icon{font-size:48px;margin-bottom:12px}.upload h3{font-size:22px;margin:8px 0;color:#fff}.upload p{color:#98a9c1;font-size:15px;margin:8px 0}.upload input{display:none}
+.button{background:#2864eb;color:white;border:none;padding:14px 28px;border-radius:10px;font-size:16px;font-weight:bold;cursor:pointer;margin-top:12px;width:100%;max-width:280px;min-height:48px;transition:.2s}.button:hover{background:#3977ff}
+.status{min-height:24px;color:#9fc5ff;margin-top:8px}.summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:28px 0 18px}
+.stat{background:#18253c;border:1px solid #304968;border-radius:12px;padding:14px;text-align:center}.stat strong{display:block;font-size:23px;color:#fff}.stat span{color:#9aabc4;font-size:13px}
+.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:540px;margin-top:12px}th,td{text-align:left;padding:11px;border-bottom:1px solid #263a5c}th{color:#9fc5ff;background:#0c162b}td{color:#dce6f4}
+.info-section{max-width:1150px;margin:24px auto 0;padding:24px;background:#101b30;border:1px solid #263a5c;border-radius:20px}
+.info-section h2{font-size:22px;color:#fff;margin-bottom:14px}.info-section h3{font-size:17px;color:#fff;margin-top:20px;margin-bottom:8px}
+.info-section p,.info-section ul{color:#9aabc4;font-size:14.5px;line-height:1.65;margin-bottom:12px}.info-section ul{padding-left:18px}.info-section li{margin-bottom:6px}
+footer{border-top:1px solid #1d2940;text-align:center;padding:24px 16px;color:#94a3b8;font-size:13px;background:#080d1b;margin-top:40px}footer a{color:#cbd5e1;text-decoration:none;margin:0 10px;transition:color .2s}footer a:hover{color:#60a5fa}
+@media(min-width:640px){main,.info-section{margin:35px auto;padding:32px}.header-inner{padding:20px 24px}.tool-header h1{font-size:36px}}
+@media(max-width:750px){.brand-tagline{display:none}}
+@media(max-width:480px){.brand-name{display:none}.brand-short{font-size:27px}}
+@media(max-width:600px){.header-inner{padding:16px}.brand{gap:7px}main,.info-section{margin:18px 12px;padding:16px}.summary{grid-template-columns:1fr}.upload{padding:22px 12px}.tool-header h1{font-size:27px}.info-section h2{font-size:20px}}
+
+
+/* Related utilities and FAQ sections - match PDF to Text reference layout */
+.below-sections{max-width:1150px;margin:0 auto;padding:0 24px}
+.card-section{background:#101b30;border:1px solid #263a5c;border-radius:20px;padding:24px;margin:24px 0}
+.card-section h2{font-size:22px;color:#fff;margin-bottom:14px}
+.related-tools{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px}
+.related-link{display:block;padding:18px;background:#0c162b;border:1px solid #263a5c;border-radius:12px;color:#e6edf7;text-decoration:none;transition:.2s}
+.related-link:hover{border-color:#60a5fa;transform:translateY(-2px)}
+.related-link strong{font-size:16px;color:#fff}
+.related-link span{display:block;font-size:13.5px;color:#9aabc4;margin-top:4px}
+.faq-item{margin-bottom:16px}.faq-item:last-child{margin-bottom:0}
+.faq-item h3{font-size:17px;margin-bottom:6px;color:#fff}
+.faq-item p{font-size:14.5px;color:#9aabc4;line-height:1.6}
+@media(min-width:640px){.below-sections{padding:0 24px}.card-section{margin:35px 0;padding:32px}.related-tools{grid-template-columns:repeat(3,1fr);gap:18px}}
+@media(max-width:600px){.below-sections{padding:0 12px}.card-section{margin:18px 0;padding:16px}.card-section h2{font-size:20px}}
+</style>
+</head>
+<body>
+<div class="background" id="background"></div>
+<header class="site-header"><div class="header-inner">
+<a href="../../index.html" class="brand"><span class="brand-short"><span class="brand-o">O</span><span class="brand-t">T</span><span class="brand-c">C</span></span><span class="brand-name">OnlineToolCollection</span><span class="brand-tagline">Tools for every task. All in one place.</span></a>
+<nav><a href="../../index.html#category-boxes-section">Categories</a></nav>
+</div></header>
+<main>
+<section class="panel">
+<section class="tool-header">
+<div class="icon">📑</div>
+<h1>PDF Page Counter &amp; Page Size Checker</h1>
+<p>Count pages in a PDF and check each page's paper size, dimensions, and orientation. Your file is processed in this browser and is not uploaded to a server.</p>
+<div class="upload" id="dropZone">
+<label for="pdfFile"><strong>Select a PDF file to check</strong></label><br>
+<input type="file" id="pdfFile" accept="application/pdf,.pdf">
+<button class="button" id="selectBtn" type="button">Choose PDF</button>
+<div>or drag and drop your PDF here</div>
+<div class="status" id="status" role="status" aria-live="polite"></div>
+</div>
+<div id="results" hidden>
+<div class="summary">
+<div class="stat"><strong id="pageCount">0</strong><span>Total pages</span></div>
+<div class="stat"><strong id="fileSize">—</strong><span>File size</span></div>
+<div class="stat"><strong id="pageSizeSummary">—</strong><span>First page size</span></div>
+</div>
+<div class="table-wrap"><table><thead><tr><th>Page</th><th>Paper size</th><th>Dimensions</th><th>Orientation</th></tr></thead><tbody id="pageRows"></tbody></table></div>
+</div>
+</section>
+<section class="info-section">
+<h2>Check PDF Page Count and Paper Size Online</h2>
+<p>Need to know how many pages a PDF contains before printing, submitting, or sharing it? The PDF Page Counter &amp; Page Size Checker from Online Tool Collection helps you inspect a document in a few seconds. Choose a PDF file to see the total number of pages, the size of the file, and the dimensions of its pages. You can check whether a document uses A4, A3, Letter, Legal, or a custom paper size without opening a desktop PDF application.</p>
+<p>This tool is useful when preparing documents for printing or when a website, application, school, office, or application form specifies page requirements. It reports each page separately, so you can spot a PDF that contains a mixture of paper sizes. Page orientation is shown as portrait or landscape, making it easier to identify pages that may need review before printing or sharing.</p>
+<p>PDF page dimensions are displayed in points and converted to millimeters and inches for convenient reference. The paper-size label is based on the measured page dimensions and is intended as a helpful identification, not a guarantee of printer settings. Custom-sized pages are shown with their actual dimensions instead of being forced into a standard paper label.</p>
+<p>Using the checker is straightforward: select or drop your PDF into the tool, wait for the document to be read, and review the results. No account or installation is required. Processing happens locally in your browser, so the selected file is not sent to Online Tool Collection. For very large PDFs, processing may take longer and use more memory on your device. The checker reads document information only; it does not edit, compress, or change your original PDF. You can keep your original file unchanged and use the page details to decide what to do next.</p>
+</section>
+</main>
+<div class="below-sections">
+  <section class="card-section" aria-labelledby="related-pdf-title">
+    <h2 id="related-pdf-title">Related PDF Utilities</h2>
+    <div class="related-tools">
+      <a href="pdf-to-text.html" class="related-link">
+        <strong>PDF to Text →</strong>
+        <span>Extract text content from PDF documents.</span>
+      </a>
+      <a href="pdf-to-jpg.html" class="related-link">
+        <strong>PDF to JPG →</strong>
+        <span>Convert PDF pages into JPG images.</span>
+      </a>
+      <a href="split.html" class="related-link">
+        <strong>Split PDF →</strong>
+        <span>Divide documents into separate page files.</span>
+      </a>
+    </div>
+  </section>
+  <section class="card-section" aria-labelledby="faq-title">
+    <h2 id="faq-title">Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>How can I check the page count of a PDF?</h3>
+      <p>Select or drop your PDF into the checker. Once the document is read, the total number of pages is displayed in the results summary.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can this tool identify A4, Letter, and other paper sizes?</h3>
+      <p>Yes. It compares each page's measured dimensions with common paper sizes, including A4, A3, A5, A6, Letter, Legal, and Tabloid. Pages that do not match are labeled Custom.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can a PDF contain pages with different sizes?</h3>
+      <p>Yes. The checker reports each page separately, so documents containing a mixture of paper sizes or orientations can be identified.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Are my PDF files uploaded to a server?</h3>
+      <p>No. The PDF is processed locally in your browser using PDF.js. The file is not sent to Online Tool Collection, and the tool does not modify your original document.</p>
+    </div>
+  </section>
+</div>
+<footer><p>Online Tool Collection — Fast, secure document tools.</p><a href="../../index.html">← Back to Online Tool Collection</a> · Your PDF is processed locally in your browser.</footer>
+<script>
+const background=document.getElementById("background");for(let i=0;i<60;i++){const star=document.createElement("div");star.className="star";star.style.left=Math.random()*100+"%";star.style.top=Math.random()*100+"%";background.appendChild(star);}
+</script>
+<script type="module">
+import * as pdfjsLib from 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs';
+pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.mjs';
+const input=document.getElementById('pdfFile'), selectBtn=document.getElementById('selectBtn'), dropZone=document.getElementById('dropZone'), status=document.getElementById('status'), results=document.getElementById('results');
+selectBtn.addEventListener('click',()=>input.click());
+input.addEventListener('change',()=>{if(input.files[0]) processFile(input.files[0]);});
+['dragenter','dragover'].forEach(evt=>dropZone.addEventListener(evt,e=>{e.preventDefault();dropZone.classList.add('drag');}));
+['dragleave','drop'].forEach(evt=>dropZone.addEventListener(evt,e=>{e.preventDefault();dropZone.classList.remove('drag');}));
+dropZone.addEventListener('drop',e=>{const f=e.dataTransfer.files[0];if(f)processFile(f);});
+function bytesToSize(bytes){if(bytes<1024)return bytes+' B';if(bytes<1048576)return (bytes/1024).toFixed(1)+' KB';return (bytes/1048576).toFixed(2)+' MB';}
+function identifySize(wmm,hmm){const known=[['A4',210,297],['A3',297,420],['A5',148,210],['A6',105,148],['Letter',215.9,279.4],['Legal',215.9,355.6],['Tabloid',279.4,431.8]];for(const [name,w,h] of known){if((Math.abs(wmm-w)<=2&&Math.abs(hmm-h)<=2)||(Math.abs(wmm-h)<=2&&Math.abs(hmm-w)<=2))return name;}return 'Custom';}
+function fmt(mm){return `${mm.toFixed(1)} mm (${(mm/25.4).toFixed(2)} in)`;}
+async function processFile(file){results.hidden=true;status.textContent='Reading PDF…';if(!/\.pdf$/i.test(file.name)&&file.type!=='application/pdf'){status.textContent='Please select a PDF file.';return;}try{const bytes=await file.arrayBuffer();const doc=await pdfjsLib.getDocument({data:bytes}).promise;const rows=[];let firstSize='';for(let pageNum=1;pageNum<=doc.numPages;pageNum++){const page=await doc.getPage(pageNum);const view=page.getViewport({scale:1});const wpt=view.width,hpt=view.height;const wmm=wpt*25.4/72,hmm=hpt*25.4/72;const paper=identifySize(wmm,hmm);const orientation=wpt>=hpt?'Landscape':'Portrait';if(pageNum===1)firstSize=paper;rows.push(`<tr><td>${pageNum}</td><td>${paper}</td><td>${fmt(wmm)} × ${fmt(hmm)}</td><td>${orientation}</td></tr>`);}document.getElementById('pageCount').textContent=doc.numPages;document.getElementById('fileSize').textContent=bytesToSize(file.size);document.getElementById('pageSizeSummary').textContent=firstSize;document.getElementById('pageRows').innerHTML=rows.join('');results.hidden=false;status.textContent=`Finished checking ${file.name}`;doc.destroy();}catch(err){console.error(err);status.textContent='Could not read this PDF. It may be damaged, encrypted, or unsupported.';}}
+</script>
+</body>
+</html>

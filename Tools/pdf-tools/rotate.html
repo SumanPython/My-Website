@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rotate PDF Pages Online Free | OnlineToolCollection</title>
-    <meta name="description" content="Rotate PDF pages online for free. Rotate individual pages or your entire PDF by 90, 180, or 270 degrees. Secure browser-based PDF rotation with no server uploads.">
-    <link rel="canonical" href="https://allinone-utilities.com/Tools/pdf-tools/rotate.html">
+    <title>Rotate PDF Online Free – Rotate Pages 90°, 180° or 270° | OnlineToolCollection</title>
+    <meta name="description" content="Rotate PDF pages online for free. Turn individual pages or an entire document 90°, 180°, or 270° in your browser. Private, mobile-friendly PDF rotation with no upload.">
+    <link rel="canonical" href="https://alltoocollection.com/Tools/pdf-tools/rotate.html">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#080d1b">
+    <meta property="og:url" content="https://alltoocollection.com/Tools/pdf-tools/rotate.html">
+    <meta property="og:site_name" content="OnlineToolCollection">
 
     <!-- Open Graph SEO Meta Tags -->
-    <meta property="og:title" content="Rotate PDF Pages Online Free | AllInOne">
-    <meta property="og:description" content="Rotate PDF pages individually or rotate your entire PDF document for free.">
+    <meta property="og:title" content="Rotate PDF Online Free | OnlineToolCollection">
+    <meta property="og:description" content="Rotate individual PDF pages or the whole document online for free. Private browser-based processing.">
     <meta property="og:type" content="website">
 
     <!-- PDF-LIB: PDF editing and rotation -->
@@ -17,6 +21,19 @@
 
     <!-- PDF.js: page preview rendering -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"WebApplication",
+      "name":"Rotate PDF Online",
+      "url":"https://alltoocollection.com/Tools/pdf-tools/rotate.html",
+      "applicationCategory":"UtilitiesApplication",
+      "operatingSystem":"Any",
+      "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+      "description":"Rotate PDF pages in your browser by 90, 180, or 270 degrees."
+    }
+    </script>
 
     <!-- FAQ Rich Snippet Schema for Google SEO -->
     <script type="application/ld+json">
@@ -663,6 +680,41 @@
 /* OTC brand tagline: header-only styling */
 .brand-tagline{display:inline-block;color:#a9b7cf;font-size:12px;font-weight:500;letter-spacing:.1px;margin-left:5px;white-space:nowrap}
 @media(max-width:750px){.brand-tagline{display:none}}
+
+/* Responsive/performance refinements based on the Split PDF page layout */
+html{scroll-behavior:smooth}
+.site-header{position:sticky;top:0;z-index:20}
+.container,.card-section{width:min(1150px,calc(100% - 32px));margin-left:auto;margin-right:auto}
+.container{padding:clamp(18px,4vw,35px)}
+.card-section{padding:clamp(18px,4vw,35px)}
+.pages-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,170px),1fr))}
+.drop-area{padding:clamp(28px,6vw,55px) 18px}
+button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #66a2ff;outline-offset:3px}
+@media(max-width:750px){
+ .header-inner{padding:14px 16px;gap:10px}
+ nav{gap:12px}
+ nav a{font-size:14px}
+ .container,.card-section{width:calc(100% - 24px);margin:12px auto;border-radius:16px;padding:18px}
+ h1{font-size:clamp(25px,7vw,32px);line-height:1.2}
+ .subtitle{font-size:15px;line-height:1.55;margin-bottom:22px}
+ .control-grid{grid-template-columns:1fr}
+ .rotation-actions{display:grid;grid-template-columns:1fr;gap:10px}
+ .action-button,.choose-btn,.download-button{min-height:48px}
+ .pages-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,145px),1fr));gap:12px}
+ .page-card{padding:10px}
+ .page-preview{min-height:125px}
+ .page-preview canvas{max-height:170px}
+ .pages-header{align-items:flex-start}
+ .page-selection-actions{width:100%}
+ .small-button{min-height:40px}
+}
+@media(max-width:390px){
+ .pages-grid{grid-template-columns:1fr 1fr}
+ .brand .brand-name{display:none}
+ .container,.card-section{padding:15px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+
 </style>
 </head>
 
@@ -780,34 +832,39 @@
       </div>
     </section>
 
-    <!-- SEO & FAQ Content -->
+    <!-- SEO & FAQ Content: 300-500 words -->
     <section class="card-section">
-        <h2>Rotate PDF Pages Online for Free</h2>
-        <p>
-            Correct the orientation of your PDF documents with the free online PDF rotator from AllInOne. Whether a scanned document contains sideways pages, upside-down layouts, or mixed orientations, you can quickly adjust page direction without installing any software.
-        </p>
-
-        <h3>How to Rotate a PDF</h3>
-        <ul>
-            <li>Upload or drag and drop your PDF file into the drop zone.</li>
-            <li>Select your preferred rotation angle: 90°, 180°, or 270°.</li>
-            <li>Choose whether to rotate all pages or only selected pages using the checkboxes.</li>
-            <li>Click <strong>Download Rotated PDF</strong> to save your corrected document instantly.</li>
-        </ul>
-
-        <h2 style="margin-top: 35px;">Frequently Asked Questions</h2>
-        <div class="faq-item" style="margin-top:15px;">
-            <h3>Is it safe to rotate confidential PDFs here?</h3>
-            <p>Yes. All processing happens locally inside your browser memory using WebAssembly and JavaScript. Your files are never uploaded to any external server.</p>
-        </div>
-        <div class="faq-item" style="margin-top:15px;">
-            <h3>Can I rotate individual pages instead of the whole document?</h3>
-            <p>Yes! You can rotate individual pages separately using each page's rotation button or apply angles selectively.</p>
-        </div>
+      <h2>Rotate PDF Pages Online for Free</h2>
+      <p>Fix incorrectly oriented documents with OnlineToolCollection’s free PDF rotation tool. If a scanned page is sideways, a page appears upside down, or your PDF contains mixed orientations, you can adjust its direction without installing desktop software. Rotate the whole document in one action or turn individual pages to keep the rest of the file unchanged.</p>
+      <h3>How to Rotate PDF Pages</h3>
+      <ul>
+        <li>Choose a PDF from your device or drag and drop it into the upload area.</li>
+        <li>Wait for the page previews to load, then select the pages you want to adjust.</li>
+        <li>Choose a rotation angle of 90°, 180°, or 270°.</li>
+        <li>Use Rotate All Pages or Rotate Selected, or tap a page’s own rotate button.</li>
+        <li>Review the previews and select Download Rotated PDF to save your corrected file.</li>
+      </ul>
+      <h3>Rotate One Page or the Entire PDF</h3>
+      <p>Some documents need only a small correction. Use the page checkboxes to select specific pages and rotate those pages without changing the rest. The individual page rotate control turns a page in 90-degree steps. For a document where every page needs the same adjustment, choose an angle and use the Rotate All Pages button. Reset Rotations returns the preview adjustments to their original orientation before downloading.</p>
+      <h3>Private, Browser-Based PDF Rotation</h3>
+      <p>This tool uses browser-based PDF libraries to preview pages and apply rotation. Your selected file is processed in your browser rather than sent to our server, so you can rotate personal paperwork without uploading it to a conversion website. For best performance, use a modern browser and allow enough memory for large or image-heavy PDFs. The page works on phones, tablets, laptops, and desktop computers, with responsive controls designed to fit smaller screens.</p>
+      <h2 style="margin-top:35px">Frequently Asked Questions</h2>
+      <div class="faq-item" style="margin-top:15px">
+        <h3>Can I rotate only one PDF page?</h3>
+        <p>Yes. Select the page checkbox and use Rotate Selected, or use the Rotate button on that page’s preview card. Other pages remain unchanged.</p>
+      </div>
+      <div class="faq-item" style="margin-top:15px">
+        <h3>Which rotation angles are available?</h3>
+        <p>You can rotate pages by 90°, 180°, or 270° with the angle selector. Individual page buttons turn a page 90 degrees clockwise each time.</p>
+      </div>
+      <div class="faq-item" style="margin-top:15px">
+        <h3>Is this PDF rotator free and mobile-friendly?</h3>
+        <p>Yes. It is free to use and the layout adapts to mobile and desktop screens. No app installation is required.</p>
+      </div>
     </section>
 
     <footer>
-        <p>© 2026 AllInOne Utilities — Fast, secure document tools.</p>
+        <p>© 2026 Online Tool Collection — Fast, secure document tools.</p>
         <p style="margin-top:10px;">
             <a href="../../index.html">Home</a>
             <a href="#">Privacy Policy</a>
@@ -818,7 +875,7 @@
     <script>
         // Background Stars Animation
         const background = document.getElementById("background");
-        for (let i = 0; i < 70; i++) {
+        for (let i = 0; i < 48; i++) {
             const star = document.createElement("div");
             star.className = "star";
             star.style.left = Math.random() * 100 + "%";

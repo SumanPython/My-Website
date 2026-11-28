@@ -12,21 +12,21 @@
     <title>PDF to Word Converter Online Free — Preserve Layout &amp; Images | OnlineToolCollection</title>
     <meta name="description" content="Convert PDF files into Microsoft Word (.docx) documents online for free. Preserve exact visual layouts, tables, and embedded screenshots, or extract editable text. 100% private client-side processing.">
     <meta name="keywords" content="pdf to word converter online, convert pdf to docx free, preserve pdf layout in word, pdf with images to word, client-side pdf converter, allinone utilities">
-    <meta name="author" content="AllInOne Utilities">
+    <meta name="author" content="Online Tool Collection">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://allinone-utilities.com/Tools/pdf-tools/pdf-word.html">
 
     <!-- Open Graph / Social Sharing -->
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="AllInOne Utilities">
-    <meta property="og:title" content="PDF to Word Converter Online Free — Preserve Layout &amp; Images | AllInOne">
+    <meta property="og:site_name" content="Online Tool Collection">
+    <meta property="og:title" content="PDF to Word Converter Online Free — Preserve Layout &amp; Images | Online Tool Collection">
     <meta property="og:description" content="Convert PDF files into Word (.docx) documents locally in your browser—preserving screenshots, tables, and formatting for free.">
     <meta property="og:url" content="https://allinone-utilities.com/Tools/pdf-tools/pdf-word.html">
     <meta property="og:image" content="https://allinone-utilities.com/assets/og-cover.png">
 
     <!-- Twitter / X Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="PDF to Word Converter Online Free — Preserve Layout &amp; Images | AllInOne">
+    <meta name="twitter:title" content="PDF to Word Converter Online Free — Preserve Layout &amp; Images | Online Tool Collection">
     <meta name="twitter:description" content="Convert PDF files into Microsoft Word (.docx) files locally in your browser for free.">
     <meta name="twitter:image" content="https://allinone-utilities.com/assets/og-cover.png">
 
@@ -495,6 +495,35 @@ nav a:hover {
     .tool-note { padding: 25px; }
 }
 
+/* Related utilities and FAQ layout alignment */
+.card-section {
+    max-width: 1150px;
+    margin: 24px auto 0;
+    padding: 24px;
+    background: #101b30;
+    border: 1px solid #263a5c;
+    border-radius: 20px;
+    position: relative;
+    z-index: 2;
+}
+.card-section h2 { color: #fff; font-size: 22px; margin: 0 0 16px; }
+.related-tools { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.related-link {
+    display: flex; flex-direction: column; gap: 6px; padding: 20px;
+    border: 1px solid #263a5c; border-radius: 16px; background: #0d172b;
+    text-decoration: none; transition: border-color .2s, transform .2s;
+}
+.related-link:hover { border-color: #3b82f6; transform: translateY(-2px); }
+.related-link strong { color: #fff; font-size: 17px; }
+.related-link span { color: #9aabc4; font-size: 14.5px; line-height: 1.5; }
+.faq-item { padding: 14px 0; border-bottom: 1px solid #263a5c; }
+.faq-item:last-child { border-bottom: 0; padding-bottom: 0; }
+.faq-item h3 { color: #fff; font-size: 17px; margin: 0 0 8px; }
+.faq-item p { color: #9aabc4; font-size: 14.5px; line-height: 1.65; margin: 0; }
+.info-section { margin: 24px auto 0; box-sizing: border-box; width: calc(100% - 24px); max-width: 1200px; }
+@media (max-width: 760px) { .related-tools { grid-template-columns: 1fr; } .card-section { width: calc(100% - 24px); box-sizing: border-box; padding: 20px; } }
+@media (min-width: 640px) { .card-section { padding: 32px; } }
+
 /* OTC brand tagline: header-only styling */
 .brand-tagline{display:inline-block;color:#a9b7cf;font-size:12px;font-weight:500;letter-spacing:.1px;margin-left:5px;white-space:nowrap}
 @media(max-width:750px){.brand-tagline{display:none}}
@@ -569,6 +598,21 @@ nav a:hover {
         <h2>Which Conversion Mode Should I Use?</h2>
         <p>Use <strong>Exact Layout + Images</strong> for formal records, email archives, receipts, or PDFs containing screenshots and tables so nothing gets lost or distorted. Use <strong>Editable Text Only</strong> when you want to freely rewrite plain text paragraphs inside Microsoft Word.</p>
     </section>
+<section class="card-section">
+ <h2>Related PDF Utilities</h2>
+ <div class="related-tools">
+  <a class="related-link" href="word-to-pdf.html"><strong>Word to PDF →</strong><span>Convert Word documents into PDF files.</span></a>
+  <a class="related-link" href="rotate.html"><strong>Rotate PDF →</strong><span>Rotate PDF pages to the correct orientation.</span></a>
+  <a class="related-link" href="split.html"><strong>Split PDF →</strong><span>Separate PDF pages into individual files.</span></a>
+ </div>
+</section>
+
+<section class="card-section">
+ <h2>Frequently Asked Questions</h2>
+ <div class="faq-item"><h3>Can every PDF be converted to Word accurately?</h3><p>Results depend on the PDF structure. Text-based PDFs generally convert more cleanly, while complex layouts, tables, and scanned pages may need manual review.</p></div>
+ <div class="faq-item"><h3>Are my PDF files uploaded?</h3><p>Please review the processing information on this page to see how files are handled.</p></div>
+</section>
+
 </main>
 
 <!-- Informational SEO Section (350+ words) -->
@@ -596,7 +640,7 @@ nav a:hover {
 </section>
 
 <footer class="site-footer">
-    AllInOne Utilities — Fast, secure document tools.
+    Online Tool Collection — Fast, secure document tools.
 </footer>
 
 <script>

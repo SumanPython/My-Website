@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#080d1b">
+<title>Sign &amp; Fill PDF Online Free — Add Signature and Text | OnlineToolCollection</title>
+<meta name="description" content="Sign and fill PDF files online for free. Draw your signature or add text to PDF documents in your browser. No uploads, private client-side processing, and easy download.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://allinone-utilities.com/Tools/pdf-tools/sign-fill-pdf.html">
+<meta property="og:title" content="Sign &amp; Fill PDF Online Free | OnlineToolCollection">
+<meta property="og:description" content="Draw a signature or add text to your PDF directly in your browser. Your documents stay on your device.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://allinone-utilities.com/Tools/pdf-tools/sign-fill-pdf.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I sign a PDF online?","acceptedAnswer":{"@type":"Answer","text":"Upload your PDF, draw your signature in the signature box, click Add Signature, then click the page where you want it placed. Download the signed PDF when finished."}},
+{"@type":"Question","name":"Can I fill a PDF with text?","acceptedAnswer":{"@type":"Answer","text":"Yes. Choose Add Text, type the text you need, and click the PDF page to place it. You can add multiple text entries before downloading."}},
+{"@type":"Question","name":"Are my PDF files uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. PDF editing and export are performed locally in your browser. The file is not sent to our server."}},
+{"@type":"Question","name":"Does this tool work on mobile?","acceptedAnswer":{"@type":"Answer","text":"The page is responsive and supports touch input for drawing signatures and tapping the PDF page to place signature or text."}}]}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:Arial,Helvetica,sans-serif;background:#080d1b;color:#e6edf7;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden}
+.background{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:-1}
+.star{position:absolute;width:2px;height:2px;background:#fff;opacity:.3;border-radius:50%}
+.site-header{border-bottom:1px solid #1d2940;background:#080d1b;position:sticky;top:0;z-index:50}
+.header-inner{max-width:1150px;margin:auto;padding:18px 22px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-size:25px;font-weight:bold;text-decoration:none;display:flex;align-items:center;gap:9px;white-space:nowrap}
+.brand-short{font-size:clamp(22px,3vw,30px);font-weight:900;letter-spacing:-1px;background:linear-gradient(110deg,#22d3ee,#4f66ff,#a855f7);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand-o{color:#ff8c24}.brand-t{color:#fff}.brand-c{color:#22c55e}
+.brand-name{color:#fff;font-size:clamp(14px,2vw,20px);font-weight:700;letter-spacing:-.35px}
+.brand-tagline{color:#a9b7cf;font-size:12px;margin-left:5px;white-space:nowrap}
+nav a{color:#cbd5e1;text-decoration:none;font-size:15px}nav a:hover,footer a:hover{color:#60a5fa}
+.container,.info-section,.card-section{max-width:1150px;width:calc(100% - 32px);margin:24px auto;padding:24px;background:#101b30;border:1px solid #263a5c;border-radius:20px}
+.badge{width:fit-content;max-width:100%;margin:0 auto 15px;display:flex;align-items:center;gap:6px;background:rgba(52,211,153,.12);color:#34d399;border:1px solid rgba(52,211,153,.3);padding:6px 14px;border-radius:999px;font-size:13px;font-weight:600;text-align:center}
+h1{text-align:center;font-size:clamp(26px,4vw,36px);margin:10px 0;color:#fff;line-height:1.25}
+.subtitle{text-align:center;color:#9aabc4;font-size:16px;line-height:1.6;max-width:760px;margin:0 auto 25px}
+.upload-box{border:2px dashed #3978c9;border-radius:16px;padding:36px 18px;text-align:center;background:#0c162b;cursor:pointer;margin-bottom:18px}
+.upload-box:hover,.upload-box.dragover{border-color:#66a2ff;background:#142342}
+.upload-icon{font-size:45px;margin-bottom:10px}.upload-box h2{font-size:19px;color:white;margin-bottom:8px}.upload-box p{color:#98a9c1;font-size:14px}
+input[type=file]{display:none}
+.status{display:none;padding:13px;border-radius:12px;font-size:14px;line-height:1.6;text-align:center;margin:12px 0}
+.status.show{display:block}.status.info{background:rgba(75,140,255,.1);border:1px solid rgba(75,140,255,.4);color:#9fc2ff}.status.error{background:#261b2b;border:1px solid #63344b;color:#ff9b9b}.status.success{background:#0e222e;border:1px solid #14534b;color:#56d9a9}
+.editor{display:none;margin-top:16px}.editor.active{display:block}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:12px;background:#0c162b;border:1px solid #1f3150;border-radius:12px;margin-bottom:14px}
+.group{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+label{color:#cbd5e1;font-size:13px;font-weight:600}
+select,input[type=text],input[type=number]{background:#101b30;color:#fff;border:1px solid #304968;border-radius:8px;padding:9px 10px;font-size:14px;min-height:40px;max-width:100%}
+input[type=text]{width:min(100%,360px)}input:focus,select:focus{outline:2px solid #60a5fa;outline-offset:1px}
+button{border:none;border-radius:10px;padding:12px 18px;min-height:44px;cursor:pointer;color:#fff;font-size:14px;font-weight:bold;transition:opacity .2s,transform .15s}
+button:hover:not(:disabled){opacity:.92;transform:translateY(-1px)}button:disabled{opacity:.45;cursor:not-allowed}
+.primary{background:linear-gradient(100deg,#2864eb,#673de9)}.secondary{background:#18253c;border:1px solid #304968;color:#cbd5e1}.secondary:hover:not(:disabled){border-color:#66a2ff;background:#233554}
+.page-tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin:0 0 12px}.page-tools button{padding:8px 12px;min-height:38px;font-size:13px}.document-strip{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px}.document-tab{padding:7px 10px;min-height:36px;font-size:13px}.document-tab.active{outline:2px solid #60a5fa;outline-offset:1px}.doc-remove{padding:6px 9px;min-height:32px;font-size:12px}.add-doc-btn{padding:7px 11px;min-height:36px;font-size:13px}.placement-preview-item{position:absolute;pointer-events:none;z-index:3;white-space:pre-wrap;max-width:80%;overflow-wrap:anywhere;text-align:left}.placement-preview-item img{width:150px;max-width:32vw;height:auto;display:block}.placement-preview-item.text-item{color:#111;background:rgba(255,255,255,.7);padding:2px 4px}
+.canvas-wrap{background:#080d1b;border:1px solid #263a5c;border-radius:12px;padding:12px;overflow:auto;text-align:center;min-height:200px}
+.canvas-stage{position:relative;display:inline-block;max-width:100%;vertical-align:top}
+#placementPreview{position:absolute;display:none;pointer-events:none;left:0;top:0;transform:translate(-5%,-90%);padding:5px 8px;border:1px dashed #3b82f6;background:rgba(255,255,255,.8);color:#142033;white-space:nowrap;z-index:4;font-size:16px;max-width:80%;overflow:hidden}
+#placementPreview.signature-preview{background:transparent;border:1px dashed #60a5fa;padding:2px}
+#placementPreview img{display:block;width:150px;max-width:32vw;height:auto;opacity:.78}
+.placement-active #pdfCanvas{cursor:crosshair}
+
+#pdfCanvas{display:block;margin:auto;max-width:100%;height:auto;cursor:crosshair;box-shadow:0 4px 18px #0005}
+.signature-panel{margin:16px 0;padding:15px;background:#0c162b;border:1px solid #263a5c;border-radius:12px}
+.signature-panel h3{font-size:16px;color:white;margin-bottom:8px}
+#signaturePad{display:block;width:100%;max-width:560px;height:160px;background:#fff;border:1px solid #45648d;border-radius:8px;touch-action:none;cursor:crosshair}
+.panel-hint{font-size:13px;color:#9aabc4;line-height:1.5;margin:8px 0}
+.action-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:12px}
+.preview-action-row{margin:14px 0 18px}
+.preview-action-row button{min-height:42px;padding:10px 16px}
+.info-section h2,.card-section h2{font-size:22px;color:#fff;margin-bottom:14px}
+.info-section h3{font-size:17px;color:#fff;margin:20px 0 8px}
+.info-section p,.info-section ul{color:#9aabc4;font-size:14.5px;line-height:1.7;margin-bottom:12px}
+.info-section ul{padding-left:20px}.info-section li{margin-bottom:6px}
+.faq-item{margin-bottom:15px;border-top:1px solid #263a5c;padding-top:15px}.faq-item:first-of-type{border-top:0;padding-top:0}
+.faq-item h3{font-size:16px;color:#fff;margin:0 0 7px}.faq-item p{margin:0}
+.related-tools{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
+.related-link{display:block;padding:17px;background:#0c162b;border:1px solid #263a5c;border-radius:12px;color:#e6edf7;text-decoration:none;transition:.2s}
+.related-link:hover{border-color:#60a5fa;transform:translateY(-2px)}
+.related-link strong{font-size:16px;color:#fff}.related-link span{display:block;font-size:13.5px;color:#9aabc4;margin-top:4px}
+footer{border-top:1px solid #1d2940;text-align:center;padding:24px 16px;color:#9aabc4;font-size:13px;background:#080d1b;margin-top:auto}
+footer a{color:#9aabc4;text-decoration:none;margin:0 10px}
+@media(max-width:480px){.preview-action-row button{flex:1 1 100%}.brand-name{display:none}.brand-short{font-size:27px}.container,.info-section,.card-section{width:calc(100% - 20px);padding:17px;border-radius:15px;margin:16px auto}.upload-box{padding:27px 12px}.toolbar{align-items:stretch}.toolbar>.group{width:100%}.toolbar button{width:100%}#signaturePad{height:145px}.action-row button{flex:1 1 100%}}
+@media(min-width:640px){.container,.info-section,.card-section{padding:30px;margin:30px auto}.related-tools{grid-template-columns:repeat(3,1fr);gap:17px}}
+</style>
+</head>
+<body>
+<div class="background" id="background"></div>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../index.html"><span class="brand-short"><span class="brand-o">O</span><span class="brand-t">T</span><span class="brand-c">C</span></span><span class="brand-name">OnlineToolCollection</span><span class="brand-tagline">Tools for every task. All in one place.</span></a>
+<nav><a href="../../index.html#category-boxes-section">Categories</a></nav></div></header>
+<main class="container">
+<div class="badge" role="note">🔒 No Upload &bull; Client-Side Processing</div>
+<h1>Sign &amp; Fill PDF Online</h1>
+<p class="subtitle">Add a drawn signature or place text on your PDF pages directly in your browser. Your document stays on your device.</p>
+<div class="upload-box" id="uploadBox" tabindex="0" role="button" aria-label="Choose a PDF file">
+<div class="upload-icon">✍️</div><h2>Drop a PDF here or click to browse</h2><p>PDF files only. Choose a document to begin signing or filling.</p>
+<input type="file" id="pdfInput" accept=".pdf,application/pdf">
+</div>
+<input type="file" id="anotherPdfInput" accept=".pdf,application/pdf" style="display:none">
+<div id="status" class="status" role="status" aria-live="polite"></div>
+<div class="editor" id="editor">
+
+<div class="toolbar">
+<div class="group"><label for="toolSelect">Placement mode</label><select id="toolSelect"><option value="signature">Add Signature</option><option value="text">Add Text</option></select></div>
+<div class="group" id="textControls" style="display:none"><label for="textInput">Text</label><input type="text" id="textInput" maxlength="120" placeholder="Enter text to place on PDF"><label for="fontSize">Size</label><input type="number" id="fontSize" min="8" max="72" value="16" style="width:80px"></div>
+<div class="group"><button class="secondary" id="prevPage" type="button">← Previous</button><span id="pageLabel" style="color:#9aabc4;font-size:14px">Page 1 / 1</span><button class="secondary" id="nextPage" type="button">Next →</button></div>
+</div>
+<div class="page-tools">
+<button class="primary" type="button" id="addSignatureCurrent">Add Signature</button>
+<button class="primary" type="button" id="addSignatureAll">Add Signature to All Pages</button>
+<button class="primary" type="button" id="addTextCurrent">Add Text</button>
+<button class="primary" type="button" id="addTextAll">Add Text to All Pages</button>
+<button class="secondary" type="button" id="clearPlacements">Clear placed items on this page</button>
+
+</div>
+<div class="panel-hint" id="placementHint">Draw your signature or enter text, choose a placement action, then click/tap the PDF page to place it.</div>
+<div class="canvas-wrap"><div class="canvas-stage" id="canvasStage"><canvas id="pdfCanvas" aria-label="PDF page preview; click to place selected item"></canvas><div id="placementPreview"></div></div></div>
+<div class="action-row preview-action-row" id="previewActions"><button class="primary" type="button" id="downloadPdfBottom">Download Signed / Filled PDF</button><button class="secondary" type="button" id="addAnotherPdfBottom">+ Add Another PDF</button></div>
+<div class="signature-panel" id="signaturePanel"><h3>Draw your signature</h3><canvas id="signaturePad" width="560" height="160" aria-label="Signature drawing area"></canvas><p class="panel-hint">Use your mouse or finger to draw. Then choose Add Signature and tap/click the PDF page where you want it placed.</p><div class="action-row"><button class="secondary" type="button" id="clearSignature">Clear signature</button></div></div>
+</div>
+</main>
+<section class="info-section">
+<h2>Sign and Fill PDF Documents Online for Free</h2>
+<p>Need to sign a contract, complete a form, or add a short note to a PDF without printing it? This free <strong>Sign &amp; Fill PDF</strong> tool lets you place a handwritten signature or text directly onto your document. Open your PDF in the browser, choose a placement mode, and click or tap the page to add your content. It is designed for quick document updates on desktop, tablet, and mobile devices.</p>
+<p>For privacy, your PDF is processed locally in your browser. The document is not uploaded to our website, so you can edit it without sending it to a server. You control where the signature or text appears and can download a new PDF when you are ready. Review the document carefully before sharing it, especially if it contains official, legal, or financial information.</p>
+<h3>Key Features</h3><ul>
+<li><strong>Draw a signature:</strong> Use a mouse, stylus, or touchscreen to draw a signature on the signature pad.</li>
+<li><strong>Add text to PDF:</strong> Type names, dates, short notes, or form responses and place them on the page.</li>
+<li><strong>Page navigation:</strong> Move through multi-page PDFs and place items on the page you need.</li>
+<li><strong>Private processing:</strong> The editing process runs in your browser, with no PDF upload to our server.</li>
+<li><strong>Mobile-friendly controls:</strong> Responsive layout and touch-enabled signature drawing make it usable on smaller screens.</li>
+</ul>
+<h3>How to Sign or Fill a PDF</h3>
+<p>Choose a PDF from your device to load the preview. Draw your signature in the signature area, select <strong>Add Signature</strong>, then click or tap the page to place it. To fill a form, switch to <strong>Add Text</strong>, enter your text, adjust its size, and click the desired location. Use the page controls to edit other pages. When you finish, select <strong>Download Signed / Filled PDF</strong> to save your updated document. The original file remains unchanged.</p>
+<h3>Use It for Common PDF Tasks</h3>
+<p>This browser-based PDF signer can help with everyday documents such as application forms, acknowledgement pages, simple agreements, school paperwork, and business forms that need a signature or a few typed entries. It is intended for basic annotation-style signing and filling. It does not validate the legal identity of the signer or create a certificate-based digital signature.</p>
+</section>
+<section class="card-section"><h2>Related PDF Tools</h2><div class="related-tools">
+<a class="related-link" href="protect-pdf.html"><strong>Protect PDF →</strong><span>Add password protection to documents.</span></a>
+<a class="related-link" href="unlock-pdf.html"><strong>Unlock PDF →</strong><span>Remove supported PDF restrictions.</span></a>
+<a class="related-link" href="ocr-text-extraction.html"><strong>OCR Text Extraction →</strong><span>Extract text from scanned PDFs and images.</span></a>
+</div></section>
+<section class="card-section"><h2>Frequently Asked Questions</h2>
+<div class="faq-item"><h3>1. How do I sign a PDF online?</h3><p>Upload your PDF, draw your signature in the signature area, choose Add Signature, and click or tap the document to place it. Download your updated PDF when done.</p></div>
+<div class="faq-item"><h3>2. Can I type text into a PDF?</h3><p>Yes. Select Add Text, enter your text, set the font size, then click the page to place it. Repeat to add multiple text entries.</p></div>
+<div class="faq-item"><h3>3. Are my documents uploaded or stored?</h3><p>No. The PDF is processed locally in your browser and is not uploaded to our website. Download the updated file to keep your copy.</p></div>
+<div class="faq-item"><h3>4. Can I use this on my phone?</h3><p>Yes. The page is responsive, and the signature pad accepts touch input. Tap the PDF preview to place signature or text items.</p></div>
+<div class="faq-item"><h3>5. Does this create a certified digital signature?</h3><p>No. It adds a visible signature image or text to the PDF. It does not create cryptographic signing, identity verification, or certificate validation.</p></div>
+</section>
+<footer><p>&copy; <span id="year"></span> OnlineToolCollection — Fast, secure document tools.</p><p style="margin-top:10px"><a href="../../index.html">Home</a><a href="#">Privacy Policy</a><a href="#">Terms</a></p></footer>
+<script>
+"use strict";
+const bg=document.getElementById("background");for(let i=0;i<45;i++){const star=document.createElement("div");star.className="star";star.style.left=Math.random()*100+"%";star.style.top=Math.random()*100+"%";bg.appendChild(star)}
+document.getElementById("year").textContent=new Date().getFullYear();
+const uploadBox=document.getElementById("uploadBox"),pdfInput=document.getElementById("pdfInput"),anotherPdfInput=document.getElementById("anotherPdfInput"),editor=document.getElementById("editor"),status=document.getElementById("status"),pdfCanvas=document.getElementById("pdfCanvas"),ctx=pdfCanvas.getContext("2d"),sigCanvas=document.getElementById("signaturePad"),sigCtx=sigCanvas.getContext("2d"),toolSelect=document.getElementById("toolSelect"),textControls=document.getElementById("textControls"),signaturePanel=document.getElementById("signaturePanel"),textInput=document.getElementById("textInput"),fontSize=document.getElementById("fontSize"),pageLabel=document.getElementById("pageLabel"),canvasStage=document.getElementById("canvasStage"),placementPreview=document.getElementById("placementPreview");
+let documents=[],activeDocId=null,signatureDrawn=false,drawing=false,placementMode=null,previewData=null,renderSequence=0;
+function activeDoc(){return documents.find(d=>d.id===activeDocId)||null}
+function showStatus(msg,type="info"){status.className="status show "+type;status.textContent=msg}
+function hideStatus(){status.className="status";status.textContent=""}
+function loadScript(src){return new Promise((resolve,reject)=>{const s=document.createElement("script");s.src=src;s.onload=resolve;s.onerror=()=>reject(new Error("Unable to load PDF libraries. Check your connection and try again."));document.head.appendChild(s)})}
+async function loadLibraries(){if(!window.pdfjsLib)await loadScript("https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js");if(!window.PDFLib)await loadScript("https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js");pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"}
+function resetPlacement(){placementMode=null;previewData=null;canvasStage.classList.remove("placement-active");placementPreview.style.display="none";placementPreview.innerHTML=""}
+async function loadPdfFiles(files){
+  const chosen=[...files].filter(f=>f&&((f.type&&f.type.includes("pdf"))||f.name.toLowerCase().endsWith(".pdf")));
+  if(!chosen.length){showStatus("Please select a valid PDF file.","error");return;}
+  const file=chosen[0];
+  if(file.size>80*1024*1024){showStatus(file.name+" is larger than 80 MB. Please choose a smaller PDF.","error");return;}
+  try{
+    await loadLibraries();
+    showStatus("Loading "+file.name+"…");
+    const bytes=await file.arrayBuffer();
+    const pdfDoc=await pdfjsLib.getDocument({data:bytes.slice(0)}).promise;
+    const entry={id:crypto.randomUUID(),name:file.name,bytes,pdfDoc,page:1,placements:{}};
+    const oldDoc=activeDoc();
+    renderSequence++;
+    resetPlacement();
+    clearSignaturePad();
+    // Reset document-specific input state only after the new PDF has loaded successfully.
+    toolSelect.value="signature";
+    textInput.value="";
+    textControls.style.display="none";
+    signaturePanel.style.display="block";
+    if(oldDoc&&oldDoc.pdfDoc&&oldDoc.pdfDoc.destroy){try{await oldDoc.pdfDoc.destroy()}catch(e){}}
+    documents=[entry];activeDocId=entry.id;
+    uploadBox.style.display="none";editor.classList.add("active");
+    await renderPage();
+    showStatus("PDF loaded. Draw your signature or enter text. The signature stays in the signature box while you work on this PDF. Loading another PDF will replace this one and clear the signature pad.","success");
+  }catch(err){showStatus("Could not open "+file.name+": "+(err.message||"unknown error"),"error");}
+  pdfInput.value="";anotherPdfInput.value="";
+}
+function clearSignaturePad(){sigCtx.clearRect(0,0,sigCanvas.width,sigCanvas.height);signatureDrawn=false;}
+uploadBox.addEventListener("click",e=>{if(e.target!==pdfInput)pdfInput.click()});uploadBox.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();pdfInput.click()}});
+["dragenter","dragover"].forEach(ev=>uploadBox.addEventListener(ev,e=>{e.preventDefault();uploadBox.classList.add("dragover")}));["dragleave","drop"].forEach(ev=>uploadBox.addEventListener(ev,e=>{e.preventDefault();uploadBox.classList.remove("dragover")}));uploadBox.addEventListener("drop",e=>{if(e.dataTransfer.files.length)loadPdfFiles(e.dataTransfer.files)});pdfInput.addEventListener("change",e=>{if(e.target.files.length)loadPdfFiles(e.target.files)});anotherPdfInput.addEventListener("change",e=>{if(e.target.files.length)loadPdfFiles(e.target.files)});document.getElementById("addAnotherPdfBottom").addEventListener("click",()=>anotherPdfInput.click());
+async function renderPage(){const doc=activeDoc();if(!doc)return;const renderId=++renderSequence,docId=doc.id,pageNumberSnapshot=doc.page;resetPlacement();const page=await doc.pdfDoc.getPage(pageNumberSnapshot);if(renderId!==renderSequence||activeDocId!==docId)return;const viewport=page.getViewport({scale:1.4});pdfCanvas.width=Math.floor(viewport.width);pdfCanvas.height=Math.floor(viewport.height);pdfCanvas.style.width="100%";pdfCanvas.style.maxWidth=Math.min(viewport.width,900)+"px";pdfCanvas.style.height="auto";await page.render({canvasContext:ctx,viewport}).promise;if(renderId!==renderSequence||activeDocId!==docId||doc.page!==pageNumberSnapshot)return;pageLabel.textContent=`${doc.name} — Page ${pageNumberSnapshot} / ${doc.pdfDoc.numPages}`;document.getElementById("prevPage").disabled=pageNumberSnapshot===1;document.getElementById("nextPage").disabled=pageNumberSnapshot===doc.pdfDoc.numPages;drawPlacedItems()}
+function drawPlacedItems(){const doc=activeDoc();if(!doc)return;canvasStage.querySelectorAll(".placement-preview-item").forEach(el=>el.remove());const items=doc.placements[doc.page]||[];for(const item of items){const el=document.createElement("div");el.className="placement-preview-item";el.style.left=(item.x*pdfCanvas.width)+"px";el.style.top=(item.y*pdfCanvas.height)+"px";if(item.type==="signature"){const img=document.createElement("img");img.src=item.data;img.alt="Placed signature";el.appendChild(img)}else{el.classList.add("text-item");el.textContent=item.text;el.style.fontSize=item.size+"px"}canvasStage.appendChild(el)}}
+document.getElementById("prevPage").addEventListener("click",async()=>{const d=activeDoc();if(d&&d.page>1){d.page--;await renderPage()}});document.getElementById("nextPage").addEventListener("click",async()=>{const d=activeDoc();if(d&&d.page<d.pdfDoc.numPages){d.page++;await renderPage()}});
+toolSelect.addEventListener("change",()=>{const isText=toolSelect.value==="text";textControls.style.display=isText?"flex":"none";signaturePanel.style.display="block";resetPlacement()});
+function beginPlacement(type,allPages){const d=activeDoc();if(!d){showStatus("Load a PDF first.","error");return}if(type==="signature"){if(!signatureDrawn){showStatus("Draw your signature in the signature box first.","error");return}previewData={type:"signature",data:sigCanvas.toDataURL("image/png")}}else{const txt=textInput.value.trim();if(!txt){showStatus("Enter text first.","error");textInput.focus();return}previewData={type:"text",text:txt,size:Math.max(8,Math.min(72,Number(fontSize.value)||16))}}placementMode={type,allPages};placementPreview.innerHTML="";placementPreview.className="";if(type==="signature"){placementPreview.classList.add("signature-preview");const im=document.createElement("img");im.src=previewData.data;im.alt="Signature placement preview";placementPreview.appendChild(im)}else{placementPreview.textContent=previewData.text;placementPreview.style.fontSize=previewData.size+"px";placementPreview.classList.add("text-item")}placementPreview.style.display="block";canvasStage.classList.add("placement-active");showStatus(allPages?"Click the page once to place this item at the same position on every page.":"Move pointer over the PDF and click/tap to place.","info")}
+document.getElementById("addSignatureCurrent").addEventListener("click",()=>beginPlacement("signature",false));document.getElementById("addSignatureAll").addEventListener("click",()=>beginPlacement("signature",true));document.getElementById("addTextCurrent").addEventListener("click",()=>beginPlacement("text",false));document.getElementById("addTextAll").addEventListener("click",()=>beginPlacement("text",true));
+pdfCanvas.addEventListener("pointermove",e=>{if(!placementMode)return;const r=pdfCanvas.getBoundingClientRect();placementPreview.style.left=((e.clientX-r.left)/r.width*pdfCanvas.clientWidth)+"px";placementPreview.style.top=((e.clientY-r.top)/r.height*pdfCanvas.clientHeight)+"px"});
+pdfCanvas.addEventListener("click",e=>{const doc=activeDoc();if(!doc||!placementMode||!previewData)return;const r=pdfCanvas.getBoundingClientRect(),x=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width)),y=Math.max(0,Math.min(1,(e.clientY-r.top)/r.height));const item={...previewData,x,y};if(placementMode.type==="signature"){const targetPages=placementMode.allPages?Array.from({length:doc.pdfDoc.numPages},(_,i)=>i+1):[doc.page];for(const p of targetPages){doc.placements[p]??=[];doc.placements[p]=doc.placements[p].filter(existing=>existing.type!=="signature");doc.placements[p].push({...item})}showStatus(placementMode.allPages?"Signature replaced and placed on all pages.":"Signature replaced on this page. Signature remains in the signature box.","success")}else if(placementMode.allPages){for(let p=1;p<=doc.pdfDoc.numPages;p++){doc.placements[p]??=[];doc.placements[p]=doc.placements[p].filter(existing=>existing.type!=="text");doc.placements[p].push({...item})}showStatus("Existing text placements replaced. Text placed at the same position on all "+doc.pdfDoc.numPages+" pages.","success")}else{doc.placements[doc.page]??=[];doc.placements[doc.page].push(item);showStatus("Text placed on page "+doc.page+".","success")}resetPlacement();drawPlacedItems()});
+let isDrawing=false;sigCanvas.addEventListener("pointerdown",e=>{e.preventDefault();isDrawing=true;signatureDrawn=true;sigCanvas.setPointerCapture(e.pointerId);const r=sigCanvas.getBoundingClientRect();sigCtx.beginPath();sigCtx.moveTo((e.clientX-r.left)*sigCanvas.width/r.width,(e.clientY-r.top)*sigCanvas.height/r.height)});sigCanvas.addEventListener("pointermove",e=>{if(!isDrawing)return;const r=sigCanvas.getBoundingClientRect();sigCtx.lineWidth=3;sigCtx.lineCap="round";sigCtx.lineJoin="round";sigCtx.strokeStyle="#172033";sigCtx.lineTo((e.clientX-r.left)*sigCanvas.width/r.width,(e.clientY-r.top)*sigCanvas.height/r.height);sigCtx.stroke()});["pointerup","pointercancel","pointerleave"].forEach(ev=>sigCanvas.addEventListener(ev,()=>{isDrawing=false;sigCtx.closePath()}));document.getElementById("clearSignature").addEventListener("click",clearSignaturePad);
+document.getElementById("clearPlacements").addEventListener("click",()=>{const d=activeDoc();if(d){d.placements[d.page]=[];drawPlacedItems();showStatus("Removed items from current page.","info")}});
+async function exportPdf(){const doc=activeDoc();if(!doc)return;const btn=document.getElementById("downloadPdfBottom");btn.disabled=true;showStatus("Preparing PDF download…");try{const {PDFDocument,StandardFonts,rgb}=PDFLib,pdf=await PDFDocument.load(doc.bytes.slice()),font=await pdf.embedFont(StandardFonts.Helvetica);for(const [pageIndex,items] of Object.entries(doc.placements)){if(!items.length)continue;const page=pdf.getPage(Number(pageIndex)-1),size=page.getSize();for(const it of items){const x=it.x*size.width,y=size.height-it.y*size.height;if(it.type==="signature"){const img=await pdf.embedPng(it.data),w=Math.min(size.width*.28,150),h=w*img.height/img.width;page.drawImage(img,{x,y:y-h,width:w,height:h})}else page.drawText(it.text,{x,y:y-it.size,size:it.size,font,color:rgb(.06,.06,.08),maxWidth:Math.max(1,size.width-x)})}}const bytes=await pdf.save(),blob=new Blob([bytes],{type:"application/pdf"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="signed-filled-"+doc.name.replace(/\.pdf$/i,"")+".pdf";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1200);showStatus("PDF downloaded. Original file remains unchanged.","success")}catch(err){showStatus("Could not save PDF: "+(err.message||"error"),"error")}finally{btn.disabled=false}}
+document.getElementById("downloadPdfBottom").addEventListener("click",exportPdf);
+</script>
+</body>
+</html>

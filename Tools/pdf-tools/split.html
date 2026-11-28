@@ -1,660 +1,1166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#080d1b">
-    <title>Split PDF Online — Extract Pages from PDF Free | OnlineToolCollection</title>
-    <meta name="description" content="Split PDF files online for free. Separate pages from your document into individual files or custom page ranges bundled in a secure ZIP archive. Fast and secure.">
-    <meta name="robots" content="index, follow, max-image-preview:large">
-    <link rel="canonical" href="https://allinone-utilities.com/Tools/pdf-tools/split.html">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#080d1b">
 
-    <!-- Open Graph SEO Meta Tags -->
-    <meta property="og:title" content="Split PDF Online — Extract Pages from PDF Free | AllInOne">
-    <meta property="og:description" content="Separate pages from your PDF document into individual files or custom page ranges bundled in a secure ZIP archive.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://allinone-utilities.com/Tools/pdf-tools/split.html">
+  <title>Split PDF Online Free – Extract PDF Pages | OnlineToolCollection</title>
+  <meta name="description" content="Split PDF files online for free. Extract every page into separate PDF files and download them together in a ZIP. Fast, mobile-friendly, and easy to use.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
+  <link rel="canonical" href="https://alltoocollection.com/Tools/pdf-tools/split.html">
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #080d1b;
-            color: #e6edf7;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+  <meta property="og:title" content="Split PDF Online Free – Extract PDF Pages | OnlineToolCollection">
+  <meta property="og:description" content="Separate a PDF into individual page files and download them in one ZIP archive with our free online PDF splitter.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://alltoocollection.com/Tools/pdf-tools/split.html">
+  <meta property="og:site_name" content="OnlineToolCollection">
 
-        /* Background */
-        .background {
-            position: fixed;
-            inset: 0;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: -1;
-        }
+  <!-- WebApplication Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Split PDF Online",
+    "url": "https://alltoocollection.com/Tools/pdf-tools/split.html",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Split a PDF into individual page files and download the results as a ZIP archive."
+  }
+  </script>
 
-        .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #ffffff;
-            opacity: 0.35;
-            border-radius: 50%;
+  <!-- FAQ Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can I split a PDF into separate pages?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. This tool extracts the pages from your selected PDF into separate PDF files and packages them in a ZIP archive."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I download the split PDF pages?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "After processing, the ZIP archive downloads automatically. Extract the ZIP on your device to access the individual page PDFs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use the PDF splitter on my phone?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The page is designed to work on mobile phones, tablets, laptops, and desktop browsers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this PDF splitter free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. You can use the online PDF splitter without paying or installing a desktop application."
+        }
+      }
+    ]
+  }
+  </script>
 
-        /* Header */
-        .site-header {
-            border-bottom: 1px solid #1d2940;
-            background: #080d1b;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-        .header-inner {
-            max-width: 1150px;
-            margin: auto;
-            padding: 20px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #080d1b;
+      color: #e6edf7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-        .brand {
-            font-size: 26px;
-            font-weight: bold;
-            color: #fff;
-            text-decoration: none;
-            letter-spacing: -0.5px;
-        }
+    /* Background */
+    .background {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: -1;
+    }
 
-        .brand span {
-            color: #66a2ff;
-        }
-/* OTC brand update: logo/header only */
-.brand{display:flex;align-items:center;gap:9px;white-space:nowrap}
-.brand .brand-short{
-    font-size:clamp(22px,3vw,30px);
-    font-weight:900;
-    letter-spacing:-1px;
-    background:linear-gradient(110deg,#22d3ee,#4f66ff,#a855f7);
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent!important;
-}
-.brand .brand-o{color:#ff8c24!important;background:none!important;-webkit-text-fill-color:#ff8c24}
-.brand .brand-t{color:#ffffff!important;background:none!important;-webkit-text-fill-color:#ffffff}
-.brand .brand-c{color:#22c55e!important;background:none!important;-webkit-text-fill-color:#22c55e}
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #fff;
+      opacity: .3;
+      border-radius: 50%;
+    }
 
-.brand .brand-name{
-    color:#ffffff!important;
-    font-size:clamp(14px,2vw,20px);
-    font-weight:700;
-    letter-spacing:-0.35px;
-}
-@media(max-width:480px){
-    .brand .brand-name{display:none}
-    .brand .brand-short{font-size:27px}
-}
+    /* Header */
+    .site-header {
+      border-bottom: 1px solid #1d2940;
+      background: #080d1b;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
 
+    .header-inner {
+      max-width: 1150px;
+      margin: auto;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
 
-        nav {
-            display: flex;
-            gap: 24px;
-        }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      white-space: nowrap;
+      text-decoration: none;
+      color: #fff;
+    }
 
-        nav a {
-            color: #cbd5e1;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 500;
-            transition: 0.2s;
-        }
+    .brand-short {
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 900;
+      letter-spacing: -1px;
+      background: linear-gradient(110deg, #22d3ee, #4f66ff, #a855f7);
+      background-clip: text;
+      color: transparent;
+    }
 
-        nav a:hover {
-            color: #60a5fa;
-        }
+    .brand-o {
+      color: #ff8c24 !important;
+      -webkit-text-fill-color: #ff8c24;
+    }
 
-        /* Main */
-        main {
-            width: 100%;
-            max-width: 1150px;
-            margin: 24px auto;
-            padding: 24px;
-            background: #101b30;
-            border: 1px solid #263a5c;
-            border-radius: 20px;
-        }
+    .brand-t {
+      color: #fff !important;
+      -webkit-text-fill-color: #fff;
+    }
 
-        .tool-header {
-            text-align: center;
-            margin-bottom: 28px;
-        }
+    .brand-c {
+      color: #22c55e !important;
+      -webkit-text-fill-color: #22c55e;
+    }
 
-        .tool-header .icon {
-            font-size: 48px;
-            margin-bottom: 12px;
-        }
+    .brand-name {
+      font-size: clamp(14px, 2vw, 20px);
+      font-weight: 700;
+      letter-spacing: -.35px;
+    }
 
-        .tool-header h1 {
-            text-align: center;
-            font-size: 32px;
-            margin: 10px 0;
-            color: #ffffff;
-        }
+    .brand-tagline {
+      font-size: 12px;
+      color: #a9b7cf;
+      margin-left: 4px;
+      white-space: nowrap;
+    }
 
-        .tool-header p {
-            text-align: center;
-            color: #9aabc4;
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 0;
-        }
+    nav a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+    }
 
-        /* Converter Card */
-        .converter-card {
-            background: transparent;
-        }
+    nav a:hover {
+      color: #60a5fa;
+    }
 
-        .upload-area {
-            border: 2px dashed #3978c9;
-            border-radius: 16px;
-            padding: 40px 16px;
-            text-align: center;
-            background: #0c162b;
-            cursor: pointer;
-            transition: .2s;
-        }
+    /* Main Tool Container */
+    main {
+      width: calc(100% - 32px);
+      max-width: 1150px;
+      margin: 24px auto;
+      padding: 24px;
+      background: #101b30;
+      border: 1px solid #263a5c;
+      border-radius: 20px;
+    }
 
-        .upload-area:hover,
-        .upload-area.dragover {
-            background: #142342;
-            border-color: #66a2ff;
-        }
+    .tool-header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
 
-        .upload-icon {
-            font-size: 48px;
-            margin-bottom: 12px;
-        }
+    .tool-header .icon {
+      font-size: 46px;
+      margin-bottom: 8px;
+    }
 
-        .upload-area h3 {
-            font-size: 22px;
-            margin: 8px 0;
-            color: #ffffff;
-        }
+    .tool-header h1 {
+      font-size: clamp(25px, 4vw, 36px);
+      margin: 10px 0;
+      color: #fff;
+    }
 
-        .upload-area p {
-            color: #98a9c1;
-            font-size: 15px;
-            margin: 8px 0;
-        }
+    .tool-header p {
+      color: #9aabc4;
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 720px;
+      margin: 0 auto;
+    }
 
-        .browse-button {
-            background: #2864eb;
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 12px;
-            width: 100%;
-            max-width: 280px;
-            min-height: 48px;
-            transition: 0.2s;
-        }
+    /* Upload Area */
+    .converter-card {
+      background: transparent;
+    }
 
-        .browse-button:hover {
-            background: #3977ff;
-        }
+    .upload-area {
+      border: 2px dashed #3978c9;
+      border-radius: 16px;
+      padding: 36px 16px;
+      text-align: center;
+      background: #0c162b;
+      cursor: pointer;
+      transition: background .2s, border-color .2s;
+    }
 
-        #fileInput {
-            display: none;
-        }
+    .upload-area:hover,
+    .upload-area.dragover {
+      background: #142342;
+      border-color: #66a2ff;
+    }
 
-        /* File Status Container */
-        .file-status-container {
-            display: none;
-            margin-top: 28px;
-        }
+    .upload-icon {
+      font-size: 46px;
+      margin-bottom: 10px;
+    }
 
-        .file-status-container.visible {
-            display: block;
-        }
+    .upload-area h2 {
+      font-size: 21px;
+      margin: 8px 0;
+      color: #fff;
+    }
 
-        .file-box {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: #18253c;
-            border: 1px solid #304968;
-            padding: 16px;
-            border-radius: 14px;
-            margin-bottom: 20px;
-            gap: 12px;
-        }
+    .upload-area p {
+      color: #98a9c1;
+      font-size: 15px;
+      margin: 8px 0;
+    }
 
-        .file-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            min-width: 0;
-            flex: 1;
-        }
+    .browse-button {
+      background: #2864eb;
+      color: white;
+      border: none;
+      padding: 13px 24px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 12px;
+      width: 100%;
+      max-width: 280px;
+      min-height: 48px;
+    }
 
-        .file-name {
-            color: #e2e8f0;
-            font-size: 16px;
-            font-weight: bold;
-            word-break: break-all;
-            overflow-wrap: anywhere;
-        }
+    .browse-button:hover {
+      background: #3977ff;
+    }
 
-        .remove-btn {
-            background: rgba(255, 104, 104, 0.15);
-            border: 1px solid rgba(255, 104, 104, 0.3);
-            color: #ff6868;
-            font-size: 14px;
-            font-weight: bold;
-            padding: 8px 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            min-height: 40px;
-            flex-shrink: 0;
-        }
+    #fileInput {
+      display: none;
+    }
 
-        .remove-btn:hover {
-            background: rgba(255, 104, 104, 0.3);
-            color: #ff9b9b !important;
-        }
+    /* Selected File */
+    .file-status-container {
+      display: none;
+      margin-top: 22px;
+    }
 
-        /* Split Options */
-        .options-box {
-            background: #141f36;
-            border: 1px solid #2d436a;
-            padding: 20px;
-            border-radius: 14px;
-            margin-bottom: 20px;
-        }
+    .file-status-container.visible {
+      display: block;
+    }
 
-        .options-box h3 {
-            font-size: 18px;
-            color: #ffffff;
-            margin-bottom: 8px;
-        }
+    .file-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #18253c;
+      border: 1px solid #304968;
+      padding: 15px;
+      border-radius: 14px;
+      margin-bottom: 18px;
+      gap: 12px;
+    }
 
-        .options-box p {
-            color: #98a9c1;
-            font-size: 14.5px;
-            line-height: 1.6;
-            margin-bottom: 0;
-        }
+    .file-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      flex: 1;
+    }
 
-        /* Split Button */
-        .split-button {
-            width: 100%;
-            padding: 18px;
-            border: 0;
-            border-radius: 14px;
-            background: linear-gradient(100deg, #2864eb, #673de9);
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            min-height: 52px;
-            transition: 0.2s;
-        }
+    .file-name {
+      color: #e2e8f0;
+      font-size: 16px;
+      font-weight: bold;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
 
-        .split-button:hover:not(:disabled) {
-            opacity: .92;
-        }
+    .remove-btn {
+      background: rgba(255, 104, 104, .15);
+      border: 1px solid rgba(255, 104, 104, .3);
+      color: #ff6868;
+      font-size: 14px;
+      font-weight: bold;
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      min-height: 40px;
+      flex-shrink: 0;
+    }
 
-        .split-button:disabled {
-            opacity: 0.55;
-            cursor: not-allowed;
-        }
+    .remove-btn:hover {
+      background: rgba(255, 104, 104, .3);
+      color: #ff9b9b;
+    }
 
-        /* Messages */
-        .message {
-            display: none;
-            padding: 16px;
-            margin-top: 20px;
-            border-radius: 12px;
-            font-size: 14.5px;
-            line-height: 1.6;
-        }
+    /* Split Options */
+    .options-box {
+      background: #141f36;
+      border: 1px solid #2d436a;
+      padding: 18px;
+      border-radius: 14px;
+      margin-bottom: 18px;
+    }
 
-        .message.visible {
-            display: block;
-        }
+    .options-box h3 {
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
 
-        .message.error {
-            background: #261b2b;
-            border: 1px solid #63344b;
-            color: #ff9b9b;
-        }
+    .options-box p {
+      color: #98a9c1;
+      font-size: 14.5px;
+      line-height: 1.6;
+    }
 
-        .message.success {
-            background: #0e222e;
-            border: 1px solid #14534b;
-            color: #56d9a9;
-        }
+    /* Split Button */
+    .split-button {
+      width: 100%;
+      padding: 17px;
+      border: 0;
+      border-radius: 14px;
+      background: linear-gradient(100deg, #2864eb, #673de9);
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      min-height: 52px;
+    }
 
-        /* Informational SEO Section */
-        .info-section {
-            max-width: 1150px;
-            margin: 24px auto 0 auto;
-            padding: 24px;
-            background: #101b30;
-            border: 1px solid #263a5c;
-            border-radius: 20px;
-        }
-        .info-section h2 {
-            font-size: 22px;
-            color: #fff;
-            margin-bottom: 14px;
-        }
-        .info-section h3 {
-            font-size: 17px;
-            color: #fff;
-            margin-top: 20px;
-            margin-bottom: 8px;
-        }
-        .info-section p {
-            color: #9aabc4;
-            font-size: 14.5px;
-            line-height: 1.65;
-            margin-bottom: 12px;
-        }
-        .info-section ul {
-            color: #9aabc4;
-            font-size: 14.5px;
-            line-height: 1.65;
-            padding-left: 18px;
-            margin-bottom: 12px;
-        }
-        .info-section li {
-            margin-bottom: 6px;
-        }
+    .split-button:hover:not(:disabled) {
+      opacity: .92;
+    }
 
-        /* Footer */
-        footer {
-            border-top: 1px solid #1d2940;
-            text-align: center;
-            padding: 24px 16px;
-            color: #94a3b8;
-            font-size: 13px;
-            background: #080d1b;
-            margin-top: 40px;
-        }
+    .split-button:disabled {
+      opacity: .55;
+      cursor: not-allowed;
+    }
 
-        footer a {
-            color: #cbd5e1;
-            text-decoration: none;
-            margin: 0 10px;
-            transition: color 0.2s;
-        }
+    /* Messages */
+    .message {
+      display: none;
+      padding: 15px;
+      margin-top: 18px;
+      border-radius: 12px;
+      font-size: 14.5px;
+      line-height: 1.6;
+    }
 
-        footer a:hover {
-            color: #60a5fa;
-        }
+    .message.visible {
+      display: block;
+    }
 
-        @media(min-width: 640px) {
-            main, .info-section { margin: 35px auto; padding: 32px; }
-            .header-inner { padding: 20px 24px; }
-            .brand { font-size: 26px; }
-            .tool-header h1 { font-size: 36px; }
-            .file-box { padding: 20px; }
-            .split-button { font-size: 20px; padding: 20px; }
-        }
-    
-/* OTC brand tagline: header-only styling */
-.brand-tagline{display:inline-block;color:#a9b7cf;font-size:12px;font-weight:500;letter-spacing:.1px;margin-left:5px;white-space:nowrap}
-@media(max-width:750px){.brand-tagline{display:none}}
-</style>
+    .message.error {
+      background: #261b2b;
+      border: 1px solid #63344b;
+      color: #ff9b9b;
+    }
+
+    .message.success {
+      background: #0e222e;
+      border: 1px solid #14534b;
+      color: #56d9a9;
+    }
+
+    /* SEO and Information Sections */
+    .info-section,
+    .related-section {
+      width: calc(100% - 32px);
+      max-width: 1150px;
+      margin: 24px auto;
+      padding: 25px;
+      background: #101b30;
+      border: 1px solid #263a5c;
+      border-radius: 20px;
+    }
+
+    .info-section h2,
+    .related-section h2 {
+      font-size: 22px;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+
+    .info-section h3 {
+      font-size: 17px;
+      color: #fff;
+      margin: 20px 0 8px;
+    }
+
+    .info-section p,
+    .info-section ul {
+      color: #9aabc4;
+      font-size: 14.5px;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .info-section ul {
+      padding-left: 20px;
+    }
+
+    .info-section li {
+      margin: 0 0 7px;
+    }
+
+    /* Related Tools */
+    .related-tools {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .related-link {
+      display: block;
+      padding: 16px;
+      background: #0c162b;
+      border: 1px solid #263a5c;
+      border-radius: 12px;
+      color: #e6edf7;
+      text-decoration: none;
+      transition: .2s;
+    }
+
+    .related-link:hover {
+      border-color: #60a5fa;
+      transform: translateY(-1px);
+    }
+
+    .related-link strong {
+      color: #fff;
+      font-size: 16px;
+    }
+
+    .related-link span {
+      display: block;
+      font-size: 13.5px;
+      color: #9aabc4;
+      margin-top: 5px;
+    }
+
+    /* FAQ */
+    .faq-item {
+      margin-bottom: 16px;
+    }
+
+    .faq-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .faq-item h3 {
+      font-size: 17px;
+      color: #fff;
+      margin: 0 0 6px;
+    }
+
+    .faq-item p {
+      font-size: 14.5px;
+      color: #9aabc4;
+      line-height: 1.65;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid #1d2940;
+      text-align: center;
+      padding: 24px 16px;
+      color: #94a3b8;
+      font-size: 13px;
+      background: #080d1b;
+      margin-top: 35px;
+    }
+
+    footer a {
+      color: #cbd5e1;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      color: #60a5fa;
+    }
+
+    button:focus-visible,
+    a:focus-visible {
+      outline: 2px solid #60a5fa;
+      outline-offset: 3px;
+    }
+
+    /* Tablet and Desktop */
+    @media (min-width: 640px) {
+      main,
+      .info-section,
+      .related-section {
+        margin: 34px auto;
+        padding: 32px;
+      }
+
+      .header-inner {
+        padding: 18px 24px;
+      }
+
+      .tool-header h1 {
+        font-size: 36px;
+      }
+
+      .file-box {
+        padding: 20px;
+      }
+
+      .split-button {
+        font-size: 20px;
+        padding: 20px;
+      }
+
+      .related-tools {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 750px) {
+      .brand-tagline {
+        display: none;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+      .header-inner {
+        padding: 13px 14px;
+      }
+
+      .brand-name {
+        display: none;
+      }
+
+      .brand-short {
+        font-size: 27px;
+      }
+
+      nav a {
+        font-size: 14px;
+      }
+
+      main,
+      .info-section,
+      .related-section {
+        width: calc(100% - 20px);
+        padding: 18px;
+        margin: 16px auto;
+        border-radius: 15px;
+      }
+
+      .upload-area {
+        padding: 28px 12px;
+      }
+
+      .upload-area h2 {
+        font-size: 19px;
+      }
+
+      .file-box {
+        align-items: flex-start;
+        padding: 12px;
+      }
+
+      .remove-btn {
+        padding: 8px 10px;
+      }
+
+      .options-box {
+        padding: 15px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <div class="background" id="background"></div>
+  <div class="background" id="background" aria-hidden="true"></div>
 
-    <header class="site-header">
-        <div class="header-inner">
-            <a href="../../index.html" class="brand"><span class="brand-short"><span class="brand-o">O</span><span class="brand-t">T</span><span class="brand-c">C</span></span><span class="brand-name">OnlineToolCollection</span><span class="brand-tagline">Tools for every task. All in one place.</span></a>
-            <nav class="nav">
-                <a href="../../index.html#category-boxes-section">Categories</a>
-            </nav>
-        </div>
-    </header>
+  <header class="site-header">
+    <div class="header-inner">
 
-    <main>
-        <section class="tool-header">
-            <div class="icon">✂️</div>
-            <h1>Split PDF Online</h1>
-            <p>Separate pages from your PDF document into individual files bundled in a secure ZIP archive.</p>
-        </section>
+      <a href="../../index.html"
+         class="brand"
+         aria-label="OnlineToolCollection home">
 
-        <section class="converter-card">
-            <div class="upload-area" id="uploadArea">
-                <div class="upload-icon">📄</div>
-                <h3>Drag & drop a PDF file here</h3>
-                <p>or tap below to select a file from your device</p>
-                <button type="button" class="browse-button" id="browseButton">
-                    Choose PDF File
-                </button>
-                <input type="file" id="fileInput" accept=".pdf,application/pdf">
-            </div>
+        <span class="brand-short">
+          <span class="brand-o">O</span>
+          <span class="brand-t">T</span>
+          <span class="brand-c">C</span>
+        </span>
 
-            <div class="file-status-container" id="fileStatusContainer">
-                <div class="file-box">
-                    <div class="file-info">
-                        <span>📄</span>
-                        <span class="file-name" id="fileNameDisplay">document.pdf</span>
-                    </div>
-                    <button type="button" class="remove-btn" id="removeFileBtn">Remove</button>
-                </div>
+        <span class="brand-name">OnlineToolCollection</span>
 
-                <div class="options-box">
-                    <h3>Extraction Mode</h3>
-                    <p>Every page of your document will be cleanly extracted into standalone PDF files and zipped together for instant download.</p>
-                </div>
+        <span class="brand-tagline">
+          Tools for every task. All in one place.
+        </span>
+      </a>
 
-                <button type="button" class="split-button" id="splitButton">
-                    Split PDF
-                </button>
-            </div>
+      <nav aria-label="Main navigation">
+        <a href="../../index.html#category-boxes-section">Categories</a>
+      </nav>
 
-            <div class="message error" id="errorMessage"></div>
-            <div class="message success" id="successMessage"></div>
-        </section>
-    </main>
+    </div>
+  </header>
 
-    <!-- Informational SEO Section (350+ words) -->
-    <section class="info-section">
-        <h2>Why Split Your PDF Documents Online?</h2>
-        <p>
-            Large PDF files—such as multi-chapter handbooks, extensive financial statements, or legal contract bundles—can be cumbersome to share, email, or upload to strict web portals. When you only need to extract specific sections or distribute individual pages to different team members, a dedicated PDF splitter provides an immediate, efficient solution.
-        </p>
-        <p>
-            Our free online PDF splitting tool allows you to separate documents into single, manageable files with absolute ease. Whether you are isolating a single receipt from a large statement or dividing a multi-page document into individual standalone pages, our streamlined utility packages everything neatly into a compressed ZIP archive for instant downloading.
-        </p>
+  <main>
 
-        <h3>Key Features of Our PDF Splitter Tool</h3>
-        <ul>
-            <li><strong>Instant Page Extraction:</strong> Automatically parse and divide your PDF document down to individual single-page files with a single click.</li>
-            <li><strong>Automated ZIP Bundling:</strong> All extracted pages are automatically grouped and compressed into a clean ZIP archive for effortless bulk downloading.</li>
-            <li><strong>Mobile-Friendly Design:</strong> Fully responsive interface optimized for touchscreens, letting you manage and split documents seamlessly from smartphones and tablets.</li>
-            <li><strong>Zero Software Installations Required:</strong> Run document processing securely straight through your modern web browser without downloading heavy desktop applications.</li>
-        </ul>
+    <section class="tool-header">
 
-        <h3>How to Split Your PDF in 3 Simple Steps</h3>
-        <p>
-            <strong>1. Upload Your Document:</strong> Drag and drop your target PDF file into the drop zone or tap the choose button to browse files on your device.<br>
-            <strong>2. Confirm Extraction:</strong> Review your selected filename and extraction details directly on the responsive status panel.<br>
-            <strong>3. Split &amp; Download:</strong> Click the split button to process your file and instantly download your organized ZIP folder containing all separated pages.
-        </p>
+      <div class="icon" aria-hidden="true">✂️</div>
+
+      <h1>Split PDF Online</h1>
+
+      <p>
+        Separate your PDF into individual page files and download them
+        together in one ZIP archive. Free, simple, and mobile-friendly.
+      </p>
+
     </section>
 
-    <footer>
-        <p>AllInOne Utilities — Fast, secure document tools.</p>
-    </footer>
+    <section class="converter-card" aria-label="PDF splitting tool">
 
-    <script>
-        // Background Stars Animation
-        const background = document.getElementById("background");
-        for (let i = 0; i < 60; i++) {
-            const star = document.createElement("div");
-            star.className = "star";
-            star.style.left = Math.random() * 100 + "%";
-            star.style.top = Math.random() * 100 + "%";
-            background.appendChild(star);
+      <div class="upload-area"
+           id="uploadArea"
+           role="button"
+           tabindex="0"
+           aria-label="Select a PDF file to split">
+
+        <div class="upload-icon" aria-hidden="true">📄</div>
+
+        <h2>Drop your PDF file here</h2>
+
+        <p>or tap below to browse your device</p>
+
+        <button type="button"
+                class="browse-button"
+                id="browseButton">
+          Choose PDF File
+        </button>
+
+        <input type="file"
+               id="fileInput"
+               accept=".pdf,application/pdf"
+               aria-label="Choose a PDF file">
+
+      </div>
+
+      <div class="file-status-container" id="fileStatusContainer">
+
+        <div class="file-box">
+
+          <div class="file-info">
+            <span aria-hidden="true">📄</span>
+            <span class="file-name" id="fileNameDisplay">document.pdf</span>
+          </div>
+
+          <button type="button"
+                  class="remove-btn"
+                  id="removeFileBtn">
+            Remove
+          </button>
+
+        </div>
+
+        <div class="options-box">
+          <h3>Extraction Mode</h3>
+          <p>
+            All pages will be extracted into separate PDF files and
+            packaged in a ZIP archive for convenient downloading.
+          </p>
+        </div>
+
+        <button type="button"
+                class="split-button"
+                id="splitButton">
+          Split PDF
+        </button>
+
+      </div>
+
+      <div class="message error"
+           id="errorMessage"
+           role="alert"></div>
+
+      <div class="message success"
+           id="successMessage"
+           role="status"></div>
+
+    </section>
+
+  </main>
+
+  <!-- SEO Content: 300–500 words -->
+
+  <section class="info-section">
+
+    <h2>Split PDF Files Online for Free</h2>
+
+    <p>
+      PDF files are useful for keeping documents organized and consistent,
+      but sometimes you only need a few pages from a larger file. A long
+      report, scanned collection, course material, invoice bundle, or user
+      manual may contain pages that are not relevant to the person receiving
+      it. Splitting a PDF makes it easier to share the pages you need,
+      organize your documents, and work with smaller files. This free online
+      PDF splitter is designed to help you separate a document into
+      individual page PDFs without installing a desktop application.
+    </p>
+
+    <p>
+      Use this tool when you need to extract pages from a PDF for email,
+      uploading to a website, submitting paperwork, preparing study notes,
+      or archiving records. The splitter processes the document and creates
+      a separate PDF file for each page. The resulting page files are
+      collected into a ZIP archive, so you can download everything in one
+      convenient package instead of saving files one by one.
+    </p>
+
+    <h3>How the PDF Splitter Works</h3>
+
+    <p>
+      Start by selecting a PDF from your device or dragging it into the
+      upload area on supported desktop browsers. After the file is selected,
+      the page displays its name so you can confirm that you chose the
+      correct document. Click <strong>Split PDF</strong> to begin. Once
+      processing is complete, your browser downloads a ZIP file containing
+      the extracted pages. Unzip the archive to access each page as its own
+      PDF file. The tool is designed with a straightforward workflow,
+      making it easy to use even if you have never split a PDF before.
+    </p>
+
+    <h3>Useful for Work, Study, and Everyday Documents</h3>
+
+    <p>
+      Extract pages from meeting reports, contracts, class handouts,
+      manuals, forms, receipts, or multi-page statements when you need to
+      share only part of a document. Individual page files can be easier
+      to upload when a website accepts a limited number of pages, and they
+      can help keep folders tidy when documents need to be stored separately.
+      Splitting does not require you to recreate the original page content,
+      so extracted pages remain PDF documents rather than being converted
+      into images.
+    </p>
+
+    <h3>Simple, Responsive, and Convenient</h3>
+
+    <p>
+      The Split PDF page is built to adapt to phones, tablets, laptops,
+      and desktop screens. Large controls and a clear upload area make it
+      convenient to use with touch or mouse input. No extra PDF software
+      needs to be installed on your device to use the page. Choose your
+      file, split it, and download the ZIP archive when processing finishes.
+      For best results, use a PDF file that opens normally and keep the
+      original document as a backup before making changes to your file
+      collection.
+    </p>
+
+  </section>
+
+  <!-- Related PDF Tools -->
+
+  <section class="related-section">
+
+    <h2>Related PDF Tools</h2>
+
+    <div class="related-tools">
+
+      <a class="related-link" href="pdf-to-jpg.html">
+        <strong>PDF to JPG</strong>
+        <span>Convert PDF pages into image files.</span>
+      </a>
+
+      <a class="related-link" href="merge.html">
+        <strong>Merge PDF</strong>
+        <span>Combine PDF documents into one file.</span>
+      </a>
+
+      <a class="related-link" href="jpg-to-pdf.html">
+        <strong>JPG to PDF</strong>
+        <span>Convert image files into a PDF.</span>
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- FAQ -->
+
+  <section class="related-section"
+           aria-label="Frequently asked questions">
+
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <h3>Can I split a PDF into single pages?</h3>
+      <p>
+        Yes. This tool extracts each page as a separate PDF and places
+        the files into a ZIP archive for download.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do I save the extracted pages?</h3>
+      <p>
+        The ZIP archive downloads after processing. Open or extract it
+        on your device to access the individual PDF pages.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Does this PDF splitter work on mobile?</h3>
+      <p>
+        Yes. The layout adapts to mobile screens and works on supported
+        mobile browsers as well as desktop browsers.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Is there a cost to split a PDF?</h3>
+      <p>
+        No. The online splitter is free to use and does not require you
+        to install an additional application.
+      </p>
+    </div>
+
+  </section>
+
+  <footer>
+
+    <p>
+      OnlineToolCollection — Tools for every task. All in one place.
+    </p>
+
+    <p style="margin-top:10px">
+      <a href="../../index.html">Home</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms</a>
+    </p>
+
+  </footer>
+
+  <script>
+
+    // Small decorative background: static stars (no animation or external library)
+
+    const background = document.getElementById("background");
+
+    for (let i = 0; i < 48; i++) {
+      const star = document.createElement("div");
+      star.className = "star";
+      star.style.left = (Math.random() * 100) + "%";
+      star.style.top = (Math.random() * 100) + "%";
+      background.appendChild(star);
+    }
+
+    // Elements
+
+    const uploadArea = document.getElementById("uploadArea");
+    const fileInput = document.getElementById("fileInput");
+    const browseButton = document.getElementById("browseButton");
+    const fileStatusContainer = document.getElementById("fileStatusContainer");
+    const fileNameDisplay = document.getElementById("fileNameDisplay");
+    const removeFileBtn = document.getElementById("removeFileBtn");
+    const splitButton = document.getElementById("splitButton");
+    const errorMessage = document.getElementById("errorMessage");
+    const successMessage = document.getElementById("successMessage");
+
+    let selectedFile = null;
+    let splitting = false;
+
+    // Messages
+
+    function showError(message) {
+      errorMessage.textContent = message;
+      errorMessage.classList.add("visible");
+      successMessage.classList.remove("visible");
+    }
+
+    function showSuccess(message) {
+      successMessage.textContent = message;
+      successMessage.classList.add("visible");
+      errorMessage.classList.remove("visible");
+    }
+
+    function clearMessages() {
+      errorMessage.classList.remove("visible");
+      successMessage.classList.remove("visible");
+      errorMessage.textContent = "";
+      successMessage.textContent = "";
+    }
+
+    // File picker
+
+    function openFilePicker() {
+      if (splitting) return;
+
+      fileInput.value = "";
+      fileInput.click();
+    }
+
+    browseButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+      openFilePicker();
+    });
+
+    uploadArea.addEventListener("click", (event) => {
+      if (event.target !== browseButton) {
+        openFilePicker();
+      }
+    });
+
+    // Keyboard accessibility
+
+    uploadArea.addEventListener("keydown", (event) => {
+      if (
+        event.target === uploadArea &&
+        (event.key === "Enter" || event.key === " ")
+      ) {
+        event.preventDefault();
+        openFilePicker();
+      }
+    });
+
+    fileInput.addEventListener("change", (event) => {
+      if (event.target.files && event.target.files.length) {
+        handleFile(event.target.files[0]);
+      }
+
+      fileInput.value = "";
+    });
+
+    // Validate selected file
+
+    function handleFile(file) {
+      clearMessages();
+
+      if (!file) return;
+
+      if (
+        file.type === "application/pdf" ||
+        file.name.toLowerCase().endsWith(".pdf")
+      ) {
+        selectedFile = file;
+        fileNameDisplay.textContent = file.name;
+
+        uploadArea.style.display = "none";
+        fileStatusContainer.classList.add("visible");
+      } else {
+        showError("Please select a valid PDF file.");
+      }
+    }
+
+    // Remove selected file
+
+    removeFileBtn.addEventListener("click", () => {
+      if (splitting) return;
+
+      selectedFile = null;
+      fileInput.value = "";
+
+      fileStatusContainer.classList.remove("visible");
+      uploadArea.style.display = "block";
+
+      clearMessages();
+    });
+
+    // Drag and Drop
+
+    ["dragenter", "dragover"].forEach((name) => {
+      uploadArea.addEventListener(name, (event) => {
+        event.preventDefault();
+
+        if (!splitting) {
+          uploadArea.classList.add("dragover");
+        }
+      });
+    });
+
+    ["dragleave", "dragend"].forEach((name) => {
+      uploadArea.addEventListener(name, (event) => {
+        event.preventDefault();
+        uploadArea.classList.remove("dragover");
+      });
+    });
+
+    uploadArea.addEventListener("drop", (event) => {
+      event.preventDefault();
+      uploadArea.classList.remove("dragover");
+
+      if (
+        !splitting &&
+        event.dataTransfer.files &&
+        event.dataTransfer.files.length
+      ) {
+        handleFile(event.dataTransfer.files[0]);
+      }
+    });
+
+    document.addEventListener("dragover", (event) => {
+      event.preventDefault();
+    });
+
+    document.addEventListener("drop", (event) => {
+      event.preventDefault();
+    });
+
+    // Split PDF submission
+    // Existing backend endpoint and field names are preserved.
+
+    splitButton.addEventListener("click", async () => {
+
+      if (!selectedFile || splitting) {
+        if (!selectedFile) {
+          showError("Please select a PDF file first.");
+        }
+        return;
+      }
+
+      clearMessages();
+
+      splitting = true;
+
+      splitButton.disabled = true;
+      splitButton.textContent = "Splitting PDF...";
+
+      browseButton.disabled = true;
+      removeFileBtn.disabled = true;
+
+      const formData = new FormData();
+
+      formData.append("pdfFile", selectedFile);
+      formData.append("mode", "all");
+
+      try {
+
+        const response = await fetch("/split", {
+          method: "POST",
+          body: formData
+        });
+
+        if (!response.ok) {
+
+          let message = "Failed to split PDF. Please try again.";
+
+          try {
+            const errData = await response.json();
+
+            if (errData && errData.error) {
+              message = errData.error;
+            }
+          } catch (_) {}
+
+          throw new Error(message);
         }
 
-        const uploadArea = document.getElementById("uploadArea");
-        const fileInput = document.getElementById("fileInput");
-        const browseButton = document.getElementById("browseButton");
-        const fileStatusContainer = document.getElementById("fileStatusContainer");
-        const fileNameDisplay = document.getElementById("fileNameDisplay");
-        const removeFileBtn = document.getElementById("removeFileBtn");
-        const splitButton = document.getElementById("splitButton");
-        const errorMessage = document.getElementById("errorMessage");
-        const successMessage = document.getElementById("successMessage");
+        // Get download filename from server response
 
-        let selectedFile = null;
+        let downloadFilename = "split-documents.zip";
 
-        function showError(msg) {
-            errorMessage.textContent = msg;
-            errorMessage.classList.add("visible");
-            successMessage.classList.remove("visible");
+        const disposition = response.headers.get("content-disposition");
+
+        if (disposition && disposition.includes("filename=")) {
+
+          const match =
+            /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/.exec(disposition);
+
+          if (match && match[1]) {
+            downloadFilename = match[1].replace(/['"]/g, "");
+          }
         }
 
-        function showSuccess(msg) {
-            successMessage.textContent = msg;
-            successMessage.classList.add("visible");
-            errorMessage.classList.remove("visible");
-        }
+        // Download ZIP file
 
-        function clearMessages() {
-            errorMessage.classList.remove("visible");
-            successMessage.classList.remove("visible");
-        }
+        const blob = await response.blob();
 
-        browseButton.addEventListener("click", () => fileInput.click());
-        uploadArea.addEventListener("click", () => fileInput.click());
+        const url = URL.createObjectURL(blob);
 
-        fileInput.addEventListener("change", (e) => {
-            if (e.target.files.length > 0) {
-                handleFile(e.target.files[0]);
-            }
-            fileInput.value = "";
-        });
+        const anchor = document.createElement("a");
 
-        function handleFile(file) {
-            clearMessages();
-            if (file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf")) {
-                selectedFile = file;
-                fileNameDisplay.textContent = file.name;
-                uploadArea.style.display = "none";
-                fileStatusContainer.classList.add("visible");
-            } else {
-                showError("Please select a valid PDF file.");
-            }
-        }
+        anchor.href = url;
+        anchor.download = downloadFilename;
 
-        removeFileBtn.addEventListener("click", () => {
-            selectedFile = null;
-            fileStatusContainer.classList.remove("visible");
-            uploadArea.style.display = "block";
-            clearMessages();
-        });
+        document.body.appendChild(anchor);
+        anchor.click();
+        anchor.remove();
 
-        // Drag and Drop support
-        ["dragenter", "dragover"].forEach(eventName => {
-            uploadArea.addEventListener(eventName, e => {
-                e.preventDefault();
-                uploadArea.classList.add("dragover");
-            });
-        });
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
 
-        ["dragleave", "dragend"].forEach(eventName => {
-            uploadArea.addEventListener(eventName, e => {
-                e.preventDefault();
-                uploadArea.classList.remove("dragover");
-            });
-        });
+        showSuccess("PDF successfully split. Your ZIP download has started.");
 
-        uploadArea.addEventListener("drop", e => {
-            e.preventDefault();
-            uploadArea.classList.remove("dragover");
-            if (e.dataTransfer.files.length > 0) {
-                handleFile(e.dataTransfer.files[0]);
-            }
-        });
+      } catch (error) {
 
-        // Handle Split Submission
-        splitButton.addEventListener("click", async () => {
-            if (!selectedFile) {
-                showError("Please select a PDF file first.");
-                return;
-            }
+        console.error("Split PDF error:", error);
 
-            clearMessages();
-            splitButton.disabled = true;
-            splitButton.textContent = "Splitting PDF...";
+        showError(
+          error.message ||
+          "An error occurred while splitting your PDF."
+        );
 
-            const formData = new FormData();
-            formData.append("pdfFile", selectedFile);
-            formData.append("mode", "all");
+      } finally {
 
-            try {
-                const response = await fetch("/split", {
-                    method: "POST",
-                    body: formData
-                });
+        splitting = false;
 
-                if (!response.ok) {
-                    const errData = await response.json();
-                    throw new Error(errData.error || "Failed to split PDF.");
-                }
+        splitButton.disabled = false;
+        splitButton.textContent = "Split PDF";
 
-                let downloadFilename = "split-documents.zip";
-                const disposition = response.headers.get('content-disposition');
-                if (disposition && disposition.includes('filename=')) {
-                    const matches = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/.exec(disposition);
-                    if (matches != null && matches[1]) {
-                        downloadFilename = matches[1].replace(/['"]/g, '');
-                    }
-                }
+        browseButton.disabled = false;
+        removeFileBtn.disabled = false;
+      }
 
-                const blob = await response.blob();
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement("a");
-                a.href = url;
-                a.download = downloadFilename;
-                document.body.appendChild(a);
-                a.click();
-                a.remove();
-                window.URL.revokeObjectURL(url);
+    });
 
-                showSuccess("PDF successfully split and downloaded as ZIP!");
-
-            } catch (error) {
-                console.error(error);
-                showError(error.message || "An error occurred during splitting.");
-            } finally {
-                splitButton.disabled = false;
-                splitButton.textContent = "Split PDF";
-            }
-        });
-    </script>
+  </script>
 
 </body>
 </html>
